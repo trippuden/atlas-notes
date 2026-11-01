@@ -42,36 +42,7 @@
 </section>
 <section id="v-tools" class="view hidden">
 <div class="sec-h"><span>TOOLS</span><i>all work with no signal</i></div>
-<div class="tools">
-<article class="tool" id="t-signal">
-<h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0 0 12 3z"/></svg>SIGNAL LIGHT</h3>
-<p class="lede">Turns the whole screen into a flashing Morse lamp. SOS by default; type anything else. Visible for kilometres at night.</p>
-<div class="frow"><input type="text" id="sigText" value="SOS" maxlength="40" aria-label="Message to flash" /><label class="mini">Speed <select id="sigWpm"><option value="5">slow</option><option value="8" selected>normal</option><option value="12">fast</option></select></label></div>
-<div class="morse" id="sigMorse"></div>
-<div class="frow"><button class="go" id="sigGo">FLASH IT</button><label class="mini"><input type="checkbox" id="sigBeep" checked /> beep too</label></div>
-</article>
-<article class="tool" id="t-fallout">
-<h3><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2"/><path d="M12 10 8.5 4a8 8 0 0 1 7 0zM14 12h7a8 8 0 0 1-3.5 6zM10.8 13.7 7 20a8 8 0 0 1-3.5-6z"/></svg>FALLOUT CLOCK</h3>
-<p class="lede">The 7:10 rule: every sevenfold increase in time cuts fallout radiation to a tenth. Enter when it happened.</p>
-<div class="frow"><label>Detonation <input type="datetime-local" id="foTime" /></label><button id="foNow" class="ghost">NOW</button></div>
-<div class="frow"><label>Reading now <input type="number" id="foRate" min="0" step="any" placeholder="optional" /></label><select id="foUnit" aria-label="Unit"><option value="mSv">mSv/h</option><option value="R">R/h</option><option value="uSv">µSv/h</option></select></div>
-<div class="out" id="foOut"></div>
-</article>
-<article class="tool" id="t-supply"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C9 7 6 10 6 14a6 6 0 0 0 12 0c0-4-3-7-6-11z"/></svg>SUPPLIES</h3>
-<div class="frow"><label>People <input type="number" id="cPeople" min="1" value="2" /></label><label>Pets <input type="number" id="cPets" min="0" value="0" /></label><label>Days <input type="number" id="cDays" min="1" value="14" /></label></div>
-<div class="out" id="cOut"></div></article>
-<article class="tool" id="t-water"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8M10 3v5l-4 9a2 2 0 0 0 2 3h8a2 2 0 0 0 2-3l-4-9V3"/></svg>WATER TREATMENT</h3>
-<div class="frow"><label>Amount <input type="number" id="wAmt" min="0.1" step="0.5" value="5" /></label><select id="wUnit" aria-label="Unit"><option value="gal">gallons</option><option value="l">liters</option></select><label class="mini"><input type="checkbox" id="wCloudy" /> cloudy</label></div>
-<div class="out" id="wOut"></div></article>
-<article class="tool" id="t-battery"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="16" height="10" rx="2"/><path d="M21 11v2M7 10v4M11 10v4"/></svg>BATTERY RUNTIME</h3>
-<div class="frow"><label>Capacity <input type="number" id="bAh" min="1" value="100" /> Ah</label><label>at <input type="number" id="bV" min="1" value="12" /> V</label></div>
-<div class="frow"><select id="bChem" aria-label="Battery type"><option value="li">Lithium (LiFePO4)</option><option value="lead">Lead-acid / AGM</option></select><label>Load <input type="number" id="bW" min="1" value="60" /> W</label></div>
-<div class="out" id="bOut"></div></article>
-<article class="tool" id="t-fuel"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v16M3 21h13M15 8l3 2v8a1.5 1.5 0 0 0 3 0V9l-3-3M7 7h5v4H7z"/></svg>GENERATOR FUEL</h3>
-<div class="frow"><label>Fuel <input type="number" id="fAmt" min="0.5" step="0.5" value="10" /></label><select id="fKind" aria-label="Fuel"><option value="gas">gal gasoline</option><option value="propane">lb propane</option><option value="diesel">gal diesel</option></select></div>
-<div class="frow"><label>Load <input type="number" id="fLoad" min="100" step="250" value="1750" /> W</label></div>
-<div class="out" id="fOut"></div></article>
-</div>
+<div class="tools" id="toolsRoot"></div>
 </section>
 <section id="v-plan" class="view hidden">
 <div id="myCountry"></div>
