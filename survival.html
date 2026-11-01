@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="styles.css" />
 <link rel="stylesheet" href="gfx/gfx.css" />
 <link rel="stylesheet" href="survival/field.css" />
+<link rel="stylesheet" href="gfx/fieldkit.css" />
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src * data: blob:; media-src 'self' blob:; frame-src 'self' blob:; connect-src *; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'" />
 </head>
 <body class="fk">
@@ -90,7 +91,7 @@
 <button data-view="guide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5M9 7h6M9 11h6"/></svg><span>GUIDE</span></button>
 <button data-view="here"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>HERE</span></button>
 <button data-view="library"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h4v16H4zM10 4h4v16h-4zM16 5l3.5-.8 3 15.6-3.5.8z"/></svg><span>LIBRARY</span></button>
-<button data-view="relay"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="7" height="13" rx="1.5"/><rect x="15" y="5" width="7" height="13" rx="1.5"/><path d="M10.5 9.5h3M10.5 13.5h3M12.5 8l1.5 1.5-1.5 1.5M11.5 12 10 13.5l1.5 1.5"/></svg><span>RELAY</span></button>
+<button data-view="relay"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="7" height="13" rx="1.5"/><rect x="15" y="5" width="7" height="13" rx="1.5"/><path d="M10.5 9.5h3M10.5 13.5h3M12.5 8l1.5 1.5-1.5 1.5M11.5 12 10 13.5l1.5 1.5"/></svg><span>SHARE</span></button>
 <button data-view="tools"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.2L3 17.8V21h3.2l6.3-6.3a4 4 0 0 0 5.2-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg><span>TOOLS</span></button>
 <button data-view="plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4H5v17h14V4h-4"/><rect x="9" y="2" width="6" height="4" rx="1"/><path d="m8 13 2.5 2.5L16 10"/></svg><span>PLAN</span></button>
 </nav>
@@ -110,5 +111,6 @@
 <script src="library/zim.js"></script>
 <script src="library/store.js"></script>
 <script type="module" src="survival.js"></script>
+<script type="module" src="gfx/fkclock.js"></script>
 </body>
 </html>
