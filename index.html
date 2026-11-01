@@ -43,18 +43,15 @@
 <div class="search hidden" id="search"></div>
 <div class="viewmenu hidden" id="viewMenu" role="dialog" aria-label="Map and look">
 <div class="vhead"><b>LOOK</b><button type="button" class="vclose" id="viewClose" aria-label="Close">✕ CLOSE</button></div>
-<div class="k">MAP</div>
-<select id="baseMap" title="Map imagery">
-<option value="auto">Satellite + place names</option>
-<option value="satellite">Satellite only</option>
-<option value="bluemarble">Blue Marble (NASA)</option>
-<option value="streets">Streets</option>
-<option value="offline">Offline (built in)</option>
-</select>
+<div class="k">WEATHER</div>
+<div id="wxLook"></div>
+<div class="k">MAP STYLE</div>
+<select id="baseMap" title="Map imagery" hidden data-sheet="off"><option value="auto">Satellite</option></select>
+<div id="mapStyles" class="mapstyles"></div>
 <div class="k">OVERLAY</div>
 <select id="overlay" title="Satellite overlay">
 <option value="none">None</option>
-<option value="rain">Rain / snow (NASA IMERG, from yesterday)</option>
+<option value="radar">Rain radar (moving, live)</option>
 <option value="fires">Active fires (last 24 h)</option>
 </select>
 <div class="k">SHOW ON THE MAP</div>
@@ -100,6 +97,7 @@
 </div>
 <div id="tip" class="tip hidden"></div>
 <div id="hud" class="hud-root"></div>
+<div id="wxRoot"></div>
 </section>
 <section class="panel right" id="rightPanel">
 <button class="collapse" data-collapse="rightPanel" title="Hide panel">▸</button>
