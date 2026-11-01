@@ -12,6 +12,8 @@
 <link rel="stylesheet" href="styles.css" />
 <link rel="stylesheet" href="relocate/relocate.css" />
 <link rel="stylesheet" href="gfx/gfx.css" />
+<link rel="stylesheet" href="watch/watch.css" />
+<link rel="stylesheet" href="phone/phone.css" />
 <link rel="preload" href="gfx/fonts/oxanium-700.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="gfx/fonts/barlow-condensed-700.woff2" as="font" type="font/woff2" crossorigin />
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval'; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src * data: blob:; connect-src *; frame-src https://www.youtube-nocookie.com https://webcams.windy.com; media-src * data: blob:; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'" />
@@ -34,6 +36,7 @@
 <button id="filterBtn" title="Filters: map layers, living look, map style, feed rules and screen settings"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-7 8.5V19l-4 2v-7.5z"/></svg><span class="w">FILTERS</span><b class="n" id="filterCount" data-fpcount></b></button>
 <button id="stationsBtn" title="Free live news TV and radio"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="13" rx="2"/><path d="M10 9v5l4.5-2.5z" fill="currentColor"/><path d="M8 21h8"/></svg><span class="w"><span class="wd">LIVE TV</span><span class="wm">TV</span></span></button>
 <button id="refreshBtn" class="dk"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/></svg><span class="w">REFRESH</span></button>
+<button type="button" class="dk" data-watchmode title="Watch mode: the live planet on its own, for a spare screen (W)"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5v7l6-3.5z" fill="currentColor"/></svg><span class="w">WATCH</span></button>
 <a class="btn dk" href="survival.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6z"/><path d="M12 8v8M8 12h8"/></svg><span class="w">SURVIVAL</span></a>
 <button id="menuBtn" class="mo" title="Refresh, survival handbook and more" aria-haspopup="dialog"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span class="w">MENU</span></button>
 </div>
