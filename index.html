@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Terminal</title>
+<meta name="robots" content="noindex, nofollow, noarchive" />
+<meta name="theme-color" content="#05080a" />
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" href="icon.svg" />
+<link rel="stylesheet" href="cesium/Widgets/widgets.css" />
+<link rel="stylesheet" href="styles.css" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval'; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src * data: blob:; connect-src *; frame-src https://www.youtube-nocookie.com; media-src * data: blob:; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'" />
+<script src="config.js"></script>
+<script src="cesium/Cesium.js"></script>
+</head>
+<body class="lay-globe">
+<header class="topbar">
+<div class="brand">◢ DOOMSDAY<span>TERMINAL</span></div>
+<div class="threat" id="globalThreat" role="button" tabindex="0" data-levels title="US readiness estimate and country levels">
+<span class="label" id="globalLabel">LEVELS</span><span class="lvl" id="globalLevel">-</span><span class="name" id="globalName"></span>
+</div>
+<div class="meta">
+<span id="srcBadge" class="badge">-</span>
+<span id="netBadge" class="badge">-</span>
+<span id="updated" class="dim"></span>
+</div>
+<div class="actions">
+<button id="searchBtn" title="Search everything (Ctrl K or /)"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg><span class="w">SEARCH</span></button>
+<button id="filterBtn" title="Filters, watchlist, presets, what shows on the map"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-7 8.5V19l-4 2v-7.5z"/></svg><span class="w">FILTERS</span><b class="n" id="filterCount"></b></button>
+<button id="viewBtn" title="Map, overlays, layers, layout and theme"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z"/></svg><span class="w">LOOK</span></button>
+<button id="stationsBtn" title="Free live news TV and radio"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="13" rx="2"/><path d="M10 9v5l4.5-2.5z" fill="currentColor"/><path d="M8 21h8"/></svg><span class="w"><span class="wd">LIVE TV</span><span class="wm">TV</span></span></button>
+<button id="refreshBtn" class="dk"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/></svg><span class="w">REFRESH</span></button>
+<a class="btn dk" href="survival.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6z"/><path d="M12 8v8M8 12h8"/></svg><span class="w">SURVIVAL</span></a>
+<button id="menuBtn" class="mo" title="Refresh, survival handbook and more" aria-haspopup="dialog"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span class="w">MENU</span></button>
+</div>
+<div class="pmenu hidden" id="phoneMenu" role="dialog" aria-label="Menu"></div>
+<div class="stations hidden" id="stations"></div>
+<div class="search hidden" id="search"></div>
+<div class="viewmenu hidden" id="viewMenu" role="dialog" aria-label="Map and look">
+<div class="vhead"><b>LOOK</b><button type="button" class="vclose" id="viewClose" aria-label="Close">✕ CLOSE</button></div>
+<div class="k">MAP</div>
+<select id="baseMap" title="Map imagery">
+<option value="auto">Satellite + place names</option>
+<option value="satellite">Satellite only</option>
+<option value="bluemarble">Blue Marble (NASA)</option>
+<option value="streets">Streets</option>
+<option value="offline">Offline (built in)</option>
+</select>
+<div class="k">OVERLAY</div>
+<select id="overlay" title="Satellite overlay">
+<option value="none">None</option>
+<option value="rain">Rain / snow (NASA IMERG, from yesterday)</option>
+<option value="fires">Active fires (last 24 h)</option>
+</select>
+<div class="k">SHOW ON THE MAP</div>
+<div class="vpins" id="viewPins"></div>
+<div class="k">LAYOUT</div>
+<select id="layout"><option value="ops">Ops Table (theater board)</option><option value="scope">Scope (reticle lock-on)</option><option value="wire">Wire (time ruler)</option><option value="globe">Classic: floating panels</option><option value="desk">Classic: side columns</option></select>
+<div class="k">LOOK (HOW THE PLANET IS DRAWN)</div>
+<select id="skin" title="How the planet is drawn"><option value="standard">Natural</option><option value="matrix">Matrix (code trace)</option><option value="tactical">Tactical (ops)</option><option value="nightvision">Night vision</option><option value="amber">Amber CRT</option><option value="blackout">Blackout</option><option value="arctic">Arctic</option></select>
+<div class="k">THEME</div>
+<select id="theme"><option value="slate">Slate</option><option value="classic">Classic terminal</option><option value="amber">Amber</option><option value="paper">Paper (light)</option></select>
+<div class="k">TEXT SIZE</div>
+<select id="textSize" title="Size of the text in the lists and detail cards"><option value="n">Normal</option><option value="l">Large</option><option value="xl">Larger</option></select>
+<div class="k">SPACING</div>
+<select id="density"><option value="comfortable">Comfortable</option><option value="compact">Compact</option></select>
+<div class="k">TYPEFACE</div>
+<select id="font"><option value="sans">Sans</option><option value="mono">Mono</option></select>
+<div class="k">OFFLINE PACK</div>
+<div class="vrow"><button type="button" id="packSave" title="Save the current brief, satellites and live lists to a file you can pass to another phone">SAVE FILE</button><label class="btnlike" title="Open a pack someone gave you">OPEN FILE<input type="file" id="packLoad" accept=".json,application/json" hidden></label></div>
+<div class="dim" id="packMsg" style="font-size:10px"></div>
+</div>
+</header>
+<div class="summary" id="globalSummary"></div>
+<main class="grid">
+<section class="panel left" id="leftPanel">
+<button class="collapse" data-collapse="leftPanel" title="Hide panel">◂</button>
+<div id="ready" class="ready"></div>
+<h2>COUNTRY LEVELS</h2>
+<ul id="regions" class="list"></ul>
+<h2>CAMPAIGNS</h2>
+<ul id="campaigns" class="list"></ul>
+<details class="sysbox"><summary>ANALYST LOOP · SOURCES</summary><div id="system" class="sys"></div></details>
+</section>
+<section class="globe-wrap">
+<div id="globe"></div>
+<button class="reopen hidden" id="reopen-leftPanel" data-reopen="leftPanel">▸ HOT SPOTS</button>
+<button class="reopen hidden" id="reopen-rightPanel" data-reopen="rightPanel">◂ FEED</button>
+<button id="homeBtn" class="home" title="Back to the whole Earth (H)">⌂ RESET VIEW</button>
+<div class="flybar"><button id="flyBtn" title="Free roam: fly anywhere (F)">✈ FREE ROAM</button><button id="moonBtn" title="Fly out to the Moon (M)">☾ MOON</button></div>
+<div id="flyHud" class="flyhud hidden"></div>
+<div class="legend" id="legend">
+<button type="button" id="layersBtn" class="lbtn">LAYERS</button>
+<span id="legendBody"></span>
+</div>
+<div id="tip" class="tip hidden"></div>
+<div id="hud" class="hud-root"></div>
+</section>
+<section class="panel right" id="rightPanel">
+<button class="collapse" data-collapse="rightPanel" title="Hide panel">▸</button>
+<button id="hudDataClose" type="button" title="Close the data drawer">CLOSE ✕</button>
+<nav class="tabs groups">
+<button data-group="now" class="on">NOW</button>
+<button data-group="next">NEXT</button>
+<button data-group="earth">EARTH</button>
+<button data-group="space">SPACE</button>
+<button data-group="intel">INTEL</button>
+<button data-group="live">● LIVE</button>
+<button data-group="people">PEOPLE</button>
+</nav>
+<nav class="subtabs" id="subtabs"></nav>
+<ul id="feed" class="list tab on"></ul>
+<ul id="news" class="list tab"></ul>
+<ul id="upcoming" class="list tab"></ul>
+<ul id="hazards" class="list tab"></ul>
+<ul id="forecasts" class="list tab"></ul>
+<ul id="elections" class="list tab"></ul>
+<ul id="advisories" class="list tab"></ul>
+<ul id="space" class="list tab"></ul>
+<ul id="unrest" class="list tab"></ul>
+<ul id="detect" class="list tab"></ul>
+<ul id="crime" class="list tab"></ul>
+<ul id="intel" class="list tab"></ul>
+<ul id="live" class="list tab"></ul>
+<ul id="radio" class="list tab"></ul>
+<div id="community" class="tab">
+<form id="postForm" class="post-form">
+<textarea id="postText" maxlength="500" placeholder="What are you seeing? (outage, shortages, weather, unrest...)" required></textarea>
+<div class="frow">
+<input id="postPlace" maxlength="80" placeholder="City, state or country" required />
+<select id="postPrecision" title="How precise your bubble is">
+<option value="city">City</option><option value="region" selected>State / region</option><option value="country">Country</option>
+</select>
+</div>
+<div class="frow">
+<select id="postCategory">
+<option value="outage">Outage</option><option value="supplies">Supplies</option><option value="weather">Weather</option>
+<option value="unrest">Unrest</option><option value="sighting">Sighting</option><option value="other" selected>Other</option>
+</select>
+<input id="postHandle" maxlength="24" placeholder="handle (optional)" />
+</div>
+<div class="frow">
+<button type="button" id="locBtn">◎ Use my location</button>
+<button type="button" id="pickBtn">✛ Pick on globe</button>
+</div>
+<div class="sub" id="locStatus">No location set. Only an approximate area is shared, never your exact spot.</div>
+<button type="submit" class="primary">POST</button>
+</form>
+<ul id="communityList" class="list"></ul>
+</div>
+</section>
+</main>
+<aside id="detail" class="detail hidden">
+<button class="close" id="detailClose">✕</button>
+<div id="detailBody"></div>
+</aside>
+<aside id="filterPanel" class="fpanel hidden"></aside>
+<footer class="ticker"><button id="castBtn" class="cast" title="Read the bulletin aloud (works offline). Right-click for the transcript.">◉ BROADCAST</button><div class="tk-clip"><div id="ticker"></div></div></footer>
+<script src="vendor/satellite.min.js"></script>
+<script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+window.CESIUM_BASE_URL=new URL("cesium/",location.href).href;window.TERMINAL_CONFIG={"issuesUrl":"https://github.com/trippuden/atlas-notes/issues/new","liveProxy":"https://relay.frelay.workers.dev","mirrors":["https://raw.githubusercontent.com/trippuden/atlas-notes/main/","https://cdn.jsdelivr.net/gh/trippuden/atlas-notes@main/"]};
