@@ -2,116 +2,110 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Survival</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Field Kit</title>
 <meta name="robots" content="noindex, nofollow, noarchive" />
 <meta name="theme-color" content="#0b0e14" />
 <link rel="manifest" href="manifest.webmanifest" />
 <link rel="icon" href="icon.svg" />
 <link rel="stylesheet" href="styles.css" />
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src * data: blob:; media-src 'self' blob:; frame-src blob:; connect-src *; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'" />
-<style>
-body { overflow: auto; display: block; }
-.wrap { max-width: 980px; margin: 0 auto; padding: 14px 16px 60px; }
-.stabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 16px; }
-.stabs button { letter-spacing: 1px; font-size: 11px; padding: 7px 14px; }
-.stabs button.on { color: var(--accent); border-color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); }
-.pane.hidden { display: none; }
-section { border: 1px solid var(--line); background: var(--panel); padding: 14px 16px; margin-bottom: 14px; }
-section h2 { position: static; padding: 0 0 8px; color: var(--accent); font-size: 12px; }
-.kcard { border: 1px solid var(--line); background: var(--panel); padding: 10px 14px; margin: 8px 0; }
-.kcard h4 { margin: 0 0 6px; font-size: 14px; color: var(--fg); font-weight: 600; }
-.kcard h4 .dim { display: block; font-size: 10px; letter-spacing: 1px; font-weight: 400; margin-top: 2px; font-family: var(--mono); }
-.kcard ul { margin: 0; padding-left: 18px; } .kcard li { margin: 4px 0; line-height: 1.5; } .kcard li b { color: var(--accent); font-weight: 600; }
-.kcard.calc { border-color: var(--t1); } .kcard.calc h4 { color: var(--t1); }
-.chip { font-size: 11px; padding: 3px 9px; border: 1px solid var(--line); color: var(--dim); background: transparent; margin: 2px 2px 2px 0; cursor: pointer; }
-.chip:hover { color: var(--accent); border-color: var(--accent); }
-.related { font-size: 11px; color: var(--dim); margin: 6px 0; }
-#chatLog { min-height: 50vh; max-height: 62vh; overflow-y: auto; padding: 4px 0; }
-.msg.me { text-align: right; margin: 12px 0 4px; } .msg.me::before { content: "▶ "; color: var(--accent); }
-.msg.me { color: var(--fg); font-weight: 500; }
-.ask { display: flex; gap: 8px; margin-top: 10px; }
-.ask input { flex: 1; background: var(--bg); color: var(--fg); border: 1px solid var(--line); padding: 10px 12px; font: inherit; font-size: 14px; }
-.ask input:focus { outline: none; border-color: var(--accent); }
-.frow { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin: 6px 0; }
-.frow input[type="number"], .frow input[type="text"], .frow select, .hb input, .hb select { background: var(--bg); color: var(--fg); border: 1px solid var(--line); padding: 6px 8px; font: inherit; }
-.frow input[type="number"] { width: 84px; }
-.out { margin-top: 10px; line-height: 1.5; }
-.ro-row { display: grid; grid-template-columns: minmax(150px, 220px) 1fr; gap: 2px 14px; padding: 8px 0; border-top: 1px solid var(--line); align-items: baseline; }
-.ro-row:first-child { border-top: 0; }
-.ro .k { font-family: var(--mono); font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--dim); padding-top: 4px; }
-.ro .v { font-size: 16px; color: var(--fg); } .ro .v b { color: var(--accent); font-weight: 600; font-size: 18px; }
-.ro .n { grid-column: 2; font-size: 12px; color: var(--dim); } .ro .v .n { display: inline; font-size: 12px; }
-.ro-why, .ro-do { margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--line); font-size: 12px; color: var(--dim); line-height: 1.5; }
-.ro-why .k, .ro-do .k { margin-right: 8px; } .ro-do { color: var(--fg); }
-@media (max-width: 640px) { .ro-row { grid-template-columns: 1fr; } .ro .n { grid-column: 1; } }
-textarea { width: 100%; min-height: 140px; background: var(--bg); color: var(--fg); border: 1px solid var(--line); padding: 8px; font: inherit; }
-label.chk { display: block; cursor: pointer; padding: 2px 0; } label.chk input { margin-right: 8px; }
-.kit { columns: 2; } @media (max-width: 640px) { .kit { columns: 1; } }
-.hb { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 8px; } .hb input[type="text"] { flex: 1; min-width: 200px; }
-#libList li { display: flex; gap: 10px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--line); cursor: default; } #libList .title { flex: 1; }
-#libPlayer video, #libPlayer audio { width: 100%; max-height: 60vh; background: #000; } #libPlayer iframe { width: 100%; height: 70vh; border: 1px solid var(--line); background: #fff; }
-#libPlayer.hidden { display: none; }
-.links li { margin: 5px 0; line-height: 1.5; }
-.warn { border-left: 3px solid var(--t5); padding-left: 8px; }
-@media print { body { background: #fff; color: #000; } section, .kcard { border-color: #999; background: #fff; } .topbar, .stabs, .ask, .hb, .chip, button { display: none !important; } .pane.hidden { display: block; } #chatLog { max-height: none; } }
-</style>
+<link rel="stylesheet" href="gfx/gfx.css" />
+<link rel="stylesheet" href="survival/field.css" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src * data: blob:; media-src 'self' blob:; frame-src 'self' blob:; connect-src *; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'" />
 </head>
-<body>
-<header class="topbar">
-<div class="brand">◢ SURVIVAL<span>HUB</span></div>
-<span class="badge" id="net">-</span>
-<label class="dim">REGION <select id="region"><option value="us">United States</option><option value="ca">Canada</option><option value="uk">United Kingdom</option><option value="eu">Europe (EU)</option><option value="au">Australia / NZ</option><option value="xx">Elsewhere</option></select></label>
-<div class="actions"><button id="printBtn">⎙ PRINT</button><a class="btn" href="./">◀ TERMINAL</a></div>
+<body class="fk">
+<header class="fk-top">
+<a class="fk-back" href="./" aria-label="Back to the globe"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><span>GLOBE</span></a>
+<div class="fk-brand"><b>FIELD KIT</b><span id="fkWhere">offline guide · library · tools</span></div>
+<span class="fk-net" id="net">-</span>
+<label class="fk-country" title="Your country: sets the numbers, radio bands and regional advice"><span class="k">COUNTRY</span><select id="country" aria-label="Your country"></select></label>
 </header>
-<div class="wrap">
-<nav class="stabs">
-<button id="tab-assistant">▶ ASSISTANT</button><button id="tab-handbook">HANDBOOK</button><button id="tab-tools">TOOLS</button><button id="tab-plan">MY PLAN</button><button id="tab-library">LIBRARY</button>
-</nav>
-<div id="pane-assistant" class="pane">
-<div id="chatLog"></div>
-<form id="chatForm" class="ask"><input id="chatIn" autocomplete="off" placeholder="Ask anything: water, radio frequencies, power, fallout, first aid, food…" /><button class="primary" type="submit">ASK</button><button type="button" id="chatClear" title="Clear">✕</button></form>
-<p class="dim" style="font-size:11px">Works with no internet. Answers come from the handbook on this device with the exact numbers; the calculators handle people × days, batteries, bleach, fuel and unit conversions. General guidance, not medical or legal advice.</p>
+<main class="fk-main" id="main">
+<section id="v-guide" class="view">
+<div id="ready" class="ready" aria-live="polite"></div>
+<form class="fk-search" id="findForm" role="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="find" type="search" autocomplete="off" placeholder="Search guide, packs, countries" aria-label="Search everything offline" /></form>
+<div id="findOut" class="find-out hidden"></div>
+<div id="guideHome">
+<div class="sec-h"><span>FIELD GUIDE</span><i id="guideCount"></i></div>
+<div id="topics" class="topics"></div>
 </div>
-<div id="pane-handbook" class="pane hidden">
-<div class="hb"><input type="text" id="hbSearch" placeholder="Search the handbook" /><select id="hbTopic"></select><label class="dim"><input type="checkbox" id="hbAll" /> show other regions</label><span class="dim" id="hbCount"></span></div>
-<div id="hbList"></div>
-</div>
-<div id="pane-tools" class="pane hidden">
-<section><h2>SUPPLY CALCULATOR</h2>
+<div id="guideTopic" class="hidden"></div>
+</section>
+<section id="v-library" class="view hidden"></section>
+<section id="v-ask" class="view hidden">
+<div id="chatLog" class="chat"></div>
+<form id="chatForm" class="ask"><input id="chatIn" autocomplete="off" placeholder="Ask: water for 4 people 10 days, NOAA frequencies, fallout…" aria-label="Ask a question" /><button class="go" type="submit">ASK</button></form>
+<p class="fine">Answers come from the guide, your downloaded packs and the country files on this device, with the numbers. General guidance, not medical or legal advice.</p>
+</section>
+<section id="v-tools" class="view hidden">
+<div class="sec-h"><span>TOOLS</span><i>all work with no signal</i></div>
+<div class="tools">
+<article class="tool" id="t-signal">
+<h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0 0 12 3z"/></svg>SIGNAL LIGHT</h3>
+<p class="lede">Turns the whole screen into a flashing Morse lamp. SOS by default; type anything else. Visible for kilometres at night.</p>
+<div class="frow"><input type="text" id="sigText" value="SOS" maxlength="40" aria-label="Message to flash" /><label class="mini">Speed <select id="sigWpm"><option value="5">slow</option><option value="8" selected>normal</option><option value="12">fast</option></select></label></div>
+<div class="morse" id="sigMorse"></div>
+<div class="frow"><button class="go" id="sigGo">FLASH IT</button><label class="mini"><input type="checkbox" id="sigBeep" checked /> beep too</label></div>
+</article>
+<article class="tool" id="t-fallout">
+<h3><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2"/><path d="M12 10 8.5 4a8 8 0 0 1 7 0zM14 12h7a8 8 0 0 1-3.5 6zM10.8 13.7 7 20a8 8 0 0 1-3.5-6z"/></svg>FALLOUT CLOCK</h3>
+<p class="lede">The 7:10 rule: every sevenfold increase in time cuts fallout radiation to a tenth. Enter when it happened.</p>
+<div class="frow"><label>Detonation <input type="datetime-local" id="foTime" /></label><button id="foNow" class="ghost">NOW</button></div>
+<div class="frow"><label>Reading now <input type="number" id="foRate" min="0" step="any" placeholder="optional" /></label><select id="foUnit" aria-label="Unit"><option value="mSv">mSv/h</option><option value="R">R/h</option><option value="uSv">µSv/h</option></select></div>
+<div class="out" id="foOut"></div>
+</article>
+<article class="tool" id="t-supply"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C9 7 6 10 6 14a6 6 0 0 0 12 0c0-4-3-7-6-11z"/></svg>SUPPLIES</h3>
 <div class="frow"><label>People <input type="number" id="cPeople" min="1" value="2" /></label><label>Pets <input type="number" id="cPets" min="0" value="0" /></label><label>Days <input type="number" id="cDays" min="1" value="14" /></label></div>
-<div class="out" id="cOut"></div></section>
-<section><h2>BATTERY RUNTIME</h2>
-<div class="frow"><label>Capacity <input type="number" id="bAh" min="1" value="100" /> Ah</label><label>at <input type="number" id="bV" min="1" value="12" /> V</label><select id="bChem"><option value="li">Lithium (LiFePO4)</option><option value="lead">Lead-acid / AGM</option></select><label>Load <input type="number" id="bW" min="1" value="60" /> W</label></div>
-<div class="out" id="bOut"></div></section>
-<section><h2>WATER TREATMENT</h2>
-<div class="frow"><label>Amount <input type="number" id="wAmt" min="0.1" step="0.5" value="5" /></label><select id="wUnit"><option value="gal">gallons</option><option value="l">liters</option></select><label class="dim"><input type="checkbox" id="wCloudy" /> cloudy water</label></div>
-<div class="out" id="wOut"></div></section>
-<section><h2>GENERATOR FUEL</h2>
-<div class="frow"><label>Fuel <input type="number" id="fAmt" min="0.5" step="0.5" value="10" /></label><select id="fKind"><option value="gas">gallons of gasoline</option><option value="propane">lb of propane</option><option value="diesel">gallons of diesel</option></select><label>Load <input type="number" id="fLoad" min="100" step="250" value="1750" /> W</label></div>
-<div class="out" id="fOut"></div></section>
+<div class="out" id="cOut"></div></article>
+<article class="tool" id="t-water"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8M10 3v5l-4 9a2 2 0 0 0 2 3h8a2 2 0 0 0 2-3l-4-9V3"/></svg>WATER TREATMENT</h3>
+<div class="frow"><label>Amount <input type="number" id="wAmt" min="0.1" step="0.5" value="5" /></label><select id="wUnit" aria-label="Unit"><option value="gal">gallons</option><option value="l">liters</option></select><label class="mini"><input type="checkbox" id="wCloudy" /> cloudy</label></div>
+<div class="out" id="wOut"></div></article>
+<article class="tool" id="t-battery"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="16" height="10" rx="2"/><path d="M21 11v2M7 10v4M11 10v4"/></svg>BATTERY RUNTIME</h3>
+<div class="frow"><label>Capacity <input type="number" id="bAh" min="1" value="100" /> Ah</label><label>at <input type="number" id="bV" min="1" value="12" /> V</label></div>
+<div class="frow"><select id="bChem" aria-label="Battery type"><option value="li">Lithium (LiFePO4)</option><option value="lead">Lead-acid / AGM</option></select><label>Load <input type="number" id="bW" min="1" value="60" /> W</label></div>
+<div class="out" id="bOut"></div></article>
+<article class="tool" id="t-fuel"><h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v16M3 21h13M15 8l3 2v8a1.5 1.5 0 0 0 3 0V9l-3-3M7 7h5v4H7z"/></svg>GENERATOR FUEL</h3>
+<div class="frow"><label>Fuel <input type="number" id="fAmt" min="0.5" step="0.5" value="10" /></label><select id="fKind" aria-label="Fuel"><option value="gas">gal gasoline</option><option value="propane">lb propane</option><option value="diesel">gal diesel</option></select></div>
+<div class="frow"><label>Load <input type="number" id="fLoad" min="100" step="250" value="1750" /> W</label></div>
+<div class="out" id="fOut"></div></article>
 </div>
-<div id="pane-plan" class="pane hidden">
-<section><h2>GO-BAG CHECKLIST <span class="dim" id="kitCount"></span> <span class="dim">(ticks saved on this device)</span></h2><div id="kitList" class="kit"></div></section>
-<section><h2>MY EMERGENCY PLAN <span class="dim">(saved on this device only; print a copy)</span></h2>
-<textarea id="planText" placeholder="Meeting point 1 (outside home): ...&#10;Meeting point 2 (outside neighborhood): ...&#10;Out-of-area contact: ...&#10;Walkie-talkie channel / code: ...&#10;Local repeater / ABC or NOAA frequency: ...&#10;Meds / allergies: ...&#10;Gas shutoff: ...  Water shutoff: ...  Breaker: ...&#10;Insurance / policy numbers: ..."></textarea></section>
+</section>
+<section id="v-plan" class="view hidden">
+<div id="myCountry"></div>
+<div class="sec-h"><span>GO-BAG</span><i id="kitCount"></i></div>
+<div class="kitbar"><i id="kitBar"></i></div>
+<div id="kitList" class="kit"></div>
+<div class="sec-h"><span>MY PEOPLE</span><i>saved on this device only</i></div>
+<div id="contacts" class="contacts"></div>
+<form id="contactForm" class="frow add"><input id="cName" placeholder="Name" aria-label="Name" /><input id="cNum" placeholder="Number or call sign" aria-label="Number" inputmode="tel" /><button class="ghost">ADD</button></form>
+<div class="sec-h"><span>MY PLAN</span><i>meeting points, channels, shutoffs, meds</i></div>
+<textarea id="planText" placeholder="Meeting point 1 (outside home): ...&#10;Meeting point 2 (outside neighborhood): ...&#10;Out-of-area contact: ...&#10;Walkie-talkie channel / code word: ...&#10;Local repeater, weather or broadcast frequency: ...&#10;Meds / allergies / blood type: ...&#10;Gas shutoff: ...  Water shutoff: ...  Breaker: ..."></textarea>
+<div class="frow"><button class="go" id="printCard">PRINT WALLET CARD</button><button class="ghost" id="printAll">PRINT THE WHOLE GUIDE</button></div>
+<div id="card" class="walletcard"></div>
+</section>
+</main>
+<nav class="fk-nav" aria-label="Sections">
+<button data-view="guide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5M9 7h6M9 11h6"/></svg><span>GUIDE</span></button>
+<button data-view="library"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h4v16H4zM10 4h4v16h-4zM16 5l3.5-.8 3 15.6-3.5.8z"/></svg><span>LIBRARY</span></button>
+<button data-view="ask"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg><span>ASK</span></button>
+<button data-view="tools"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.2L3 17.8V21h3.2l6.3-6.3a4 4 0 0 0 5.2-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg><span>TOOLS</span></button>
+<button data-view="plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4H5v17h14V4h-4"/><rect x="9" y="2" width="6" height="4" rx="1"/><path d="m8 13 2.5 2.5L16 10"/></svg><span>MY PLAN</span></button>
+</nav>
+<div id="reader" class="reader hidden" role="dialog" aria-label="Reader">
+<div class="rd-bar">
+<button id="rdClose" class="rd-b" aria-label="Close the reader"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span>BACK</span></button>
+<div class="rd-title"><b id="rdPack"></b><span id="rdPage"></span></div>
+<button id="rdHome" class="rd-b" aria-label="Pack home page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7M5 10v10h14V10"/></svg><span>HOME</span></button>
+<button id="rdRandom" class="rd-b" aria-label="Random article"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="9" cy="9" r="1.3"/><circle cx="15" cy="15" r="1.3"/><circle cx="15" cy="9" r="1.3"/><circle cx="9" cy="15" r="1.3"/></svg><span>RANDOM</span></button>
+<button id="rdNight" class="rd-b" aria-label="Night reading"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></svg><span>NIGHT</span></button>
 </div>
-<div id="pane-library" class="pane hidden">
-<section><h2>MY OFFLINE LIBRARY</h2>
-<p class="dim">Videos, music, audiobooks, PDFs and e-books you add here are stored inside this app on this device and play with no internet. Nothing is uploaded anywhere.</p>
-<div class="frow"><label class="btn">＋ ADD FILES <input type="file" id="libAdd" multiple accept="video/*,audio/*,.pdf,.epub,.txt,.html" hidden /></label><span class="dim" id="libInfo"></span></div>
-<div id="libPlayer" class="hidden"></div>
-<ul id="libList" class="list"></ul></section>
-<section><h2>FREE, LEGAL SOURCES TO FILL IT</h2>
-<ul class="links">
-<li><b>Films:</b> <a href="https://archive.org/details/feature_films" target="_blank" rel="noopener">Internet Archive feature films</a> (thousands of public-domain movies, downloadable as MP4), <a href="https://archive.org/details/prelinger" target="_blank" rel="noopener">Prelinger Archives</a> (historic documentaries and civil-defense films), <a href="https://publicdomainmovie.net" target="_blank" rel="noopener">publicdomainmovie.net</a>.</li>
-<li><b>Books:</b> <a href="https://www.gutenberg.org" target="_blank" rel="noopener">Project Gutenberg</a> (70,000+ free e-books; try "Boy Scouts Handbook", "Camping and Woodcraft", "Shelters, Shacks and Shanties"), <a href="https://standardebooks.org" target="_blank" rel="noopener">Standard Ebooks</a>, <a href="https://librivox.org" target="_blank" rel="noopener">LibriVox</a> audiobooks.</li>
-<li><b>Manuals:</b> <a href="https://hesperian.org/books-and-resources/" target="_blank" rel="noopener">Where There Is No Doctor</a> (free PDF), <a href="https://archive.org/search?query=FM+21-76+survival" target="_blank" rel="noopener">US Army FM 21-76 Survival</a>, <a href="https://www.ready.gov/publications" target="_blank" rel="noopener">Ready.gov guides</a>, <a href="https://www.msb.se/en/rad-till-privatpersoner/the-brochure-if-crisis-or-war-comes/" target="_blank" rel="noopener">Sweden: "If crisis or war comes"</a>.</li>
-<li><b>Whole encyclopedias offline:</b> <a href="https://kiwix.org" target="_blank" rel="noopener">Kiwix</a> + <a href="https://library.kiwix.org" target="_blank" rel="noopener">ZIM library</a> (Wikipedia, WikiHow, iFixit, medical references), <a href="https://osmand.net" target="_blank" rel="noopener">OsmAnd</a> / <a href="https://organicmaps.app" target="_blank" rel="noopener">Organic Maps</a> for offline maps.</li>
-<li class="dim">Download on a good connection, then ADD FILES above. Only add content you have the right to keep.</li>
-</ul></section>
+<form class="rd-find" id="rdFind"><input id="rdQ" type="search" autocomplete="off" placeholder="Find in this pack" aria-label="Find an article in this pack" /><div id="rdHits" class="rd-hits hidden"></div></form>
+<iframe id="rdFrame" title="Offline page"></iframe>
 </div>
-</div>
+<div id="flash" class="flash hidden" aria-hidden="true"><span id="flashMsg"></span><button id="flashStop">TAP TO STOP</button></div>
+<script src="vendor/fzstd.min.js"></script>
+<script src="library/zim.js"></script>
+<script src="library/store.js"></script>
 <script type="module" src="survival.js"></script>
 </body>
 </html>
