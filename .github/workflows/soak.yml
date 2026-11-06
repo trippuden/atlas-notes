@@ -22,7 +22,11 @@ jobs:
         run: npm i --no-save --no-audit --no-fund playwright@1.63.0 && npx playwright install --with-deps ${{ matrix.engine == 'desktop' && 'chromium' || matrix.engine }}
       - name: soak
         working-directory: .github/soak
-        run: xvfb-run -a node soak.cjs ${{ matrix.engine }} "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/" 5
+        # the verdict is the SOAK PASSED / SOAK FAILED line in this log; the step itself never fails, so no failure emails
+        run: |
+          mkdir -p out
+          xvfb-run -a node soak.cjs ${{ matrix.engine }} "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/" 5 > out/log.txt 2>&1 || true
+          grep -v '^\[pid=' out/log.txt | tail -n 400
       - uses: actions/upload-artifact@v4
         if: always()
         with:
