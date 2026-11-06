@@ -5,7 +5,7 @@
 // stops answering. Usage: node soak.cjs <webkit|chromium> <url> [minutes]
 const { execSync } = require("child_process"), fs = require("fs");
 const pw = require("playwright");
-const ENGINE = process.argv[2] || "webkit", URL0 = process.argv[3], MIN = Number(process.argv[4] || 5);
+const MODE = process.argv[2] || "webkit", DESK = MODE === "desktop", ENGINE = DESK ? "chromium" : MODE, URL0 = process.argv[3], MIN = Number(process.argv[4] || 5);
 fs.mkdirSync("out", { recursive: true });
 const t0 = Date.now(), log = (...a) => { const l = `${((Date.now() - t0) / 1000).toFixed(1).padStart(6)}s ${a.join(" ")}`; console.log(l); fs.appendFileSync("out/log.txt", l + "\n"); };
 const fails = []; const fail = (m) => { fails.push(m); log("FAIL", m); };
@@ -14,13 +14,13 @@ const procs = () => { try { return execSync("ps -eo rss=,comm=", { encoding: "ut
 const finish = () => { log(fails.length ? `SOAK FAILED (${fails.length})` : "SOAK PASSED"); process.exit(fails.length ? 1 : 0); };
 setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 6) * 60e3);
 (async () => {
-  const dev = pw.devices["iPhone 14 Pro"];
+  const dev = DESK ? { viewport: { width: 1466, height: 800 } } : pw.devices["iPhone 14 Pro"];
   const ctx = await pw[ENGINE].launchPersistentContext("prof", { ...dev, ...(ENGINE === "chromium" ? { args: ["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"] } : {}) });
   let p = ctx.pages()[0] || (await ctx.newPage());
   const errs = []; const watchPage = (pg) => { pg.on("pageerror", (e) => errs.push(e.message)); pg.on("crash", () => fail("page crashed")); pg.on("console", (m) => { if (m.type() === "error" && !/Failed to load resource|net::/.test(m.text())) errs.push(m.text().slice(0, 200)); }); };
   watchPage(p);
   let cdp = null;
-  if (ENGINE === "chromium") { cdp = await ctx.newCDPSession(p); await cdp.send("Emulation.setCPUThrottlingRate", { rate: 4 }); log("chromium: CPU slowed 4x"); }
+  if (ENGINE === "chromium") { cdp = await ctx.newCDPSession(p); if (!DESK) { await cdp.send("Emulation.setCPUThrottlingRate", { rate: 4 }); log("chromium: CPU slowed 4x"); } else log("desktop chromium, full speed"); }
   else log("webkit: real Safari engine, CPU not slowed (WebKit has no throttle)");
   // every call into the page has a time limit, so a stuck page is reported instead of stalling the test
   const ev = (fn, arg, ms = 8000) => Promise.race([p.evaluate(fn, arg), new Promise((_, j) => setTimeout(() => j(new Error("page did not answer")), ms))]);
@@ -36,6 +36,7 @@ setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 6) * 60e3);
   const answers = async (label, ms = 5000) => { const s = Date.now(); try { await Promise.race([p.evaluate(() => 1), new Promise((_, j) => setTimeout(() => j(new Error("x")), ms))]); return Date.now() - s; } catch { hung++; fail(`page did not answer for ${ms / 1000} s (${label})`); if (hung > 3) { log("stuck for good: stopping"); finish(); } await stuckStack(label); await new Promise((r) => setTimeout(r, 2000)); await stuckStack(label + " +2 s"); return -1; } };
   const instrument = () => ev(() => { if (window.__m) return; const m = (window.__m = { frames: [], timers: [], worstFrame: 0, worstTimer: 0 });
     let l = performance.now(); const f = (t) => { const g = t - l; l = t; if (g > m.worstFrame) m.worstFrame = g; if (g > 250) m.frames.push([Math.round(t / 1000), Math.round(g)]); requestAnimationFrame(f); }; requestAnimationFrame(f);
+    try { m.long = []; new PerformanceObserver((l) => { for (const e of l.getEntries()) if (e.duration > 200) m.long.push([Math.round(e.startTime / 1000), Math.round(e.duration)]); }).observe({ type: "longtask", buffered: true }); } catch {}
     let e = performance.now() + 100; setInterval(() => { const n = performance.now(), late = n - e; e = n + 100; if (late > m.worstTimer) m.worstTimer = late; if (late > 250) m.timers.push([Math.round(n / 1000), Math.round(late)]); }, 100); });
   log("open", URL0);
   await p.goto(URL0, { waitUntil: "commit", timeout: 60000 });
@@ -73,7 +74,7 @@ setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 6) * 60e3);
     if (Date.now() > t0 + (minute + 1) * 60e3) { minute++; await shot(`out/${minute}-min.png`); log("scrolled", JSON.stringify(await scrollDown().catch((e) => ({ err: e.message })))); }
   }
   const m = await ev(() => __m).catch(() => null);
-  if (m) { fs.writeFileSync("out/stalls.json", JSON.stringify(m)); log("stalls over 250 ms: frames", JSON.stringify(m.frames.slice(-30)), "timers", JSON.stringify(m.timers.slice(-30)));
+  if (m) { fs.writeFileSync("out/stalls.json", JSON.stringify(m)); log("stalls over 250 ms: frames", JSON.stringify(m.frames.slice(-30)), "timers", JSON.stringify(m.timers.slice(-30)), "long tasks over 200 ms", JSON.stringify((m.long || []).slice(-30)));
     if (m.worstTimer > 2000) fail(`a ${Math.round(m.worstTimer)} ms stall on EARTH > Hazards`); }
   log("errors", JSON.stringify([...new Set(errs)].slice(0, 10)));
   // the same profile again: must open

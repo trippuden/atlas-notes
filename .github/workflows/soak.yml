@@ -7,7 +7,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        engine: [webkit, chromium]
+        engine: [webkit, chromium, desktop]
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -19,7 +19,7 @@ jobs:
           node-version: 22
       - name: browser
         working-directory: .github/soak
-        run: npm i --no-save --no-audit --no-fund playwright@1.63.0 && npx playwright install --with-deps ${{ matrix.engine }}
+        run: npm i --no-save --no-audit --no-fund playwright@1.63.0 && npx playwright install --with-deps ${{ matrix.engine == 'desktop' && 'chromium' || matrix.engine }}
       - name: soak
         working-directory: .github/soak
         run: xvfb-run -a node soak.cjs ${{ matrix.engine }} "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/" 5
