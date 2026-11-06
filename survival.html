@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Field Kit</title>
+<meta name="robots" content="noindex, nofollow, noarchive" />
+<meta name="theme-color" content="#0b0e14" />
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" href="icon.svg" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="gfx/gfx.css" />
+<link rel="stylesheet" href="survival/field.css" />
+<link rel="stylesheet" href="gfx/fieldkit.css" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src * data: blob:; media-src 'self' blob:; frame-src 'self' blob:; connect-src *; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'" />
+</head>
+<body class="fk">
+<header class="fk-top">
+<a class="fk-back" href="./" aria-label="Back to the globe"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><span>GLOBE</span></a>
+<div class="fk-brand"><b>FIELD KIT</b><span id="fkWhere">offline guide · library · tools</span></div>
+<span class="fk-net" id="net">-</span>
+<label class="fk-country" title="Your country: sets the numbers, radio bands and regional advice"><span class="k">COUNTRY</span><select id="country" aria-label="Your country"></select></label>
+</header>
+<main class="fk-main" id="main">
+<section id="v-guide" class="view">
+<div id="ready" class="ready" aria-live="polite"></div>
+<form class="fk-search" id="findForm" role="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input id="find" type="search" autocomplete="off" placeholder="Search guide, packs, countries" aria-label="Search everything offline" /><button type="button" class="ask-b" data-view-go="ask">ASK</button></form>
+<div id="findOut" class="find-out hidden"></div>
+<div id="guideHome">
+<div class="sec-h"><span>FIELD GUIDE</span><i id="guideCount"></i></div>
+<div id="topics" class="topics"></div>
+</div>
+<div id="guideTopic" class="hidden"></div>
+</section>
+<section id="v-here" class="view hidden"></section>
+<section id="v-relay" class="view hidden"></section>
+<section id="v-library" class="view hidden"></section>
+<section id="v-ask" class="view hidden">
+<div id="chatLog" class="chat"></div>
+<form id="chatForm" class="ask"><input id="chatIn" autocomplete="off" placeholder="Ask: water for 4 people 10 days, NOAA frequencies, fallout…" aria-label="Ask a question" /><button class="go" type="submit">ASK</button></form>
+<p class="fine">Answers come from the guide, your downloaded packs and the country files on this device, with the numbers. General guidance, not medical or legal advice.</p>
+</section>
+<section id="v-tools" class="view hidden">
+<div class="sec-h"><span>TOOLS</span><i>all work with no signal</i></div>
+<div class="tools" id="toolsRoot"></div>
+</section>
+<section id="v-plan" class="view hidden">
+<div id="myCountry"></div>
+<div class="sec-h"><span>GO-BAG</span><i id="kitCount"></i></div>
+<div class="kitbar"><i id="kitBar"></i></div>
+<div id="kitList" class="kit"></div>
+<div class="sec-h"><span>MY PEOPLE</span><i>saved on this device only</i></div>
+<div id="contacts" class="contacts"></div>
+<form id="contactForm" class="frow add"><input id="cName" placeholder="Name" aria-label="Name" /><input id="cNum" placeholder="Number or call sign" aria-label="Number" inputmode="tel" /><button class="ghost">ADD</button></form>
+<div class="sec-h"><span>PLAN</span><i>meeting points, channels, shutoffs, meds</i></div>
+<textarea id="planText" placeholder="Meeting point 1 (outside home): ...&#10;Meeting point 2 (outside neighborhood): ...&#10;Out-of-area contact: ...&#10;Walkie-talkie channel / code word: ...&#10;Local repeater, weather or broadcast frequency: ...&#10;Meds / allergies / blood type: ...&#10;Gas shutoff: ...  Water shutoff: ...  Breaker: ..."></textarea>
+<div class="frow"><button class="go" id="printCard">PRINT WALLET CARD</button><button class="ghost" id="printAll">PRINT THE WHOLE GUIDE</button></div>
+<div id="card" class="walletcard"></div>
+</section>
+</main>
+<nav class="fk-nav" aria-label="Sections">
+<button data-view="guide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5M9 7h6M9 11h6"/></svg><span>GUIDE</span></button>
+<button data-view="here"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>HERE</span></button>
+<button data-view="library"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h4v16H4zM10 4h4v16h-4zM16 5l3.5-.8 3 15.6-3.5.8z"/></svg><span>LIBRARY</span></button>
+<button data-view="relay"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="7" height="13" rx="1.5"/><rect x="15" y="5" width="7" height="13" rx="1.5"/><path d="M10.5 9.5h3M10.5 13.5h3M12.5 8l1.5 1.5-1.5 1.5M11.5 12 10 13.5l1.5 1.5"/></svg><span>SHARE</span></button>
+<button data-view="tools"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.2L3 17.8V21h3.2l6.3-6.3a4 4 0 0 0 5.2-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg><span>TOOLS</span></button>
+<button data-view="plan"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4H5v17h14V4h-4"/><rect x="9" y="2" width="6" height="4" rx="1"/><path d="m8 13 2.5 2.5L16 10"/></svg><span>PLAN</span></button>
+</nav>
+<div id="reader" class="reader hidden" role="dialog" aria-label="Reader">
+<div class="rd-bar">
+<button id="rdClose" class="rd-b" aria-label="Close the reader"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span>BACK</span></button>
+<div class="rd-title"><b id="rdPack"></b><span id="rdPage"></span></div>
+<button id="rdHome" class="rd-b" aria-label="Pack home page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7M5 10v10h14V10"/></svg><span>HOME</span></button>
+<button id="rdRandom" class="rd-b" aria-label="Random article"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="9" cy="9" r="1.3"/><circle cx="15" cy="15" r="1.3"/><circle cx="15" cy="9" r="1.3"/><circle cx="9" cy="15" r="1.3"/></svg><span>RANDOM</span></button>
+<button id="rdNight" class="rd-b" aria-label="Night reading"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></svg><span>NIGHT</span></button>
+</div>
+<form class="rd-find" id="rdFind"><input id="rdQ" type="search" autocomplete="off" placeholder="Find in this pack" aria-label="Find an article in this pack" /><div id="rdHits" class="rd-hits hidden"></div></form>
+<iframe id="rdFrame" title="Offline page"></iframe>
+</div>
+<div id="flash" class="flash hidden" aria-hidden="true"><span id="flashMsg"></span><button id="flashStop">TAP TO STOP</button></div>
+<script src="vendor/fzstd.min.js"></script>
+<script src="library/zim.js"></script>
+<script src="library/store.js"></script>
+<script type="module" src="survival.js"></script>
+<script type="module" src="gfx/fkclock.js"></script>
+</body>
+</html>

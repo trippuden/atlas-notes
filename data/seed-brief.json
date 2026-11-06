@@ -1,0 +1,415 @@
+{
+ "generated_at": "2026-10-31T00:00:00Z",
+ "demo": true,
+ "global_threat": 3,
+ "global_summary": "Demo data. Live data appears after the first update runs.",
+ "regions": [
+  {
+   "name": "Eastern Europe",
+   "lat": 49.0,
+   "lon": 32.0,
+   "threat": 4,
+   "trend": "steady",
+   "summary": "Placeholder: long-running interstate war zone.",
+   "why": "Demo entry. Live brief will explain current drivers.",
+   "sources": []
+  },
+  {
+   "name": "Middle East",
+   "lat": 31.5,
+   "lon": 35.0,
+   "threat": 4,
+   "trend": "rising",
+   "summary": "Placeholder: multiple overlapping conflicts and proxy activity.",
+   "why": "Demo entry.",
+   "sources": []
+  },
+  {
+   "name": "Taiwan Strait",
+   "lat": 24.0,
+   "lon": 120.5,
+   "threat": 3,
+   "trend": "steady",
+   "summary": "Placeholder: great-power military signaling.",
+   "why": "Demo entry.",
+   "sources": []
+  },
+  {
+   "name": "Korean Peninsula",
+   "lat": 38.5,
+   "lon": 127.0,
+   "threat": 3,
+   "trend": "steady",
+   "summary": "Placeholder: missile testing and border tension.",
+   "why": "Demo entry.",
+   "sources": []
+  },
+  {
+   "name": "Sahel",
+   "lat": 15.0,
+   "lon": 2.0,
+   "threat": 4,
+   "trend": "rising",
+   "summary": "Placeholder: insurgency and political instability.",
+   "why": "Demo entry.",
+   "sources": []
+  },
+  {
+   "name": "Sudan / Horn of Africa",
+   "lat": 14.0,
+   "lon": 32.0,
+   "threat": 5,
+   "trend": "steady",
+   "summary": "Placeholder: civil war and humanitarian crisis.",
+   "why": "Demo entry.",
+   "sources": []
+  },
+  {
+   "name": "United States",
+   "lat": 39.0,
+   "lon": -98.0,
+   "threat": 2,
+   "trend": "rising",
+   "summary": "Placeholder: midterm election period.",
+   "why": "Demo entry. Elevated political temperature around a national vote.",
+   "sources": []
+  },
+  {
+   "name": "South Asia",
+   "lat": 30.0,
+   "lon": 72.0,
+   "threat": 3,
+   "trend": "steady",
+   "summary": "Placeholder: nuclear-armed rivals, periodic border flare-ups.",
+   "why": "Demo entry.",
+   "sources": []
+  },
+  {
+   "name": "Caribbean / Venezuela",
+   "lat": 9.0,
+   "lon": -66.0,
+   "threat": 3,
+   "trend": "rising",
+   "summary": "Placeholder: regional security tension.",
+   "why": "Demo entry.",
+   "sources": []
+  },
+  {
+   "name": "Western Europe",
+   "lat": 48.5,
+   "lon": 5.0,
+   "threat": 2,
+   "trend": "steady",
+   "summary": "Placeholder: political fragmentation, energy and cyber risk.",
+   "why": "Demo entry.",
+   "sources": []
+  }
+ ],
+ "events": [
+  {
+   "time": "2026-10-31T09:00:00Z",
+   "title": "Demo: artillery exchange reported",
+   "detail": "Placeholder event to show a reported item.",
+   "lat": 48.0,
+   "lon": 37.8,
+   "category": "conflict",
+   "status": "reported",
+   "sources": []
+  },
+  {
+   "time": "2026-10-31T07:30:00Z",
+   "title": "Demo: rumor of naval deployment",
+   "detail": "Placeholder event to show how speculation is labeled.",
+   "lat": 23.5,
+   "lon": 119.0,
+   "category": "conflict",
+   "status": "speculation",
+   "sources": []
+  },
+  {
+   "time": "2026-10-30T22:00:00Z",
+   "title": "Demo: regional grid outage",
+   "detail": "Placeholder infrastructure event.",
+   "lat": 40.4,
+   "lon": -3.7,
+   "category": "infrastructure",
+   "status": "unconfirmed",
+   "sources": []
+  },
+  {
+   "time": "2026-10-30T18:00:00Z",
+   "title": "Demo: protests in capital",
+   "detail": "Placeholder civil unrest event.",
+   "lat": 12.6,
+   "lon": -8.0,
+   "category": "civil-unrest",
+   "status": "reported",
+   "sources": []
+  },
+  {
+   "time": "2026-10-30T12:00:00Z",
+   "title": "Demo: ransomware hits port operator",
+   "detail": "Placeholder cyber event.",
+   "lat": 51.9,
+   "lon": 4.5,
+   "category": "cyber",
+   "status": "unconfirmed",
+   "sources": []
+  },
+  {
+   "time": "2026-10-30T08:00:00Z",
+   "title": "Demo: M6.4 earthquake offshore",
+   "detail": "Placeholder disaster event.",
+   "lat": 36.0,
+   "lon": 141.0,
+   "category": "disaster",
+   "status": "reported",
+   "sources": []
+  },
+  {
+   "time": "2026-10-29T15:00:00Z",
+   "title": "Demo: drone strike on energy site",
+   "detail": "Placeholder event.",
+   "lat": 33.3,
+   "lon": 44.4,
+   "category": "conflict",
+   "status": "reported",
+   "sources": []
+  },
+  {
+   "time": "2026-10-29T10:00:00Z",
+   "title": "Demo: currency drops sharply",
+   "detail": "Placeholder economic event.",
+   "lat": 39.9,
+   "lon": 32.8,
+   "category": "economic",
+   "status": "reported",
+   "sources": []
+  }
+ ],
+ "forecasts": [
+  {
+   "title": "Demo: ceasefire talks collapse within 30 days",
+   "horizon": "30 days",
+   "probability": 55,
+   "reasoning": "Placeholder reasoning to show the forecast layout.",
+   "indicators": [
+    "Delegations recalled",
+    "Shelling intensity"
+   ],
+   "status": "speculation"
+  },
+  {
+   "title": "Demo: contested result in a national election",
+   "horizon": "14 days",
+   "probability": 25,
+   "reasoning": "Placeholder.",
+   "indicators": [
+    "Recount filings",
+    "Turnout anomalies"
+   ],
+   "status": "analysis"
+  },
+  {
+   "title": "Demo: oil price spike above recent range",
+   "horizon": "60 days",
+   "probability": 30,
+   "reasoning": "Placeholder.",
+   "indicators": [
+    "Shipping insurance rates",
+    "Strait transit counts"
+   ],
+   "status": "speculation"
+  }
+ ],
+ "elections": [
+  {
+   "country": "United States",
+   "date": "2026-11-03",
+   "type": "Midterm (House, Senate, governors)",
+   "lat": 38.9,
+   "lon": -77.0,
+   "stakes": "Control of Congress.",
+   "outlook": "Polling and analysis not yet available.",
+   "why": "Scheduled federal election.",
+   "status": "reported",
+   "sources": []
+  }
+ ],
+ "campaigns": [
+  {
+   "name": "Demo: influence operation",
+   "actor": "Unattributed",
+   "kind": "influence",
+   "summary": "Placeholder to show campaign tracking.",
+   "why": "Demo entry.",
+   "status": "speculation"
+  },
+  {
+   "name": "Demo: offensive campaign",
+   "actor": "State actor",
+   "kind": "military",
+   "summary": "Placeholder.",
+   "why": "Demo entry.",
+   "status": "reported"
+  }
+ ],
+ "advisories": [
+  {
+   "country": "United Kingdom",
+   "lat": 54.0,
+   "lon": -2.0,
+   "agency": "UK Government (Be Ready campaign)",
+   "guidance": "Keep supplies for 72 hours",
+   "days": 3,
+   "launched": "2026-10-22",
+   "reasons": [
+    "storms",
+    "power and cyber outages",
+    "infrastructure failure"
+   ],
+   "status": "unconfirmed",
+   "note": "Reported by Newsweek; not yet verified here.",
+   "sources": []
+  },
+  {
+   "country": "Japan",
+   "lat": 36.0,
+   "lon": 138.0,
+   "agency": "New national disaster agency",
+   "guidance": "Household stockpile push",
+   "days": 3,
+   "launched": "2026-11-02 (planned)",
+   "reasons": [
+    "earthquakes",
+    "tsunami",
+    "typhoons"
+   ],
+   "status": "unconfirmed",
+   "note": "Reported by Newsweek; not yet verified here.",
+   "sources": []
+  },
+  {
+   "country": "United States",
+   "lat": 39.0,
+   "lon": -98.0,
+   "agency": "FEMA / Ready.gov",
+   "guidance": "Build a kit for at least several days",
+   "days": 3,
+   "launched": "long-standing",
+   "reasons": [
+    "natural disasters",
+    "power outages",
+    "emergencies"
+   ],
+   "status": "reported",
+   "sources": [
+    {
+     "title": "Ready.gov: Build a Kit",
+     "url": "https://www.ready.gov/kit"
+    }
+   ]
+  },
+  {
+   "country": "Germany",
+   "lat": 51.0,
+   "lon": 10.0,
+   "agency": "BBK (Federal Office of Civil Protection)",
+   "guidance": "Stock food and water for about 10 days",
+   "days": 10,
+   "launched": "long-standing",
+   "reasons": [
+    "power outages",
+    "extreme weather",
+    "civil defence"
+   ],
+   "status": "reported",
+   "sources": [
+    {
+     "title": "BBK: Vorsorge",
+     "url": "https://www.bbk.bund.de"
+    }
+   ]
+  },
+  {
+   "country": "Sweden",
+   "lat": 62.0,
+   "lon": 15.0,
+   "agency": "MSB",
+   "guidance": "\"In case of crisis or war\" household preparedness",
+   "days": 7,
+   "launched": "long-standing (updated 2024)",
+   "reasons": [
+    "war",
+    "cyber attacks",
+    "disasters"
+   ],
+   "status": "reported",
+   "sources": [
+    {
+     "title": "MSB / Krisinformation",
+     "url": "https://www.msb.se"
+    }
+   ]
+  },
+  {
+   "country": "Finland",
+   "lat": 64.0,
+   "lon": 26.0,
+   "agency": "72 Hours (SPEK and partners)",
+   "guidance": "Be self-sufficient for 72 hours",
+   "days": 3,
+   "launched": "long-standing",
+   "reasons": [
+    "storms",
+    "outages",
+    "disruptions"
+   ],
+   "status": "reported",
+   "sources": [
+    {
+     "title": "72tuntia.fi",
+     "url": "https://72tuntia.fi"
+    }
+   ]
+  },
+  {
+   "country": "Norway",
+   "lat": 61.0,
+   "lon": 9.0,
+   "agency": "DSB",
+   "guidance": "Be self-sufficient for one week",
+   "days": 7,
+   "launched": "long-standing (updated 2024)",
+   "reasons": [
+    "extreme weather",
+    "outages",
+    "war"
+   ],
+   "status": "reported",
+   "sources": [
+    {
+     "title": "DSB: Egenberedskap",
+     "url": "https://www.dsb.no"
+    }
+   ]
+  },
+  {
+   "country": "France",
+   "lat": 46.5,
+   "lon": 2.5,
+   "agency": "French Government",
+   "guidance": "Household emergency kit guidance",
+   "days": 3,
+   "launched": "long-standing",
+   "reasons": [
+    "disasters",
+    "health crises",
+    "security threats"
+   ],
+   "status": "unconfirmed",
+   "note": "Official page not yet confirmed.",
+   "sources": []
+  }
+ ]
+}
