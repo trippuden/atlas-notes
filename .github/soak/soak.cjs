@@ -123,7 +123,17 @@ setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 6) * 60e3);
   try {
     const before = errs.length;
     await ev(() => { document.querySelector('[data-group="earth"]')?.click(); }); await p.waitForTimeout(1500);
-    await ev(() => { document.querySelector('[data-sub="ocean"]')?.click(); }); await p.waitForTimeout(45000);
+    const arc = []; const t0a = new Map();
+    p.on("request", (q) => { if (/services9\.arcgis\.com/.test(q.url())) t0a.set(q, Date.now()); });
+    p.on("requestfailed", (q) => { if (t0a.has(q)) arc.push(`${q.method()} ${new URL(q.url()).pathname} FAILED ${q.failure()?.errorText} ${Date.now() - t0a.get(q)} ms`); });
+    p.on("response", async (r) => { const q = r.request(); if (!t0a.has(q)) return; let b = ""; try { b = (await r.text()).slice(0, 200); } catch {} arc.push(`${q.method()} ${new URL(q.url()).pathname}${new URL(q.url()).search.slice(0, 160)} ${r.status()} ${Date.now() - t0a.get(q)} ms ${b}`); });
+    await ev(() => { document.querySelector('[data-sub="ocean"]')?.click(); }); await p.waitForTimeout(60000);
+    log("ocean choke tile at 60 s:", await ev(() => document.querySelector('#ocean [data-oc-jump="choke"]')?.innerText.replace(/\s+/g, " ") ?? null).catch((e) => e.message));
+    await p.waitForTimeout(90000);
+    log("ocean choke tile at 150 s:", await ev(() => document.querySelector('#ocean [data-oc-jump="choke"]')?.innerText.replace(/\s+/g, " ") ?? null).catch((e) => e.message));
+    log("ocean msgs:", JSON.stringify(await ev(() => [...document.querySelectorAll("#ocean li.oc-msg")].map((e) => e.innerText.replace(/\s+/g, " "))).catch((e) => e.message)));
+    log("ocean t.ocean.choke:", await ev(() => { const v = localStorage.getItem("t.ocean.choke"); return v == null ? "missing" : "length " + v.length; }).catch((e) => e.message));
+    log("ocean arcgis requests:", arc.length); arc.forEach((l) => log("   ", l));
     const o = await ev(() => { const t = (q) => document.querySelector(q)?.innerText.replace(/\s+/g, " ") ?? null;
       return { choke: t('#ocean [data-oc-jump="choke"]'), warn: t('#ocean [data-oc-jump="warn"]'),
         chokeMsg: [...document.querySelectorAll("#oc-choke li.oc-msg")].map((e) => e.innerText.replace(/\s+/g, " ")), warnMsg: [...document.querySelectorAll("#oc-warn li.oc-msg")].map((e) => e.innerText.replace(/\s+/g, " ")) }; }, undefined, 15000);
