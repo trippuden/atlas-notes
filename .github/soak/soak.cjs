@@ -37,7 +37,7 @@ setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 6) * 60e3);
   const instrument = () => ev(() => { if (window.__m) return; const m = (window.__m = { frames: [], timers: [], worstFrame: 0, worstTimer: 0 });
     let l = performance.now(); const f = (t) => { const g = t - l; l = t; if (g > m.worstFrame) m.worstFrame = g; if (g > 250) m.frames.push([Math.round(t / 1000), Math.round(g)]); requestAnimationFrame(f); }; requestAnimationFrame(f);
     try { m.long = []; new PerformanceObserver((l) => { for (const e of l.getEntries()) if (e.duration > 200) m.long.push([Math.round(e.startTime / 1000), Math.round(e.duration)]); }).observe({ type: "longtask", buffered: true }); } catch {}
-    m.inp = []; addEventListener("pointermove", (ev) => { if (ev.buttons) m.inp.push(Math.round(performance.now() - ev.timeStamp)); }, { capture: true, passive: true });
+    m.inp = []; const raw = "onpointerrawupdate" in window; m.inpKind = raw ? "pointerrawupdate" : "pointermove"; addEventListener(m.inpKind, (ev) => { if (ev.buttons) m.inp.push(Math.round(performance.now() - ev.timeStamp)); }, { capture: true, passive: true });
     let e = performance.now() + 100; setInterval(() => { const n = performance.now(), late = n - e; e = n + 100; if (late > m.worstTimer) m.worstTimer = late; if (late > 250) m.timers.push([Math.round(n / 1000), Math.round(late)]); }, 100); });
   const profTop = async (label) => { if (!cdp) return; const { profile } = await Promise.race([cdp.send("Profiler.stop"), new Promise((r) => setTimeout(() => r({ profile: null }), 15000))]); if (!profile) return;
     const self = new Map(), byId = new Map(profile.nodes.map((n) => [n.id, n])), dt = profile.timeDeltas, cnt = new Map(); profile.samples.forEach((id, i) => cnt.set(id, (cnt.get(id) || 0) + (dt[i] || 0)));
@@ -60,7 +60,7 @@ setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 6) * 60e3);
       catch { fail(`drag ${i + 1} was not taken in 8 s`); await stuckStack("drag"); break; }
       const a = await answers(`after drag ${i + 1}`, 5000); worst = Math.max(worst, Date.now() - t); if (a < 0) break; }
     log("spun the globe 8 drags, slowest drag + answer", worst, "ms");
-    const sp = await ev((t) => { const i = (__m.inp || []).slice().sort((a, b) => a - b); return { n: i.length, p50: i[i.length >> 1], p90: i[Math.floor(i.length * 0.9)], max: i[i.length - 1], long: (__m.long || []).filter((x) => x[0] >= t) }; }, Math.floor(spinAt / 1000)).catch(() => null);
+    const sp = await ev((t) => { const i = (__m.inp || []).slice().sort((a, b) => a - b); return { kind: __m.inpKind, n: i.length, p50: i[i.length >> 1], p90: i[Math.floor(i.length * 0.9)], max: i[i.length - 1], long: (__m.long || []).filter((x) => x[0] >= t) }; }, Math.floor(spinAt / 1000)).catch(() => null);
     log("spin: drag input delay ms", JSON.stringify(sp));
     if (sp) { if (!(sp.p90 <= 100)) fail(`drag input answered in ${sp.p90} ms (90th percentile), budget 100 ms`);
       const big = sp.long.filter((x) => x[1] > 200); if (big.length) fail(`${big.length} long tasks over 200 ms while spinning: ${JSON.stringify(big.slice(0, 8))}`); } }
