@@ -37,6 +37,7 @@ setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 6) * 60e3);
   const instrument = () => ev(() => { if (window.__m) return; const m = (window.__m = { frames: [], timers: [], worstFrame: 0, worstTimer: 0 });
     let l = performance.now(); const f = (t) => { const g = t - l; l = t; if (g > m.worstFrame) m.worstFrame = g; if (g > 250) m.frames.push([Math.round(t / 1000), Math.round(g)]); requestAnimationFrame(f); }; requestAnimationFrame(f);
     try { m.long = []; new PerformanceObserver((l) => { for (const e of l.getEntries()) if (e.duration > 200) m.long.push([Math.round(e.startTime / 1000), Math.round(e.duration)]); }).observe({ type: "longtask", buffered: true }); } catch {}
+    m.inp = []; addEventListener("pointermove", (ev) => { if (ev.buttons) m.inp.push(Math.round(performance.now() - ev.timeStamp)); }, { capture: true, passive: true });
     let e = performance.now() + 100; setInterval(() => { const n = performance.now(), late = n - e; e = n + 100; if (late > m.worstTimer) m.worstTimer = late; if (late > 250) m.timers.push([Math.round(n / 1000), Math.round(late)]); }, 100); });
   log("open", URL0);
   await p.goto(URL0, { waitUntil: "commit", timeout: 60000 });
@@ -46,12 +47,17 @@ setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 6) * 60e3);
   await instrument().catch(() => {});
   for (let i = 0; i < 10; i++) { await p.waitForTimeout(2000); const a = await answers("first 20 s"); log(`first 20 s: answer ${a} ms, rss MB`, rss().toFixed(0)); if (a < 0) break; }
   // spin the globe to the far side and back with drags, while it is still loading: every drag must be answered quickly
+  const spinAt = await ev(() => performance.now()).catch(() => 0);
   { const vp = p.viewportSize() || { width: 390, height: 844 }, cx = Math.round(vp.width / 2), cy = Math.round(vp.height * 0.4); let worst = 0;
     for (let i = 0; i < 8; i++) { const dir = i < 4 ? 1 : -1, t = Date.now();
       try { await Promise.race([(async () => { await p.mouse.move(cx - 120 * dir, cy); await p.mouse.down(); for (let k = 1; k <= 8; k++) await p.mouse.move(cx - 120 * dir + 30 * k * dir, cy); await p.mouse.up(); })(), new Promise((_, j) => setTimeout(() => j(new Error("x")), 8000))]); }
       catch { fail(`drag ${i + 1} was not taken in 8 s`); await stuckStack("drag"); break; }
       const a = await answers(`after drag ${i + 1}`, 5000); worst = Math.max(worst, Date.now() - t); if (a < 0) break; }
-    log("spun the globe 8 drags, slowest drag + answer", worst, "ms"); }
+    log("spun the globe 8 drags, slowest drag + answer", worst, "ms");
+    const sp = await ev((t) => { const i = (__m.inp || []).slice().sort((a, b) => a - b); return { n: i.length, p50: i[i.length >> 1], p90: i[Math.floor(i.length * 0.9)], max: i[i.length - 1], long: (__m.long || []).filter((x) => x[0] >= t) }; }, Math.floor(spinAt / 1000)).catch(() => null);
+    log("spin: drag input delay ms", JSON.stringify(sp));
+    if (sp) { if (!(sp.p90 <= 100)) fail(`drag input answered in ${sp.p90} ms (90th percentile), budget 100 ms`);
+      const big = sp.long.filter((x) => x[1] > 200); if (big.length) fail(`${big.length} long tasks over 200 ms while spinning: ${JSON.stringify(big.slice(0, 8))}`); } }
   if (cdp) { await cdp.send("Profiler.enable"); await cdp.send("Profiler.setSamplingInterval", { interval: 1000 }); await cdp.send("Profiler.start"); }
   const shot = async (f) => { try { await p.screenshot({ path: f, timeout: 8000 }); return true; } catch { log("no frame for a screenshot in 8 s:", f); return false; } };
   await ev(() => { document.querySelector('.hud-ops [data-act="data"]')?.click(); }).catch((e) => log(e.message)); await p.waitForTimeout(1500);
@@ -83,6 +89,30 @@ setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 6) * 60e3);
   const m = await ev(() => __m).catch(() => null);
   if (m) { fs.writeFileSync("out/stalls.json", JSON.stringify(m)); log("stalls over 250 ms: frames", JSON.stringify(m.frames.slice(-30)), "timers", JSON.stringify(m.timers.slice(-30)), "long tasks over 200 ms", JSON.stringify((m.long || []).slice(-30)));
     if (m.worstTimer > 2000) fail(`a ${Math.round(m.worstTimer)} ms stall on EARTH > Hazards`); }
+  // Gulf view (ships and air check): the Persian Gulf & Strait of Hormuz watch card, then military aircraft on AIR
+  try {
+    const before = errs.length;
+    await ev(() => { document.querySelector('[data-group="intel"]')?.click(); }); await p.waitForTimeout(1500);
+    await ev(() => { document.querySelector('[data-sub="ships"]')?.click(); }); await p.waitForTimeout(8000);
+    const how = await ev(() => { const tag = [...document.querySelectorAll(".gx-tag, .gx-name, [class*=tag]")].find((e) => /PERSIAN GULF/i.test(e.textContent || "") && e.offsetParent);
+      if (tag) { tag.click(); return "globe tag"; }
+      const row = [...document.querySelectorAll("li[data-navy]")].find((e) => /Arabian Sea|Persian Gulf|Hormuz/i.test(e.textContent)); if (row) { row.click(); return "row: " + row.querySelector(".title")?.textContent; }
+      return "no tag or row (" + document.querySelectorAll("li[data-navy]").length + " rows)"; });
+    log("gulf: opened via", how); await p.waitForTimeout(4000);
+    if (!(await ev(() => !!document.querySelector('[data-nv-watch="0"]')))) log("gulf: watch card", await ev(() => { const l = [...document.querySelectorAll("button, a, [data-nv-watch], [data-navy], li")].find((e) => /Hormuz|Persian Gulf/i.test(e.textContent || "") && e.offsetParent && !e.closest("#subtabs")); if (l) { l.click(); return "clicked " + l.tagName + " " + (l.textContent || "").slice(0, 60); } return "nothing to click"; }));
+    await p.waitForTimeout(20000);
+    const g = await ev(() => { const c = document.querySelector('[data-nv-watch="0"]'); if (!c) return { card: false };
+      const secs = [...c.querySelectorAll("*")].filter((e) => /WARNINGS TO SHIPS/i.test(e.textContent || "") && e.children.length < 3).pop();
+      let warn = ""; if (secs) { let n = secs; for (let k = 0; k < 6 && n; k++) { warn += " | " + (n.textContent || "").trim().slice(0, 200); n = n.nextElementSibling; } }
+      return { card: true, grid: c.querySelector(".nv-tw")?.innerText.replace(/\s+/g, " "), heading: /SHIPPING THROUGH STRAIT OF HORMUZ/i.test(c.innerText), noAnswer: /did not answer just now/i.test(c.innerText), warnings: warn.slice(0, 900) }; }, undefined, 15000);
+    log("gulf card:", JSON.stringify(g));
+    await shot("out/gulf.png");
+    await ev(() => { document.querySelector('[data-group="air"]')?.click(); }); await p.waitForTimeout(15000);
+    const a = await ev(() => { const h = document.querySelector('[data-sec="milnow"]'); if (!h) return { milnow: false }; const li = []; let n = h.nextElementSibling; for (let k = 0; k < 4 && n; k++) { li.push((n.innerText || "").replace(/\s+/g, " ").slice(0, 200)); n = n.nextElementSibling; }
+      return { milnow: h.innerText, next: li, chips: [...document.querySelectorAll("#air [data-milsec] .chip, #air [data-milsec] button, #air [data-milrole]")].map((e) => e.innerText.replace(/\s+/g, " ")).slice(0, 20) }; });
+    log("air military:", JSON.stringify(a));
+    log("gulf/air page errors:", JSON.stringify(errs.slice(before, before + 10)));
+  } catch (e) { log("gulf check could not run:", e.message); }
   log("errors", JSON.stringify([...new Set(errs)].slice(0, 10)));
   // the same profile again: must open
   await p.close().catch(() => {}); p = await ctx.newPage(); watchPage(p);
