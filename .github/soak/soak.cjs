@@ -100,7 +100,7 @@ setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 6) * 60e3);
     const before = errs.length;
     await ev(() => { document.querySelector('[data-group="intel"]')?.click(); }); await p.waitForTimeout(1500);
     await ev(() => { document.querySelector('[data-sub="ships"]')?.click(); }); await p.waitForTimeout(8000);
-    const how = await ev(() => { const tag = [...document.querySelectorAll(".gx-tag, .gx-name, [class*=tag]")].find((e) => /PERSIAN GULF/i.test(e.textContent || "") && e.offsetParent);
+    const how = await ev(() => { const w = document.querySelector('li[data-navy-watch="0"]'); if (w) { w.click(); return "watch row"; } const tag = [...document.querySelectorAll(".gx-tag, .gx-name, [class*=tag]")].find((e) => /PERSIAN GULF/i.test(e.textContent || "") && e.offsetParent);
       if (tag) { tag.click(); return "globe tag"; }
       const row = [...document.querySelectorAll("li[data-navy]")].find((e) => /Arabian Sea|Persian Gulf|Hormuz/i.test(e.textContent)); if (row) { row.click(); return "row: " + row.querySelector(".title")?.textContent; }
       return "no tag or row (" + document.querySelectorAll("li[data-navy]").length + " rows)"; });
@@ -110,13 +110,17 @@ setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 6) * 60e3);
     const g = await ev(() => { const c = document.querySelector('[data-nv-watch="0"]'); if (!c) return { card: false };
       const secs = [...c.querySelectorAll("*")].filter((e) => /WARNINGS TO SHIPS/i.test(e.textContent || "") && e.children.length < 3).pop();
       let warn = ""; if (secs) { let n = secs; for (let k = 0; k < 6 && n; k++) { warn += " | " + (n.textContent || "").trim().slice(0, 200); n = n.nextElementSibling; } }
-      return { card: true, grid: c.querySelector(".nv-tw")?.innerText.replace(/\s+/g, " "), heading: /SHIPPING THROUGH STRAIT OF HORMUZ/i.test(c.innerText), noAnswer: /did not answer just now/i.test(c.innerText), warnings: warn.slice(0, 900) }; }, undefined, 15000);
+      const sec = (re) => { const h = [...c.querySelectorAll("*")].filter((e) => re.test(e.textContent || "") && e.children.length < 3).pop(); let out = ""; let n = h; for (let k = 0; k < 6 && n; k++) { out += " | " + (n.innerText || "").replace(/\s+/g, " ").slice(0, 200); n = n.nextElementSibling; } return out.slice(0, 900); };
+      return { card: true, grid: c.querySelector(".nv-tw")?.innerText.replace(/\s+/g, " "), shipping: sec(/SHIPPING THROUGH/i), heading: /SHIPPING THROUGH STRAIT OF HORMUZ/i.test(c.innerText), noAnswer: /did not answer just now/i.test(c.innerText), warnings: warn.slice(0, 900) }; }, undefined, 15000);
     log("gulf card:", JSON.stringify(g));
     await shot("out/gulf.png");
     await ev(() => { document.querySelector('[data-group="air"]')?.click(); }); await p.waitForTimeout(15000);
     const a = await ev(() => { const h = document.querySelector('[data-sec="milnow"]'); if (!h) return { milnow: false }; const li = []; let n = h.nextElementSibling; for (let k = 0; k < 4 && n; k++) { li.push((n.innerText || "").replace(/\s+/g, " ").slice(0, 200)); n = n.nextElementSibling; }
       return { milnow: h.innerText, next: li, chips: [...document.querySelectorAll("#air [data-milsec] .chip, #air [data-milsec] button, #air [data-milrole]")].map((e) => e.innerText.replace(/\s+/g, " ")).slice(0, 20) }; });
     log("air military:", JSON.stringify(a));
+    await ev(() => { document.querySelector("#air li[data-airmilac]")?.click(); }); await p.waitForTimeout(6000);
+    log("plane card:", JSON.stringify(await ev(() => { const adi = document.querySelector("[data-air-adi]"); const r = [...document.querySelectorAll(".k")].find((e) => e.textContent.trim() === "RADIO");
+      return { adi: adi ? adi.innerText.replace(/\s+/g, " ").slice(0, 300) || adi.getAttribute("aria-label") || "(no text)" : null, radio: r ? (r.nextElementSibling?.innerText || "").replace(/\s+/g, " ").slice(0, 400) : null }; }).catch((e) => e.message)));
     log("gulf/air page errors:", JSON.stringify(errs.slice(before, before + 10)));
   } catch (e) { log("gulf check could not run:", e.message); }
   // ocean check: EARTH > OCEAN tiles read PortWatch and the warnings relay on the device
