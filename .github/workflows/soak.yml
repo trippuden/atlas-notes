@@ -1,0 +1,31 @@
+name: phone soak
+on: workflow_dispatch
+permissions:
+  contents: read
+jobs:
+  soak:
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: [webkit, chromium]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: .github/soak
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: browser
+        working-directory: .github/soak
+        run: npm i --no-save --no-audit --no-fund playwright@1.63.0 && npx playwright install --with-deps ${{ matrix.engine }}
+      - name: soak
+        working-directory: .github/soak
+        run: xvfb-run -a node soak.cjs ${{ matrix.engine }} "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/" 5
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: soak-${{ matrix.engine }}
+          path: .github/soak/out
+          retention-days: 3
