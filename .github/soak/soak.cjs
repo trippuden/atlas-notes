@@ -20,7 +20,7 @@ setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 6) * 60e3);
   const errs = []; const watchPage = (pg) => { pg.on("pageerror", (e) => errs.push(e.message)); pg.on("crash", () => fail("page crashed")); pg.on("console", (m) => { if (m.type() === "error" && !/Failed to load resource|net::/.test(m.text())) errs.push(m.text().slice(0, 200)); }); };
   watchPage(p);
   let cdp = null;
-  if (ENGINE === "chromium") { cdp = await ctx.newCDPSession(p); if (!DESK) { await cdp.send("Emulation.setCPUThrottlingRate", { rate: 4 }); log("chromium: CPU slowed 4x"); } else log("desktop chromium, full speed"); }
+  if (ENGINE === "chromium") { cdp = await ctx.newCDPSession(p); await cdp.send("Debugger.enable"); if (!DESK) { await cdp.send("Emulation.setCPUThrottlingRate", { rate: 4 }); log("chromium: CPU slowed 4x"); } else log("desktop chromium, full speed"); }
   else log("webkit: real Safari engine, CPU not slowed (WebKit has no throttle)");
   // every call into the page has a time limit, so a stuck page is reported instead of stalling the test
   const ev = (fn, arg, ms = 8000) => Promise.race([p.evaluate(fn, arg), new Promise((_, j) => setTimeout(() => j(new Error("page did not answer")), ms))]);
@@ -52,7 +52,7 @@ setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 6) * 60e3);
       catch { fail(`drag ${i + 1} was not taken in 8 s`); await stuckStack("drag"); break; }
       const a = await answers(`after drag ${i + 1}`, 5000); worst = Math.max(worst, Date.now() - t); if (a < 0) break; }
     log("spun the globe 8 drags, slowest drag + answer", worst, "ms"); }
-  if (cdp) { await cdp.send("Debugger.enable"); await cdp.send("Profiler.enable"); await cdp.send("Profiler.setSamplingInterval", { interval: 1000 }); await cdp.send("Profiler.start"); }
+  if (cdp) { await cdp.send("Profiler.enable"); await cdp.send("Profiler.setSamplingInterval", { interval: 1000 }); await cdp.send("Profiler.start"); }
   const shot = async (f) => { try { await p.screenshot({ path: f, timeout: 8000 }); return true; } catch { log("no frame for a screenshot in 8 s:", f); return false; } };
   await ev(() => { document.querySelector('.hud-ops [data-act="data"]')?.click(); }).catch((e) => log(e.message)); await p.waitForTimeout(1500);
   await ev(() => { document.querySelector('[data-group="earth"]')?.click(); }).catch((e) => log(e.message)); await p.waitForTimeout(2500);
