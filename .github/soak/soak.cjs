@@ -20,25 +20,36 @@ const procs = () => { try { return execSync("ps -eo rss=,comm=", { encoding: "ut
   let cdp = null;
   if (ENGINE === "chromium") { cdp = await ctx.newCDPSession(p); await cdp.send("Emulation.setCPUThrottlingRate", { rate: 4 }); log("chromium: CPU slowed 4x"); }
   else log("webkit: real Safari engine, CPU not slowed (WebKit has no throttle)");
-  const answers = async (label, ms = 5000) => { const s = Date.now(); try { await Promise.race([p.evaluate(() => 1), new Promise((_, j) => setTimeout(() => j(new Error("x")), ms))]); return Date.now() - s; } catch { fail(`page did not answer for ${ms / 1000} s (${label})`); return -1; } };
-  const instrument = () => p.evaluate(() => { if (window.__m) return; const m = (window.__m = { frames: [], timers: [], worstFrame: 0, worstTimer: 0 });
+  // every call into the page has a time limit, so a stuck page is reported instead of stalling the test
+  const ev = (fn, arg, ms = 8000) => Promise.race([p.evaluate(fn, arg), new Promise((_, j) => setTimeout(() => j(new Error("page did not answer")), ms))]);
+  let stacks = 0;
+  const stuckStack = async (label) => { // Chrome only: pause the stuck page and record what is running
+    if (!cdp || stacks >= 3) return; stacks++;
+    try { await cdp.send("Debugger.enable"); const got = new Promise((r) => cdp.once("Debugger.paused", r)); await cdp.send("Debugger.pause"); const ev2 = await Promise.race([got, new Promise((r) => setTimeout(() => r(null), 10000))]);
+      if (!ev2) { log("STACK (" + label + "): could not pause"); return; }
+      log("STACK (" + label + "):"); for (const f of ev2.callFrames.slice(0, 25)) log("    at", f.functionName || "(anon)", `${(f.url || "").split("/").pop()}:${f.location.lineNumber + 1}:${f.location.columnNumber + 1}`);
+      await cdp.send("Debugger.resume"); } catch (e) { log("stack failed", e.message); }
+  };
+  const answers = async (label, ms = 5000) => { const s = Date.now(); try { await Promise.race([p.evaluate(() => 1), new Promise((_, j) => setTimeout(() => j(new Error("x")), ms))]); return Date.now() - s; } catch { fail(`page did not answer for ${ms / 1000} s (${label})`); await stuckStack(label); await new Promise((r) => setTimeout(r, 2000)); await stuckStack(label + " +2 s"); return -1; } };
+  const instrument = () => ev(() => { if (window.__m) return; const m = (window.__m = { frames: [], timers: [], worstFrame: 0, worstTimer: 0 });
     let l = performance.now(); const f = (t) => { const g = t - l; l = t; if (g > m.worstFrame) m.worstFrame = g; if (g > 250) m.frames.push([Math.round(t / 1000), Math.round(g)]); requestAnimationFrame(f); }; requestAnimationFrame(f);
     let e = performance.now() + 100; setInterval(() => { const n = performance.now(), late = n - e; e = n + 100; if (late > m.worstTimer) m.worstTimer = late; if (late > 250) m.timers.push([Math.round(n / 1000), Math.round(late)]); }, 100); });
   log("open", URL0);
   await p.goto(URL0, { waitUntil: "commit", timeout: 60000 });
   const up = await p.waitForFunction(() => !document.getElementById("boot") && document.querySelector(".cesium-widget canvas"), null, { timeout: 120000 }).then(() => true).catch(() => false);
   log(up ? "globe up" : "FAIL globe not up in 120 s"); if (!up) fail("globe not up");
-  log("build", await p.evaluate(() => window.TERMINAL_CONFIG?.build).catch(() => "?"), "rss MB", rss().toFixed(0));
-  await instrument(); await p.waitForTimeout(20000);
+  log("build", await ev(() => window.TERMINAL_CONFIG?.build).catch(() => "?"), "rss MB", rss().toFixed(0));
+  await instrument().catch(() => {});
+  for (let i = 0; i < 10; i++) { await p.waitForTimeout(2000); const a = await answers("first 20 s"); log(`first 20 s: answer ${a} ms, rss MB`, rss().toFixed(0)); if (a < 0) break; }
   if (cdp) { await cdp.send("Profiler.enable"); await cdp.send("Profiler.setSamplingInterval", { interval: 1000 }); await cdp.send("Profiler.start"); }
   const shot = async (f) => { try { await p.screenshot({ path: f, timeout: 8000 }); return true; } catch { log("no frame for a screenshot in 8 s:", f); return false; } };
-  await p.evaluate(() => { document.querySelector('.hud-ops [data-act="data"]')?.click(); }); await p.waitForTimeout(1500);
-  await p.evaluate(() => { document.querySelector('[data-group="earth"]')?.click(); }); await p.waitForTimeout(2500);
-  await p.evaluate(() => { document.querySelector('[data-sub="hazards"]')?.click(); }); await p.waitForTimeout(2500);
-  await p.evaluate(() => { if (!document.body.classList.contains("sheet-full")) document.querySelector(".sheet-grab")?.click(); }); await p.waitForTimeout(2000);
-  log("on EARTH > hazards, sheet full:", await p.evaluate(() => document.body.classList.contains("sheet-full")), "items:", await p.evaluate(() => document.querySelectorAll("#hazards li, #hazards .item, #hazards > *").length));
-  for (let i = 0; i < 10; i++) { await p.waitForTimeout(2000); const a = await answers("just opened"); const r = await p.evaluate(() => new Promise((res) => { const s = performance.now(); requestAnimationFrame(() => res(Math.round(performance.now() - s))); setTimeout(() => res(-1), 3000); })).catch(() => -2);
-    const m = await p.evaluate(() => ({ wf: Math.round(__m.worstFrame), wt: Math.round(__m.worstTimer), f: __m.frames.slice(-3), t: __m.timers.slice(-3) })).catch(() => null); log(`answer ${a} ms, next frame ${r} ms`, JSON.stringify(m), "rss MB", rss().toFixed(0)); }
+  await ev(() => { document.querySelector('.hud-ops [data-act="data"]')?.click(); }).catch((e) => log(e.message)); await p.waitForTimeout(1500);
+  await ev(() => { document.querySelector('[data-group="earth"]')?.click(); }).catch((e) => log(e.message)); await p.waitForTimeout(2500);
+  await ev(() => { document.querySelector('[data-sub="hazards"]')?.click(); }).catch((e) => log(e.message)); await p.waitForTimeout(2500);
+  await ev(() => { if (!document.body.classList.contains("sheet-full")) document.querySelector(".sheet-grab")?.click(); }).catch((e) => log(e.message)); await p.waitForTimeout(2000);
+  log("on EARTH > hazards:", await ev(() => [document.body.classList.contains("sheet-full"), document.querySelectorAll("#hazards li, #hazards .item, #hazards > *").length].join(" items ")).catch((e) => e.message));
+  for (let i = 0; i < 10; i++) { await p.waitForTimeout(2000); const a = await answers("just opened"); const r = await ev(() => new Promise((res) => { const s = performance.now(); requestAnimationFrame(() => res(Math.round(performance.now() - s))); setTimeout(() => res(-1), 3000); })).catch(() => -2);
+    const m = await ev(() => ({ wf: Math.round(__m.worstFrame), wt: Math.round(__m.worstTimer), f: __m.frames.slice(-3), t: __m.timers.slice(-3) })).catch(() => null); log(`answer ${a} ms, next frame ${r} ms`, JSON.stringify(m), "rss MB", rss().toFixed(0)); }
   if (cdp) { const { profile } = await cdp.send("Profiler.stop"); const self = new Map(), total = profile.endTime - profile.startTime, byId = new Map(profile.nodes.map((n) => [n.id, n]));
     const dt = profile.timeDeltas, cnt = new Map(); profile.samples.forEach((id, i) => cnt.set(id, (cnt.get(id) || 0) + (dt[i] || 0)));
     for (const [id, us] of cnt) { const n = byId.get(id), cf = n.callFrame; const k = `${cf.functionName || "(anon)"} ${cf.url.split("/").pop()}:${cf.lineNumber + 1}:${cf.columnNumber + 1}`; self.set(k, (self.get(k) || 0) + us); }
@@ -46,19 +57,19 @@ const procs = () => { try { return execSync("ps -eo rss=,comm=", { encoding: "ut
     fs.writeFileSync("out/profile.cpuprofile", JSON.stringify(profile)); }
   await shot("out/0-hazards.png");
   // scroll to the bottom like a thumb: steps of a screen, then hold there
-  const scrollDown = () => p.evaluate(async () => { const h = document.getElementById("hazards"); let s = h; while (s && s !== document.body && !(s.scrollHeight > s.clientHeight + 4 && /auto|scroll/.test(getComputedStyle(s).overflowY))) s = s.parentElement;
+  const scrollDown = () => ev(async () => { const h = document.getElementById("hazards"); let s = h; while (s && s !== document.body && !(s.scrollHeight > s.clientHeight + 4 && /auto|scroll/.test(getComputedStyle(s).overflowY))) s = s.parentElement;
     if (!s || s === document.body) return { err: "no scroller" }; for (let i = 0; i < 60 && s.scrollTop + s.clientHeight < s.scrollHeight - 2; i++) { s.scrollBy(0, s.clientHeight * 0.8); await new Promise((r) => setTimeout(r, 250)); }
-    return { top: Math.round(s.scrollTop), height: s.scrollHeight, items: h.querySelectorAll("*").length }; });
-  log("scrolled", JSON.stringify(await scrollDown())); await answers("after scroll");
+    return { top: Math.round(s.scrollTop), height: s.scrollHeight, items: h.querySelectorAll("*").length }; }, undefined, 30000);
+  log("scrolled", JSON.stringify(await scrollDown().catch((e) => ({ err: e.message })))); await answers("after scroll");
   const end = Date.now() + MIN * 60e3; let minute = 0;
   while (Date.now() < end) {
     await p.waitForTimeout(10000);
     const a = await answers("holding at the bottom");
-    const m = await p.evaluate(() => ({ wf: Math.round(__m.worstFrame), wt: Math.round(__m.worstTimer), nf: __m.frames.length, nt: __m.timers.length, heap: performance.memory ? Math.round(performance.memory.usedJSHeapSize / 1048576) : null, live: window.TERMINAL_CONFIG && document.querySelector("#liveStatus, .live-status")?.textContent?.slice(0, 60) })).catch(() => null);
+    const m = await ev(() => ({ wf: Math.round(__m.worstFrame), wt: Math.round(__m.worstTimer), nf: __m.frames.length, nt: __m.timers.length, heap: performance.memory ? Math.round(performance.memory.usedJSHeapSize / 1048576) : null, live: window.TERMINAL_CONFIG && document.querySelector("#liveStatus, .live-status")?.textContent?.slice(0, 60) })).catch(() => null);
     log(`answer ${a} ms`, "worst frame", m?.wf, "worst timer", m?.wt, "stalls", m?.nf, m?.nt, "heap MB", m?.heap, "rss MB", rss().toFixed(0), "|", procs());
     if (Date.now() > t0 + (minute + 1) * 60e3) { minute++; await shot(`out/${minute}-min.png`); log("scrolled", JSON.stringify(await scrollDown().catch((e) => ({ err: e.message })))); }
   }
-  const m = await p.evaluate(() => __m).catch(() => null);
+  const m = await ev(() => __m).catch(() => null);
   if (m) { fs.writeFileSync("out/stalls.json", JSON.stringify(m)); log("stalls over 250 ms: frames", JSON.stringify(m.frames.slice(-30)), "timers", JSON.stringify(m.timers.slice(-30)));
     if (m.worstTimer > 2000) fail(`a ${Math.round(m.worstTimer)} ms stall on EARTH > Hazards`); }
   log("errors", JSON.stringify([...new Set(errs)].slice(0, 10)));
