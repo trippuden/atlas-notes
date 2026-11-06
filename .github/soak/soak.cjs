@@ -113,6 +113,17 @@ setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 6) * 60e3);
     log("air military:", JSON.stringify(a));
     log("gulf/air page errors:", JSON.stringify(errs.slice(before, before + 10)));
   } catch (e) { log("gulf check could not run:", e.message); }
+  // ocean check: EARTH > OCEAN tiles read PortWatch and the warnings relay on the device
+  try {
+    const before = errs.length;
+    await ev(() => { document.querySelector('[data-group="earth"]')?.click(); }); await p.waitForTimeout(1500);
+    await ev(() => { document.querySelector('[data-sub="ocean"]')?.click(); }); await p.waitForTimeout(45000);
+    const o = await ev(() => { const t = (q) => document.querySelector(q)?.innerText.replace(/\s+/g, " ") ?? null;
+      return { choke: t('#ocean [data-oc-jump="choke"]'), warn: t('#ocean [data-oc-jump="warn"]'),
+        chokeMsg: [...document.querySelectorAll("#oc-choke li.oc-msg")].map((e) => e.innerText.replace(/\s+/g, " ")), warnMsg: [...document.querySelectorAll("#oc-warn li.oc-msg")].map((e) => e.innerText.replace(/\s+/g, " ")) }; }, undefined, 15000);
+    log("ocean:", JSON.stringify(o)); log("ocean page errors:", JSON.stringify(errs.slice(before, before + 10)));
+    try { const r = await fetch("https://relay.frelay.workers.dev/api/publications/broadcast-warn?h=msi.nga.mil&output=json&status=A"); log("relay NGA from runner:", r.status, (await r.text()).slice(0, 200)); } catch (e) { log("relay NGA from runner failed:", e.message); }
+  } catch (e) { log("ocean check could not run:", e.message); }
   log("errors", JSON.stringify([...new Set(errs)].slice(0, 10)));
   // the same profile again: must open
   await p.close().catch(() => {}); p = await ctx.newPage(); watchPage(p);
