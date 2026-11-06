@@ -45,6 +45,13 @@ setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 6) * 60e3);
   log("build", await ev(() => window.TERMINAL_CONFIG?.build).catch(() => "?"), "rss MB", rss().toFixed(0));
   await instrument().catch(() => {});
   for (let i = 0; i < 10; i++) { await p.waitForTimeout(2000); const a = await answers("first 20 s"); log(`first 20 s: answer ${a} ms, rss MB`, rss().toFixed(0)); if (a < 0) break; }
+  // spin the globe to the far side and back with drags, while it is still loading: every drag must be answered quickly
+  { const vp = p.viewportSize() || { width: 390, height: 844 }, cx = Math.round(vp.width / 2), cy = Math.round(vp.height * 0.4); let worst = 0;
+    for (let i = 0; i < 8; i++) { const dir = i < 4 ? 1 : -1, t = Date.now();
+      try { await Promise.race([(async () => { await p.mouse.move(cx - 120 * dir, cy); await p.mouse.down(); for (let k = 1; k <= 8; k++) await p.mouse.move(cx - 120 * dir + 30 * k * dir, cy); await p.mouse.up(); })(), new Promise((_, j) => setTimeout(() => j(new Error("x")), 8000))]); }
+      catch { fail(`drag ${i + 1} was not taken in 8 s`); await stuckStack("drag"); break; }
+      const a = await answers(`after drag ${i + 1}`, 5000); worst = Math.max(worst, Date.now() - t); if (a < 0) break; }
+    log("spun the globe 8 drags, slowest drag + answer", worst, "ms"); }
   if (cdp) { await cdp.send("Debugger.enable"); await cdp.send("Profiler.enable"); await cdp.send("Profiler.setSamplingInterval", { interval: 1000 }); await cdp.send("Profiler.start"); }
   const shot = async (f) => { try { await p.screenshot({ path: f, timeout: 8000 }); return true; } catch { log("no frame for a screenshot in 8 s:", f); return false; } };
   await ev(() => { document.querySelector('.hud-ops [data-act="data"]')?.click(); }).catch((e) => log(e.message)); await p.waitForTimeout(1500);
