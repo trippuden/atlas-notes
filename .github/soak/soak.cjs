@@ -12,7 +12,7 @@ const fails = []; const fail = (m) => { fails.push(m); log("FAIL", m); };
 const rss = () => { try { const pat = ENGINE === "webkit" ? /WebKit|MiniBrowser|pw_run/ : /chrom/i; return execSync("ps -eo rss=,args=", { encoding: "utf8" }).split("\n").filter((l) => pat.test(l)).reduce((s, l) => s + (parseInt(l, 10) || 0), 0) / 1024; } catch { return -1; } };
 const procs = () => { try { return execSync("ps -eo rss=,comm=", { encoding: "utf8" }).split("\n").filter((l) => /WebKit|chrom/i.test(l)).map((l) => l.trim()).sort((a, b) => parseInt(b, 10) - parseInt(a, 10)).slice(0, 4).join(" | "); } catch { return ""; } };
 const finish = () => { log(fails.length ? `SOAK FAILED (${fails.length})` : "SOAK PASSED"); process.exit(fails.length ? 1 : 0); };
-setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 12) * 60e3);
+setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 24) * 60e3);
 (async () => {
   const dev = DESK ? { viewport: { width: 1466, height: 800 } } : pw.devices["iPhone 14 Pro"];
   const ctx = await pw[ENGINE].launchPersistentContext("prof", { ...dev, ...(ENGINE === "chromium" ? { args: ["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"] } : {}) });
@@ -103,6 +103,26 @@ setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 12) * 60e3)
   const m = await ev(() => __m).catch(() => null);
   if (m) { fs.writeFileSync("out/stalls.json", JSON.stringify(m)); log("stalls over 250 ms: frames", JSON.stringify(m.frames.slice(-30)), "timers", JSON.stringify(m.timers.slice(-30)), "long tasks over 200 ms", JSON.stringify((m.long || []).slice(-30)));
     if (m.worstTimer > 2000) fail(`a ${Math.round(m.worstTimer)} ms stall on EARTH > Hazards`); }
+  // full tour: every tab and sub-tab, ~15 s each; per tab: page answer, worst stall, long tasks, heap, errors, screenshot
+  if (process.env.TOUR !== "0") {
+    const TABS = { now: ["feed", "news", "mind"], next: ["upcoming", "forecasts", "elections"], earth: ["hazards", "power", "ocean"], air: ["air"], space: ["space"],
+      intel: ["detect", "unrest", "crime", "banks", "cyber", "ships", "ocean", "aicheck", "intel"], live: ["live", "radio"], people: ["community", "advisories"] };
+    const tour = [];
+    for (const [g, subs] of Object.entries(TABS)) for (const sub of subs) {
+      const before = errs.length; await ev(() => { __m.worstFrame = 0; __m.worstTimer = 0; __m.tlong = (__m.long || []).length; }).catch(() => {});
+      const t = Date.now();
+      await ev(([g, sub]) => { document.querySelector(`[data-group="${g}"]`)?.click(); setTimeout(() => document.querySelector(`[data-sub="${sub}"]`)?.click(), 400); }, [g, sub]).catch(() => {});
+      let worstAns = 0; for (let k = 0; k < 5; k++) { await p.waitForTimeout(3000); const a = await answers(`tour ${g}/${sub}`, 8000); if (a < 0) { worstAns = -1; break; } worstAns = Math.max(worstAns, a); }
+      const m = await ev(() => ({ wf: Math.round(__m.worstFrame), wt: Math.round(__m.worstTimer), long: (__m.long || []).slice(__m.tlong).map((x) => x[1]), heap: performance.memory ? Math.round(performance.memory.usedJSHeapSize / 1048576) : null,
+        shown: (document.querySelector(".sheet .tab.on, #subtabs .on, [data-sub].on")?.textContent || "").trim().slice(0, 30), empty: !document.querySelector(".sheet-body li, .sheet li, .panel li") })).catch(() => null);
+      const row = { tab: `${g}/${sub}`, ms: Date.now() - t, worstAnswer: worstAns, worstTimer: m?.wt, longest: m ? Math.max(0, ...m.long) : null, longCount: m?.long.length, heap: m?.heap, rss: Math.round(rss()), errors: errs.slice(before).map((e) => e.slice(0, 120)) };
+      tour.push(row); log("TOUR", JSON.stringify(row));
+      if (row.worstAnswer < 0) fail(`tour ${g}/${sub}: page stopped answering`);
+      else if (row.worstTimer > 2000) fail(`tour ${g}/${sub}: ${row.worstTimer} ms stall`);
+      await shot(`out/tour-${g}-${sub}.png`);
+    }
+    log("TOUR SUMMARY worst stall per tab:", tour.map((r) => `${r.tab}=${r.worstTimer}`).join(" "));
+  }
   // Gulf view (ships and air check): the Persian Gulf & Strait of Hormuz watch card, then military aircraft on AIR
   try {
     const before = errs.length;
