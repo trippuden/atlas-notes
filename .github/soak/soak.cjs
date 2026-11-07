@@ -113,7 +113,33 @@ setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 24) * 60e3)
   const m = await ev(() => __m).catch(() => null);
   if (m) { fs.writeFileSync("out/stalls.json", JSON.stringify(m)); log("stalls over 250 ms: frames", JSON.stringify(m.frames.slice(-30)), "timers", JSON.stringify(m.timers.slice(-30)), "long tasks over 200 ms", JSON.stringify((m.long || []).slice(-30)));
     if (m.worstTimer > 2000) fail(`a ${Math.round(m.worstTimer)} ms stall on EARTH > Hazards`); }
-  // full tour: every tab and sub-tab, ~15 s each; per tab: page answer, worst stall, long tasks, heap, errors, screenshot
+  // Scroll check, every tour tab: the tab's biggest list (sheet at FULL on a phone) is swiped like a finger (chromium
+  // phone: real touch events) or turned with the mouse wheel resting on it (desktop, webkit). Each touch's wait is how
+  // long the page held it before the browser could move the list (a touch listener that may cancel makes every swipe
+  // wait for the page's script); a list torn down and rebuilt while it moves is a hitch and a jump. Fails on touches
+  // held over 100 ms (95th percentile) or any rebuild during the scroll.
+  const scrollCheck = async () => {
+    await ev(() => { if (document.body.classList.contains("m") && !document.body.classList.contains("sheet-full")) document.querySelector(".sheet-grab")?.click(); return 1; }).catch(() => null);
+    await p.waitForTimeout(900);
+    const b = await ev(() => { const c = [...document.querySelectorAll("*")].filter((e) => e.scrollHeight > e.clientHeight + 40 && /auto|scroll/.test(getComputedStyle(e).overflowY) && e.getClientRects().length && e.clientHeight > 120);
+      c.sort((x, y) => y.clientHeight * y.clientWidth - x.clientHeight * x.clientWidth); const e = c[0]; if (!e) return null; window.__sw?.mo.disconnect();
+      const sw = window.__sw = { rb: 0, mo: new MutationObserver((ms) => { let rm = 0; for (const m of ms) rm += m.removedNodes.length; if (rm >= Math.max(3, e.children.length * 0.5)) sw.rb++; }) }; sw.mo.observe(e, { childList: true });
+      const r = e.getBoundingClientRect(); return { x: Math.round(r.left + r.width / 2), y: Math.round(Math.min(r.bottom - 40, r.top + r.height * 0.75)), top: Math.round(r.top), list: e.id || String(e.className).slice(0, 24) }; }).catch(() => null);
+    if (!b) return null;
+    const waits = [];
+    for (let k = 0; k < 4; k++) {
+      if (cdp && !DESK) { const up = k % 2 === 0; let y = up ? b.y : Math.max(b.top + 60, b.y - 300); const step = up ? -26 : 26;
+        const tc = async (type, pts) => { const a = Date.now(); await cdp.send("Input.dispatchTouchEvent", { type, touchPoints: pts }); waits.push(Date.now() - a); };
+        await tc("touchStart", [{ x: b.x, y }]); for (let i = 0; i < 12; i++) { y += step; await tc("touchMove", [{ x: b.x, y }]); await p.waitForTimeout(16); } await tc("touchEnd", []); }
+      else { await p.mouse.move(b.x, b.y); for (let i = 0; i < 10; i++) { const a = Date.now(); await p.mouse.wheel(0, k % 2 ? -160 : 240); waits.push(Date.now() - a); await p.waitForTimeout(40); } }
+      await p.waitForTimeout(400);
+    }
+    const rebuilt = await ev(() => window.__sw?.rb ?? 0).catch(() => -1);
+    waits.sort((x, y) => y - x);
+    return { list: b.list, by: cdp && !DESK ? "finger" : "wheel", held95: waits[Math.floor(waits.length * 0.05)], heldMax: waits[0], rebuilt };
+  };
+  // full tour: every tab and sub-tab, ~15 s each; per tab: page answer, worst stall, long tasks, heap, errors, scroll
+  // check, screenshot
   if (process.env.TOUR !== "0") {
     const TABS = { now: ["feed", "news", "mind"], next: ["upcoming", "forecasts", "elections"], earth: ["hazards", "power", "ocean"], air: ["air"], space: ["space"],
       intel: ["detect", "unrest", "crime", "banks", "cyber", "ships", "ocean", "aicheck", "intel"], live: ["live", "radio"], people: ["community", "advisories"] };
@@ -126,13 +152,18 @@ setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 24) * 60e3)
       const m = await ev(() => ({ wf: Math.round(__m.worstFrame), wt: Math.round(__m.worstTimer), long: (__m.long || []).slice(__m.tlong).map((x) => x[1]), heap: performance.memory ? Math.round(performance.memory.usedJSHeapSize / 1048576) : null,
         shown: (document.querySelector(".sheet .tab.on, #subtabs .on, [data-sub].on")?.textContent || "").trim().slice(0, 30), empty: !document.querySelector(".sheet-body li, .sheet li, .panel li") })).catch(() => null);
       await winEnd(`tour ${g}/${sub} (long task over 700 ms)`);
-      const row = { tab: `${g}/${sub}`, ms: Date.now() - t, worstAnswer: worstAns, worstTimer: m?.wt, longest: m ? Math.max(0, ...m.long) : null, longCount: m?.long.length, heap: m?.heap, rss: Math.round(rss()), errors: errs.slice(before).map((e) => e.slice(0, 120)) };
+      const sc = await scrollCheck().catch(() => null);
+      if (sc) { log("SCROLL", `${g}/${sub}`, JSON.stringify(sc));
+        if (sc.held95 > 100) fail(`tour ${g}/${sub}: touches held ${sc.held95} ms by the page while scrolling (95th percentile)`);
+        if (sc.rebuilt > 0) fail(`tour ${g}/${sub}: list rebuilt ${sc.rebuilt} time(s) while it was being scrolled`); }
+      const row = { tab: `${g}/${sub}`, ms: Date.now() - t, worstAnswer: worstAns, worstTimer: m?.wt, longest: m ? Math.max(0, ...m.long) : null, longCount: m?.long.length, heap: m?.heap, rss: Math.round(rss()), errors: errs.slice(before).map((e) => e.slice(0, 120)), scroll: sc };
       tour.push(row); log("TOUR", JSON.stringify(row));
       if (row.worstAnswer < 0) fail(`tour ${g}/${sub}: page stopped answering`);
       else if (row.worstTimer > 2000) fail(`tour ${g}/${sub}: ${row.worstTimer} ms stall`);
       await shot(`out/tour-${g}-${sub}.png`);
     }
     log("TOUR SUMMARY worst stall per tab:", tour.map((r) => `${r.tab}=${r.worstTimer}`).join(" "));
+    log("SCROLL SUMMARY held (95th pct ms) / rebuilt per tab:", tour.map((r) => `${r.tab}=${r.scroll ? `${r.scroll.held95}/${r.scroll.rebuilt}` : "-"}`).join(" "));
   }
   // Gulf view (ships and air check): the Persian Gulf & Strait of Hormuz watch card, then military aircraft on AIR
   try {
