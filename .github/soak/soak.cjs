@@ -47,7 +47,9 @@ async function liveTapCheck() {
 // Then the Argo floats from Ifremer's ERDDAP: the list query (status, CORS header, rows, time) and one float's card with its
 // dive profile (a measurement: it fails nothing).
 async function polesCheck() {
-  let b = null, step = "start"; const pt = await passThrough(), phone = !DESK;
+  let b = null, step = "start", peak = 0, peakAt = "", upMb = 0, oceanMb = 0, crashed = ""; const pt = await passThrough(), phone = !DESK;
+  // the browser's memory now, and the highest seen with the step it was seen at (for the one-line summary at the end)
+  const mb = () => { const m = Math.round(rss()); if (m > peak) { peak = m; peakAt = step; } return m; };
   try {
     b = await pw[ENGINE].launch(ENGINE === "chromium" ? { args: ["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"] } : {});
     const c = await b.newContext({ ...(phone ? pw.devices["iPhone 14 Pro"] : { viewport: { width: 1466, height: 800 } }), serviceWorkers: "block" });
@@ -70,7 +72,7 @@ async function polesCheck() {
     await w.waitForFunction(() => !document.getElementById("boot") && window.viewer && document.querySelector(".cesium-widget canvas"), null, { timeout: 180000 });
     await w.waitForTimeout(6000);
     // EARTH > Ocean, shown (on desktop the lists live in the Data drawer)
-    if (phone) log(`poles: memory once up (EARTH, nothing opened): ${Math.round(rss())} MB browser | ${procs()}`);
+    if (phone) { upMb = mb(); log(`poles: memory once up (EARTH, nothing opened): ${upMb} MB browser | ${procs()}`); }
     // what the page took this browser for: the phone settings (coarse pointer, small screen) or the computer ones
     log("poles: page settings", JSON.stringify(await wev(() => ({ coarse: matchMedia("(pointer: coarse)").matches, screen: [screen.width, screen.height], dpr: devicePixelRatio,
       scale: window.viewer.resolutionScale, cache: window.viewer.scene.globe.tileCacheSize, sse: window.viewer.scene.globe.maximumScreenSpaceError,
@@ -78,13 +80,13 @@ async function polesCheck() {
     step = "opening EARTH > Ocean";
     await wev(() => { document.querySelector('.hud-ops [data-act="data"]')?.click(); document.querySelector('[data-group="earth"]')?.click(); });
     await w.waitForTimeout(600); await wev(() => document.querySelector('[data-sub="ocean"]')?.click()); await w.waitForTimeout(6000);
-    if (phone) log(`poles: memory with EARTH > Ocean open: ${Math.round(rss())} MB browser | ${procs()}`);
-    const mem = async () => phone ? `${Math.round(rss())} MB browser` : `${Math.round((await wev(() => performance.memory?.usedJSHeapSize || 0)) / 1048576)} MB heap`;
+    if (phone) { oceanMb = mb(); log(`poles: memory with EARTH > Ocean open: ${oceanMb} MB browser | ${procs()}`); }
+    const mem = async () => phone ? `${mb()} MB browser` : `${Math.round((await wev(() => performance.memory?.usedJSHeapSize || 0)) / 1048576)} MB heap`;
     const look = (lat, h) => wev(([lat, h]) => { const C = window.Cesium, cam = window.viewer.camera; cam.cancelFlight?.(); cam.setView({ destination: C.Cartesian3.fromDegrees(0, lat, h), orientation: { heading: 0, pitch: -Math.PI / 2, roll: 0 } }); }, [lat, h]);
     // on a phone the browser's memory and the tiles asked for are logged every 5 s, and a crash says where it happened
-    const settle = async () => { let k = 0; for (; k < 30; k++) { await w.waitForTimeout(1000); if (phone && k % 5 === 4) log(`poles: watch ${step} ${k + 1} s: ${Math.round(rss())} MB browser, ${tiles.length} GIBS tiles so far | ${procs()}`);
+    const settle = async () => { let k = 0; for (; k < 30; k++) { await w.waitForTimeout(1000); if (phone && k % 5 === 4) log(`poles: watch ${step} ${k + 1} s: ${mb()} MB browser, ${tiles.length} GIBS tiles so far | ${procs()}`);
       if (await wev(() => window.viewer.scene.globe.tilesLoaded).catch(() => false)) break; } await w.waitForTimeout(1500); return k; };
-    w.on("crash", () => log(`poles: PAGE CRASHED at ${step}: ${Math.round(rss())} MB browser, ${tiles.length} GIBS tiles, last ${JSON.stringify(tiles.slice(-3))} | ${procs()}`));
+    w.on("crash", () => { crashed = step; log(`poles: PAGE CRASHED at ${step}: ${mb()} MB browser, ${tiles.length} GIBS tiles, last ${JSON.stringify(tiles.slice(-3))} | ${procs()}`); });
     const sum = (from) => { const by = {}; for (const t of tiles.slice(from)) { const L = (by[t.layer] ||= { n: 0, ok: 0, z: -1, kb: 0, other: {} }); L.n++; if (t.st === 200) { L.ok++; L.z = Math.max(L.z, t.z); L.kb += t.n / 1024; } else L.other[t.st] = (L.other[t.st] || 0) + 1; }
       return Object.entries(by).map(([k, L]) => `${k.replace(/_/g, " ").slice(0, 34)}: ${L.ok}/${L.n} ok, level ${L.z}, ${Math.round(L.kb)} KB${Object.keys(L.other).length ? " " + JSON.stringify(L.other) : ""}`).join("; ") || "no GIBS tiles"; };
     // a browser screenshot at half size (made by the browser itself, no wait for fonts), then measured and shrunk in a blank
@@ -136,7 +138,10 @@ async function polesCheck() {
     if (!comnap.some((x) => x.st === 200 && x.n > 0) || !st.drawn) fail(`poles: Antarctic stations did not load or draw (${JSON.stringify(comnap)}, ${st.drawn} drawn)`);
     if (errs.some((e) => e.startsWith("page:"))) fail("poles: the page threw errors");
   } catch (e) { fail(`poles check could not run (at ${step}): ${e.message.slice(0, 160)}`); }
-  finally { await b?.close().catch(() => {}); pt.close(); }
+  finally {
+    if (phone) log(`poles summary (${ENGINE}): up ${upMb} MB, EARTH > Ocean open ${oceanMb} MB, peak ${peak} MB at ${peakAt || "none"}, ${crashed ? `page crashed at ${crashed}` : "no crash"}`);
+    await b?.close().catch(() => {}); pt.close();
+  }
 }
 
 // Live ships on the real site address (desktop), where the browser's own CORS rules apply: the Sea key, 70 s, then the
@@ -296,7 +301,7 @@ async function watchCheck() {
   const ONLY = (process.env.ONLY || "").split(",").map((x) => x.trim()).filter((x) => x && !x.startsWith("block="));
   if (ONLY.length) { const C = { watch: watchCheck, tap: liveTapCheck, poles: polesCheck, ships: shipsCheck, news: newsCheck, weather: weatherCheck };
     if (DESK) for (const k of ONLY) C[k] ? await C[k]() : fail(`no check named ${k}`);
-    else if (ENGINE === "webkit" && ONLY.includes("poles")) await polesCheck(); // the iPhone engine with the polar layers
+    else if (ONLY.includes("poles")) await polesCheck(); // a phone engine (the iPhone engine, or chromium as an iPhone) with the polar layers
     finish(); return; }
   if (DESK) { await watchCheck(); await liveTapCheck(); await polesCheck(); await shipsCheck(); await newsCheck(); await weatherCheck(); }
   else if (ENGINE === "webkit") await polesCheck(); // the phone's memory with the polar layers drawing
