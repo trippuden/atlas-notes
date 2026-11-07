@@ -18,6 +18,12 @@ setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 12) * 60e3)
   const ctx = await pw[ENGINE].launchPersistentContext("prof", { ...dev, ...(ENGINE === "chromium" ? { args: ["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"] } : {}) });
   let p = ctx.pages()[0] || (await ctx.newPage());
   const errs = []; const watchPage = (pg) => { pg.on("pageerror", (e) => errs.push(e.message)); pg.on("crash", () => fail("page crashed")); pg.on("console", (m) => { if (m.type() === "error" && !/Failed to load resource|net::/.test(m.text())) errs.push(m.text().slice(0, 200)); }); };
+  const T0 = Date.now(), arcAll = [], tq = new Map(), PW = /arcgis\.com|amazonaws\.com|blob\.core\.windows/;
+  const netLog = (pg) => { pg.on("request", (q) => { if (PW.test(q.url()) || (q.redirectedFrom() && tq.has(q.redirectedFrom()))) tq.set(q, Date.now()); });
+    pg.on("requestfailed", (q) => { if (tq.has(q)) arcAll.push(`+${((tq.get(q) - T0) / 1000).toFixed(0)}s ${q.method()} ${new URL(q.url()).host}${new URL(q.url()).pathname.slice(0, 100)} FAILED ${q.failure()?.errorText} after ${Date.now() - tq.get(q)} ms`); });
+    pg.on("response", async (r) => { const q = r.request(); if (!tq.has(q)) return; let n = "?", b = ""; try { const buf = await r.body(); n = buf.length; b = buf.slice(0, 160).toString(); } catch (e) { b = "(body: " + e.message.slice(0, 50) + ")"; }
+      const u = new URL(q.url()); arcAll.push(`+${((tq.get(q) - T0) / 1000).toFixed(0)}s ${q.method()} ${u.host}${u.pathname.slice(0, 110)}${u.search.slice(0, 100)} ${r.status()} ${n} bytes ${Date.now() - tq.get(q)} ms acao=${r.headers()["access-control-allow-origin"] || "none"} ${b.replace(/\s+/g, " ")}`); }); };
+  netLog(p);
   watchPage(p);
   let cdp = null;
   if (ENGINE === "chromium") { cdp = await ctx.newCDPSession(p); await cdp.send("Debugger.enable"); if (!DESK) { await cdp.send("Emulation.setCPUThrottlingRate", { rate: 4 }); log("chromium: CPU slowed 4x"); } else log("desktop chromium, full speed"); }
@@ -127,18 +133,15 @@ setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 12) * 60e3)
   try {
     const before = errs.length;
     await ev(() => { document.querySelector('[data-group="earth"]')?.click(); }); await p.waitForTimeout(1500);
-    const arc = []; const t0a = new Map();
     const heap = () => ev(() => performance.memory ? Math.round(performance.memory.usedJSHeapSize / 1048576) : null).catch(() => null);
-    p.on("request", (q) => { if (/arcgis\.com|amazonaws\.com|blob\.core\.windows/.test(q.url()) || (q.redirectedFrom() && t0a.has(q.redirectedFrom()))) t0a.set(q, Date.now()); });
-    p.on("requestfailed", (q) => { if (t0a.has(q)) arc.push(`${q.method()} ${new URL(q.url()).pathname} FAILED ${q.failure()?.errorText} ${Date.now() - t0a.get(q)} ms`); });
-    p.on("response", async (r) => { const q = r.request(); if (!t0a.has(q)) return; let b = "", n = "?"; try { const buf = await r.body(); n = buf.length; b = buf.slice(0, 200).toString(); } catch (e) { b = "(body not readable: " + e.message.slice(0, 60) + ")"; } const u = new URL(q.url()); arc.push(`${q.method()} ${u.host}${u.pathname.slice(0, 120)}${u.search.slice(0, 120)} ${r.status()} ${n} bytes ${Date.now() - t0a.get(q)} ms acao=${r.headers()["access-control-allow-origin"] || "none"} ${b}`); });
     log("ocean heap before MB:", await heap());
     await ev(() => { document.querySelector('[data-sub="ocean"]')?.click(); });
     { let last = null; for (let k = 0; k < 36; k++) { await p.waitForTimeout(5000); const t = await ev(() => document.querySelector('#ocean [data-oc-jump="choke"]')?.innerText.replace(/\s+/g, " ") ?? null).catch(() => null); if (t !== last) { log(`ocean choke tile at ${(k + 1) * 5} s: ${t} · heap MB ${await heap()}`); last = t; } } }
     log("ocean heap after 180 s MB:", await heap());
     log("ocean msgs:", JSON.stringify(await ev(() => [...document.querySelectorAll("#ocean li.oc-msg")].map((e) => e.innerText.replace(/\s+/g, " "))).catch((e) => e.message)));
     log("ocean t.ocean.choke:", await ev(() => { const v = localStorage.getItem("t.ocean.choke"); return v == null ? "missing" : "length " + v.length; }).catch((e) => e.message));
-    log("ocean arcgis requests:", arc.length); arc.forEach((l) => log("   ", l));
+    { let v = null; for (let k = 0; k < 60; k++) { const n = await ev(() => document.documentElement.dataset.ocChoke ?? null).catch(() => null); if (n !== v) { log(`ocChoke at ${Math.round((Date.now() - T0) / 1000)} s: ${n}`); v = n; } if (/^(ok|error)/.test(v || "")) break; await p.waitForTimeout(5000); } log("ocChoke final:", v); }
+    log("PortWatch requests from page start:", arcAll.length); arcAll.forEach((l) => log("   ", l));
     const o = await ev(() => { const t = (q) => document.querySelector(q)?.innerText.replace(/\s+/g, " ") ?? null;
       return { choke: t('#ocean [data-oc-jump="choke"]'), warn: t('#ocean [data-oc-jump="warn"]'),
         chokeMsg: [...document.querySelectorAll("#oc-choke li.oc-msg")].map((e) => e.innerText.replace(/\s+/g, " ")), warnMsg: [...document.querySelectorAll("#oc-warn li.oc-msg")].map((e) => e.innerText.replace(/\s+/g, " ")) }; }, undefined, 15000);
