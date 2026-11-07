@@ -1,0 +1,2066 @@
+{
+ "engine": "chromium",
+ "mode": "desk",
+ "target": "https://trippuden.github.io/atlas-notes/",
+ "started": "2026-11-07T04:11:02.091Z",
+ "scenes": [
+  {
+   "scene": "open",
+   "at": 25,
+   "netFail": [
+    "trippuden.github.io HTTP 404",
+    "visualisations.aemo.com.au FAILED net::ERR_FAILED",
+    "gibs.earthdata.nasa.gov FAILED net::ERR_FAILED"
+   ],
+   "errors": [
+    "WARNING @open: Service Worker registration blocked by Playwright"
+   ],
+   "counts": {
+    "bb": 217,
+    "pt": 15598,
+    "lb": 21,
+    "pl": 206,
+    "ent": 108,
+    "prim": 16,
+    "ds": 48
+   }
+  },
+  {
+   "scene": "group ZONES",
+   "at": 299,
+   "netFail": [
+    "trippuden.github.io HTTP 404",
+    "api.open-meteo.com FAILED net::ERR_TIMED_OUT"
+   ],
+   "errors": [
+    "WARNING @group ZONES: [.WebGL-0x111c00b8c800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+    "WARNING @group ZONES: [.WebGL-0x111c00b8c800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+   ],
+   "counts": {
+    "bb": 217,
+    "pt": 15598,
+    "lb": 21,
+    "pl": 206,
+    "ent": 108,
+    "prim": 16,
+    "ds": 48
+   },
+   "shot": "02-group-zones.jpg",
+   "cards": 4
+  },
+  {
+   "scene": "group EVENTS",
+   "at": 586,
+   "netFail": [],
+   "errors": [],
+   "counts": {
+    "bb": 243,
+    "pt": 15598,
+    "lb": 21,
+    "pl": 206,
+    "ent": 108,
+    "prim": 16,
+    "ds": 48
+   },
+   "shot": "02-group-events.jpg",
+   "cards": 4
+  },
+  {
+   "scene": "group EARTH",
+   "at": 948,
+   "netFail": [
+    "view.eumetsat.int HTTP 500",
+    "gibs.earthdata.nasa.gov HTTP 404",
+    "view.eumetsat.int HTTP 504"
+   ],
+   "errors": [],
+   "counts": {
+    "bb": 16945,
+    "pt": 15598,
+    "lb": 21,
+    "pl": 48,
+    "ent": 126,
+    "prim": 28,
+    "ds": 217
+   },
+   "shot": "02-group-earth.jpg",
+   "cards": 4
+  },
+  {
+   "scene": "group SEA",
+   "at": 1252,
+   "netFail": [
+    "gibs.earthdata.nasa.gov FAILED net::ERR_FAILED",
+    "visualisations.aemo.com.au FAILED net::ERR_FAILED"
+   ],
+   "errors": [
+    "WARNING @group SEA: WebGL: INVALID_VALUE: texImage2D: width or height out of range",
+    "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_VALUE: glCopyTexSubImage2D: Offset overflows texture dimensions.",
+    "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+    "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+    "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+    "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+    "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+    "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range."
+   ],
+   "counts": {
+    "bb": 764,
+    "pt": 15849,
+    "lb": 21,
+    "pl": 27,
+    "ent": 118,
+    "prim": 24,
+    "ds": 2
+   },
+   "shot": "02-group-sea.jpg",
+   "cards": 4
+  },
+  {
+   "scene": "group AIR",
+   "at": 1586,
+   "netFail": [],
+   "errors": [],
+   "counts": {
+    "bb": 200,
+    "pt": 15598,
+    "lb": 21,
+    "pl": 177,
+    "ent": 573,
+    "prim": 20,
+    "ds": 1
+   },
+   "shot": "02-group-air.jpg",
+   "cards": 4
+  },
+  {
+   "scene": "group SPACE",
+   "at": 1829,
+   "netFail": [],
+   "errors": [],
+   "counts": {
+    "bb": 223,
+    "pt": 48397,
+    "lb": 21,
+    "pl": 0,
+    "ent": 52,
+    "prim": 30,
+    "ds": 0
+   },
+   "shot": "02-group-space.jpg",
+   "cards": 4
+  },
+  {
+   "scene": "group NEXT",
+   "at": 2133,
+   "netFail": [],
+   "errors": [],
+   "counts": {
+    "bb": 200,
+    "pt": 15598,
+    "lb": 21,
+    "pl": 67,
+    "ent": 104,
+    "prim": 21,
+    "ds": 57
+   },
+   "shot": "02-group-next.jpg",
+   "cards": 4
+  },
+  {
+   "scene": "group LIVE",
+   "at": 2422,
+   "netFail": [],
+   "errors": [],
+   "counts": {
+    "bb": 2820,
+    "pt": 19639,
+    "lb": 21,
+    "pl": 0,
+    "ent": 13,
+    "prim": 25,
+    "ds": 0
+   },
+   "shot": "02-group-live.jpg",
+   "cards": 4
+  },
+  {
+   "scene": "layer regions",
+   "at": 2586,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer events",
+   "at": 2692,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer strikes",
+   "at": 2786,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer unrest",
+   "at": 2909,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer alerts",
+   "at": 3016,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer crime",
+   "at": 3120,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer banks",
+   "at": 3228,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer cyber",
+   "at": 3328,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer outages",
+   "at": 3425,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer detect",
+   "at": 3526,
+   "netFail": [
+    "trippuden.github.io HTTP 404",
+    "visualisations.aemo.com.au FAILED net::ERR_FAILED"
+   ],
+   "errors": []
+  },
+  {
+   "scene": "layer radio",
+   "at": 3563,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer live",
+   "at": 3603,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer camnet",
+   "at": 3641,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer streetcams",
+   "at": 3759,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer camwatch",
+   "at": 3850,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer hazards",
+   "at": 3951,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer weather",
+   "at": 4066,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer orbitfaint",
+   "at": 4164,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer aurora",
+   "at": 4272,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer fires",
+   "at": 4384,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer power",
+   "at": 4482,
+   "netFail": [],
+   "errors": []
+  }
+ ],
+ "net": {
+  "trippuden.github.io": {
+   "n": 283,
+   "ok": 279,
+   "bad": 4,
+   "fail": 0,
+   "samples": [
+    "open | https://trippuden.github.io/atlas-notes/api/status | HTTP 404",
+    "open | https://trippuden.github.io/atlas-notes/data/heat.json | HTTP 404",
+    "group ZONES | https://trippuden.github.io/atlas-notes/data/cams-windy.json | HTTP 404",
+    "layer detect | https://trippuden.github.io/atlas-notes/data/heat.json | HTTP 404"
+   ]
+  },
+  "api.open-meteo.com": {
+   "n": 14,
+   "ok": 13,
+   "bad": 0,
+   "fail": 1,
+   "samples": [
+    "group ZONES | https://api.open-meteo.com/v1/forecast?latitude=15&longitude=19&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,wind_gusts_10m,wind_dire | FAILED net::ERR_TIMED_OUT"
+   ]
+  },
+  "api.weather.gov": {
+   "n": 69,
+   "ok": 69,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "services.swpc.noaa.gov": {
+   "n": 95,
+   "ok": 95,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "api.bigdatacloud.net": {
+   "n": 12,
+   "ok": 12,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "nowcoast.noaa.gov": {
+   "n": 103,
+   "ok": 103,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "earthquake.usgs.gov": {
+   "n": 81,
+   "ok": 81,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "data.gdeltproject.org": {
+   "n": 67,
+   "ok": 67,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "service.iris.edu": {
+   "n": 9,
+   "ok": 9,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "relay.frelay.workers.dev": {
+   "n": 887,
+   "ok": 887,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "gibs.earthdata.nasa.gov": {
+   "n": 915,
+   "ok": 908,
+   "bad": 3,
+   "fail": 4,
+   "samples": [
+    "open | https://gibs.earthdata.nasa.gov/colormaps/v1.3/GHRSST_L4_MUR25_Sea_Ice_Concentration.xml | FAILED net::ERR_FAILED",
+    "open | https://gibs.earthdata.nasa.gov/colormaps/v1.3/MODIS_Terra_NDSI_Snow_Cover.xml | FAILED net::ERR_FAILED",
+    "group EARTH | https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/Himawari_AHI_Band13_Clean_Infrared/default/2026-11-07T02:40:00Z/GoogleMapsCompatible_Level6/1/0/1.png | HTTP 404",
+    "group EARTH | https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/Himawari_AHI_Band13_Clean_Infrared/default/2026-11-07T02:40:00Z/GoogleMapsCompatible_Level6/1/1/1.png | HTTP 404",
+    "group EARTH | https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/Himawari_AHI_Band13_Clean_Infrared/default/2026-11-07T02:40:00Z/GoogleMapsCompatible_Level6/0/0/0.png | HTTP 404",
+    "group SEA | https://gibs.earthdata.nasa.gov/colormaps/v1.3/GHRSST_L4_MUR25_Sea_Ice_Concentration.xml | FAILED net::ERR_FAILED"
+   ]
+  },
+  "visualisations.aemo.com.au": {
+   "n": 3,
+   "ok": 0,
+   "bad": 0,
+   "fail": 3,
+   "samples": [
+    "open | https://visualisations.aemo.com.au/aemo/apps/api/report/ELEC_NEM_SUMMARY | FAILED net::ERR_FAILED",
+    "group SEA | https://visualisations.aemo.com.au/aemo/apps/api/report/ELEC_NEM_SUMMARY | FAILED net::ERR_FAILED",
+    "layer detect | https://visualisations.aemo.com.au/aemo/apps/api/report/ELEC_NEM_SUMMARY | FAILED net::ERR_FAILED"
+   ]
+  },
+  "de.wikipedia.org": {
+   "n": 9,
+   "ok": 9,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "ar.wikipedia.org": {
+   "n": 9,
+   "ok": 9,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "ja.wikipedia.org": {
+   "n": 6,
+   "ok": 6,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "es.wikipedia.org": {
+   "n": 9,
+   "ok": 9,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "zh.wikipedia.org": {
+   "n": 6,
+   "ok": 6,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "he.wikipedia.org": {
+   "n": 6,
+   "ok": 6,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "uk.wikipedia.org": {
+   "n": 9,
+   "ok": 9,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "data.elexon.co.uk": {
+   "n": 27,
+   "ok": 27,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "api.ioda.inetintel.cc.gatech.edu": {
+   "n": 4,
+   "ok": 4,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "environment.data.gov.uk": {
+   "n": 3,
+   "ok": 3,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "odre.opendatasoft.com": {
+   "n": 3,
+   "ok": 3,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "meri.digitraffic.fi": {
+   "n": 5,
+   "ok": 5,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "eonet.gsfc.nasa.gov": {
+   "n": 5,
+   "ok": 5,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "www.imis.bfs.de": {
+   "n": 3,
+   "ok": 3,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "server.arcgisonline.com": {
+   "n": 684,
+   "ok": 684,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "ru.wikipedia.org": {
+   "n": 9,
+   "ok": 9,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "s3.amazonaws.com": {
+   "n": 414,
+   "ok": 414,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "service.earthscope.org": {
+   "n": 9,
+   "ok": 9,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "fr.wikipedia.org": {
+   "n": 9,
+   "ok": 9,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "www.eia.gov": {
+   "n": 2,
+   "ok": 2,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "en.wikipedia.org": {
+   "n": 17,
+   "ok": 17,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "data.sensor.community": {
+   "n": 4,
+   "ok": 4,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "opengeo.ncep.noaa.gov": {
+   "n": 3,
+   "ok": 3,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "api.rainviewer.com": {
+   "n": 4,
+   "ok": 4,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "view.eumetsat.int": {
+   "n": 165,
+   "ok": 154,
+   "bad": 11,
+   "fail": 0,
+   "samples": [
+    "group EARTH | https://view.eumetsat.int/geoserver/wms?transparent=true&format=image%2Fpng&time=2026-11-07T04%3A05%3A00Z&service=WMS&version=1.1.1&request=GetMap&styles=&layer | HTTP 500",
+    "group EARTH | https://view.eumetsat.int/geoserver/wms?transparent=true&format=image%2Fpng&time=2026-11-07T02%3A40%3A00Z&service=WMS&version=1.1.1&request=GetMap&styles=&layer | HTTP 500",
+    "group EARTH | https://view.eumetsat.int/geoserver/wms?transparent=true&format=image%2Fpng&time=2026-11-07T04%3A05%3A00Z&service=WMS&version=1.1.1&request=GetMap&styles=&layer | HTTP 500",
+    "group EARTH | https://view.eumetsat.int/geoserver/wms?transparent=true&format=image%2Fpng&time=2026-11-07T02%3A30%3A00Z&service=WMS&version=1.1.1&request=GetMap&styles=&layer | HTTP 500",
+    "group EARTH | https://view.eumetsat.int/geoserver/wms?transparent=true&format=image%2Fpng&time=2026-11-07T02%3A25%3A00Z&service=WMS&version=1.1.1&request=GetMap&styles=&layer | HTTP 500",
+    "group EARTH | https://view.eumetsat.int/geoserver/wms?transparent=true&format=image%2Fpng&time=2026-11-07T02%3A25%3A00Z&service=WMS&version=1.1.1&request=GetMap&styles=&layer | HTTP 500"
+   ]
+  },
+  "www.gdacs.org": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "tilecache.rainviewer.com": {
+   "n": 129,
+   "ok": 129,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "services.arcgis.com": {
+   "n": 5,
+   "ok": 5,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "services2.arcgis.com": {
+   "n": 3,
+   "ok": 3,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "gismaps.fayettevillenc.gov": {
+   "n": 3,
+   "ok": 3,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "mycity2.houstontx.gov": {
+   "n": 2,
+   "ok": 2,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "data.sf.gov": {
+   "n": 4,
+   "ok": 4,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "gismaps.wichita.gov": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "maps2.dcgis.dc.gov": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "services1.arcgis.com": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "gis.skagitcountywa.gov": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "geodata.sarpy.gov": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "gis.charlottenc.gov": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "services3.arcgis.com": {
+   "n": 2,
+   "ok": 2,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "data.cityofchicago.org": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "policeview.johnscreekga.gov": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "pwnrmaps.ci.longmont.co.us": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "data.cityofgainesville.org": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "data.kcmo.org": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "policedata.coloradosprings.gov": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "citydata.mesaaz.gov": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "data.montgomerycountymd.gov": {
+   "n": 2,
+   "ok": 2,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "data.cdc.gov": {
+   "n": 9,
+   "ok": 9,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "data.everettwa.gov": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "tile.openstreetmap.org": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "tiles.openfreemap.org": {
+   "n": 2,
+   "ok": 2,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "tiles.arcgis.com": {
+   "n": 3,
+   "ok": 3,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "api.maptiler.com": {
+   "n": 8,
+   "ok": 8,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "a.tile.opentopomap.org": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "tiles.maps.eox.at": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "api.fdic.gov": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "raw.githubusercontent.com": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "www.cyber.gc.ca": {
+   "n": 2,
+   "ok": 2,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "www.seismicportal.eu": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  }
+ },
+ "errors": [
+  "WARNING @open: Service Worker registration blocked by Playwright",
+  "WARNING @group ZONES: [.WebGL-0x111c00b8c800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels",
+  "WARNING @group ZONES: [.WebGL-0x111c00b8c800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)",
+  "WARNING @group SEA: WebGL: INVALID_VALUE: texImage2D: width or height out of range",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_VALUE: glCopyTexSubImage2D: Offset overflows texture dimensions.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: [.WebGL-0x111c00b8c800] GL_INVALID_OPERATION: glTexSubImage2DRobustANGLE: Level of detail outside of range.",
+  "WARNING @group SEA: WebGL: too many errors, no more errors will be reported to the console for this context."
+ ],
+ "layers": [
+  {
+   "k": "regions",
+   "label": "Country levels",
+   "sect": "01 THREATS & CONFLICT 0 of 8 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "40 now · conflict list, news, official levels · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 48,
+    "ent": 40,
+    "ds": 48,
+    "prim": 0
+   },
+   "card": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-regions.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "events",
+   "label": "News events",
+   "sect": "01 THREATS & CONFLICT 0 of 8 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "68 now · news wires and official feeds · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 158,
+    "ent": 29,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-events.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "strikes",
+   "label": "Strike reports",
+   "sect": "01 THREATS & CONFLICT 0 of 8 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "0 now · GDELT · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-strikes.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "unrest",
+   "label": "Unrest map",
+   "sect": "01 THREATS & CONFLICT 0 of 8 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "",
+   "drawn": {
+    "bb": 0,
+    "pt": 94,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 1
+   },
+   "card": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-unrest.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "alerts",
+   "label": "Correlation alerts",
+   "sect": "01 THREATS & CONFLICT 0 of 8 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "0 now · cross-checks of the feeds · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-alerts.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "crime",
+   "label": "Crime & drugs",
+   "sect": "01 THREATS & CONFLICT 0 of 8 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "city open data · every tab",
+   "drawn": {
+    "bb": 28,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 2
+   },
+   "card": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-crime.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "banks",
+   "label": "Banks & payments",
+   "sect": "01 THREATS & CONFLICT 0 of 8 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "STALE 11 H · every tab",
+   "drawn": {
+    "bb": -2820,
+    "pt": -19637,
+    "lb": -21,
+    "pl": -700,
+    "ent": -13,
+    "ds": 0,
+    "prim": -25
+   },
+   "card": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-banks.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "cyber",
+   "label": "Cyberattacks",
+   "sect": "01 THREATS & CONFLICT 0 of 8 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "STALE 11 H · every tab",
+   "drawn": {
+    "bb": 23,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 1
+   },
+   "card": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-cyber.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "outages",
+   "label": "Internet outages",
+   "sect": "01 THREATS & CONFLICT 0 of 8 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "7 now · IODA · STALE 11 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 7,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-outages.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "detect",
+   "label": "Live detectors",
+   "sect": "01 THREATS & CONFLICT 0 of 8 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "2 OF 3 SOURCES ANSWERING · 641 now · live sensors (USGS, BfS, IODA, NOAA...) · every tab",
+   "drawn": {
+    "bb": 568,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 1
+   },
+   "card": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-detect.jpg",
+   "netFail": [
+    "trippuden.github.io HTTP 404",
+    "visualisations.aemo.com.au FAILED net::ERR_FAILED"
+   ],
+   "errors": []
+  },
+  {
+   "k": "radio",
+   "label": "Radio",
+   "sect": "01 THREATS & CONFLICT 0 of 8 on",
+   "wasOn": true,
+   "nowOn": "true",
+   "meta": "KiwiSDR / SatNOGS",
+   "drawn": {
+    "bb": -2620,
+    "pt": -4044,
+    "lb": 0,
+    "pl": -700,
+    "ent": 0,
+    "ds": 0,
+    "prim": -4
+   },
+   "card": null,
+   "shot": "03-layer-radio.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "live",
+   "label": "Live cams & video",
+   "sect": "01 THREATS & CONFLICT 0 of 8 on",
+   "wasOn": true,
+   "nowOn": "true",
+   "meta": "183 now · public webcams and streams · STALE 11 H",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": -13,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": null,
+   "shot": "03-layer-live.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "camnet",
+   "label": "Public cameras worldwide",
+   "sect": "01 THREATS & CONFLICT 0 of 8 on",
+   "wasOn": true,
+   "nowOn": "true",
+   "meta": "82 OF 84 SOURCES ANSWERING · 68,498 now · official public camera networks · STALE 11 H",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 170,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": null,
+   "shot": "03-layer-camnet.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "streetcams",
+   "label": "Street cameras",
+   "sect": "01 THREATS & CONFLICT 0 of 8 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "close-up street cameras when you zoom in to a city",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 1
+   },
+   "card": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-streetcams.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "camwatch",
+   "label": "Camera auto-watch",
+   "sect": "01 THREATS & CONFLICT 0 of 8 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "flags cameras that go dark, freeze, flash or show smoke",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-camwatch.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "hazards",
+   "label": "Hazards",
+   "sect": "02 EARTH & WEATHER 0 of 18 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "38 now · USGS / GDACS / NASA EONET / NWS · STALE 11 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 38,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-hazards.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "weather",
+   "label": "City weather",
+   "sect": "02 EARTH & WEATHER 0 of 18 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "45 now · Open-Meteo · STALE 11 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 45,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-weather.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "orbitfaint",
+   "label": "Satellites & debris (faint)",
+   "sect": "02 EARTH & WEATHER 0 of 18 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "32,811 now · CelesTrak · every tab",
+   "drawn": {
+    "bb": 12,
+    "pt": 32799,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 2
+   },
+   "card": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-orbitfaint.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "aurora",
+   "label": "Northern & southern lights",
+   "sect": "02 EARTH & WEATHER 0 of 18 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "NOAA SWPC · STALE 11 H · every tab",
+   "drawn": {
+    "bb": -2820,
+    "pt": -19631,
+    "lb": -21,
+    "pl": -700,
+    "ent": -13,
+    "ds": 0,
+    "prim": -25
+   },
+   "card": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-aurora.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "fires",
+   "label": "Satellite heat spots",
+   "sect": "02 EARTH & WEATHER 0 of 18 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "waiting for data · NASA FIRMS",
+   "drawn": {
+    "bb": 0,
+    "pt": 94688,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 1
+   },
+   "card": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-fires.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "power",
+   "label": "Power plants",
+   "sect": "02 EARTH & WEATHER 0 of 18 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "WRI power plant database · STALE 11 H · every tab",
+   "drawn": {
+    "bb": 16734,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 2
+   },
+   "card": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-power.jpg",
+   "netFail": [],
+   "errors": []
+  }
+ ],
+ "cards": [
+  {
+   "from": "group ZONES",
+   "id": "bf264067-63b1-4acb-875d-610629d32725",
+   "panel": "detail",
+   "text": "COUNTRY LEVEL\nLibya\nLEVEL 3\nHIGH\nHOW THIS LEVEL IS SET: By the governments' advice: 6 of 6 governments: avoid all travel (advice alone stops at LEVEL 3).\nCONF\n4\nCRIME\n4\nHLTH\n-\nDISAS\n-\nPOL\n4\nCONFLICT\n4\n197 killed so far in 2026 in the Libyan crisis (compiled toll, ESTIMATE), about 4 a week.\nCRIME\n4\ncrime named in 2 governments' advice.\nHEALTH\nno data\nNo outbreak reported by WHO in 90 days.\nDISASTER\nno data\nNo red, orange or M6+ alert in 7 days.\nPOLITICAL\n4\nunrest named in 1 government's advice.\nGOVERNMENTS · 6 READ\n6 of 6 governments: avoid all travel\nAdvice alone sets at most LEVEL 3; no front with its own numbers is at LEVEL 3 or worse.\nAustralia\nDo not travel\nopen\nupdated 2026-08-13 · read 10h ago\nCanada\nAvoid all travel\nopen\nupdated 2026-10-06 · read 10h ago\nGermany\nReisewarnung\nopen\nupdated 2026-10-13 · read 10h ago\nJapan\nレベル4：退避してください。渡航は止めてください（退避勧告）\nopen\nupdated 2026-11-06 · read 14h ago\nUK\nFCDO advises against all travel to parts of the country\nopen\nupdated 2026-07-21 · read 11h ago\nUS\nDo Not Travel\nopen\nupdated 2026-08-31 · read 10h ago\nTheir own 1-4 scale (four cells): 1 normal precautions, 2 caution, 3 avoid non-essential travel, 4 avoid all travel.\nSTATES / AREAS · 0 NAMED\n12 other areas in one government's own words\nListed, not drawn: the map has no province outlines yet.\nSOURCES\nDFAT Smartraveller: Do not travel 86d ago\nState Department: Do Not Travel 68d ago\nMinisterie van Buitenlandse Zaken: kleurcode per gebied 106d ago\nForeign, Commonwealth & Development Office: FCDO advises against all travel to parts of the country 109d ago\nGlobal Affairs Canada: Avoid all travel 32d ago\nAuswärtiges Amt: Reisewarnung 25d ago\nMinistry of Foreign Affairs: レベル4：退避してください。渡航は止めてください（退避勧告） 14h ago\nacleddata.com (cited by a compiled toll)\nFresh gunbattles rock Libya capital after brief lull (cited by a compiled toll)\nArmed Conflict Location & Event Data Project (cited by a compiled toll)\nThe rule\nsteady · computed 10h ago\nDEATHS · COMPILED TOLLS ESTIMATE\nLibyan crisis\n197\nkilled so far in 2026\n282\nkilled in 2025\n30,300–43,000\nsince it began\nCites: acleddata.com · Armed Conflict Location & Event Data Project · The Guardian\nWhole-conflict figures from a secondary compilation (they cover every country in the war); each figure lists the counts it cites. Totals are ranges because sources disagree.\nLATEST STORY\nLibya - Level 4: Do Not Travel\nOld score (news and conflict list), for comparison\nNEWS SOURCES\nUS State Dept: Libya - Level 4: Do Not Travel\nComputed 11/6/2026, 1:30:28 PM (10h ago). Country levels are the terminal's own 1-5 danger scale (1 = at war, 5 = low), computed the same way for everyone from the public data above. They are not DEFCON, which is US military readiness: see the US estimate.\nOFFLINE COUNTRY FILE · numbers, radio, hazards\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "02-group-zones-card-0.jpg"
+  },
+  {
+   "from": "group ZONES",
+   "id": "d6991252-b437-42f2-8156-b8b72112ccaa",
+   "panel": "detail",
+   "text": "COUNTRY LEVEL\nLibya\nLEVEL 3\nHIGH\nHOW THIS LEVEL IS SET: By the governments' advice: 6 of 6 governments: avoid all travel (advice alone stops at LEVEL 3).\nCONF\n4\nCRIME\n4\nHLTH\n-\nDISAS\n-\nPOL\n4\nCONFLICT\n4\n197 killed so far in 2026 in the Libyan crisis (compiled toll, ESTIMATE), about 4 a week.\nCRIME\n4\ncrime named in 2 governments' advice.\nHEALTH\nno data\nNo outbreak reported by WHO in 90 days.\nDISASTER\nno data\nNo red, orange or M6+ alert in 7 days.\nPOLITICAL\n4\nunrest named in 1 government's advice.\nGOVERNMENTS · 6 READ\n6 of 6 governments: avoid all travel\nAdvice alone sets at most LEVEL 3; no front with its own numbers is at LEVEL 3 or worse.\nAustralia\nDo not travel\nopen\nupdated 2026-08-13 · read 10h ago\nCanada\nAvoid all travel\nopen\nupdated 2026-10-06 · read 10h ago\nGermany\nReisewarnung\nopen\nupdated 2026-10-13 · read 10h ago\nJapan\nレベル4：退避してください。渡航は止めてください（退避勧告）\nopen\nupdated 2026-11-06 · read 14h ago\nUK\nFCDO advises against all travel to parts of the country\nopen\nupdated 2026-07-21 · read 11h ago\nUS\nDo Not Travel\nopen\nupdated 2026-08-31 · read 10h ago\nTheir own 1-4 scale (four cells): 1 normal precautions, 2 caution, 3 avoid non-essential travel, 4 avoid all travel.\nSTATES / AREAS · 0 NAMED\n12 other areas in one government's own words\nListed, not drawn: the map has no province outlines yet.\nSOURCES\nDFAT Smartraveller: Do not travel 86d ago\nState Department: Do Not Travel 68d ago\nMinisterie van Buitenlandse Zaken: kleurcode per gebied 106d ago\nForeign, Commonwealth & Development Office: FCDO advises against all travel to parts of the country 109d ago\nGlobal Affairs Canada: Avoid all travel 32d ago\nAuswärtiges Amt: Reisewarnung 25d ago\nMinistry of Foreign Affairs: レベル4：退避してください。渡航は止めてください（退避勧告） 14h ago\nacleddata.com (cited by a compiled toll)\nFresh gunbattles rock Libya capital after brief lull (cited by a compiled toll)\nArmed Conflict Location & Event Data Project (cited by a compiled toll)\nThe rule\nsteady · computed 10h ago\nDEATHS · COMPILED TOLLS ESTIMATE\nLibyan crisis\n197\nkilled so far in 2026\n282\nkilled in 2025\n30,300–43,000\nsince it began\nCites: acleddata.com · Armed Conflict Location & Event Data Project · The Guardian\nWhole-conflict figures from a secondary compilation (they cover every country in the war); each figure lists the counts it cites. Totals are ranges because sources disagree.\nLATEST STORY\nLibya - Level 4: Do Not Travel\nOld score (news and conflict list), for comparison\nNEWS SOURCES\nUS State Dept: Libya - Level 4: Do Not Travel\nComputed 11/6/2026, 1:30:28 PM (10h ago). Country levels are the terminal's own 1-5 danger scale (1 = at war, 5 = low), computed the same way for everyone from the public data above. They are not DEFCON, which is US military readiness: see the US estimate.\nOFFLINE COUNTRY FILE · numbers, radio, hazards\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "02-group-zones-card-1.jpg"
+  },
+  {
+   "from": "group ZONES",
+   "id": "b2b215e3-c354-42ae-bab1-9022e4ea022d",
+   "panel": "detail",
+   "text": "COUNTRY LEVEL\nChad\nLEVEL 3\nHIGH\nHOW THIS LEVEL IS SET: By the governments' advice: 2 of 7 governments: avoid all travel.\nCONF\n4\nCRIME\n4\nHLTH\n-\nDISAS\n5\nPOL\n4\nCONFLICT\n4\n20 killed in 2 events in 2026-09 (UCDP, preliminary), about 5 killed a week.\n47d ago\nCRIME\n4\ncrime named in 4 governments' advice.\nHEALTH\nno data\nNo outbreak reported by WHO in 90 days.\nDISASTER\n5\nNo red, orange or M6+ alert in 7 days.\nPOLITICAL\n4\nunrest named in 3 governments' advice.\nGOVERNMENTS · 7 READ ·\nTHEY DISAGREE\n2 of 7 governments: avoid all travel; 3: avoid non-essential travel; 1: no advice against travel; 1: rated by area only\n5 of 7 governments advise against travel to parts; 5 of 7: avoid all travel there\nAustralia\nDo not travel\nopen\nupdated 2025-11-20 · read 10h ago\nUS\nDo Not Travel\nopen\nupdated 2026-04-28 · read 10h ago\nCanada\nAvoid non-essential travel · parts: avoid all travel\nopen\nupdated 2026-11-02 · read 10h ago\nNetherlands\nkleurcode oranje · parts: avoid all travel\nopen\nupdated 2026-10-15 · read 10h ago\nUK\nFCDO advises against all travel to parts of the country · parts: avoid all travel\nopen\nupdated 2026-11-04 · read 10h ago\nGermany\nTeilreisewarnung · parts: avoid all travel\nopen\nupdated 2026-10-27 · read 10h ago\nJapan\nby area only, worst: avoid all travel\nopen\nupdated 2026-11-06 · read 10h ago\nTheir own 1-4 scale (four cells): 1 normal precautions, 2 caution, 3 avoid non-essential travel, 4 avoid all travel.\nSTATES / AREAS · 1 NAMED\nLac\navoid all travel · 1 gov · 20 killed 2026-09 (UCDP)\n20 other areas in one government's own words\nListed, not drawn: the map has no province outlines yet.\nSOURCES\nDFAT Smartraveller: Do not travel 352d ago\nState Department: Do Not Travel 193d ago\nMinisterie van Buitenlandse Zaken: kleurcode oranje 23d ago\nForeign, Commonwealth & Development Office: FCDO advises against all travel to parts of the country 3d ago\nGlobal Affairs Canada: Avoid non-essential travel 5d ago\nAuswärtiges Amt: Teilreisewarnung 11d ago\nMinistry of Foreign Affairs: レベル4：退避してください。渡航は止めてください（退避勧告）（一部地域） 10h ago\nUCDP Candidate Events Dataset (Uppsala University) 47d ago\nThe rule\nsteady · computed 10h ago\nDEATHS · COMPILED TOLLS ESTIMATE\nSudanese civil wars (listed location)\n12,123\nkilled so far in 2026\n21,994–80,000+\nkilled in 2025\n1,521,000+\nsince it began\nCites: acleddata.com · ucdp.uu.se · Armed Conflict Location & Event Data Project (ACLED) · TheGuardian.com · Associated Press News · Sudan war: A simple guide to what is happening\nIslamist insurgencies in the Maghreb and Sahel (listed location)\n20,688\nkilled so far in 2026\n24,046\nkilled in 2025\n488,500+\nsince it began\nCites: acleddata.com · Armed Conflict Location and Event Data Project · Human rights in Libya · Algeria &#124; Freedom House · American commandos face complicated mission in Mali · Burkina junta breaks silence over massacre by men 'in army uniform'\nCivil conflicts in Nigeria (listed location)\n3,600\nkilled so far in 2026\n3,200\nkilled in 2025\n107,300+\nsince it began\nCites: acleddata.com · Motorbike raids on villages kill dozens in Nigeria · Armed Conflict Location & Event Data Project · Council on Foreign Relations · Connect SAIS Africa · allAfrica\nWhole-conflict figures from a secondary compilation (they cover every country in the war); each figure lists the counts it cites. Totals are ranges because sources disagree.\nLATEST STORY\nChad - Level 4: Do Not Travel\nOld score (news and conflict list), for comparison\nNEWS SOURCES\nUS State Dept: Chad - Level 4: Do Not Travel\nComputed 11/6/20",
+   "shot": "02-group-zones-card-2.jpg"
+  },
+  {
+   "from": "group ZONES",
+   "id": "1c8cd37e-83b6-4247-935e-df633aa4bd0c",
+   "panel": "detail",
+   "text": "COUNTRY LEVEL\nChad\nLEVEL 3\nHIGH\nHOW THIS LEVEL IS SET: By the governments' advice: 2 of 7 governments: avoid all travel.\nCONF\n4\nCRIME\n4\nHLTH\n-\nDISAS\n5\nPOL\n4\nCONFLICT\n4\n20 killed in 2 events in 2026-09 (UCDP, preliminary), about 5 killed a week.\n47d ago\nCRIME\n4\ncrime named in 4 governments' advice.\nHEALTH\nno data\nNo outbreak reported by WHO in 90 days.\nDISASTER\n5\nNo red, orange or M6+ alert in 7 days.\nPOLITICAL\n4\nunrest named in 3 governments' advice.\nGOVERNMENTS · 7 READ ·\nTHEY DISAGREE\n2 of 7 governments: avoid all travel; 3: avoid non-essential travel; 1: no advice against travel; 1: rated by area only\n5 of 7 governments advise against travel to parts; 5 of 7: avoid all travel there\nAustralia\nDo not travel\nopen\nupdated 2025-11-20 · read 10h ago\nUS\nDo Not Travel\nopen\nupdated 2026-04-28 · read 10h ago\nCanada\nAvoid non-essential travel · parts: avoid all travel\nopen\nupdated 2026-11-02 · read 10h ago\nNetherlands\nkleurcode oranje · parts: avoid all travel\nopen\nupdated 2026-10-15 · read 10h ago\nUK\nFCDO advises against all travel to parts of the country · parts: avoid all travel\nopen\nupdated 2026-11-04 · read 10h ago\nGermany\nTeilreisewarnung · parts: avoid all travel\nopen\nupdated 2026-10-27 · read 10h ago\nJapan\nby area only, worst: avoid all travel\nopen\nupdated 2026-11-06 · read 10h ago\nTheir own 1-4 scale (four cells): 1 normal precautions, 2 caution, 3 avoid non-essential travel, 4 avoid all travel.\nSTATES / AREAS · 1 NAMED\nLac\navoid all travel · 1 gov · 20 killed 2026-09 (UCDP)\n20 other areas in one government's own words\nListed, not drawn: the map has no province outlines yet.\nSOURCES\nDFAT Smartraveller: Do not travel 352d ago\nState Department: Do Not Travel 193d ago\nMinisterie van Buitenlandse Zaken: kleurcode oranje 23d ago\nForeign, Commonwealth & Development Office: FCDO advises against all travel to parts of the country 3d ago\nGlobal Affairs Canada: Avoid non-essential travel 5d ago\nAuswärtiges Amt: Teilreisewarnung 11d ago\nMinistry of Foreign Affairs: レベル4：退避してください。渡航は止めてください（退避勧告）（一部地域） 10h ago\nUCDP Candidate Events Dataset (Uppsala University) 47d ago\nThe rule\nsteady · computed 10h ago\nDEATHS · COMPILED TOLLS ESTIMATE\nSudanese civil wars (listed location)\n12,123\nkilled so far in 2026\n21,994–80,000+\nkilled in 2025\n1,521,000+\nsince it began\nCites: acleddata.com · ucdp.uu.se · Armed Conflict Location & Event Data Project (ACLED) · TheGuardian.com · Associated Press News · Sudan war: A simple guide to what is happening\nIslamist insurgencies in the Maghreb and Sahel (listed location)\n20,688\nkilled so far in 2026\n24,046\nkilled in 2025\n488,500+\nsince it began\nCites: acleddata.com · Armed Conflict Location and Event Data Project · Human rights in Libya · Algeria &#124; Freedom House · American commandos face complicated mission in Mali · Burkina junta breaks silence over massacre by men 'in army uniform'\nCivil conflicts in Nigeria (listed location)\n3,600\nkilled so far in 2026\n3,200\nkilled in 2025\n107,300+\nsince it began\nCites: acleddata.com · Motorbike raids on villages kill dozens in Nigeria · Armed Conflict Location & Event Data Project · Council on Foreign Relations · Connect SAIS Africa · allAfrica\nWhole-conflict figures from a secondary compilation (they cover every country in the war); each figure lists the counts it cites. Totals are ranges because sources disagree.\nLATEST STORY\nChad - Level 4: Do Not Travel\nOld score (news and conflict list), for comparison\nNEWS SOURCES\nUS State Dept: Chad - Level 4: Do Not Travel\nComputed 11/6/20",
+   "shot": "02-group-zones-card-3.jpg"
+  },
+  {
+   "from": "group EVENTS",
+   "id": "a8051ac2-c153-4805-bcef-665225107e50",
+   "panel": "detail",
+   "text": "COUNTRY LEVEL\nChad\nLEVEL 3\nHIGH\nHOW THIS LEVEL IS SET: By the governments' advice: 2 of 7 governments: avoid all travel.\nCONF\n4\nCRIME\n4\nHLTH\n-\nDISAS\n5\nPOL\n4\nCONFLICT\n4\n20 killed in 2 events in 2026-09 (UCDP, preliminary), about 5 killed a week.\n47d ago\nCRIME\n4\ncrime named in 4 governments' advice.\nHEALTH\nno data\nNo outbreak reported by WHO in 90 days.\nDISASTER\n5\nNo red, orange or M6+ alert in 7 days.\nPOLITICAL\n4\nunrest named in 3 governments' advice.\nGOVERNMENTS · 7 READ ·\nTHEY DISAGREE\n2 of 7 governments: avoid all travel; 3: avoid non-essential travel; 1: no advice against travel; 1: rated by area only\n5 of 7 governments advise against travel to parts; 5 of 7: avoid all travel there\nAustralia\nDo not travel\nopen\nupdated 2025-11-20 · read 10h ago\nUS\nDo Not Travel\nopen\nupdated 2026-04-28 · read 10h ago\nCanada\nAvoid non-essential travel · parts: avoid all travel\nopen\nupdated 2026-11-02 · read 10h ago\nNetherlands\nkleurcode oranje · parts: avoid all travel\nopen\nupdated 2026-10-15 · read 10h ago\nUK\nFCDO advises against all travel to parts of the country · parts: avoid all travel\nopen\nupdated 2026-11-04 · read 10h ago\nGermany\nTeilreisewarnung · parts: avoid all travel\nopen\nupdated 2026-10-27 · read 10h ago\nJapan\nby area only, worst: avoid all travel\nopen\nupdated 2026-11-06 · read 10h ago\nTheir own 1-4 scale (four cells): 1 normal precautions, 2 caution, 3 avoid non-essential travel, 4 avoid all travel.\nSTATES / AREAS · 1 NAMED\nLac\navoid all travel · 1 gov · 20 killed 2026-09 (UCDP)\n20 other areas in one government's own words\nListed, not drawn: the map has no province outlines yet.\nSOURCES\nDFAT Smartraveller: Do not travel 352d ago\nState Department: Do Not Travel 193d ago\nMinisterie van Buitenlandse Zaken: kleurcode oranje 23d ago\nForeign, Commonwealth & Development Office: FCDO advises against all travel to parts of the country 3d ago\nGlobal Affairs Canada: Avoid non-essential travel 5d ago\nAuswärtiges Amt: Teilreisewarnung 11d ago\nMinistry of Foreign Affairs: レベル4：退避してください。渡航は止めてください（退避勧告）（一部地域） 10h ago\nUCDP Candidate Events Dataset (Uppsala University) 47d ago\nThe rule\nsteady · computed 10h ago\nDEATHS · COMPILED TOLLS ESTIMATE\nSudanese civil wars (listed location)\n12,123\nkilled so far in 2026\n21,994–80,000+\nkilled in 2025\n1,521,000+\nsince it began\nCites: acleddata.com · ucdp.uu.se · Armed Conflict Location & Event Data Project (ACLED) · TheGuardian.com · Associated Press News · Sudan war: A simple guide to what is happening\nIslamist insurgencies in the Maghreb and Sahel (listed location)\n20,688\nkilled so far in 2026\n24,046\nkilled in 2025\n488,500+\nsince it began\nCites: acleddata.com · Armed Conflict Location and Event Data Project · Human rights in Libya · Algeria &#124; Freedom House · American commandos face complicated mission in Mali · Burkina junta breaks silence over massacre by men 'in army uniform'\nCivil conflicts in Nigeria (listed location)\n3,600\nkilled so far in 2026\n3,200\nkilled in 2025\n107,300+\nsince it began\nCites: acleddata.com · Motorbike raids on villages kill dozens in Nigeria · Armed Conflict Location & Event Data Project · Council on Foreign Relations · Connect SAIS Africa · allAfrica\nWhole-conflict figures from a secondary compilation (they cover every country in the war); each figure lists the counts it cites. Totals are ranges because sources disagree.\nLATEST STORY\nChad - Level 4: Do Not Travel\nOld score (news and conflict list), for comparison\nNEWS SOURCES\nUS State Dept: Chad - Level 4: Do Not Travel\nComputed 11/6/20",
+   "shot": "02-group-events-card-0.jpg"
+  },
+  {
+   "from": "group EVENTS",
+   "id": "[\"det\"]",
+   "panel": "detail",
+   "text": "SUDDEN HEAT · LIVE DETECTOR\nNew heat cluster · 140 MW from 3 spots · none in the 24 h before\n2026-11-06 14:03:28Z\nNOV 6, 09:03:28 AM YOUR TIME · 14H 14M AGO\n140 MW\nREADING\nMEASURED\n3 SENSORS\nDELAYED\nHOURLY OR SLOWER\n10.97°\n10.97°, 17.17°\n61\nSTRENGTH / 100\nSatellites saw 3 hot spots in this ~6.2 mi area on the latest passes (strongest 55 MW) where there was no heat earlier in the day. Most new clusters are farm or bush burning; it can also be a new wildfire, an industrial or fuel fire, a strike, a volcano or a gas flare.\nEVERYTHING ELSE SEEN AROUND IT · WITHIN 62 MI · 2 H BEFORE TO 6 H AFTER (0)\nNothing else this app watches fired there in those hours: quakes, raw seismographs, satellite heat, radiation, air quality, floods, internet outages, grid outages, aircraft emergencies, air-raid alerts and official posts.\nIF SMOKE OR ANYTHING ELSE IS RELEASED HERE\nWhere air from here drifts · next 24 h\nPOWER PLANTS NEAR IT (0)\nNo power plant of 20 MW or more within 62 mi.\nSOURCE\nNASA FIRMS (VIIRS / MODIS)\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "02-group-events-card-1.jpg"
+  },
+  {
+   "from": "group EVENTS",
+   "id": "[\"det\"]",
+   "panel": "detail",
+   "text": "COUNTRY LEVEL\nChad\nLEVEL 3\nHIGH\nHOW THIS LEVEL IS SET: By the governments' advice: 2 of 7 governments: avoid all travel.\nCONF\n4\nCRIME\n4\nHLTH\n-\nDISAS\n5\nPOL\n4\nCONFLICT\n4\n20 killed in 2 events in 2026-09 (UCDP, preliminary), about 5 killed a week.\n47d ago\nCRIME\n4\ncrime named in 4 governments' advice.\nHEALTH\nno data\nNo outbreak reported by WHO in 90 days.\nDISASTER\n5\nNo red, orange or M6+ alert in 7 days.\nPOLITICAL\n4\nunrest named in 3 governments' advice.\nGOVERNMENTS · 7 READ ·\nTHEY DISAGREE\n2 of 7 governments: avoid all travel; 3: avoid non-essential travel; 1: no advice against travel; 1: rated by area only\n5 of 7 governments advise against travel to parts; 5 of 7: avoid all travel there\nAustralia\nDo not travel\nopen\nupdated 2025-11-20 · read 10h ago\nUS\nDo Not Travel\nopen\nupdated 2026-04-28 · read 10h ago\nCanada\nAvoid non-essential travel · parts: avoid all travel\nopen\nupdated 2026-11-02 · read 10h ago\nNetherlands\nkleurcode oranje · parts: avoid all travel\nopen\nupdated 2026-10-15 · read 10h ago\nUK\nFCDO advises against all travel to parts of the country · parts: avoid all travel\nopen\nupdated 2026-11-04 · read 10h ago\nGermany\nTeilreisewarnung · parts: avoid all travel\nopen\nupdated 2026-10-27 · read 10h ago\nJapan\nby area only, worst: avoid all travel\nopen\nupdated 2026-11-06 · read 10h ago\nTheir own 1-4 scale (four cells): 1 normal precautions, 2 caution, 3 avoid non-essential travel, 4 avoid all travel.\nSTATES / AREAS · 1 NAMED\nLac\navoid all travel · 1 gov · 20 killed 2026-09 (UCDP)\n20 other areas in one government's own words\nListed, not drawn: the map has no province outlines yet.\nSOURCES\nDFAT Smartraveller: Do not travel 352d ago\nState Department: Do Not Travel 193d ago\nMinisterie van Buitenlandse Zaken: kleurcode oranje 23d ago\nForeign, Commonwealth & Development Office: FCDO advises against all travel to parts of the country 3d ago\nGlobal Affairs Canada: Avoid non-essential travel 5d ago\nAuswärtiges Amt: Teilreisewarnung 11d ago\nMinistry of Foreign Affairs: レベル4：退避してください。渡航は止めてください（退避勧告）（一部地域） 10h ago\nUCDP Candidate Events Dataset (Uppsala University) 47d ago\nThe rule\nsteady · computed 10h ago\nDEATHS · COMPILED TOLLS ESTIMATE\nSudanese civil wars (listed location)\n12,123\nkilled so far in 2026\n21,994–80,000+\nkilled in 2025\n1,521,000+\nsince it began\nCites: acleddata.com · ucdp.uu.se · Armed Conflict Location & Event Data Project (ACLED) · TheGuardian.com · Associated Press News · Sudan war: A simple guide to what is happening\nIslamist insurgencies in the Maghreb and Sahel (listed location)\n20,688\nkilled so far in 2026\n24,046\nkilled in 2025\n488,500+\nsince it began\nCites: acleddata.com · Armed Conflict Location and Event Data Project · Human rights in Libya · Algeria &#124; Freedom House · American commandos face complicated mission in Mali · Burkina junta breaks silence over massacre by men 'in army uniform'\nCivil conflicts in Nigeria (listed location)\n3,600\nkilled so far in 2026\n3,200\nkilled in 2025\n107,300+\nsince it began\nCites: acleddata.com · Motorbike raids on villages kill dozens in Nigeria · Armed Conflict Location & Event Data Project · Council on Foreign Relations · Connect SAIS Africa · allAfrica\nWhole-conflict figures from a secondary compilation (they cover every country in the war); each figure lists the counts it cites. Totals are ranges because sources disagree.\nLATEST STORY\nChad - Level 4: Do Not Travel\nOld score (news and conflict list), for comparison\nNEWS SOURCES\nUS State Dept: Chad - Level 4: Do Not Travel\nComputed 11/6/20",
+   "shot": "02-group-events-card-2.jpg"
+  },
+  {
+   "from": "group EVENTS",
+   "id": "Algorab",
+   "panel": "detail",
+   "text": "COUNTRY LEVEL\nChad\nLEVEL 3\nHIGH\nHOW THIS LEVEL IS SET: By the governments' advice: 2 of 7 governments: avoid all travel.\nCONF\n4\nCRIME\n4\nHLTH\n-\nDISAS\n5\nPOL\n4\nCONFLICT\n4\n20 killed in 2 events in 2026-09 (UCDP, preliminary), about 5 killed a week.\n47d ago\nCRIME\n4\ncrime named in 4 governments' advice.\nHEALTH\nno data\nNo outbreak reported by WHO in 90 days.\nDISASTER\n5\nNo red, orange or M6+ alert in 7 days.\nPOLITICAL\n4\nunrest named in 3 governments' advice.\nGOVERNMENTS · 7 READ ·\nTHEY DISAGREE\n2 of 7 governments: avoid all travel; 3: avoid non-essential travel; 1: no advice against travel; 1: rated by area only\n5 of 7 governments advise against travel to parts; 5 of 7: avoid all travel there\nAustralia\nDo not travel\nopen\nupdated 2025-11-20 · read 10h ago\nUS\nDo Not Travel\nopen\nupdated 2026-04-28 · read 10h ago\nCanada\nAvoid non-essential travel · parts: avoid all travel\nopen\nupdated 2026-11-02 · read 10h ago\nNetherlands\nkleurcode oranje · parts: avoid all travel\nopen\nupdated 2026-10-15 · read 10h ago\nUK\nFCDO advises against all travel to parts of the country · parts: avoid all travel\nopen\nupdated 2026-11-04 · read 10h ago\nGermany\nTeilreisewarnung · parts: avoid all travel\nopen\nupdated 2026-10-27 · read 10h ago\nJapan\nby area only, worst: avoid all travel\nopen\nupdated 2026-11-06 · read 10h ago\nTheir own 1-4 scale (four cells): 1 normal precautions, 2 caution, 3 avoid non-essential travel, 4 avoid all travel.\nSTATES / AREAS · 1 NAMED\nLac\navoid all travel · 1 gov · 20 killed 2026-09 (UCDP)\n20 other areas in one government's own words\nListed, not drawn: the map has no province outlines yet.\nSOURCES\nDFAT Smartraveller: Do not travel 352d ago\nState Department: Do Not Travel 193d ago\nMinisterie van Buitenlandse Zaken: kleurcode oranje 23d ago\nForeign, Commonwealth & Development Office: FCDO advises against all travel to parts of the country 3d ago\nGlobal Affairs Canada: Avoid non-essential travel 5d ago\nAuswärtiges Amt: Teilreisewarnung 11d ago\nMinistry of Foreign Affairs: レベル4：退避してください。渡航は止めてください（退避勧告）（一部地域） 10h ago\nUCDP Candidate Events Dataset (Uppsala University) 47d ago\nThe rule\nsteady · computed 10h ago\nDEATHS · COMPILED TOLLS ESTIMATE\nSudanese civil wars (listed location)\n12,123\nkilled so far in 2026\n21,994–80,000+\nkilled in 2025\n1,521,000+\nsince it began\nCites: acleddata.com · ucdp.uu.se · Armed Conflict Location & Event Data Project (ACLED) · TheGuardian.com · Associated Press News · Sudan war: A simple guide to what is happening\nIslamist insurgencies in the Maghreb and Sahel (listed location)\n20,688\nkilled so far in 2026\n24,046\nkilled in 2025\n488,500+\nsince it began\nCites: acleddata.com · Armed Conflict Location and Event Data Project · Human rights in Libya · Algeria &#124; Freedom House · American commandos face complicated mission in Mali · Burkina junta breaks silence over massacre by men 'in army uniform'\nCivil conflicts in Nigeria (listed location)\n3,600\nkilled so far in 2026\n3,200\nkilled in 2025\n107,300+\nsince it began\nCites: acleddata.com · Motorbike raids on villages kill dozens in Nigeria · Armed Conflict Location & Event Data Project · Council on Foreign Relations · Connect SAIS Africa · allAfrica\nWhole-conflict figures from a secondary compilation (they cover every country in the war); each figure lists the counts it cites. Totals are ranges because sources disagree.\nLATEST STORY\nChad - Level 4: Do Not Travel\nOld score (news and conflict list), for comparison\nNEWS SOURCES\nUS State Dept: Chad - Level 4: Do Not Travel\nComputed 11/6/20",
+   "shot": "02-group-events-card-3.jpg"
+  },
+  {
+   "from": "group EARTH",
+   "id": "a7645126-81e8-47c4-8511-d2ebf5240306",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-earth-card-0.jpg"
+  },
+  {
+   "from": "group EARTH",
+   "id": "Algorab",
+   "panel": "detail",
+   "text": "COUNTRY LEVEL\nChad\nLEVEL 3\nHIGH\nHOW THIS LEVEL IS SET: By the governments' advice: 2 of 7 governments: avoid all travel.\nCONF\n4\nCRIME\n4\nHLTH\n-\nDISAS\n5\nPOL\n4\nCONFLICT\n4\n20 killed in 2 events in 2026-09 (UCDP, preliminary), about 5 killed a week.\n47d ago\nCRIME\n4\ncrime named in 4 governments' advice.\nHEALTH\nno data\nNo outbreak reported by WHO in 90 days.\nDISASTER\n5\nNo red, orange or M6+ alert in 7 days.\nPOLITICAL\n4\nunrest named in 3 governments' advice.\nGOVERNMENTS · 7 READ ·\nTHEY DISAGREE\n2 of 7 governments: avoid all travel; 3: avoid non-essential travel; 1: no advice against travel; 1: rated by area only\n5 of 7 governments advise against travel to parts; 5 of 7: avoid all travel there\nAustralia\nDo not travel\nopen\nupdated 2025-11-20 · read 10h ago\nUS\nDo Not Travel\nopen\nupdated 2026-04-28 · read 10h ago\nCanada\nAvoid non-essential travel · parts: avoid all travel\nopen\nupdated 2026-11-02 · read 10h ago\nNetherlands\nkleurcode oranje · parts: avoid all travel\nopen\nupdated 2026-10-15 · read 10h ago\nUK\nFCDO advises against all travel to parts of the country · parts: avoid all travel\nopen\nupdated 2026-11-04 · read 10h ago\nGermany\nTeilreisewarnung · parts: avoid all travel\nopen\nupdated 2026-10-27 · read 10h ago\nJapan\nby area only, worst: avoid all travel\nopen\nupdated 2026-11-06 · read 10h ago\nTheir own 1-4 scale (four cells): 1 normal precautions, 2 caution, 3 avoid non-essential travel, 4 avoid all travel.\nSTATES / AREAS · 1 NAMED\nLac\navoid all travel · 1 gov · 20 killed 2026-09 (UCDP)\n20 other areas in one government's own words\nListed, not drawn: the map has no province outlines yet.\nSOURCES\nDFAT Smartraveller: Do not travel 352d ago\nState Department: Do Not Travel 193d ago\nMinisterie van Buitenlandse Zaken: kleurcode oranje 23d ago\nForeign, Commonwealth & Development Office: FCDO advises against all travel to parts of the country 3d ago\nGlobal Affairs Canada: Avoid non-essential travel 5d ago\nAuswärtiges Amt: Teilreisewarnung 11d ago\nMinistry of Foreign Affairs: レベル4：退避してください。渡航は止めてください（退避勧告）（一部地域） 10h ago\nUCDP Candidate Events Dataset (Uppsala University) 47d ago\nThe rule\nsteady · computed 10h ago\nDEATHS · COMPILED TOLLS ESTIMATE\nSudanese civil wars (listed location)\n12,123\nkilled so far in 2026\n21,994–80,000+\nkilled in 2025\n1,521,000+\nsince it began\nCites: acleddata.com · ucdp.uu.se · Armed Conflict Location & Event Data Project (ACLED) · TheGuardian.com · Associated Press News · Sudan war: A simple guide to what is happening\nIslamist insurgencies in the Maghreb and Sahel (listed location)\n20,688\nkilled so far in 2026\n24,046\nkilled in 2025\n488,500+\nsince it began\nCites: acleddata.com · Armed Conflict Location and Event Data Project · Human rights in Libya · Algeria &#124; Freedom House · American commandos face complicated mission in Mali · Burkina junta breaks silence over massacre by men 'in army uniform'\nCivil conflicts in Nigeria (listed location)\n3,600\nkilled so far in 2026\n3,200\nkilled in 2025\n107,300+\nsince it began\nCites: acleddata.com · Motorbike raids on villages kill dozens in Nigeria · Armed Conflict Location & Event Data Project · Council on Foreign Relations · Connect SAIS Africa · allAfrica\nWhole-conflict figures from a secondary compilation (they cover every country in the war); each figure lists the counts it cites. Totals are ranges because sources disagree.\nLATEST STORY\nChad - Level 4: Do Not Travel\nOld score (news and conflict list), for comparison\nNEWS SOURCES\nUS State Dept: Chad - Level 4: Do Not Travel\nComputed 11/6/20",
+   "shot": "02-group-earth-card-1.jpg"
+  },
+  {
+   "from": "group EARTH",
+   "id": "Porrima",
+   "panel": "detail",
+   "text": "COUNTRY LEVEL\nChad\nLEVEL 3\nHIGH\nHOW THIS LEVEL IS SET: By the governments' advice: 2 of 7 governments: avoid all travel.\nCONF\n4\nCRIME\n4\nHLTH\n-\nDISAS\n5\nPOL\n4\nCONFLICT\n4\n20 killed in 2 events in 2026-09 (UCDP, preliminary), about 5 killed a week.\n47d ago\nCRIME\n4\ncrime named in 4 governments' advice.\nHEALTH\nno data\nNo outbreak reported by WHO in 90 days.\nDISASTER\n5\nNo red, orange or M6+ alert in 7 days.\nPOLITICAL\n4\nunrest named in 3 governments' advice.\nGOVERNMENTS · 7 READ ·\nTHEY DISAGREE\n2 of 7 governments: avoid all travel; 3: avoid non-essential travel; 1: no advice against travel; 1: rated by area only\n5 of 7 governments advise against travel to parts; 5 of 7: avoid all travel there\nAustralia\nDo not travel\nopen\nupdated 2025-11-20 · read 10h ago\nUS\nDo Not Travel\nopen\nupdated 2026-04-28 · read 10h ago\nCanada\nAvoid non-essential travel · parts: avoid all travel\nopen\nupdated 2026-11-02 · read 10h ago\nNetherlands\nkleurcode oranje · parts: avoid all travel\nopen\nupdated 2026-10-15 · read 10h ago\nUK\nFCDO advises against all travel to parts of the country · parts: avoid all travel\nopen\nupdated 2026-11-04 · read 10h ago\nGermany\nTeilreisewarnung · parts: avoid all travel\nopen\nupdated 2026-10-27 · read 10h ago\nJapan\nby area only, worst: avoid all travel\nopen\nupdated 2026-11-06 · read 10h ago\nTheir own 1-4 scale (four cells): 1 normal precautions, 2 caution, 3 avoid non-essential travel, 4 avoid all travel.\nSTATES / AREAS · 1 NAMED\nLac\navoid all travel · 1 gov · 20 killed 2026-09 (UCDP)\n20 other areas in one government's own words\nListed, not drawn: the map has no province outlines yet.\nSOURCES\nDFAT Smartraveller: Do not travel 352d ago\nState Department: Do Not Travel 193d ago\nMinisterie van Buitenlandse Zaken: kleurcode oranje 23d ago\nForeign, Commonwealth & Development Office: FCDO advises against all travel to parts of the country 3d ago\nGlobal Affairs Canada: Avoid non-essential travel 5d ago\nAuswärtiges Amt: Teilreisewarnung 11d ago\nMinistry of Foreign Affairs: レベル4：退避してください。渡航は止めてください（退避勧告）（一部地域） 10h ago\nUCDP Candidate Events Dataset (Uppsala University) 47d ago\nThe rule\nsteady · computed 10h ago\nDEATHS · COMPILED TOLLS ESTIMATE\nSudanese civil wars (listed location)\n12,123\nkilled so far in 2026\n21,994–80,000+\nkilled in 2025\n1,521,000+\nsince it began\nCites: acleddata.com · ucdp.uu.se · Armed Conflict Location & Event Data Project (ACLED) · TheGuardian.com · Associated Press News · Sudan war: A simple guide to what is happening\nIslamist insurgencies in the Maghreb and Sahel (listed location)\n20,688\nkilled so far in 2026\n24,046\nkilled in 2025\n488,500+\nsince it began\nCites: acleddata.com · Armed Conflict Location and Event Data Project · Human rights in Libya · Algeria &#124; Freedom House · American commandos face complicated mission in Mali · Burkina junta breaks silence over massacre by men 'in army uniform'\nCivil conflicts in Nigeria (listed location)\n3,600\nkilled so far in 2026\n3,200\nkilled in 2025\n107,300+\nsince it began\nCites: acleddata.com · Motorbike raids on villages kill dozens in Nigeria · Armed Conflict Location & Event Data Project · Council on Foreign Relations · Connect SAIS Africa · allAfrica\nWhole-conflict figures from a secondary compilation (they cover every country in the war); each figure lists the counts it cites. Totals are ranges because sources disagree.\nLATEST STORY\nChad - Level 4: Do Not Travel\nOld score (news and conflict list), for comparison\nNEWS SOURCES\nUS State Dept: Chad - Level 4: Do Not Travel\nComputed 11/6/20",
+   "shot": "02-group-earth-card-2.jpg"
+  },
+  {
+   "from": "group EARTH",
+   "id": "Mercury",
+   "panel": "detail",
+   "text": "COUNTRY LEVEL\nChad\nLEVEL 3\nHIGH\nHOW THIS LEVEL IS SET: By the governments' advice: 2 of 7 governments: avoid all travel.\nCONF\n4\nCRIME\n4\nHLTH\n-\nDISAS\n5\nPOL\n4\nCONFLICT\n4\n20 killed in 2 events in 2026-09 (UCDP, preliminary), about 5 killed a week.\n47d ago\nCRIME\n4\ncrime named in 4 governments' advice.\nHEALTH\nno data\nNo outbreak reported by WHO in 90 days.\nDISASTER\n5\nNo red, orange or M6+ alert in 7 days.\nPOLITICAL\n4\nunrest named in 3 governments' advice.\nGOVERNMENTS · 7 READ ·\nTHEY DISAGREE\n2 of 7 governments: avoid all travel; 3: avoid non-essential travel; 1: no advice against travel; 1: rated by area only\n5 of 7 governments advise against travel to parts; 5 of 7: avoid all travel there\nAustralia\nDo not travel\nopen\nupdated 2025-11-20 · read 10h ago\nUS\nDo Not Travel\nopen\nupdated 2026-04-28 · read 10h ago\nCanada\nAvoid non-essential travel · parts: avoid all travel\nopen\nupdated 2026-11-02 · read 10h ago\nNetherlands\nkleurcode oranje · parts: avoid all travel\nopen\nupdated 2026-10-15 · read 10h ago\nUK\nFCDO advises against all travel to parts of the country · parts: avoid all travel\nopen\nupdated 2026-11-04 · read 10h ago\nGermany\nTeilreisewarnung · parts: avoid all travel\nopen\nupdated 2026-10-27 · read 10h ago\nJapan\nby area only, worst: avoid all travel\nopen\nupdated 2026-11-06 · read 10h ago\nTheir own 1-4 scale (four cells): 1 normal precautions, 2 caution, 3 avoid non-essential travel, 4 avoid all travel.\nSTATES / AREAS · 1 NAMED\nLac\navoid all travel · 1 gov · 20 killed 2026-09 (UCDP)\n20 other areas in one government's own words\nListed, not drawn: the map has no province outlines yet.\nSOURCES\nDFAT Smartraveller: Do not travel 352d ago\nState Department: Do Not Travel 193d ago\nMinisterie van Buitenlandse Zaken: kleurcode oranje 23d ago\nForeign, Commonwealth & Development Office: FCDO advises against all travel to parts of the country 3d ago\nGlobal Affairs Canada: Avoid non-essential travel 5d ago\nAuswärtiges Amt: Teilreisewarnung 11d ago\nMinistry of Foreign Affairs: レベル4：退避してください。渡航は止めてください（退避勧告）（一部地域） 10h ago\nUCDP Candidate Events Dataset (Uppsala University) 47d ago\nThe rule\nsteady · computed 10h ago\nDEATHS · COMPILED TOLLS ESTIMATE\nSudanese civil wars (listed location)\n12,123\nkilled so far in 2026\n21,994–80,000+\nkilled in 2025\n1,521,000+\nsince it began\nCites: acleddata.com · ucdp.uu.se · Armed Conflict Location & Event Data Project (ACLED) · TheGuardian.com · Associated Press News · Sudan war: A simple guide to what is happening\nIslamist insurgencies in the Maghreb and Sahel (listed location)\n20,688\nkilled so far in 2026\n24,046\nkilled in 2025\n488,500+\nsince it began\nCites: acleddata.com · Armed Conflict Location and Event Data Project · Human rights in Libya · Algeria &#124; Freedom House · American commandos face complicated mission in Mali · Burkina junta breaks silence over massacre by men 'in army uniform'\nCivil conflicts in Nigeria (listed location)\n3,600\nkilled so far in 2026\n3,200\nkilled in 2025\n107,300+\nsince it began\nCites: acleddata.com · Motorbike raids on villages kill dozens in Nigeria · Armed Conflict Location & Event Data Project · Council on Foreign Relations · Connect SAIS Africa · allAfrica\nWhole-conflict figures from a secondary compilation (they cover every country in the war); each figure lists the counts it cites. Totals are ranges because sources disagree.\nLATEST STORY\nChad - Level 4: Do Not Travel\nOld score (news and conflict list), for comparison\nNEWS SOURCES\nUS State Dept: Chad - Level 4: Do Not Travel\nComputed 11/6/20",
+   "shot": "02-group-earth-card-3.jpg"
+  },
+  {
+   "from": "group SEA",
+   "id": "Venus",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-sea-card-0.jpg"
+  },
+  {
+   "from": "group SEA",
+   "id": "[\"sky\",\"name\",\"mag\"]",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-sea-card-1.jpg"
+  },
+  {
+   "from": "group SEA",
+   "id": "Algorab",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-sea-card-2.jpg"
+  },
+  {
+   "from": "group SEA",
+   "id": "Kraz",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-sea-card-3.jpg"
+  },
+  {
+   "from": "group AIR",
+   "id": "Venus",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-air-card-0.jpg"
+  },
+  {
+   "from": "group AIR",
+   "id": "[\"sky\",\"name\",\"mag\"]",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-air-card-1.jpg"
+  },
+  {
+   "from": "group AIR",
+   "id": "Algorab",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-air-card-2.jpg"
+  },
+  {
+   "from": "group AIR",
+   "id": "Kraz",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-air-card-3.jpg"
+  },
+  {
+   "from": "group SPACE",
+   "id": "[\"sat\"]",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-space-card-0.jpg"
+  },
+  {
+   "from": "group SPACE",
+   "id": "[\"sat\"]",
+   "panel": "detail",
+   "text": "Starlink 3628 STARLINK-3628\nOFFICIAL · CELESTRAK Starlink COMMUNICATIONS COMMERCIAL OPERATING\nFLY TO + FOLLOW\nBEAM FROM ME\nORBITAL CAMERA\nRIDE ALONG\nRIGHT NOW\n· 04:39:24Z, LIVE\n288 mi\nALTITUDE\n17,082 mph · 4.75 mi/s\nSPEED\n1.28°N 10.00°E\nOVER\nsunlit\nLIGHT\nUSE MY LOCATION to see where to look for it.\nORBIT\n287 mi × 288 mi (lowest × highest) · one lap every 93.8 min · inclination 53.2°\nTop speed 17,078 mph · 4.74 mi/s at its lowest point, 17,073 mph · 4.74 mi/s at its highest.\nPlaced in a 188 mi × 194 mi orbit (2022-02-26); now 287 mi × 288 mi.\nALTITUDE · LAST 24 H AND NEXT 24 H FROM ITS PUBLISHED ORBIT\n299\n287\nmi\nnow\nGrey: where it has been. Blue: where it is going. Wiggles are the orbit's low and high points.\nCATALOG\nNORAD 51783 · international ID 2022-017R · orbit published 2026-11-06 14:00 UTC (15 h ago)\nPosition is computed on this device from the published orbit, so it keeps working offline for a few days. Accuracy is about half a mile, drifting a few miles a day as the orbit data ages.\nSOURCES\nCelesTrak catalog entry\nGCAT, Jonathan McDowell (updated 2026 Nov 2)",
+   "shot": "02-group-space-card-1.jpg"
+  },
+  {
+   "from": "group SPACE",
+   "id": "[\"sat\"]",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-space-card-2.jpg"
+  },
+  {
+   "from": "group SPACE",
+   "id": "[\"sat\"]",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-space-card-3.jpg"
+  },
+  {
+   "from": "group NEXT",
+   "id": "Porrima",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-next-card-0.jpg"
+  },
+  {
+   "from": "group NEXT",
+   "id": "Vindemiatrix",
+   "panel": "detail",
+   "text": "Nigeria · 2027-01-16\nNationwide · Nigeria\nOFFICIAL President, Senate and House of Representatives\nOUTLOOK\nLatest coverage: \"Nigerian court rules opposition candidate cannot stand in elections\" (1 outlet)\nWHY IT MATTERS\nHeld in a country currently at level 2 (severe). Level set by CONFLICT. US State Dept travel Level 3 (crime, terrorism, unrest, kidnapping, crime and kidnapping, terrorism, unrest, kidnapping, unreliable health care). Armed conflict: Islamist insurgencies in the Maghreb and Sahel (major war: 20,688 killed so far in 2026, 24,046 in 2025, 488,500+ since it began). 1 stories in 72h, top: \"Nigerian court rules opposition candidate cannot stand in elections\" (1 outlet).\nSOURCES\nElection calendar\nBBC: Nigerian court rules opposition candidate cannot stand in elections",
+   "shot": "02-group-next-card-1.jpg"
+  },
+  {
+   "from": "group NEXT",
+   "id": "Spica",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-next-card-2.jpg"
+  },
+  {
+   "from": "group NEXT",
+   "id": "Algorab",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-next-card-3.jpg"
+  },
+  {
+   "from": "group LIVE",
+   "id": "Algorab",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-live-card-0.jpg"
+  },
+  {
+   "from": "group LIVE",
+   "id": "Porrima",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-live-card-1.jpg"
+  },
+  {
+   "from": "group LIVE",
+   "id": "[\"radio\"]",
+   "panel": "detail",
+   "text": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "02-group-live-card-2.jpg"
+  },
+  {
+   "from": "group LIVE",
+   "id": "Kraz",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-live-card-3.jpg"
+  },
+  {
+   "from": "layer regions",
+   "id": "[\"radio\"]",
+   "panel": "detail",
+   "text": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-regions-card.jpg"
+  },
+  {
+   "from": "layer events",
+   "id": "[\"radio\"]",
+   "panel": "detail",
+   "text": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-events-card.jpg"
+  },
+  {
+   "from": "layer strikes",
+   "id": "[\"radio\"]",
+   "panel": "detail",
+   "text": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-strikes-card.jpg"
+  },
+  {
+   "from": "layer unrest",
+   "id": "[\"radio\"]",
+   "panel": "detail",
+   "text": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-unrest-card.jpg"
+  },
+  {
+   "from": "layer alerts",
+   "id": "[\"radio\"]",
+   "panel": "detail",
+   "text": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-alerts-card.jpg"
+  },
+  {
+   "from": "layer crime",
+   "id": "[\"radio\"]",
+   "panel": "detail",
+   "text": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-crime-card.jpg"
+  },
+  {
+   "from": "layer banks",
+   "id": "[\"radio\"]",
+   "panel": "detail",
+   "text": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-banks-card.jpg"
+  },
+  {
+   "from": "layer cyber",
+   "id": "[\"radio\"]",
+   "panel": "detail",
+   "text": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-cyber-card.jpg"
+  },
+  {
+   "from": "layer outages",
+   "id": "[\"radio\"]",
+   "panel": "detail",
+   "text": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-outages-card.jpg"
+  },
+  {
+   "from": "layer detect",
+   "id": "[\"radio\"]",
+   "panel": "detail",
+   "text": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-detect-card.jpg"
+  },
+  {
+   "from": "layer streetcams",
+   "id": "[\"radio\"]",
+   "panel": "detail",
+   "text": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-streetcams-card.jpg"
+  },
+  {
+   "from": "layer camwatch",
+   "id": "[\"radio\"]",
+   "panel": "detail",
+   "text": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-camwatch-card.jpg"
+  },
+  {
+   "from": "layer hazards",
+   "id": "[\"radio\"]",
+   "panel": "detail",
+   "text": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-hazards-card.jpg"
+  },
+  {
+   "from": "layer weather",
+   "id": "[\"radio\"]",
+   "panel": "detail",
+   "text": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-weather-card.jpg"
+  },
+  {
+   "from": "layer orbitfaint",
+   "id": "[\"radio\"]",
+   "panel": "detail",
+   "text": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-orbitfaint-card.jpg"
+  },
+  {
+   "from": "layer aurora",
+   "id": "[\"radio\"]",
+   "panel": "detail",
+   "text": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-aurora-card.jpg"
+  },
+  {
+   "from": "layer fires",
+   "id": "[\"radio\"]",
+   "panel": "detail",
+   "text": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-fires-card.jpg"
+  },
+  {
+   "from": "layer power",
+   "id": "[\"radio\"]",
+   "panel": "detail",
+   "text": "NEWS RADIO · LIVE STREAM\nCrest 91.1 FM Ibadan\nCountry NG\nTags ibadan, music, news, nigeria\nQuality 128 kbps MP3\nWhere 7.38°, 3.95° (as listed by the station directory)\nPLAY LIVE TRANSCRIPT IN ENGLISH STATION SITE ↗\nLive audio straight from the station. Station list from radio-browser.info, updated 12h ago.\nCAMERAS NEAR THIS\nNo public camera within 37 mi.",
+   "shot": "03-layer-power-card.jpg"
+  }
+ ],
+ "data": [],
+ "dossier": [],
+ "search": [],
+ "misc": {
+  "bootSeconds": 3,
+  "home": {
+   "title": "Terminal",
+   "status": "DOOMSDAY TERMINAL US READINESS EST. DEFCON 3 ONLINE FEEDS 9S · BRIEF 18:30Z 9H 40M RX SEARCH FILTERS DATA LIVE TV SURVIVAL WATCH MODE SAT 07 NOV 04:11:27Z",
+   "tiles": [
+    "US READINESS 10H 3 DEFCON · EST ROUND HOUSE NUCLEAR 4 GUARDED",
+    "LAST 11H ISRAEL 1 AT WAR FALLING 7 STORIES",
+    "LAST 14H UKRAINE 1 AT WAR STEADY 5 STORIES",
+    "LAST 2D YEMEN 1 AT WAR STEADY 2 STORIES",
+    "NO EVENTS 72H PALESTINE 1 AT WAR FALLING 2 STORIES",
+    "LAST 11H IRAN 2 SEVERE STEADY 9 STORIES",
+    "LAST 14H RUSSIA 2 SEVERE STEADY 6 STORIES",
+    "LAST 3D INDIA 2 SEVERE STEADY 3 STORIES",
+    "LAST 12H SUDAN 2 SEVERE STEADY 2 STORIES",
+    "LAST 2D DR CONGO 2 SEVERE STEADY 2 STORIES",
+    "NO EVENTS 72H NIGERIA 2 SEVERE STEADY 1 STORY",
+    "NO EVENTS 72H SOMALIA 2 SEVERE STEADY 1 STORY",
+    "NO EVENTS 72H AFGHANISTAN 2 SEVERE STEADY 1 STORY",
+    "NO EVENTS 72H ETHIOPIA 2 SEVERE STEADY 0 STORIES"
+   ],
+   "so": "52 PLACES WATCHED LEVEL 1 AT WAR · 5 LOW",
+   "ticker": "",
+   "flash": "",
+   "tags": [
+    "ISRAEL AT WAR",
+    "UKRAINE AT WAR",
+    "YEMEN AT WAR",
+    "PALESTINE AT WAR",
+    "IRAN SEVERE",
+    "ETHIOPIA SEVERE",
+    "NIGERIA SEVERE"
+   ],
+   "memory": 273
+  },
+  "homeCounts": {
+   "bb": 217,
+   "pt": 15598,
+   "lb": 21,
+   "pl": 206,
+   "ent": 108,
+   "prim": 16,
+   "ds": 48
+  },
+  "homePanels": [],
+  "groups": [
+   {
+    "i": 0,
+    "v": "now",
+    "t": "ZONES",
+    "on": true
+   },
+   {
+    "i": 1,
+    "v": "now",
+    "t": "EVENTS",
+    "on": true
+   },
+   {
+    "i": 2,
+    "v": "earth",
+    "t": "EARTH",
+    "on": false
+   },
+   {
+    "i": 3,
+    "v": "intel",
+    "t": "SEA",
+    "on": false
+   },
+   {
+    "i": 4,
+    "v": "air",
+    "t": "AIR",
+    "on": false
+   },
+   {
+    "i": 5,
+    "v": "space",
+    "t": "SPACE",
+    "on": false
+   },
+   {
+    "i": 6,
+    "v": "next",
+    "t": "NEXT",
+    "on": false
+   },
+   {
+    "i": 7,
+    "v": "live",
+    "t": "LIVE",
+    "on": false
+   }
+  ],
+  "filterRows": [
+   "01 THREATS & CONFLICT 0 of 8 on | regions | Country levels | 40 now · conflict list, news, official levels · STALE 10 H · shows with NOW / NEXT / EARTH | off",
+   "01 THREATS & CONFLICT 0 of 8 on | events | News events | 68 now · news wires and official feeds · STALE 10 H · shows with NOW | off",
+   "01 THREATS & CONFLICT 0 of 8 on | strikes | Strike reports | 0 now · GDELT · STALE 10 H · shows with NOW / INTEL | off",
+   "01 THREATS & CONFLICT 0 of 8 on | unrest | Unrest map | 731 now · GDELT · STALE 10 H · shows with INTEL | off",
+   "01 THREATS & CONFLICT 0 of 8 on | alerts | Correlation alerts | 0 now · cross-checks of the feeds · STALE 10 H · shows with NOW / INTEL | off",
+   "01 THREATS & CONFLICT 0 of 8 on | crime | Crime & drugs | city open data · shows with INTEL | off",
+   "01 THREATS & CONFLICT 0 of 8 on | banks | Banks & payments | STALE 10 H · shows with INTEL | off",
+   "01 THREATS & CONFLICT 0 of 8 on | cyber | Cyberattacks | STALE 10 H · shows with INTEL | off",
+   "01 THREATS & CONFLICT 0 of 8 on | outages | Internet outages | 7 now · IODA · STALE 10 H · shows with INTEL | off",
+   "01 THREATS & CONFLICT 0 of 8 on | detect | Live detectors | 2 OF 3 SOURCES ANSWERING · 641 now · live sensors (USGS, BfS, IODA, NOAA...) · shows with NOW / INTEL | off",
+   "01 THREATS & CONFLICT 0 of 8 on | radio | Radio | KiwiSDR / SatNOGS | ON",
+   "01 THREATS & CONFLICT 0 of 8 on | live | Live cams & video | 183 now · public webcams and streams · STALE 10 H | ON",
+   "01 THREATS & CONFLICT 0 of 8 on | camnet | Public cameras worldwide | 82 OF 84 SOURCES ANSWERING · 68,498 now · official public camera networks · STALE 10 H | ON",
+   "01 THREATS & CONFLICT 0 of 8 on | streetcams | Street cameras | close-up street cameras when you zoom in to a city | off",
+   "01 THREATS & CONFLICT 0 of 8 on | camwatch | Camera auto-watch | flags cameras that go dark, freeze, flash or show smoke | off",
+   "01 THREATS & CONFLICT 0 of 8 on | camwall | Monitoring wall | your camera grid, saved on this device | no switch",
+   "02 EARTH & WEATHER 0 of 18 on | hazards | Hazards | 38 now · USGS / GDACS / NASA EONET / NWS · STALE 10 H · shows with NOW / EARTH | off",
+   "02 EARTH & WEATHER 0 of 18 on | weather | City weather | 45 now · Open-Meteo · STALE 10 H · shows with EARTH | off",
+   "02 EARTH & WEATHER 0 of 18 on | orbitfaint | Satellites & debris (faint) | 32,811 now · CelesTrak | off",
+   "02 EARTH & WEATHER 0 of 18 on | aurora | Northern & southern lights | NOAA SWPC · STALE 10 H · shows with EARTH / SPACE | off",
+   "02 EARTH & WEATHER 0 of 18 on | fires | Satellite heat spots | NASA FIRMS | off",
+   "02 EARTH & WEATHER 0 of 18 on | power | Power plants | WRI power plant database · STALE 10 H · shows with EARTH | off",
+   "02 EARTH & WEATHER 0 of 18 on | radar | Rain radar | RainViewer / NOAA MRMS · STALE 10 H · shows with EARTH | off",
+   "02 EARTH & WEATHER 0 of 18 on | clouds | Clouds (live) | GOES, Himawari, Meteosat · STALE 10 H · shows with EARTH | off",
+   "02 EARTH & WEATHER 0 of 18 on | lightning | Lightning | NOAA nowCOAST / EUMETSAT · STALE 10 H · shows with EARTH | off",
+   "02 EARTH & WEATHER 0 of 18 on | ptype | Rain, snow or hail (US) | NOAA MRMS · STALE 10 H · shows with EARTH | off",
+   "02 EARTH & WEATHER 0 of 18 on | snow | Snow & ice on the ground | NOAA snow & ice charts · STALE 10 H · shows with EARTH | off",
+   "02 EARTH & WEATHER 0 of 18 on | wind | Wind | NOAA GFS · STALE 10 H | off",
+   "02 EARTH & WEATHER 0 of 18 on | temp | Temperature | Open-Meteo / NOAA GFS · STALE 10 H | off",
+   "02 EARTH & WEATHER 0 of 18 on | currents | Ocean currents | Open-Meteo Marine · STALE 10 H | off",
+   "02 EARTH & WEATHER 0 of 18 on | waves | Waves | NOAA GFS-Wave · STALE 10 H | off",
+   "02 EARTH & WEATHER 0 of 18 on | storms | Hurricanes & typhoons | GDACS · STALE 10 H · shows with EARTH | off",
+   "02 EARTH & WEATHER 0 of 18 on | warnings | NWS warnings (US) | NWS · STALE 10 H · shows with EARTH | off",
+   "02 EARTH & WEATHER 0 of 18 on | outlook | SPC storm outlook (US) | NOAA SPC · STALE 10 H | off",
+   "03 AIR & SEA 0 of 8 on | aircraft | Aircraft | 262 now · ADS-B exchanges · STALE 10 H · shows with AIR / INTEL | off",
+   "03 AIR & SEA 0 of 8 on | routes | Busiest air routes | 250 now · ADS-B, last 24 h · STALE 10 H · shows with AIR | off",
+   "03 AIR & SEA 0 of 8 on | loiter | Loitering aircraft | 150 now · ADS-B, last 24 h · STALE 10 H · shows with AIR | off",
+   "03 AIR & SEA 0 of 8 on | gaps | Blind spots (no receivers) | 130 now · ADS-B receiver coverage · STALE 10 H | off",
+   "03 AIR & SEA 0 of 8 on | jamming | GPS jamming | 34 now · GPSJam (ADS-B) · STALE 10 H · shows with AIR / INTEL | off",
+   "03 AIR & SEA 0 of 8 on | ships | Ships | 309 now · AIS (Nordic, public) · STALE 10 H | off",
+   "03 AIR & SEA 0 of 8 on | navy | Warships (open reports) | USNI fleet tracker, navy news, Taiwan MND · STALE 10 H · shows with AIR / INTEL | off",
+   "03 AIR & SEA 0 of 8 on | ocean | Ocean: buoys, warnings, chokepoints | NOAA buoys, IOC sea level, NGA warnings, IMF PortWatch · STALE 10 H · shows with EARTH / INTEL | off",
+   "04 SPACE 0 of 3 on | sats | Satellites | 32,811 now · CelesTrak · shows with SPACE | off",
+   "04 SPACE 0 of 3 on | space | Launches & fireballs | 65 now · Launch Library / NASA JPL · STALE 10 H · shows with NEXT / SPACE | off",
+   "04 SPACE 0 of 3 on | ufo | UFO sightings (history) | NUFORC reports | off",
+   "06 PEOPLE & PLACES 0 of 4 on | alpr | Plate-reader cameras | 150k now · DeFlock / OpenStreetMap · 21 H · shows with INTEL | off",
+   "06 PEOPLE & PLACES 0 of 4 on | elections | Elections | 14 now · Wikipedia election lists · STALE 10 H · shows with NEXT | off",
+   "06 PEOPLE & PLACES 0 of 4 on | advisories | Govt prep advice | 8 now · government prep pages · STALE 10 H · shows with PEOPLE | off",
+   "06 PEOPLE & PLACES 0 of 4 on | community | Community posts | 0 now · posts from people here · shows with PEOPLE | off",
+   "06 PEOPLE & PLACES 0 of 4 on | watchlist | Watchlist places & words | empty · places and words you never want to miss | no switch",
+   "06 PEOPLE & PLACES 0 of 4 on | relocate | Where to live | rent, home prices, cost of living, safety, cost to move | no switch",
+   "06 PEOPLE & PLACES 0 of 4 on | fieldkit | Field kit | survival guide and offline library · works with no internet | no switch",
+   "07 LOOK 7 of 8 on | look.war | Active conflict zones | STALE 10 H | ON",
+   "07 LOOK 7 of 8 on | look.storm | Storm shading | STALE 10 H | ON",
+   "07 LOOK 7 of 8 on | look.outage | Outage darkness at night | on · nothing qualifies · 7 internet alerts, none nationwide · IODA via brief · 10 h | ON",
+   "07 LOOK 7 of 8 on | look.rad | Radiation rings | not checked here · live detectors are off | ON",
+   "07 LOOK 7 of 8 on | look.snow | Snow cover | on · satellite day 6 Nov (unprocessed palette) | ON",
+   "07 LOOK 7 of 8 on | look.ice | Sea ice | on · satellite day 5 Nov (unprocessed palette) | ON",
+   "07 LOOK 7 of 8 on | look.lights | City lights at night | on · drawn by the weather layers | ON",
+   "07 LOOK 7 of 8 on | look.real | Last night's real lights | off | off",
+   "07 LOOK 7 of 8 on | x.mapstyle | Place names |  | no switch",
+   "07 LOOK 7 of 8 on | skin | PLANET STYLE effects draw under every style Natural OTHER STYLES › 6 more |  | no switch",
+   "09 SCREEN | layout | LAYOUT Ops Table theater board Scope reticle lock-on Wire time ruler Classic: fl |  | no switch",
+   "09 SCREEN | theme | THEME Slate Classic terminal Amber Paper light |  | no switch",
+   "09 SCREEN | textSize | TEXT SIZE Normal Large Larger |  | no switch",
+   "09 SCREEN | density | SPACING Comfortable Compact |  | no switch",
+   "09 SCREEN | font | TYPEFACE Sans Mono |  | no switch"
+  ]
+ }
+}

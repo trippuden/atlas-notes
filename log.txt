@@ -1,0 +1,354 @@
+    0s open https://trippuden.github.io/atlas-notes/ chromium desk
+    3s app up: true after 3 s
+   25s home {"bb":217,"pt":15598,"lb":21,"pl":206,"ent":108,"prim":16,"ds":48}
+   61s shot failed 02-group-ZONES page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+  122s shot failed 02-group-ZONES-card-0 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+  175s shot failed 02-group-ZONES-card-1 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+  233s shot failed 02-group-ZONES-card-2 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+  297s shot failed 02-group-ZONES-card-3 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+  299s group ZONES {"bb":217,"pt":15598,"lb":21,"pl":206,"ent":108,"prim":16,"ds":48} cards detail,detail,detail,detail
+  336s shot failed 02-group-EVENTS page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+  389s shot failed 02-group-EVENTS-card-0 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+  459s shot failed 02-group-EVENTS-card-1 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+  514s shot failed 02-group-EVENTS-card-2 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+  561s shot failed 02-group-EVENTS-card-3 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+  586s group EVENTS {"bb":243,"pt":15598,"lb":21,"pl":206,"ent":108,"prim":16,"ds":48} cards detail,detail,detail,detail
+  625s shot failed 02-group-EARTH page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+  696s shot failed 02-group-EARTH-card-0 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+  794s shot failed 02-group-EARTH-card-1 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+  872s shot failed 02-group-EARTH-card-2 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+  947s shot failed 02-group-EARTH-card-3 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+  948s group EARTH {"bb":16945,"pt":15598,"lb":21,"pl":48,"ent":126,"prim":28,"ds":217} cards -,detail,detail,detail
+  995s shot failed 02-group-SEA page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 1045s shot failed 02-group-SEA-card-0 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 1115s shot failed 02-group-SEA-card-1 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 1186s shot failed 02-group-SEA-card-2 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 1251s shot failed 02-group-SEA-card-3 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 1252s group SEA {"bb":764,"pt":15849,"lb":21,"pl":27,"ent":118,"prim":24,"ds":2} cards -,-,-,-
+ 1299s shot failed 02-group-AIR page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 1362s shot failed 02-group-AIR-card-0 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 1437s shot failed 02-group-AIR-card-1 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 1509s shot failed 02-group-AIR-card-2 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 1585s shot failed 02-group-AIR-card-3 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 1586s group AIR {"bb":200,"pt":15598,"lb":21,"pl":177,"ent":573,"prim":20,"ds":1} cards -,-,-,-
+ 1630s shot failed 02-group-SPACE page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 1672s shot failed 02-group-SPACE-card-0 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 1723s shot failed 02-group-SPACE-card-1 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 1773s shot failed 02-group-SPACE-card-2 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 1827s shot failed 02-group-SPACE-card-3 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 1829s group SPACE {"bb":223,"pt":48397,"lb":21,"pl":0,"ent":52,"prim":30,"ds":0} cards -,detail,-,-
+ 1866s shot failed 02-group-NEXT page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 1925s shot failed 02-group-NEXT-card-0 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 1992s shot failed 02-group-NEXT-card-1 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 2057s shot failed 02-group-NEXT-card-2 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 2132s shot failed 02-group-NEXT-card-3 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 2133s group NEXT {"bb":200,"pt":15598,"lb":21,"pl":67,"ent":104,"prim":21,"ds":57} cards -,detail,-,-
+ 2174s shot failed 02-group-LIVE page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 2234s shot failed 02-group-LIVE-card-0 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 2301s shot failed 02-group-LIVE-card-1 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 2368s shot failed 02-group-LIVE-card-2 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 2420s shot failed 02-group-LIVE-card-3 page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 2422s group LIVE {"bb":2820,"pt":19639,"lb":21,"pl":0,"ent":13,"prim":25,"ds":0} cards -,-,detail,-
+ 2457s shot failed 03-filters page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 2476s filters: 9 sections, 67 rows
+ 2517s shot failed 03-layer-regions page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 2578s shot failed 03-layer-regions-card page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 2581s layer regions  drew {"bb":0,"pt":0,"lb":0,"pl":48,"ent":40,"ds":48,"prim":0} card: NEWS RADIO · LIVE STREAM / Crest 91.1 FM Ibadan / Country NG / Tag 
+ 2626s shot failed 03-layer-events page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 2685s shot failed 03-layer-events-card page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 2686s layer events  drew {"bb":0,"pt":0,"lb":0,"pl":158,"ent":29,"ds":0,"prim":0} card: NEWS RADIO · LIVE STREAM / Crest 91.1 FM Ibadan / Country NG / Tag 
+ 2724s shot failed 03-layer-strikes page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 2779s shot failed 03-layer-strikes-card page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 2781s layer strikes  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":0} card: NEWS RADIO · LIVE STREAM / Crest 91.1 FM Ibadan / Country NG / Tag 
+ 2835s shot failed 03-layer-unrest page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 2902s shot failed 03-layer-unrest-card page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 2904s layer unrest  drew {"bb":0,"pt":94,"lb":0,"pl":0,"ent":0,"ds":0,"prim":1} card: NEWS RADIO · LIVE STREAM / Crest 91.1 FM Ibadan / Country NG / Tag 
+ 2940s shot failed 03-layer-alerts page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 3005s shot failed 03-layer-alerts-card page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 3006s layer alerts  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":0} card: NEWS RADIO · LIVE STREAM / Crest 91.1 FM Ibadan / Country NG / Tag 
+ 3049s shot failed 03-layer-crime page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 3114s shot failed 03-layer-crime-card page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 3115s layer crime  drew {"bb":28,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":2} card: NEWS RADIO · LIVE STREAM / Crest 91.1 FM Ibadan / Country NG / Tag 
+ 3162s shot failed 03-layer-banks page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 3221s shot failed 03-layer-banks-card page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 3223s layer banks  drew {"bb":-2820,"pt":-19637,"lb":-21,"pl":-700,"ent":-13,"ds":0,"prim":-25} card: NEWS RADIO · LIVE STREAM / Crest 91.1 FM Ibadan / Country NG / Tag 
+ 3260s shot failed 03-layer-cyber page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 3322s shot failed 03-layer-cyber-card page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 3323s layer cyber  drew {"bb":23,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":1} card: NEWS RADIO · LIVE STREAM / Crest 91.1 FM Ibadan / Country NG / Tag 
+ 3360s shot failed 03-layer-outages page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 3418s shot failed 03-layer-outages-card page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 3419s layer outages  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":7,"ds":0,"prim":0} card: NEWS RADIO · LIVE STREAM / Crest 91.1 FM Ibadan / Country NG / Tag 
+ 3459s shot failed 03-layer-detect page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 3511s shot failed 03-layer-detect-card page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 3512s layer detect  drew {"bb":568,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":1} card: NEWS RADIO · LIVE STREAM / Crest 91.1 FM Ibadan / Country NG / Tag netfail trippuden.github.io HTTP 404; visualisations.aemo.com.au FAILED net::ERR_FAILED
+ 3557s shot failed 03-layer-radio page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 3557s layer radio (was on, now off) drew {"bb":-2620,"pt":-4044,"lb":0,"pl":-700,"ent":0,"ds":0,"prim":-4} no card 
+ 3597s shot failed 03-layer-live page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 3597s layer live (was on, now off) drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":-13,"ds":0,"prim":0} no card 
+ 3634s shot failed 03-layer-camnet page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 3634s layer camnet (was on, now off) drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":170,"ds":0,"prim":0} no card 
+ 3681s shot failed 03-layer-streetcams page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 3752s shot failed 03-layer-streetcams-card page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 3753s layer streetcams  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":1} card: NEWS RADIO · LIVE STREAM / Crest 91.1 FM Ibadan / Country NG / Tag 
+ 3790s shot failed 03-layer-camwatch page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 3843s shot failed 03-layer-camwatch-card page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 3844s layer camwatch  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":0} card: NEWS RADIO · LIVE STREAM / Crest 91.1 FM Ibadan / Country NG / Tag 
+ 3882s shot failed 03-layer-hazards page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 3944s shot failed 03-layer-hazards-card page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 3945s layer hazards  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":38,"ds":0,"prim":0} card: NEWS RADIO · LIVE STREAM / Crest 91.1 FM Ibadan / Country NG / Tag 
+ 3997s shot failed 03-layer-weather page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 4059s shot failed 03-layer-weather-card page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 4061s layer weather  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":45,"ds":0,"prim":0} card: NEWS RADIO · LIVE STREAM / Crest 91.1 FM Ibadan / Country NG / Tag 
+ 4099s shot failed 03-layer-orbitfaint page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 4157s shot failed 03-layer-orbitfaint-card page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 4158s layer orbitfaint  drew {"bb":12,"pt":32799,"lb":0,"pl":0,"ent":0,"ds":0,"prim":2} card: NEWS RADIO · LIVE STREAM / Crest 91.1 FM Ibadan / Country NG / Tag 
+ 4205s shot failed 03-layer-aurora page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 4265s shot failed 03-layer-aurora-card page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 4266s layer aurora  drew {"bb":-2820,"pt":-19631,"lb":-21,"pl":-700,"ent":-13,"ds":0,"prim":-25} card: NEWS RADIO · LIVE STREAM / Crest 91.1 FM Ibadan / Country NG / Tag 
+ 4310s shot failed 03-layer-fires page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 4377s shot failed 03-layer-fires-card page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 4379s layer fires  drew {"bb":0,"pt":94688,"lb":0,"pl":0,"ent":0,"ds":0,"prim":1} card: NEWS RADIO · LIVE STREAM / Crest 91.1 FM Ibadan / Country NG / Tag 
+ 4415s shot failed 03-layer-power page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 4475s shot failed 03-layer-power-card page.screenshot: Timeout 20000ms exceeded.
+Call log:
+  - taking page screenshot
+
+ 4476s layer power  drew {"bb":16734,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":2} card: NEWS RADIO · LIVE STREAM / Crest 91.1 FM Ibadan / Country NG / Tag 
+ 4500s SWEEP OUT OF TIME
