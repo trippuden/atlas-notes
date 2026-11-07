@@ -9,8 +9,10 @@ const MODE = process.argv[2] || "webkit", DESK = MODE === "desktop", ENGINE = DE
 fs.mkdirSync("out", { recursive: true });
 const t0 = Date.now(), log = (...a) => { const l = `${((Date.now() - t0) / 1000).toFixed(1).padStart(6)}s ${a.join(" ")}`; console.log(l); fs.appendFileSync("out/log.txt", l + "\n"); };
 const fails = []; const fail = (m) => { fails.push(m); log("FAIL", m); };
-const rss = () => { try { const pat = ENGINE === "webkit" ? /WebKit|MiniBrowser|pw_run/ : /chrom/i; return execSync("ps -eo rss=,args=", { encoding: "utf8" }).split("\n").filter((l) => pat.test(l)).reduce((s, l) => s + (parseInt(l, 10) || 0), 0) / 1024; } catch { return -1; } };
-const procs = () => { try { return execSync("ps -eo rss=,comm=", { encoding: "utf8" }).split("\n").filter((l) => /WebKit|chrom/i.test(l)).map((l) => l.trim()).sort((a, b) => parseInt(b, 10) - parseInt(a, 10)).slice(0, 4).join(" | "); } catch { return ""; } };
+// only=poles,block=<pattern>: the poles check aborts every request whose address matches, to find which layer breaks a page
+const BLOCK = ((process.env.ONLY || "").split(",").map((x) => x.trim()).find((x) => x.startsWith("block=")) || "").slice(6);
+const rss = () => { try { const pat = ENGINE === "webkit" ? /webkit|wpe|minibrowser|pw_run/i : /chrom/i; return execSync("ps -eo rss=,args=", { encoding: "utf8" }).split("\n").filter((l) => pat.test(l) && !/soak\.cjs|tap-check|xvfb-run/.test(l)).reduce((s, l) => s + (parseInt(l, 10) || 0), 0) / 1024; } catch { return -1; } };
+const procs = () => { try { return execSync("ps -eo rss=,comm=", { encoding: "utf8" }).split("\n").filter((l) => /webkit|wpe|minibrowser|chrom/i.test(l)).map((l) => l.trim()).sort((a, b) => parseInt(b, 10) - parseInt(a, 10)).slice(0, 4).join(" | "); } catch { return ""; } };
 const finish = () => { log(fails.length ? `SOAK FAILED (${fails.length})` : "SOAK PASSED"); process.exit(fails.length ? 1 : 0); };
 setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 36) * 60e3);
 // The live files through a local address: the app hands its globe to test scripts only on localhost. Every byte of the
@@ -51,6 +53,7 @@ async function polesCheck() {
     const c = await b.newContext({ ...(phone ? pw.devices["iPhone 14 Pro"] : { viewport: { width: 1466, height: 800 } }), serviceWorkers: "block" });
     await c.addInitScript(() => { try { localStorage.setItem("t.seenIntro", "1"); localStorage.removeItem("t.ocean.comnap"); } catch { /* private mode */ } });
     const w = await c.newPage(), errs = [], tiles = [], comnap = [], argo = [], sentAt = new Map();
+    if (BLOCK) { await w.route(new RegExp(BLOCK, "i"), (r) => r.abort()); log(`poles: every request matching ${BLOCK} is refused`); }
     const wev = (fn, arg) => Promise.race([w.evaluate(fn, arg), new Promise((_, j) => setTimeout(() => j(new Error("page did not answer in 45 s")), 45000))]);
     w.on("pageerror", (e) => errs.push("page: " + e.message.slice(0, 160)));
     w.on("console", (m) => { if (m.type() === "error") errs.push("console: " + m.text().slice(0, 160)); });
@@ -284,7 +287,7 @@ async function watchCheck() {
 
 (async () => {
   // the extra checks first, each in its own browser, so a stuck soak can never skip them
-  const ONLY = (process.env.ONLY || "").split(",").map((x) => x.trim()).filter(Boolean);
+  const ONLY = (process.env.ONLY || "").split(",").map((x) => x.trim()).filter((x) => x && !x.startsWith("block="));
   if (ONLY.length) { const C = { watch: watchCheck, tap: liveTapCheck, poles: polesCheck, ships: shipsCheck, news: newsCheck, weather: weatherCheck };
     if (DESK) for (const k of ONLY) C[k] ? await C[k]() : fail(`no check named ${k}`);
     else if (ENGINE === "webkit" && ONLY.includes("poles")) await polesCheck(); // the iPhone engine with the polar layers
