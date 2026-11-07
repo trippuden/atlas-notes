@@ -7,15 +7,28 @@ permissions:
 jobs:
   fetch:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 8
     steps:
       - name: get
         run: |
           mkdir out && cd out
-          for l in GHRSST_L4_MUR25_Sea_Ice_Concentration MODIS_Terra_L3_Sea_Ice_Daily MODIS_Terra_NDSI_Snow_Cover MODIS_Terra_L3_NDSI_Snow_Cover_Daily; do
-            curl -fsSL --retry 3 -o "$l.xml" "https://gibs.earthdata.nasa.gov/colormaps/v1.3/$l.xml" || echo "$l failed" >> failed.txt
-          done
+          for p in epsg3857 epsg4326; do curl -fsSL --retry 3 -o caps-$p.xml "https://gibs.earthdata.nasa.gov/wmts/$p/best/1.0.0/WMTSCapabilities.xml" || echo "caps $p failed" >> failed.txt; done
           ls -la
+          python3 - <<'PY'
+          import re, glob
+          layers = ["GHRSST_L4_MUR25_Sea_Ice_Concentration", "MODIS_Terra_L3_Sea_Ice_Daily", "MODIS_Terra_NDSI_Snow_Cover", "MODIS_Terra_L3_NDSI_Snow_Cover_Daily"]
+          out = open("hrefs.txt", "w")
+          for f in sorted(glob.glob("caps-*.xml")):
+              s = open(f, encoding="utf-8", errors="replace").read()
+              chunks = [c.split("</Layer>")[0] for c in s.split("<Layer>")[1:]]
+              for L in layers:
+                  hit = [c for c in chunks if f"<ows:Identifier>{L}</ows:Identifier>" in c]
+                  if not hit: out.write(f"{f} {L} NOT-IN-CAPABILITIES\n"); continue
+                  for h in sorted(set(re.findall(r'xlink:href="([^"]*colormap[^"]*)"', hit[0]))): out.write(f"{f} {L} {h}\n")
+          PY
+          cat hrefs.txt
+          awk '$3 ~ /^http/ {print $3}' hrefs.txt | sort -u | while read H; do curl -fsSL --retry 3 -o "$(basename "$H")" "$H" || echo "$H failed" >> failed.txt; done
+          rm -f caps-*.xml; ls -la
           git init -q && git checkout -q -b out && git add -A
           git -c user.name=dt -c user.email=dt@noreply.invalid commit -qm "fetch"
           git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" out:refs/heads/fetch-out
