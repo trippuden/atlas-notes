@@ -210,6 +210,41 @@ async function newsCheck() {
   finally { await b?.close().catch(() => {}); pt.close(); }
 }
 
+// Weather warnings on the live site (desktop), the way a person turns them on: Filters, then Hurricanes & typhoons and NWS
+// warnings, and the weather clock on Next 6 hours. The weather panel's Storms and NWS warnings rows must say how many are
+// active, never "Not answering" (until t-v156 the NWS loader threw on every load, and GDACS answers browsers with a bot check).
+async function weatherCheck() {
+  let b = null;
+  try {
+    b = await pw.chromium.launch({ args: ["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"] });
+    const c = await b.newContext({ viewport: { width: 1466, height: 800 }, serviceWorkers: "block" });
+    const w = await c.newPage(), errs = [];
+    w.on("pageerror", (e) => errs.push(e.message.slice(0, 160)));
+    const wev = (fn, arg) => Promise.race([w.evaluate(fn, arg), new Promise((_, j) => setTimeout(() => j(new Error("page did not answer")), 60000))]);
+    await w.goto(URL0, { timeout: 90000 });
+    await w.waitForFunction(() => !document.getElementById("boot") && document.querySelector(".cesium-widget canvas"), null, { timeout: 180000 });
+    await wev(() => document.getElementById("filterBtn")?.click()); await w.waitForTimeout(1500);
+    await wev(() => { const g = document.querySelector('[data-sect="earth"]'); if (g?.getAttribute("aria-expanded") === "false") g.click(); }); await w.waitForTimeout(1000);
+    const sw = [];
+    for (const k of ["storms", "warnings"]) { // the panel redraws after each switch, so each is looked up again
+      sw.push(await wev((k) => { const t = document.querySelector(`[data-row="${k}"] [data-tg]`); if (!t) return `${k} switch missing`;
+        if (t.getAttribute("aria-pressed") !== "true") t.click(); return `${k} switched on`; }, k)); await w.waitForTimeout(800); }
+    await wev(() => document.querySelector('[data-wxmode="fc6"]')?.click());
+    let rows = [];
+    for (let k = 0; k < 18; k++) { await w.waitForTimeout(5000);
+      rows = await wev(() => { const f = document.querySelector('#wxRows [data-wxrows][aria-expanded="false"]'); if (f) f.click(); // chips unfold into rows
+        return [...document.querySelectorAll("#wxRows .wx-row")].map((r) => ({ label: r.querySelector("b")?.textContent || "", state: r.className.replace("wx-row", "").trim(),
+          text: (r.querySelector(".ln")?.textContent || "").replace(/\s+/g, " ").slice(0, 120) })); }).catch((e) => [{ label: "", state: "", text: e.message }]);
+      const want = rows.filter((r) => r.label === "Storms" || r.label === "NWS warnings");
+      if (want.length === 2 && want.every((r) => r.state !== "loading")) break; }
+    log("weather rows:", sw.join(", "), "|", JSON.stringify(rows).slice(0, 700), errs.length ? `| page errors: ${errs.slice(0, 3).join(" / ")}` : "");
+    for (const name of ["Storms", "NWS warnings"]) { const r = rows.find((x) => x.label === name);
+      if (!r) fail(`weather ${name}: no row in the weather panel`);
+      else if (r.state !== "ok" || /Not answering|Not reachable/.test(r.text)) fail(`weather ${name}: ${r.state}, "${r.text}"`); }
+  } catch (e) { fail(`weather check: ${e.message.split("\n")[0]}`); }
+  finally { await b?.close().catch(() => {}); }
+}
+
 // Watch mode on the live site (desktop): an aircraft alert only for the emergency squawks, and once a tap on the alert's
 // tag brings the camera close, the tag keeps with the dragged globe (it used to slide away about twice as fast). Two
 // aircraft come from a stand-in feed: one squawking 7700, one squawking 1000 (Europe's normal code) with an "unlawful" status.
@@ -247,9 +282,9 @@ async function watchCheck() {
 (async () => {
   // the extra checks first, each in its own browser, so a stuck soak can never skip them
   const ONLY = (process.env.ONLY || "").split(",").map((x) => x.trim()).filter(Boolean);
-  if (ONLY.length) { const C = { watch: watchCheck, tap: liveTapCheck, poles: polesCheck, ships: shipsCheck, news: newsCheck };
+  if (ONLY.length) { const C = { watch: watchCheck, tap: liveTapCheck, poles: polesCheck, ships: shipsCheck, news: newsCheck, weather: weatherCheck };
     if (DESK) for (const k of ONLY) C[k] ? await C[k]() : fail(`no check named ${k}`); finish(); return; }
-  if (DESK) { await watchCheck(); await liveTapCheck(); await polesCheck(); await shipsCheck(); await newsCheck(); }
+  if (DESK) { await watchCheck(); await liveTapCheck(); await polesCheck(); await shipsCheck(); await newsCheck(); await weatherCheck(); }
   else if (ENGINE === "webkit") await polesCheck(); // the phone's memory with the polar layers drawing
   const dev = DESK ? { viewport: { width: 1466, height: 800 } } : pw.devices["iPhone 14 Pro"];
   const ctx = await pw[ENGINE].launchPersistentContext("prof", { ...dev, ...(ENGINE === "chromium" ? { args: ["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"] } : {}) });
