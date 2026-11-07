@@ -1,4 +1,4 @@
-// Tap and sea checks (regressions R43 and R47 in scripts/regress.cjs): big area shapes never take a tap from the spot
+// Tap and sea checks (regressions R43, R47 and R49 in scripts/regress.cjs): big area shapes never take a tap from the spot
 // under them, and the Sea key always shows ships.
 // Its own script so the main regression run stays inside its time limit.
 // Usage: node scripts/tap-check.cjs [dir]   (a built site, default dist/; exit code 1 on a failure)
@@ -50,7 +50,12 @@ async function seaCheck(b, url, phone) {
   const p = await ctx.newPage();
   const rows = [[230000001, "FIXTURE ONE", 60.1, 24.9, 10, 90, 90, 70, 180, 30, 9, "HELSINKI", 0, 600, "dt", "", 0, ""], [230000002, "FIXTURE TWO", 59.4, 24.7, 0, 0, 511, 60, 90, 15, 5, "", 5, 900, "dt", "", 0, ""], [265000003, "FIXTURE THREE", 57.7, 11.9, 12, 200, 200, 80, 220, 32, 11, "", 0, 300, "dt", "", 0, ""]];
   await p.route("**/data/ships.json*", (r) => r.fulfill({ contentType: "application/json", body: JSON.stringify({ generated_at: new Date(Date.now() - 3600e3).toISOString(), sources: {}, counts: { ships: rows.length }, cols: [], srcs: [], rows }) }));
-  await p.route("**/meri.digitraffic.fi/**", (r) => r.abort());
+  // the live feed: FIXTURE ONE is heard again now 180 km west of its hourly report (a gap of an hour), and its live details
+  // carry a new name and destination
+  await p.route("**/meri.digitraffic.fi/**", (r) => { const u = r.request().url(), now = Date.now();
+    if (/vessels/.test(u)) return r.fulfill({ contentType: "application/json", headers: { "access-control-allow-origin": "*" }, body: JSON.stringify([{ mmsi: 230000001, name: "FIXTURE ONE LIVE", shipType: 70, referencePointA: 150, referencePointB: 30, referencePointC: 15, referencePointD: 15, callSign: "OJTEST", imo: 9000001, destination: "TALLINN", eta: (11 << 16) | (8 << 11) | (6 << 6) | 30, draught: 90, timestamp: now - 60e3 }]) });
+    if (/locations/.test(u)) return r.fulfill({ contentType: "application/json", headers: { "access-control-allow-origin": "*" }, body: JSON.stringify({ features: [{ mmsi: 230000001, geometry: { coordinates: [22.0, 59.5] }, properties: { mmsi: 230000001, sog: 10, cog: 270, heading: 270, navStat: 0, timestampExternal: now - 30e3 } }] }) });
+    return r.abort(); });
   try {
     await p.goto(url, { timeout: 60000 }); await p.waitForFunction(() => !document.getElementById("boot") && window.viewer, null, { timeout: 90000 }); await sleep(5000);
     const k = await p.evaluate(() => { const b = document.querySelector('[data-act="group"][data-v="sea"]'); if (b) { b.click(); return true; } return false; });
@@ -59,6 +64,19 @@ async function seaCheck(b, url, phone) {
     const r = await p.evaluate(() => { const C = window.Cesium, v = window.viewer; let shown = 0; const walk = (c) => { for (let i = 0; i < c.length; i++) { const x = c.get(i); if (x instanceof C.BillboardCollection) { for (let j = 0; j < x.length; j++) { const q = x.get(j); if (String(q.id?.live || "").startsWith("s:") && q.show) shown++; } } else if (x instanceof C.PrimitiveCollection) walk(x); } };
       walk(v.scene.primitives); const rc = v.camera.computeViewRectangle(), inView = rc ? [[60.1, 24.9], [59.4, 24.7], [57.7, 11.9]].filter(([la, lo]) => C.Rectangle.contains(rc, C.Cartographic.fromDegrees(lo, la))).length : 0; return { shown, inView }; });
     r.shown >= 3 && r.inView >= 1 ? ok("R47", `${tag}: Sea shows ${r.shown} ships, ${r.inView} of them in view`) : bad("R47", `${tag}: Sea shows ${r.shown} ships, ${r.inView} in view (expected 3 drawn and the camera on them)`);
+    // R49 ship cards and lists are live, and a past track never joins fixes heard an hour apart with a straight line
+    // (it cut across land and invented a route): open FIXTURE ONE from the list
+    await p.evaluate(() => document.querySelector('#ships li[data-ship="230000001"]')?.click()); await sleep(3000);
+    const t = await p.evaluate(() => { const C = window.Cesium, v = window.viewer, near = (c, la, lo) => { const g = C.Cartographic.fromCartesian(c); return Math.abs(g.latitude * 57.29578 - la) < 0.05 && Math.abs(g.longitude * 57.29578 - lo) < 0.05; };
+      let across = 0; for (const e of v.entities.values) { const ps = e.polyline?.positions?.getValue?.(C.JulianDate.now()); if (!ps) continue; for (let i = 1; i < ps.length; i++) if ((near(ps[i - 1], 60.1, 24.9) && near(ps[i], 59.5, 22.0)) || (near(ps[i], 60.1, 24.9) && near(ps[i - 1], 59.5, 22.0))) across++; }
+      return { across, card: document.getElementById("detailBody")?.innerText || "" }; });
+    // the list: a hidden list is only redrawn once it shows, so on a desktop (where it sits in the Data drawer) the drawer is
+    // opened, and the list gets up to 40 s, past one 30 s live poll ("Last known" in 3 of 4 desktop runs read at once)
+    if (!phone) await p.evaluate(() => { if (!document.getElementById("ships")?.getClientRects().length) document.querySelector('.hud-ops [data-act="data"]')?.click(); });
+    for (let k = 0; k < 20; k++) { t.list = await p.evaluate(() => document.getElementById("ships")?.innerText || ""); if (/\bLive\b/.test(t.list)) break; await sleep(2000); }
+    t.across === 0 ? ok("R49", `${tag}: the track leaves the hour-long gap open`) : bad("R49", `${tag}: the track draws ${t.across} straight line(s) across an hour-long gap`);
+    /FIXTURE ONE LIVE/.test(t.card) && /TALLINN/.test(t.card) ? ok("R49", `${tag}: the card shows the live name and destination`) : bad("R49", `${tag}: the card misses the live details (${t.card.slice(0, 80).replace(/\n/g, " ")})`);
+    /\bLive\b/.test(t.list) ? ok("R49", `${tag}: the list says the ships are live`) : bad("R49", `${tag}: the list does not say live (${t.list.slice(0, 100).replace(/\n/g, " ")})`);
   } catch (e) { bad("R47", `${tag}: ${String(e.message).slice(0, 160)}`); }
   await ctx.close();
 }

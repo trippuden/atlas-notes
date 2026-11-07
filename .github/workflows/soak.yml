@@ -27,6 +27,7 @@ jobs:
           mkdir -p out
           xvfb-run -a node soak.cjs ${{ matrix.engine }} "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/" 5 > out/log.txt 2>&1 || true
           grep -v '^\[pid=' out/log.txt | tail -n 400
+          echo "== live checks"; grep -E '^ *[0-9.]+s (FAIL )?(watch|tap|poles|argo|ships|opensky|PIC)' out/log.txt || true
       - uses: actions/upload-artifact@v4
         if: always()
         with:
