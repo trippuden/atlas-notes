@@ -45,6 +45,9 @@ setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 24) * 60e3)
   const instrument = () => ev(() => { if (window.__m) return; const m = (window.__m = { frames: [], timers: [], worstFrame: 0, worstTimer: 0 });
     let l = performance.now(); const f = (t) => { const g = t - l; l = t; if (g > m.worstFrame) m.worstFrame = g; if (g > 250) m.frames.push([Math.round(t / 1000), Math.round(g)]); requestAnimationFrame(f); }; requestAnimationFrame(f);
     try { m.long = []; new PerformanceObserver((l) => { for (const e of l.getEntries()) if (e.duration > 200) m.long.push([Math.round(e.startTime / 1000), Math.round(e.duration)]); }).observe({ type: "longtask", buffered: true }); } catch {}
+    m.loaf = []; try { new PerformanceObserver((l) => { for (const e of l.getEntries()) if (e.duration > 700) m.loaf.push({ at: Math.round(e.startTime / 1000), ms: Math.round(e.duration), block: Math.round(e.blockingDuration || 0),
+      styleLayout: Math.round(e.styleAndLayoutStart ? e.startTime + e.duration - e.styleAndLayoutStart : 0), render: Math.round(e.renderStart ? e.startTime + e.duration - e.renderStart : 0),
+      scripts: (e.scripts || []).filter((x) => x.duration > 30).sort((a, b) => b.duration - a.duration).slice(0, 6).map((x) => ({ ms: Math.round(x.duration), forcedLayout: Math.round(x.forcedStyleAndLayoutDuration || 0), fn: x.sourceFunctionName || "", src: `${(x.sourceURL || "").split("/").pop()}:${x.sourceCharPosition ?? ""}`, by: (x.invoker || "").slice(0, 60), type: x.invokerType })) }); }).observe({ type: "long-animation-frame", buffered: true }); } catch {}
     m.inp = []; const raw = "onpointerrawupdate" in window; m.inpKind = raw ? "pointerrawupdate" : "pointermove"; addEventListener(m.inpKind, (ev) => { if (ev.buttons) m.inp.push(Math.round(performance.now() - ev.timeStamp)); }, { capture: true, passive: true });
     let e = performance.now() + 100; setInterval(() => { const n = performance.now(), late = n - e; e = n + 100; if (late > m.worstTimer) m.worstTimer = late; if (late > 250) m.timers.push([Math.round(n / 1000), Math.round(late)]); }, 100); });
   const profTop = async (label) => { if (!cdp) return; const { profile } = await Promise.race([cdp.send("Profiler.stop"), new Promise((r) => setTimeout(() => r({ profile: null }), 15000))]); if (!profile) return;
@@ -95,8 +98,11 @@ setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 24) * 60e3)
   const end = Date.now() + MIN * 60e3; let minute = 0;
   // each 10 s window is profiled; the profile is printed only when that window had a long task over 700 ms
   let seenBig = 0; const bigCount = () => ev(() => (__m.long || []).filter((x) => x[1] > 700).length).catch(() => 0);
-  const winStart = async () => { if (cdp) await cdp.send("Profiler.start").catch(() => {}); };
-  const winEnd = async (label) => { if (!cdp) return; const n = await bigCount(); if (n > seenBig) { seenBig = n; await profTop(label); } else await cdp.send("Profiler.stop").catch(() => {}); };
+  // what a slow frame was doing (Chromium's long-animation-frame entries): scripts with their file:line and forced
+  // layout, plus style/layout/paint time, printed for every frame over 700 ms since the last call
+  const winStart = async () => {};
+  const winEnd = async (label) => { const L = await ev(() => { const a = (__m.loaf || []).slice(__m.loafSeen || 0); __m.loafSeen = (__m.loaf || []).length; return a; }).catch(() => []);
+    for (const f of L) log("SLOW FRAME", label, JSON.stringify(f)); };
   while (Date.now() < end) {
     await winStart(); await p.waitForTimeout(10000); await winEnd(`hold window at ${Math.round((Date.now() - t0) / 1000)} s (long task over 700 ms)`);
     const a = await answers("holding at the bottom");
