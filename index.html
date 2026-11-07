@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <title>Terminal</title>
 <meta name="robots" content="noindex, nofollow, noarchive" />
-<meta name="theme-color" content="#05080a" />
-<style>html,body{background:#05080a;color:#e9f3f4}.cesium-widget,.cesium-viewer,.cesium-viewer-cesiumWidgetContainer{width:100%;height:100%;overflow:hidden}.cesium-widget canvas{display:block;width:100%;height:100%;max-width:100%;max-height:100%}#boot{position:fixed;inset:0;z-index:9998;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:#05080a;font:700 12px/1.5 system-ui,sans-serif;letter-spacing:.18em;color:#9fb3c8;text-align:center;padding:0 24px}#boot i{width:34px;height:34px;border-radius:50%;border:3px solid rgba(159,233,255,.2);border-top-color:#ffb547;animation:bootspin .8s linear infinite}#boot button{display:none;min-height:44px;padding:0 20px;border:0;background:#ffb547;color:#000;font:inherit;letter-spacing:.14em}#boot.slow button{display:block}#boot button[hidden]{display:none!important}#bootReset{background:transparent!important;color:#ffb547!important;border:1px solid #ffb547!important}@keyframes bootspin{to{transform:rotate(360deg)}}</style>
+<meta name="theme-color" content="#000000" />
+<style>html,body{background:#000;color:#f5f5f7}.cesium-widget,.cesium-viewer,.cesium-viewer-cesiumWidgetContainer{width:100%;height:100%;overflow:hidden}.cesium-widget canvas{display:block;width:100%;height:100%;max-width:100%;max-height:100%}#boot{position:fixed;inset:0;z-index:9998;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:#000;font:400 15px/1.4 -apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",Roboto,sans-serif;color:#8e8e93;text-align:center;padding:0 32px}#boot i{width:26px;height:26px;border-radius:50%;border:2.5px solid rgba(255,255,255,.14);border-top-color:#f5f5f7;animation:bootspin .9s linear infinite}#boot button{display:none;min-height:46px;min-width:260px;padding:0 22px;border:0;border-radius:12px;background:#0a84ff;color:#fff;font:600 16px/1.2 -apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",Roboto,sans-serif}#boot.slow button{display:block}#boot.slow #bootSafe{margin-top:10px}#boot button[hidden]{display:none!important}#bootReset{background:rgba(255,255,255,.1)!important;color:#ff453a!important}@keyframes bootspin{to{transform:rotate(360deg)}}</style>
 <link rel="manifest" href="manifest.webmanifest" />
 <link rel="icon" href="icon.svg" />
 <link rel="stylesheet" href="cesium/Widgets/widgets.css" />
@@ -16,10 +16,14 @@
 <link rel="stylesheet" href="watch/watch.css" />
 <link rel="stylesheet" href="phone/phone.css" />
 <link rel="stylesheet" href="ocean/ocean.css" />
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval'; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src * data: blob:; connect-src * blob: data:; frame-src https://www.youtube-nocookie.com https://webcams.windy.com; media-src * data: blob:; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval' 'sha256-JBICjTTeS3ZXd993e2FoK/W6Ugl2k5jw+saHL37jCdY='; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src * data: blob:; connect-src * blob: data:; frame-src https://www.youtube-nocookie.com https://webcams.windy.com; media-src * data: blob:; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'" />
+<link rel="preload" href="config.js" as="script" />
+<link rel="preload" href="cesium/Cesium.js" as="script" fetchpriority="low" />
+<link rel="preload" href="vendor/satellite.min.js" as="script" fetchpriority="low" />
+<link rel="modulepreload" href="app.js" fetchpriority="low" />
 </head>
 <body class="lay-globe">
-<div id="boot" role="status"><i></i><span id="bootTxt">LOADING THE TERMINAL</span><button type="button" id="bootSafe">START IN THE PLAIN VIEW</button><button type="button" id="bootReset" hidden>RESET THE APP ON THIS PHONE</button></div>
+<div id="boot" role="status"><i></i><span id="bootTxt">Loading</span><button type="button" id="bootSafe">Start in the plain view</button><button type="button" id="bootReset" hidden>Reset the app on this device</button></div>
 <script src="boot.js"></script>
 <header class="topbar">
 <div class="brand">◢ DOOMSDAY<span>TERMINAL</span></div>
@@ -152,9 +156,6 @@
 <div id="detailBody"></div>
 </aside>
 <footer class="ticker"><button id="castBtn" class="cast" title="Read the bulletin aloud (works offline). Right-click for the transcript.">◉ BROADCAST</button><div class="tk-clip"><div id="ticker"></div></div></footer>
-<script defer src="config.js"></script>
-<script defer src="cesium/Cesium.js"></script>
-<script defer src="vendor/satellite.min.js"></script>
-<script type="module" src="app.js"></script>
+<script>(function(){var l=["config.js","cesium/Cesium.js","vendor/satellite.min.js"],s=0;function a(i){var e=document.createElement("script");if(i<l.length){e.src=l[i];e.async=false;e.onload=e.onerror=function(){a(i+1)}}else{e.type="module";e.src="app.js"}document.body.appendChild(e)}function g(){if(!s){s=1;a(0)}}if(document.visibilityState==="hidden")g();else{requestAnimationFrame(function(){setTimeout(g,0)});setTimeout(g,1500)}})();</script>
 </body>
 </html>

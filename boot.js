@@ -26,7 +26,7 @@
   }
   var b = document.getElementById("boot"), t = document.getElementById("bootTxt");
   if (!b) return;
-  setTimeout(function () { if (!b.isConnected) return; b.className = "slow"; t.textContent = "STILL LOADING (SLOW CONNECTION OR A BUSY PHONE)"; }, 15000);
+  setTimeout(function () { if (!b.isConnected) return; b.className = "slow"; t.textContent = "Still loading. The connection or this device is slow right now."; }, 15000);
   setTimeout(function () { if (!b.isConnected) return; var r = document.getElementById("bootReset"); if (r) r.hidden = false; }, 30000);
   var plain = function () { try { localStorage.setItem("t.boot", JSON.stringify({ state: "starting", at: Date.now(), fails: 1 })); } catch (e) {} };
   document.getElementById("bootSafe").onclick = function () { plain(); location.reload(); };
