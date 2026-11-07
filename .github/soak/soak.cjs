@@ -70,6 +70,7 @@ async function polesCheck() {
     await w.waitForFunction(() => !document.getElementById("boot") && window.viewer && document.querySelector(".cesium-widget canvas"), null, { timeout: 180000 });
     await w.waitForTimeout(6000);
     // EARTH > Ocean, shown (on desktop the lists live in the Data drawer)
+    if (phone) log(`poles: memory once up (EARTH, nothing opened): ${Math.round(rss())} MB browser | ${procs()}`);
     // what the page took this browser for: the phone settings (coarse pointer, small screen) or the computer ones
     log("poles: page settings", JSON.stringify(await wev(() => ({ coarse: matchMedia("(pointer: coarse)").matches, screen: [screen.width, screen.height], dpr: devicePixelRatio,
       scale: window.viewer.resolutionScale, cache: window.viewer.scene.globe.tileCacheSize, sse: window.viewer.scene.globe.maximumScreenSpaceError,
@@ -77,6 +78,7 @@ async function polesCheck() {
     step = "opening EARTH > Ocean";
     await wev(() => { document.querySelector('.hud-ops [data-act="data"]')?.click(); document.querySelector('[data-group="earth"]')?.click(); });
     await w.waitForTimeout(600); await wev(() => document.querySelector('[data-sub="ocean"]')?.click()); await w.waitForTimeout(6000);
+    if (phone) log(`poles: memory with EARTH > Ocean open: ${Math.round(rss())} MB browser | ${procs()}`);
     const mem = async () => phone ? `${Math.round(rss())} MB browser` : `${Math.round((await wev(() => performance.memory?.usedJSHeapSize || 0)) / 1048576)} MB heap`;
     const look = (lat, h) => wev(([lat, h]) => { const C = window.Cesium, cam = window.viewer.camera; cam.cancelFlight?.(); cam.setView({ destination: C.Cartesian3.fromDegrees(0, lat, h), orientation: { heading: 0, pitch: -Math.PI / 2, roll: 0 } }); }, [lat, h]);
     // on a phone the browser's memory and the tiles asked for are logged every 5 s, and a crash says where it happened
