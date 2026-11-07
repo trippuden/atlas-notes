@@ -70,6 +70,10 @@ async function polesCheck() {
     await w.waitForFunction(() => !document.getElementById("boot") && window.viewer && document.querySelector(".cesium-widget canvas"), null, { timeout: 180000 });
     await w.waitForTimeout(6000);
     // EARTH > Ocean, shown (on desktop the lists live in the Data drawer)
+    // what the page took this browser for: the phone settings (coarse pointer, small screen) or the computer ones
+    log("poles: page settings", JSON.stringify(await wev(() => ({ coarse: matchMedia("(pointer: coarse)").matches, screen: [screen.width, screen.height], dpr: devicePixelRatio,
+      scale: window.viewer.resolutionScale, cache: window.viewer.scene.globe.tileCacheSize, sse: window.viewer.scene.globe.maximumScreenSpaceError,
+      canvas: [window.viewer.canvas.width, window.viewer.canvas.height], layers: window.viewer.imageryLayers.length })).catch((e) => ({ err: e.message }))));
     step = "opening EARTH > Ocean";
     await wev(() => { document.querySelector('.hud-ops [data-act="data"]')?.click(); document.querySelector('[data-group="earth"]')?.click(); });
     await w.waitForTimeout(600); await wev(() => document.querySelector('[data-sub="ocean"]')?.click()); await w.waitForTimeout(6000);
