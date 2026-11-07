@@ -1,0 +1,42 @@
+name: sweep
+on:
+  push:
+    branches: [sweep]
+permissions:
+  contents: write
+jobs:
+  sweep:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - engine: webkit
+            mode: phone
+          - engine: chromium
+            mode: desk
+    runs-on: ubuntu-latest
+    timeout-minutes: 85
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: .github/sweep
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: browser
+        working-directory: .github/sweep
+        run: npm i --no-save --no-audit --no-fund playwright@1.63.0 && npx playwright install --with-deps ${{ matrix.engine }}
+      - name: sweep
+        working-directory: .github/sweep
+        env:
+          CI: "1"
+        run: |
+          xvfb-run -a node sweep.cjs ${{ matrix.engine }} "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/" out ${{ matrix.mode }} > run.txt 2>&1 || true
+          grep -v '^\[pid=' run.txt | tail -n 300
+      - name: keep results
+        if: always()
+        working-directory: .github/sweep/out
+        run: |
+          git init -q && git checkout -q -b out && git add -A
+          git -c user.name=dt -c user.email=dt@noreply.invalid commit -qm "sweep ${{ matrix.engine }} ${{ matrix.mode }}"
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" out:refs/heads/sweep-out-${{ matrix.engine }}-${{ matrix.mode }}
