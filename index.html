@@ -16,8 +16,6 @@
 <link rel="stylesheet" href="watch/watch.css" />
 <link rel="stylesheet" href="phone/phone.css" />
 <link rel="stylesheet" href="ocean/ocean.css" />
-<link rel="preload" href="gfx/fonts/oxanium-700.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" href="gfx/fonts/barlow-condensed-700.woff2" as="font" type="font/woff2" crossorigin />
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' blob: 'unsafe-eval' 'wasm-unsafe-eval'; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src * data: blob:; connect-src * blob: data:; frame-src https://www.youtube-nocookie.com https://webcams.windy.com; media-src * data: blob:; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'" />
 </head>
 <body class="lay-globe">
@@ -73,7 +71,7 @@
 </section>
 <section class="globe-wrap">
 <div id="globe"></div>
-<button class="reopen hidden" id="reopen-leftPanel" data-reopen="leftPanel">▸ HOT SPOTS</button>
+<button class="reopen hidden" id="reopen-leftPanel" data-reopen="leftPanel">Hot spots</button>
 <button class="reopen hidden" id="reopen-rightPanel" data-reopen="rightPanel">◂ FEED</button>
 <button id="homeBtn" class="home" title="Back to the whole Earth (H)">⌂ RESET VIEW</button>
 <div class="flybar"><button id="flyBtn" title="Free roam: fly anywhere (F)">✈ FREE ROAM</button><button id="moonBtn" title="Fly out to the Moon (M)">☾ MOON</button></div>
@@ -88,16 +86,16 @@
 </section>
 <section class="panel right" id="rightPanel">
 <button class="collapse" data-collapse="rightPanel" title="Hide panel">▸</button>
-<button id="hudDataClose" type="button" title="Close the data drawer">CLOSE ✕</button>
+<button id="hudDataClose" type="button" title="Close the data drawer" aria-label="Close the data drawer">Close</button>
 <nav class="tabs groups">
-<button data-group="now" class="on">NOW</button>
-<button data-group="next">NEXT</button>
-<button data-group="earth">EARTH</button>
-<button data-group="air">AIR</button>
-<button data-group="space">SPACE</button>
-<button data-group="intel">INTEL</button>
-<button data-group="live">● LIVE</button>
-<button data-group="people">PEOPLE</button>
+<button data-group="now" class="on">Now</button>
+<button data-group="next">Next</button>
+<button data-group="earth">Earth</button>
+<button data-group="air">Air</button>
+<button data-group="space">Space</button>
+<button data-group="intel">Intel</button>
+<button data-group="live"><i class="live-dot" aria-hidden="true"></i>Live</button>
+<button data-group="people">People</button>
 </nav>
 <nav class="subtabs" id="subtabs"></nav>
 <ul id="feed" class="list tab on"></ul>
