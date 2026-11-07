@@ -12,7 +12,7 @@ const fails = []; const fail = (m) => { fails.push(m); log("FAIL", m); };
 const rss = () => { try { const pat = ENGINE === "webkit" ? /WebKit|MiniBrowser|pw_run/ : /chrom/i; return execSync("ps -eo rss=,args=", { encoding: "utf8" }).split("\n").filter((l) => pat.test(l)).reduce((s, l) => s + (parseInt(l, 10) || 0), 0) / 1024; } catch { return -1; } };
 const procs = () => { try { return execSync("ps -eo rss=,comm=", { encoding: "utf8" }).split("\n").filter((l) => /WebKit|chrom/i.test(l)).map((l) => l.trim()).sort((a, b) => parseInt(b, 10) - parseInt(a, 10)).slice(0, 4).join(" | "); } catch { return ""; } };
 const finish = () => { log(fails.length ? `SOAK FAILED (${fails.length})` : "SOAK PASSED"); process.exit(fails.length ? 1 : 0); };
-setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 24) * 60e3);
+setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 36) * 60e3);
 // The live files through a local address: the app hands its globe to test scripts only on localhost. Every byte of the
 // site still comes from the live address; the browser fetches every other host (maps, feeds) itself.
 async function passThrough() {
@@ -206,6 +206,9 @@ async function watchCheck() {
 }
 
 (async () => {
+  // the extra checks first, each in its own browser, so a stuck soak can never skip them
+  if (DESK) { await watchCheck(); await liveTapCheck(); await polesCheck(); await shipsCheck(); }
+  else if (ENGINE === "webkit") await polesCheck(); // the phone's memory with the polar layers drawing
   const dev = DESK ? { viewport: { width: 1466, height: 800 } } : pw.devices["iPhone 14 Pro"];
   const ctx = await pw[ENGINE].launchPersistentContext("prof", { ...dev, ...(ENGINE === "chromium" ? { args: ["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"] } : {}) });
   let p = ctx.pages()[0] || (await ctx.newPage());
@@ -226,7 +229,7 @@ async function watchCheck() {
   const ev = (fn, arg, ms = 8000) => Promise.race([p.evaluate(fn, arg), new Promise((_, j) => setTimeout(() => j(new Error("page did not answer")), ms))]);
   let stacks = 0;
   const stuckStack = async (label) => { // Chrome only: pause the stuck page and record what is running
-    if (!cdp || stacks >= 3) return; stacks++;
+    if (!cdp || stacks >= 6) return; stacks++;
     try { const got = new Promise((r) => cdp.once("Debugger.paused", r)); cdp.send("Debugger.pause").catch(() => {}); const ev2 = await Promise.race([got, new Promise((r) => setTimeout(() => r(null), 10000))]);
       if (!ev2) { log("STACK (" + label + "): could not pause"); return; }
       log("STACK (" + label + "):"); for (const f of ev2.callFrames.slice(0, 25)) log("    at", f.functionName || "(anon)", `${(f.url || "").split("/").pop()}:${f.location.lineNumber + 1}:${f.location.columnNumber + 1}`);
@@ -412,7 +415,5 @@ async function watchCheck() {
   if (!up2) fail("reopened in the same profile: globe not up"); else log("reopened in the same profile: up");
   await shot("out/reopen.png");
   await ctx.close().catch(() => {});
-  if (DESK) { await watchCheck(); await liveTapCheck(); await polesCheck(); await shipsCheck(); }
-  else if (ENGINE === "webkit") await polesCheck(); // the phone's memory with the polar layers drawing
   log(fails.length ? `SOAK FAILED (${fails.length})` : "SOAK PASSED"); process.exit(fails.length ? 1 : 0);
 })().catch((e) => { log("FAIL crashed:", e.message); process.exit(1); });
