@@ -1,0 +1,21 @@
+name: fetch
+on:
+  push:
+    branches: [fetch]
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: get
+        run: |
+          mkdir out && cd out
+          for l in GHRSST_L4_MUR25_Sea_Ice_Concentration MODIS_Terra_L3_Sea_Ice_Daily MODIS_Terra_NDSI_Snow_Cover MODIS_Terra_L3_NDSI_Snow_Cover_Daily; do
+            curl -fsSL --retry 3 -o "$l.xml" "https://gibs.earthdata.nasa.gov/colormaps/v1.3/$l.xml" || echo "$l failed" >> failed.txt
+          done
+          ls -la
+          git init -q && git checkout -q -b out && git add -A
+          git -c user.name=dt -c user.email=dt@noreply.invalid commit -qm "fetch"
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" out:refs/heads/fetch-out
