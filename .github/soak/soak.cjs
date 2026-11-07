@@ -171,6 +171,45 @@ async function shipsCheck() {
   finally { await b?.close().catch(() => {}); }
 }
 
+// News and radio on the live files through the localhost pass-through (the page's test hooks answer only there), with
+// the real outlets and radio feed: All news must be under 30 minutes old from the page's own outlet reads, and radio must
+// draw no signal line by default and show the "Shortwave radio right now" table.
+async function newsCheck() {
+  let b = null; const pt = await passThrough();
+  try {
+    b = await pw.chromium.launch({ args: ["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"] });
+    const c = await b.newContext({ viewport: { width: 1466, height: 800 }, serviceWorkers: "block" });
+    await c.addInitScript(() => { try { localStorage.setItem("t.seenIntro", "1"); localStorage.removeItem("t.livefeeds"); localStorage.removeItem("t.radio.arcs"); } catch { /* private mode */ } });
+    const w = await c.newPage();
+    const wev = (fn, arg) => Promise.race([w.evaluate(fn, arg), new Promise((_, j) => setTimeout(() => j(new Error("page did not answer")), 60000))]);
+    await w.goto(pt.url, { timeout: 90000 });
+    await w.waitForFunction(() => !document.getElementById("boot") && window.__news && document.querySelector(".cesium-widget canvas"), null, { timeout: 180000 });
+    await wev(() => { document.querySelector('.hud-ops [data-act="data"]')?.click(); document.querySelector('[data-group="live"]')?.click(); }); await w.waitForTimeout(1500);
+    await wev(() => document.querySelector('[data-sub="radio"]')?.click());
+    await w.waitForFunction(() => window.__radio?.hf, null, { timeout: 30000 }).catch(() => {});
+    let h = null;
+    for (let k = 0; k < 12; k++) { await w.waitForTimeout(5000); h = await wev(() => window.__radio?.hf?.() || null).catch((e) => ({ err: e.message })); if (h && !h.err && h.total > 0) break; }
+    const tbl = await wev(() => { const d = document.querySelector('[data-sec="radio-hf"]'); if (!d) return null; let n = 0;
+      for (let e = d.nextElementSibling; e && !e.classList.contains("day"); e = e.nextElementSibling) n++;
+      return { rows: n, text: d.parentElement.innerText.replace(/\s+/g, " ").slice(0, 300) }; }).catch((e) => ({ err: e.message }));
+    log("news radio:", (JSON.stringify(h) || "null").slice(0, 500), "| table", (JSON.stringify(tbl) || "null").slice(0, 400));
+    if (!h || h.err) fail(`news radio: could not read the layer (${JSON.stringify(h)})`);
+    else if (h.arcs && !h.expert) fail(`news radio: ${h.arcs} signal lines drawn by default`);
+    if (!tbl || tbl.err || !tbl.rows) fail(`news radio: no "Shortwave radio right now" table (${JSON.stringify(tbl)})`);
+    await wev(() => document.querySelector('[data-group="now"]')?.click()); await w.waitForTimeout(800);
+    await wev(() => document.querySelector('[data-sub="news"]')?.click());
+    await w.waitForFunction(() => performance.now() > 27000 && window.__news.state.at, null, { timeout: 90000 }).catch(() => {});
+    await w.waitForTimeout(6000); // live updates are gathered for up to 5 s before the list redraws
+    const n = await wev(() => { const all = window.__news.news(), newest = all.reduce((m, x) => Math.max(m, Date.parse(x.time) || 0), 0), s = window.__news.state;
+      return { ageMin: newest ? Math.round((Date.now() - newest) / 6e4) : null, stories: all.length, ok: s.ok, failed: s.failed, readAt: s.at,
+        head: (document.querySelector("#news .news-head")?.textContent || "").replace(/\s+/g, " ").slice(0, 300) }; }).catch((e) => ({ err: e.message }));
+    log("news list:", JSON.stringify(n));
+    if (!n || n.err) fail(`news list: could not read it (${JSON.stringify(n)})`);
+    else if (!(n.ageMin <= 30)) fail(`news list: newest story ${n.ageMin} min old (${n.ok?.length} outlets read, not answering: ${(n.failed || []).join(", ")})`);
+  } catch (e) { fail(`news check: ${e.message.split("\n")[0]}`); }
+  finally { await b?.close().catch(() => {}); pt.close(); }
+}
+
 // Watch mode on the live site (desktop): an aircraft alert only for the emergency squawks, and once a tap on the alert's
 // tag brings the camera close, the tag keeps with the dragged globe (it used to slide away about twice as fast). Two
 // aircraft come from a stand-in feed: one squawking 7700, one squawking 1000 (Europe's normal code) with an "unlawful" status.
@@ -207,7 +246,10 @@ async function watchCheck() {
 
 (async () => {
   // the extra checks first, each in its own browser, so a stuck soak can never skip them
-  if (DESK) { await watchCheck(); await liveTapCheck(); await polesCheck(); await shipsCheck(); }
+  const ONLY = (process.env.ONLY || "").split(",").map((x) => x.trim()).filter(Boolean);
+  if (ONLY.length) { const C = { watch: watchCheck, tap: liveTapCheck, poles: polesCheck, ships: shipsCheck, news: newsCheck };
+    if (DESK) for (const k of ONLY) C[k] ? await C[k]() : fail(`no check named ${k}`); finish(); return; }
+  if (DESK) { await watchCheck(); await liveTapCheck(); await polesCheck(); await shipsCheck(); await newsCheck(); }
   else if (ENGINE === "webkit") await polesCheck(); // the phone's memory with the polar layers drawing
   const dev = DESK ? { viewport: { width: 1466, height: 800 } } : pw.devices["iPhone 14 Pro"];
   const ctx = await pw[ENGINE].launchPersistentContext("prof", { ...dev, ...(ENGINE === "chromium" ? { args: ["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"] } : {}) });

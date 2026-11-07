@@ -1,5 +1,11 @@
 name: phone soak
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Only these live checks, on the desktop job (comma list: watch,tap,poles,ships,news); empty runs the full soak"
+        required: false
+        default: ""
 permissions:
   contents: read
 jobs:
@@ -18,16 +24,20 @@ jobs:
         with:
           node-version: 22
       - name: browser
+        if: inputs.only == '' || matrix.engine == 'desktop'
         working-directory: .github/soak
         run: npm i --no-save --no-audit --no-fund playwright@1.63.0 && npx playwright install --with-deps ${{ matrix.engine == 'desktop' && 'chromium' || matrix.engine }}
       - name: soak
+        if: inputs.only == '' || matrix.engine == 'desktop'
         working-directory: .github/soak
+        env:
+          ONLY: ${{ inputs.only }}
         # the verdict is the SOAK PASSED / SOAK FAILED line in this log; the step itself never fails, so no failure emails
         run: |
           mkdir -p out
           xvfb-run -a node soak.cjs ${{ matrix.engine }} "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/" 5 > out/log.txt 2>&1 || true
           grep -v '^\[pid=' out/log.txt | tail -n 400
-          echo "== live checks"; grep -E '^ *[0-9.]+s (FAIL )?(watch|tap|poles|argo|ships|opensky|PIC)' out/log.txt || true
+          echo "== live checks"; grep -E '^ *[0-9.]+s (FAIL )?(watch|tap|poles|argo|ships|opensky|news|PIC)' out/log.txt || true
       - uses: actions/upload-artifact@v4
         if: always()
         with:
