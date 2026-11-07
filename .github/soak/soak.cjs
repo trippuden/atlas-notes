@@ -26,7 +26,9 @@ setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 12) * 60e3)
   netLog(p);
   watchPage(p);
   let cdp = null;
-  if (ENGINE === "chromium") { cdp = await ctx.newCDPSession(p); await cdp.send("Debugger.enable"); if (!DESK) { await cdp.send("Emulation.setCPUThrottlingRate", { rate: 4 }); log("chromium: CPU slowed 4x"); } else log("desktop chromium, full speed"); }
+  if (ENGINE === "chromium") { cdp = await ctx.newCDPSession(p); await cdp.send("Debugger.enable"); await cdp.send("Network.enable").catch(() => {}); let nulls = 0;
+    cdp.on("Network.requestWillBeSent", (e) => { if (!/\/null(\?|$)/.test(e.request.url) || nulls++ > 3) return; const i = e.initiator || {}; const fr = (i.stack?.callFrames || []).slice(0, 6).map((f) => `${f.functionName || "(anon)"} ${(f.url || "").split("/").pop()}:${f.lineNumber + 1}:${f.columnNumber + 1}`);
+      log("NULL URL request:", e.type, i.type, i.url ? i.url.split("/").pop() + ":" + (i.lineNumber + 1) : "", fr.join(" < ")); }); if (!DESK) { await cdp.send("Emulation.setCPUThrottlingRate", { rate: 4 }); log("chromium: CPU slowed 4x"); } else log("desktop chromium, full speed"); }
   else log("webkit: real Safari engine, CPU not slowed (WebKit has no throttle)");
   // every call into the page has a time limit, so a stuck page is reported instead of stalling the test
   const ev = (fn, arg, ms = 8000) => Promise.race([p.evaluate(fn, arg), new Promise((_, j) => setTimeout(() => j(new Error("page did not answer")), ms))]);
