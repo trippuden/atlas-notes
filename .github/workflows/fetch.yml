@@ -12,6 +12,7 @@ jobs:
       - name: get
         run: |
           mkdir out && cd out
+          curl -fsSL --retry 3 -o index.html "https://gibs.earthdata.nasa.gov/colormaps/v1.3/" || echo "index failed" >> failed.txt
           for p in epsg3857 epsg4326; do curl -fsSL --retry 3 -o caps-$p.xml "https://gibs.earthdata.nasa.gov/wmts/$p/best/1.0.0/WMTSCapabilities.xml" || echo "caps $p failed" >> failed.txt; done
           ls -la
           python3 - <<'PY'
@@ -24,6 +25,7 @@ jobs:
               for L in layers:
                   hit = [c for c in chunks if f"<ows:Identifier>{L}</ows:Identifier>" in c]
                   if not hit: out.write(f"{f} {L} NOT-IN-CAPABILITIES\n"); continue
+                  open(f"chunk-{f[5:-4]}-{L}.xml", "w").write(hit[0][:6000])
                   for h in sorted(set(re.findall(r'xlink:href="([^"]*colormap[^"]*)"', hit[0]))): out.write(f"{f} {L} {h}\n")
           PY
           cat hrefs.txt
