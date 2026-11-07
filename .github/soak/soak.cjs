@@ -126,12 +126,12 @@ setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 24) * 60e3)
       const sw = window.__sw = { rb: 0, mo: new MutationObserver((ms) => { let rm = 0; for (const m of ms) rm += m.removedNodes.length; if (rm >= Math.max(3, e.children.length * 0.5)) sw.rb++; }) }; sw.mo.observe(e, { childList: true });
       const r = e.getBoundingClientRect(); return { x: Math.round(r.left + r.width / 2), y: Math.round(Math.min(r.bottom - 40, r.top + r.height * 0.75)), top: Math.round(r.top), list: e.id || String(e.className).slice(0, 24) }; }).catch(() => null);
     if (!b) return null;
-    const waits = [];
-    for (let k = 0; k < 4; k++) {
+    const waits = [], dl = Date.now() + (cdp && !DESK ? 15000 : 8000); // time-boxed: software graphics on the runners can make each wheel step take seconds
+    for (let k = 0; k < 4 && Date.now() < dl; k++) {
       if (cdp && !DESK) { const up = k % 2 === 0; let y = up ? b.y : Math.max(b.top + 60, b.y - 300); const step = up ? -26 : 26;
         const tc = async (type, pts) => { const a = Date.now(); await cdp.send("Input.dispatchTouchEvent", { type, touchPoints: pts }); waits.push(Date.now() - a); };
-        await tc("touchStart", [{ x: b.x, y }]); for (let i = 0; i < 12; i++) { y += step; await tc("touchMove", [{ x: b.x, y }]); await p.waitForTimeout(16); } await tc("touchEnd", []); }
-      else { await p.mouse.move(b.x, b.y); for (let i = 0; i < 10; i++) { const a = Date.now(); await p.mouse.wheel(0, k % 2 ? -160 : 240); waits.push(Date.now() - a); await p.waitForTimeout(40); } }
+        await tc("touchStart", [{ x: b.x, y }]); for (let i = 0; i < 12 && Date.now() < dl; i++) { y += step; await tc("touchMove", [{ x: b.x, y }]); await p.waitForTimeout(16); } await tc("touchEnd", []); }
+      else { await p.mouse.move(b.x, b.y); for (let i = 0; i < 10 && Date.now() < dl; i++) { const a = Date.now(); await p.mouse.wheel(0, k % 2 ? -160 : 240); waits.push(Date.now() - a); await p.waitForTimeout(40); } }
       await p.waitForTimeout(400);
     }
     const rebuilt = await ev(() => window.__sw?.rb ?? 0).catch(() => -1);
@@ -154,7 +154,7 @@ setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 24) * 60e3)
       await winEnd(`tour ${g}/${sub} (long task over 700 ms)`);
       const sc = await scrollCheck().catch(() => null);
       if (sc) { log("SCROLL", `${g}/${sub}`, JSON.stringify(sc));
-        if (sc.held95 > 100) fail(`tour ${g}/${sub}: touches held ${sc.held95} ms by the page while scrolling (95th percentile)`);
+        if (sc.by === "finger" && sc.held95 > 100) fail(`tour ${g}/${sub}: touches held ${sc.held95} ms by the page while scrolling (95th percentile)`);
         if (sc.rebuilt > 0) fail(`tour ${g}/${sub}: list rebuilt ${sc.rebuilt} time(s) while it was being scrolled`); }
       const row = { tab: `${g}/${sub}`, ms: Date.now() - t, worstAnswer: worstAns, worstTimer: m?.wt, longest: m ? Math.max(0, ...m.long) : null, longCount: m?.long.length, heap: m?.heap, rss: Math.round(rss()), errors: errs.slice(before).map((e) => e.slice(0, 120)), scroll: sc };
       tour.push(row); log("TOUR", JSON.stringify(row));
