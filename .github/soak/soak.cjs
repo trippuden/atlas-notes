@@ -72,7 +72,10 @@ async function polesCheck() {
     await w.waitForTimeout(600); await wev(() => document.querySelector('[data-sub="ocean"]')?.click()); await w.waitForTimeout(6000);
     const mem = async () => phone ? `${Math.round(rss())} MB browser` : `${Math.round((await wev(() => performance.memory?.usedJSHeapSize || 0)) / 1048576)} MB heap`;
     const look = (lat, h) => wev(([lat, h]) => { const C = window.Cesium, cam = window.viewer.camera; cam.cancelFlight?.(); cam.setView({ destination: C.Cartesian3.fromDegrees(0, lat, h), orientation: { heading: 0, pitch: -Math.PI / 2, roll: 0 } }); }, [lat, h]);
-    const settle = async () => { let k = 0; for (; k < 30; k++) { await w.waitForTimeout(1000); if (await wev(() => window.viewer.scene.globe.tilesLoaded).catch(() => false)) break; } await w.waitForTimeout(1500); return k; };
+    // on a phone the browser's memory and the tiles asked for are logged every 5 s, and a crash says where it happened
+    const settle = async () => { let k = 0; for (; k < 30; k++) { await w.waitForTimeout(1000); if (phone && k % 5 === 4) log(`poles: watch ${step} ${k + 1} s: ${Math.round(rss())} MB browser, ${tiles.length} GIBS tiles so far | ${procs()}`);
+      if (await wev(() => window.viewer.scene.globe.tilesLoaded).catch(() => false)) break; } await w.waitForTimeout(1500); return k; };
+    w.on("crash", () => log(`poles: PAGE CRASHED at ${step}: ${Math.round(rss())} MB browser, ${tiles.length} GIBS tiles, last ${JSON.stringify(tiles.slice(-3))} | ${procs()}`));
     const sum = (from) => { const by = {}; for (const t of tiles.slice(from)) { const L = (by[t.layer] ||= { n: 0, ok: 0, z: -1, kb: 0, other: {} }); L.n++; if (t.st === 200) { L.ok++; L.z = Math.max(L.z, t.z); L.kb += t.n / 1024; } else L.other[t.st] = (L.other[t.st] || 0) + 1; }
       return Object.entries(by).map(([k, L]) => `${k.replace(/_/g, " ").slice(0, 34)}: ${L.ok}/${L.n} ok, level ${L.z}, ${Math.round(L.kb)} KB${Object.keys(L.other).length ? " " + JSON.stringify(L.other) : ""}`).join("; ") || "no GIBS tiles"; };
     // a browser screenshot at half size (made by the browser itself, no wait for fonts), then measured and shrunk in a blank
@@ -283,7 +286,9 @@ async function watchCheck() {
   // the extra checks first, each in its own browser, so a stuck soak can never skip them
   const ONLY = (process.env.ONLY || "").split(",").map((x) => x.trim()).filter(Boolean);
   if (ONLY.length) { const C = { watch: watchCheck, tap: liveTapCheck, poles: polesCheck, ships: shipsCheck, news: newsCheck, weather: weatherCheck };
-    if (DESK) for (const k of ONLY) C[k] ? await C[k]() : fail(`no check named ${k}`); finish(); return; }
+    if (DESK) for (const k of ONLY) C[k] ? await C[k]() : fail(`no check named ${k}`);
+    else if (ENGINE === "webkit" && ONLY.includes("poles")) await polesCheck(); // the iPhone engine with the polar layers
+    finish(); return; }
   if (DESK) { await watchCheck(); await liveTapCheck(); await polesCheck(); await shipsCheck(); await newsCheck(); await weatherCheck(); }
   else if (ENGINE === "webkit") await polesCheck(); // the phone's memory with the polar layers drawing
   const dev = DESK ? { viewport: { width: 1466, height: 800 } } : pw.devices["iPhone 14 Pro"];

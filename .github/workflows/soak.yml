@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       only:
-        description: "Only these live checks, on the desktop job (comma list: watch,tap,poles,ships,news,weather); empty runs the full soak"
+        description: "Only these live checks, on the desktop job (comma list: watch,tap,poles,ships,news,weather; poles also runs on the iPhone engine); empty runs the full soak"
         required: false
         default: ""
 permissions:
@@ -24,11 +24,11 @@ jobs:
         with:
           node-version: 22
       - name: browser
-        if: inputs.only == '' || matrix.engine == 'desktop'
+        if: inputs.only == '' || matrix.engine == 'desktop' || (matrix.engine == 'webkit' && contains(inputs.only, 'poles'))
         working-directory: .github/soak
         run: npm i --no-save --no-audit --no-fund playwright@1.63.0 && npx playwright install --with-deps ${{ matrix.engine == 'desktop' && 'chromium' || matrix.engine }}
       - name: soak
-        if: inputs.only == '' || matrix.engine == 'desktop'
+        if: inputs.only == '' || matrix.engine == 'desktop' || (matrix.engine == 'webkit' && contains(inputs.only, 'poles'))
         working-directory: .github/soak
         env:
           ONLY: ${{ inputs.only }}
@@ -38,6 +38,7 @@ jobs:
           xvfb-run -a node soak.cjs ${{ matrix.engine }} "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/" 5 > out/log.txt 2>&1 || true
           grep -v '^\[pid=' out/log.txt | tail -n 400
           echo "== live checks"; grep -E '^ *[0-9.]+s (FAIL )?(watch|tap|poles|argo|ships|opensky|news|weather)' out/log.txt | cut -c1-900 || true
+          echo "== slow frames and crashes"; grep -E 'SLOW FRAME|stalls over 250 ms|PAGE CRASHED|poles: watch' out/log.txt | cut -c1-600 | head -40 || true
           echo "== fails"; grep -E '^ *[0-9.]+s FAIL' out/log.txt | cut -c1-400 || true; grep -E 'SOAK (PASSED|FAILED)' out/log.txt || true
       - uses: actions/upload-artifact@v4
         if: always()
