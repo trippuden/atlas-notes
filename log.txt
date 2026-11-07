@@ -1,0 +1,180 @@
+    2s open https://trippuden.github.io/atlas-notes/ webkit phone
+   17s app up: true after 17 s
+   36s home {"bb":213,"pt":15598,"lb":21,"pl":206,"ent":108,"prim":16,"ds":48}
+   75s group ZONES {"bb":213,"pt":15598,"lb":21,"pl":206,"ent":108,"prim":16,"ds":48} cards -,-,gx-name sticky,-
+  116s group EVENTS {"bb":213,"pt":15598,"lb":21,"pl":206,"ent":108,"prim":16,"ds":48} cards -,-,gx-name sticky,-
+  165s group EARTH {"bb":211,"pt":15598,"lb":21,"pl":48,"ent":126,"prim":25,"ds":50} cards wxBar,wxBar,wxBar
+  211s group SEA {"bb":224,"pt":18021,"lb":21,"pl":27,"ent":94,"prim":23,"ds":1} cards -,gx-name sticky,gx-name sticky,-
+  255s group AIR {"bb":223,"pt":15598,"lb":21,"pl":177,"ent":549,"prim":100,"ds":1} cards -,-,gx-name sticky,gx-name sticky
+  298s group SPACE {"bb":223,"pt":48397,"lb":21,"pl":0,"ent":64,"prim":29,"ds":0} cards -,-,-,-
+  343s group NEXT {"bb":200,"pt":15598,"lb":21,"pl":67,"ent":104,"prim":18,"ds":57} cards -,-,-,-
+  399s group LIVE {"bb":70701,"pt":19642,"lb":21,"pl":0,"ent":13,"prim":23,"ds":0} cards -,-,-,-
+  423s filters: 9 sections, 67 rows
+  454s layer regions  drew {"bb":0,"pt":0,"lb":0,"pl":48,"ent":40,"ds":48,"prim":0} no card 
+  493s layer events  drew {"bb":0,"pt":0,"lb":0,"pl":158,"ent":29,"ds":0,"prim":0} no card 
+  530s layer strikes  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":0} no card 
+  569s layer unrest  drew {"bb":0,"pt":1815,"lb":0,"pl":0,"ent":0,"ds":0,"prim":1} no card 
+  608s layer alerts  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":0} no card 
+  647s layer crime  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":2} no card 
+  684s layer banks  drew {"bb":12,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":2} no card 
+  723s layer cyber  drew {"bb":8,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":1} no card 
+  760s layer hazards  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":39,"ds":0,"prim":0} no card 
+  799s layer weather  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":45,"ds":0,"prim":0} no card 
+  838s layer orbitfaint  drew {"bb":12,"pt":32799,"lb":0,"pl":0,"ent":0,"ds":0,"prim":2} no card 
+  878s layer aurora  drew {"bb":11,"pt":0,"lb":0,"pl":0,"ent":2,"ds":0,"prim":8} no card 
+  914s layer fires  drew {"bb":0,"pt":92137,"lb":0,"pl":0,"ent":0,"ds":0,"prim":1} card: Fire / heat spot / last seen 1d ago · VIIRS NOAA-20 / 1.3 MW / TAP 
+  952s layer power  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":0} no card 
+  982s layer radar  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":0} card: 59° / Al Jawf, KF, LY / middle of the map · clear · feels 55° / PA 
+ 1024s layer clouds  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":0} card: 59° / Al Jawf, KF, LY / middle of the map · clear · feels 55° / PA netfail gibs.earthdata.nasa.gov HTTP 404
+ 1056s layer lightning  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":0} card: 59° / Al Jawf, KF, LY / middle of the map · clear · feels 55° / PA 
+ 1088s layer ptype  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":0} card: 59° / Al Jawf, KF, LY / middle of the map · clear · feels 55° / PA 
+ 1129s layer snow  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":0} card: 59° / Al Jawf, KF, LY / middle of the map · clear · feels 55° / PA 
+ 1174s layer wind  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":0} card: Buoy 42060 / Caribbean Valley - 63 NM WSW of Montserrat · phot netfail gibs.earthdata.nasa.gov FAILED Origin https://trippuden.github.io is not allowed by Access-Control-Allow-Origin. Status code: 404
+ 1213s layer temp  drew {"bb":2,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":2} no card 
+ 1252s layer currents  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":0} card: Buoy 42060 / Caribbean Valley - 63 NM WSW of Montserrat · phot 
+ 1290s layer waves  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":1} no card 
+ 1328s layer storms  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":0} card: Buoy 42060 / Caribbean Valley - 63 NM WSW of Montserrat · phot netfail www.gdacs.org FAILED Cross-origin redirection to https://www.gdacs.org/gdacsapi/api/events/geteventlist/MAP?eventtype=TC&TSPD_101_R0=085c21151fab20008d9ec85e4efbb4adc01f9a810b49800d59769135436a613f3996fd02184a907008154a8c4f144800932803f8147daf98c1746b9c79da0557092002ad868a6c05c5c5eed05375d78e795afb90286978f95ed7215b73ae365b961d6bdb7e797cadc639065a19398296086777501a008cfb denied by Cross-Origin Resource Sharing policy: Origin https://trippuden.github.io is not allowed by Access-Control-Allow-Origin. Status code: 307
+ 1367s layer warnings  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":0,"ds":2,"prim":0} card: Buoy 42060 / Caribbean Valley - 63 NM WSW of Montserrat · phot 
+ 1406s layer outlook  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":0,"ds":14,"prim":3} card: Buoy 42060 / Caribbean Valley - 63 NM WSW of Montserrat · phot 
+ 1445s layer aircraft  drew {"bb":12,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":0} no card 
+ 1483s layer routes  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":162,"ds":0,"prim":80} card: Busiest route, last 24 h: CPT–JNB / 87 / FLIGHTS SEEN IN 24 H / TA 
+ 1523s layer loiter  drew {"bb":0,"pt":0,"lb":0,"pl":150,"ent":300,"ds":0,"prim":2} no card 
+ 1560s layer gaps  drew {"bb":0,"pt":0,"lb":0,"pl":128,"ent":1,"ds":128,"prim":0} no card 
+ 1599s layer jamming  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":43,"ds":0,"prim":0} no card 
+ 1637s layer ships  drew {"bb":845,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":1} no card 
+ 1677s layer navy  drew {"bb":0,"pt":0,"lb":0,"pl":27,"ent":43,"ds":0,"prim":0} no card 
+ 1716s layer ocean  drew {"bb":2817,"pt":0,"lb":0,"pl":1951,"ent":0,"ds":0,"prim":7} no card netfail relay.frelay.workers.dev HTTP 404; relay.frelay.workers.dev HTTP 503
+ 1758s layer sats  drew {"bb":12,"pt":32799,"lb":0,"pl":0,"ent":0,"ds":0,"prim":2} no card 
+ 1794s layer space  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":50,"ds":0,"prim":0} no card 
+ 1833s layer ufo  drew {"bb":0,"pt":15215,"lb":0,"pl":0,"ent":0,"ds":0,"prim":1} no card 
+ 1871s layer outages  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":7,"ds":0,"prim":0} no card 
+ 1906s layer detect  drew {"bb":13,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":1} no card netfail visualisations.aemo.com.au FAILED Origin https://trippuden.github.io is not allowed by Access-Control-Allow-Origin. Status code: 500
+ 1928s layer radio (was on, now off) drew {"bb":-1993,"pt":-4038,"lb":0,"pl":-700,"ent":0,"ds":0,"prim":-4} no card 
+ 1952s layer live (was on, now off) drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":-13,"ds":0,"prim":0} no card 
+ 1973s layer camnet (was on, now off) drew {"bb":-68508,"pt":0,"lb":0,"pl":0,"ent":170,"ds":0,"prim":-1} no card 
+ 2007s layer streetcams  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":0} no card 
+ 2046s layer camwatch  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":0} no card 
+ 2085s layer alpr  drew {"bb":0,"pt":825,"lb":0,"pl":0,"ent":0,"ds":0,"prim":1} no card 
+ 2122s layer elections  drew {"bb":0,"pt":0,"lb":0,"pl":19,"ent":14,"ds":9,"prim":0} no card 
+ 2162s layer advisories  drew {"bb":0,"pt":0,"lb":0,"pl":51,"ent":8,"ds":18,"prim":0} no card 
+ 2200s layer community  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":0} no card 
+ 2224s layer look.war (was on, now off) drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":0} no card 
+ 2247s layer look.storm (was on, now off) drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":0} no card 
+ 2269s layer look.outage (was on, now off) drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":0} no card 
+ 2294s layer look.rad (was on, now off) drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":0} no card 
+ 2317s layer look.snow (was on, now off) drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":0} no card 
+ 2340s layer look.ice (was on, now off) drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":0} no card netfail gibs.earthdata.nasa.gov FAILED Origin https://trippuden.github.io is not allowed by Access-Control-Allow-Origin. Status code: 404
+ 2363s layer look.lights (was on, now off) drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":0} no card 
+ 2400s layer look.real  drew {"bb":0,"pt":0,"lb":0,"pl":0,"ent":0,"ds":0,"prim":0} no card netfail gibs.earthdata.nasa.gov HTTP 404
+ 2419s data groups: HOT SPOTS, NOW, NEXT, EARTH, AIR, SPACE, INTEL, LIVE, PEOPLE
+ 2424s data HOT SPOTS > (no sub-tabs) 0 items: (empty)
+ 2429s data NOW > EVENTS 68 items: Tropical cyclone THIRTYONE-26 · green alert · 2,127 people in Category 1+ winds / OFFICIAL ·
+ 2432s data NOW > ALL NEWS 146 items: 145 stories from 10 outlets, last 72h. Same story from several outlets is merged. / Russell 
+ 2435s data NOW > THINKING 7 items: WHAT THE TERMINAL IS THINKING / thought 10h ago · 14 new items fired 11 of 712 neurons / NOTIC
+ 2440s data NEXT > CALENDAR 128 items: FRI NOV 06 2026 / Ceres-2 | Unknown Payload (Galactic Energy) / OFFICIAL / launch / Asteroid (2026
+ 2443s data NEXT > FORECASTS 43 items: Tropical cyclone MURASU-26 · red alert · 1.5 million people in Category 1+ winds · still a
+ 2447s data NEXT > ELECTIONS 14 items: New Zealand: Parliament / Nationwide · Nov 7 · in 7h / Cape Verde: President / Nationwide · Nov 
+ 2453s data EARTH > HAZARDS & WEATHER 89 items: TSUNAMI (1) / Tsunami information: 75 miles SW of Eureka, California / OFFICIAL · NOAA Tsunami
+ 2457s data EARTH > POWER & GRID 29 items: Every power plant of 20 MW and up (300 MW and up on phones), colored by fuel, sized by cap
+ 2459s data EARTH > OCEAN 21 items: INFO / TSUNAMI · 72 H / – / CHOKEPOINT COUNTS NOT IN YET / – / WARNINGS TO SHIPS NOT IN YET / – / HIGHES
+ 2465s data AIR > (no sub-tabs) 127 items: 12,373 / AIRCRAFT / › / 397 / MILITARY / › / 17 / SQUAWKS · 24H / › / 150 / LOITERING / › / 250 / ROUTES / › / 130 / BLIND
+ 2470s data SPACE > (no sub-tabs) 317 items: SPOTLIGHT / MY LOCATION / Everything above one exact point right now: every satellite, the spa
+ 2476s data INTEL > DETECTORS 211 items: Each detector watches a free public source directly from your device. LIVE = seconds, NEAR
+ 2479s data INTEL > UNREST & STRIKES 16 items: 8 of 8 types shown: Protest 279 · Riot 13 · Air or drone strike 56 · Shelling / artillery 
+ 2482s data INTEL > CRIME & DRUGS 43 items: Police incidents published by cities as open data. Incidents only: no names, no mugshots, 
+ 2485s data INTEL > BANKS 59 items: Central banks (white), supervisors and the biggest banks (green) at their headquarters. A 
+ 2488s data INTEL > CYBER 69 items: Cyberattacks and hacks from public reporting, government cyber agencies (white markers) an
+ 2492s data INTEL > SHIPS 136 items: 947 / SHIPS / › / 360 / UNDER WAY / › / 27 / MILITARY & LAW / › / 100 / OVER 650 FT / › / LIVE 591 ships reporting
+ 2495s data INTEL > OCEAN 21 items: INFO / TSUNAMI · 72 H / – / CHOKEPOINT COUNTS NOT IN YET / – / WARNINGS TO SHIPS NOT IN YET / – / HIGHES
+ 2498s data INTEL > FAKE CHECK 44 items: Check a picture or video from a war or political story. The file is read on this device on
+ 2502s data INTEL > SIGNALS 179 items: 262 / MIL AIRCRAFT / › / 34 / JAMMING ZONES / › / 7 / OUTAGES / › / 0 / ALERTS / › / ● LIVE 12,382 aircraft, new f
+ 2507s data LIVE > CAMS & VIDEO 312 items: EARTH FROM SPACE, RIGHT NOW / Whole Earth from 1.5 million km (DSCOVR EPIC) / GOES East: the A
+ 2511s data LIVE > RADIO 71 items: 828 / RECEIVERS / 0 / SAT PASSES NOW / 145 / SIGNALS / MIN / OFFICIAL, STATE AND MILITARY BROADCASTERS
+ 2516s data PEOPLE > COMMUNITY 1 items:  Use my location /  Pick on globe / No location set. Only an approximate area is shared, never
+ 2519s data PEOPLE > GOVT PREP ADVICE 9 items: 8 governments advising households to keep emergency supplies. / Germany / OFFICIAL / 10-day supp
+ 2532s dossier tabs: sitrep,level,timeline,assets,sources,outlook,level,assets
+ 2595s search Kyiv -> PLACE Kyiv capital · fly there / EVENT Turkey to push for 'electrification' drive at COP31 as climate  | opened: nothing
+ 2610s search ISS -> SAT ISS (ZARYA) Stations · ISS partners · #25544 / SAT ISS (UNITY) Stations · ISS partners · #25575 / SA | opened: Photo: Wikimedia Commons / International Space Station ISS (ZA
+ 2625s search Starlink -> LAYER Satellites · Space FILTERS / SAT STARLINK-1008 Starlink · United States · #44714 / SAT STARLINK-10 | opened: FILTERS / RESET TO NORMAL / CLOSE / UNITS / MILES / KILOMETERS / ON NOW 
+ 2639s search Tokyo -> PLACE Tokyo capital · fly there / EVENT Bomb threats against European flights ‘likely a coordinated ca | opened: nothing
+ 2653s search earthquake -> LAYER Hazards · Earth & weather FILTERS / HAZARD M 4.8 - 36 km WNW of Poso, Indonesia 10h ago · USGS / H | opened: FILTERS / RESET TO NORMAL / CLOSE / UNITS / MILES / KILOMETERS / ON NOW 
+ 2668s search Flock -> LAYER Plate-reader cameras · People & places FILTERS / SAT FLOCK 4Q-16 United States · United States · | opened: FILTERS / RESET TO NORMAL / CLOSE / UNITS / MILES / KILOMETERS / ON NOW 
+ 2681s search Gaza -> LOOK Map imagery: Dataviz dark (MapTiler · OSM data) FILTERS / NEXT Long March 2F/G | Shenzhou 24 (Chi | opened: FILTERS / RESET TO NORMAL / CLOSE / UNITS / MILES / KILOMETERS / ON NOW 
+ 2696s search weather -> LAYER City weather · Earth & weather FILTERS / LAYER Rain radar · Earth & weather FILTERS / LAYER Clouds | opened: FILTERS / RESET TO NORMAL / CLOSE / UNITS / MILES / KILOMETERS / ON NOW 
+ 2710s search radio -> DO News radio Radio Browser directory / DO Tanzania: offline country file emergency numbers, radio ban | opened: nothing
+ 2724s search Cleveland -> PLACE Cleveland city · fly there / RADIO #CLUB CHARTS -> TOP 100 || IMMER AKTUELL || DJ CHARTS || HOUS | opened: nothing
+ 2765s menu items: 
+ 2819s NETWORK by host (requests ok/bad/failed):
+ 2819s   gibs.earthdata.nasa.gov 557 ok 535 bad 16 failed 6  e.g. open | https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/GHRSST_L4_MUR25_Sea_Ice_Concentration/default/2026-11-07/GoogleMapsCompatible_Level6/1/0/0.png | HTTP 404
+ 2819s   trippuden.github.io 253 ok 249 bad 4 failed 0  e.g. open | https://trippuden.github.io/atlas-notes/api/status | HTTP 404
+ 2819s   www.gdacs.org 3 ok 0 bad 0 failed 3  e.g. group EARTH | https://www.gdacs.org/gdacsapi/api/events/geteventlist/MAP?eventtype=TC | FAILED Cross-origin redirection to https://www.gdacs.org/gdacsapi/api/events/geteventlist/MAP?eventtype=TC&TSPD_101_R0=085c21151fab200027d5b662e64a4e67808e810f0486af371f7427f8a155ce5c250ddc0e10231f9e0843f09d551448004aae5090bf9a2c74f2fefefefc9b748f423c1dc970c4fe741b5b92b0b652d2eef4b65f0171e9a6744d81dacea0e4bce7bb4b2e36ceefc1917b829156cb7d760a3997b08b1c02404c denied by Cross-Origin Resource Sharing policy: Origin https://trippuden.github.io is not allowed by Access-Control-Allow-Origin. Status code: 307
+ 2819s   relay.frelay.workers.dev 752 ok 750 bad 2 failed 0  e.g. layer ocean | https://relay.frelay.workers.dev/api/v3/datasets/fa9a5800b0ee4855af8b2944ab1e07af_0/downloads/data?h=hub.arcgis.com&format=csv&spatialRefId=4326&where=1%3D1 | HTTP 404
+ 2819s   visualisations.aemo.com.au 2 ok 0 bad 0 failed 2  e.g. open | https://visualisations.aemo.com.au/aemo/apps/api/report/ELEC_NEM_SUMMARY | FAILED Origin https://trippuden.github.io is not allowed by Access-Control-Allow-Origin. Status code: 500
+ 2819s   de1.api.radio-browser.info 1 ok 0 bad 0 failed 1  e.g. search radio | https://de1.api.radio-browser.info/json/stations/search?tagList=news&hidebroken=true&order=clickcount&reverse=true&limit=400 | FAILED Origin https://trippuden.github.io is not allowed by Access-Control-Allow-Origin. Status code: 502
+ 2819s   nl1.api.radio-browser.info 1 ok 0 bad 0 failed 1  e.g. search radio | https://nl1.api.radio-browser.info/json/stations/search?tagList=news&hidebroken=true&order=clickcount&reverse=true&limit=400 | FAILED Error resolving “nl1.api.radio-browser.info”: Name or service not known
+ 2819s   at1.api.radio-browser.info 1 ok 0 bad 0 failed 1  e.g. search radio | https://at1.api.radio-browser.info/json/stations/search?tagList=news&hidebroken=true&order=clickcount&reverse=true&limit=400 | FAILED Error resolving “at1.api.radio-browser.info”: Name or service not known
+ 2819s   fi1.api.radio-browser.info 1 ok 0 bad 0 failed 1  e.g. search radio | https://fi1.api.radio-browser.info/json/stations/search?tagList=news&hidebroken=true&order=clickcount&reverse=true&limit=400 | FAILED Error resolving “fi1.api.radio-browser.info”: Name or service not known
+ 2819s   api.open-meteo.com 12 ok 12 bad 0 failed 0
+ 2819s   services.swpc.noaa.gov 58 ok 58 bad 0 failed 0
+ 2819s   earthquake.usgs.gov 55 ok 55 bad 0 failed 0
+ 2819s   data.gdeltproject.org 49 ok 49 bad 0 failed 0
+ 2819s   api.weather.gov 57 ok 57 bad 0 failed 0
+ 2819s   service.iris.edu 5 ok 5 bad 0 failed 0
+ 2819s   api.bigdatacloud.net 11 ok 11 bad 0 failed 0
+ 2819s   nowcoast.noaa.gov 30 ok 30 bad 0 failed 0
+ 2819s   service.earthscope.org 5 ok 5 bad 0 failed 0
+ 2819s   data.elexon.co.uk 13 ok 13 bad 0 failed 0
+ 2819s   api.ioda.inetintel.cc.gatech.edu 3 ok 3 bad 0 failed 0
+ 2819s   environment.data.gov.uk 2 ok 2 bad 0 failed 0
+ 2819s   en.wikipedia.org 8 ok 8 bad 0 failed 0
+ 2819s   eonet.gsfc.nasa.gov 4 ok 4 bad 0 failed 0
+ 2819s   ? 64 ok 64 bad 0 failed 0
+ 2819s   server.arcgisonline.com 291 ok 291 bad 0 failed 0
+ 2819s   api.rainviewer.com 3 ok 3 bad 0 failed 0
+ 2819s   view.eumetsat.int 44 ok 44 bad 0 failed 0
+ 2819s   tilecache.rainviewer.com 152 ok 152 bad 0 failed 0
+ 2819s   odre.opendatasoft.com 2 ok 2 bad 0 failed 0
+ 2819s   meri.digitraffic.fi 5 ok 5 bad 0 failed 0
+ 2819s   www.eia.gov 2 ok 2 bad 0 failed 0
+ 2819s   www.imis.bfs.de 2 ok 2 bad 0 failed 0
+ 2819s   data.sensor.community 2 ok 2 bad 0 failed 0
+ 2819s   tiles.openfreemap.org 2 ok 2 bad 0 failed 0
+ 2819s   api.fdic.gov 1 ok 1 bad 0 failed 0
+ 2819s   raw.githubusercontent.com 1 ok 1 bad 0 failed 0
+ 2819s   www.cyber.gc.ca 1 ok 1 bad 0 failed 0
+ 2819s   opengeo.ncep.noaa.gov 7 ok 7 bad 0 failed 0
+ 2819s   www.spc.noaa.gov 2 ok 2 bad 0 failed 0
+ 2819s   services9.arcgis.com 2 ok 2 bad 0 failed 0
+ 2819s   epic.gsfc.nasa.gov 2 ok 2 bad 0 failed 0
+ 2819s   cdn.star.nesdis.noaa.gov 4 ok 4 bad 0 failed 0
+ 2819s   data.cdc.gov 9 ok 9 bad 0 failed 0
+ 2819s   services3.arcgis.com 1 ok 1 bad 0 failed 0
+ 2819s   services2.arcgis.com 2 ok 2 bad 0 failed 0
+ 2819s   services.arcgis.com 3 ok 3 bad 0 failed 0
+ 2819s   maps2.dcgis.dc.gov 1 ok 1 bad 0 failed 0
+ 2819s   gismaps.fayettevillenc.gov 3 ok 3 bad 0 failed 0
+ 2819s   data.sf.gov 2 ok 2 bad 0 failed 0
+ 2819s   gis.charlottenc.gov 1 ok 1 bad 0 failed 0
+ 2819s   data.cityofchicago.org 1 ok 1 bad 0 failed 0
+ 2819s   s3.amazonaws.com 254 ok 254 bad 0 failed 0
+ 2819s   thespacedevs-prod.nyc3.digitaloceanspaces.com 4 ok 4 bad 0 failed 0
+ 2819s   commons.wikimedia.org 2 ok 2 bad 0 failed 0
+ 2819s   thumb.wikimedia.org 1 ok 1 bad 0 failed 0
+ 2819s   iptv-org.github.io 1 ok 1 bad 0 failed 0
+ 2819s   de2.api.radio-browser.info 1 ok 1 bad 0 failed 0
+ 2819s ERRORS: 14
+ 2819s   WARNING @open: Service Worker registration blocked by Playwright
+ 2819s   PAGEERROR @open: /gibs.earthdata.nasa.gov/colormaps/v1.3/MODIS_Terra_NDSI_Snow_Cover.xml due to access control checks. 
+ 2819s   PAGEERROR @open: /gibs.earthdata.nasa.gov/colormaps/v1.3/GHRSST_L4_MUR25_Sea_Ice_Concentration.xml due to access control checks. 
+ 2819s   PAGEERROR @open: /visualisations.aemo.com.au/aemo/apps/api/report/ELEC_NEM_SUMMARY due to access control checks. 
+ 2819s   PAGEERROR @group EARTH: /www.gdacs.org/gdacsapi/api/events/geteventlist/MAP?eventtype=TC due to access control checks. 
+ 2819s   PAGEERROR @layer wind: /gibs.earthdata.nasa.gov/colormaps/v1.3/GHRSST_L4_MUR25_Sea_Ice_Concentration.xml due to access control checks. 
+ 2819s   PAGEERROR @layer wind: /gibs.earthdata.nasa.gov/colormaps/v1.3/MODIS_Terra_NDSI_Snow_Cover.xml due to access control checks. 
+ 2819s   PAGEERROR @layer storms: /www.gdacs.org/gdacsapi/api/events/geteventlist/MAP?eventtype=TC due to access control checks. 
+ 2819s   PAGEERROR @layer detect: /visualisations.aemo.com.au/aemo/apps/api/report/ELEC_NEM_SUMMARY due to access control checks. 
+ 2819s   PAGEERROR @layer look.ice: /gibs.earthdata.nasa.gov/colormaps/v1.3/MODIS_Terra_NDSI_Snow_Cover.xml due to access control checks. 
+ 2819s   PAGEERROR @layer look.ice: /gibs.earthdata.nasa.gov/colormaps/v1.3/GHRSST_L4_MUR25_Sea_Ice_Concentration.xml due to access control checks. 
+ 2819s   PAGEERROR @data NEXT > ELECTIONS: /www.gdacs.org/gdacsapi/api/events/geteventlist/MAP?eventtype=TC due to access control checks. 
+ 2819s   PAGEERROR @search radio: /de1.api.radio-browser.info/json/stations/search?tagList=news&hidebroken=true&order=clickcount&reverse=true&limit=400 due to access control checks. 
+ 2819s   WARNING @survival: Service Worker registration blocked by Playwright
+ 2819s SWEEP DONE

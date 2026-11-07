@@ -1,0 +1,3296 @@
+{
+ "engine": "webkit",
+ "mode": "phone",
+ "target": "https://trippuden.github.io/atlas-notes/",
+ "started": "2026-11-07T04:11:16.637Z",
+ "scenes": [
+  {
+   "scene": "open",
+   "at": 36,
+   "netFail": [
+    "trippuden.github.io HTTP 404",
+    "gibs.earthdata.nasa.gov HTTP 404",
+    "gibs.earthdata.nasa.gov FAILED Origin https://trippuden.github.io is not allowed by Access-Control-Allow-Origin. Status code: 404",
+    "visualisations.aemo.com.au FAILED Origin https://trippuden.github.io is not allowed by Access-Control-Allow-Origin. Status code: 500"
+   ],
+   "errors": [
+    "WARNING @open: Service Worker registration blocked by Playwright",
+    "PAGEERROR @open: /gibs.earthdata.nasa.gov/colormaps/v1.3/MODIS_Terra_NDSI_Snow_Cover.xml due to access control checks. ",
+    "PAGEERROR @open: /gibs.earthdata.nasa.gov/colormaps/v1.3/GHRSST_L4_MUR25_Sea_Ice_Concentration.xml due to access control checks. ",
+    "PAGEERROR @open: /visualisations.aemo.com.au/aemo/apps/api/report/ELEC_NEM_SUMMARY due to access control checks. "
+   ],
+   "counts": {
+    "bb": 213,
+    "pt": 15598,
+    "lb": 21,
+    "pl": 206,
+    "ent": 108,
+    "prim": 16,
+    "ds": 48
+   }
+  },
+  {
+   "scene": "group ZONES",
+   "at": 75,
+   "netFail": [],
+   "errors": [],
+   "counts": {
+    "bb": 213,
+    "pt": 15598,
+    "lb": 21,
+    "pl": 206,
+    "ent": 108,
+    "prim": 16,
+    "ds": 48
+   },
+   "shot": "02-group-zones.jpg",
+   "cards": 4
+  },
+  {
+   "scene": "group EVENTS",
+   "at": 116,
+   "netFail": [],
+   "errors": [],
+   "counts": {
+    "bb": 213,
+    "pt": 15598,
+    "lb": 21,
+    "pl": 206,
+    "ent": 108,
+    "prim": 16,
+    "ds": 48
+   },
+   "shot": "02-group-events.jpg",
+   "cards": 4
+  },
+  {
+   "scene": "group EARTH",
+   "at": 165,
+   "netFail": [
+    "gibs.earthdata.nasa.gov HTTP 404",
+    "www.gdacs.org FAILED Cross-origin redirection to https://www.gdacs.org/gdacsapi/api/events/geteventlist/MAP?eventtype=TC&TSPD_101_R0=085c21151fab200027d5b662e64a4e67808e810f0486af371f7427f8a155ce5c250ddc0e10231f9e0843f09d551448004aae5090bf9a2c74f2fefefefc9b748f423c1dc970c4fe741b5b92b0b652d2eef4b65f0171e9a6744d81dacea0e4bce7bb4b2e36ceefc1917b829156cb7d760a3997b08b1c02404c denied by Cross-Origin Resource Sharing policy: Origin https://trippuden.github.io is not allowed by Access-Control-Allow-Origin. Status code: 307"
+   ],
+   "errors": [
+    "PAGEERROR @group EARTH: /www.gdacs.org/gdacsapi/api/events/geteventlist/MAP?eventtype=TC due to access control checks. "
+   ],
+   "counts": {
+    "bb": 211,
+    "pt": 15598,
+    "lb": 21,
+    "pl": 48,
+    "ent": 126,
+    "prim": 25,
+    "ds": 50
+   },
+   "shot": "02-group-earth.jpg",
+   "cards": 3
+  },
+  {
+   "scene": "group SEA",
+   "at": 211,
+   "netFail": [
+    "trippuden.github.io HTTP 404"
+   ],
+   "errors": [],
+   "counts": {
+    "bb": 224,
+    "pt": 18021,
+    "lb": 21,
+    "pl": 27,
+    "ent": 94,
+    "prim": 23,
+    "ds": 1
+   },
+   "shot": "02-group-sea.jpg",
+   "cards": 4
+  },
+  {
+   "scene": "group AIR",
+   "at": 255,
+   "netFail": [],
+   "errors": [],
+   "counts": {
+    "bb": 223,
+    "pt": 15598,
+    "lb": 21,
+    "pl": 177,
+    "ent": 549,
+    "prim": 100,
+    "ds": 1
+   },
+   "shot": "02-group-air.jpg",
+   "cards": 4
+  },
+  {
+   "scene": "group SPACE",
+   "at": 298,
+   "netFail": [],
+   "errors": [],
+   "counts": {
+    "bb": 223,
+    "pt": 48397,
+    "lb": 21,
+    "pl": 0,
+    "ent": 64,
+    "prim": 29,
+    "ds": 0
+   },
+   "shot": "02-group-space.jpg",
+   "cards": 4
+  },
+  {
+   "scene": "group NEXT",
+   "at": 343,
+   "netFail": [],
+   "errors": [],
+   "counts": {
+    "bb": 200,
+    "pt": 15598,
+    "lb": 21,
+    "pl": 67,
+    "ent": 104,
+    "prim": 18,
+    "ds": 57
+   },
+   "shot": "02-group-next.jpg",
+   "cards": 4
+  },
+  {
+   "scene": "group LIVE",
+   "at": 399,
+   "netFail": [
+    "trippuden.github.io HTTP 404"
+   ],
+   "errors": [],
+   "counts": {
+    "bb": 70701,
+    "pt": 19642,
+    "lb": 21,
+    "pl": 0,
+    "ent": 13,
+    "prim": 23,
+    "ds": 0
+   },
+   "shot": "02-group-live.jpg",
+   "cards": 4
+  },
+  {
+   "scene": "layer regions",
+   "at": 462,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer events",
+   "at": 499,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer strikes",
+   "at": 537,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer unrest",
+   "at": 576,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer alerts",
+   "at": 615,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer crime",
+   "at": 654,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer banks",
+   "at": 691,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer cyber",
+   "at": 730,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer hazards",
+   "at": 767,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer weather",
+   "at": 805,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer orbitfaint",
+   "at": 845,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer aurora",
+   "at": 885,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer fires",
+   "at": 921,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer power",
+   "at": 957,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer radar",
+   "at": 989,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer clouds",
+   "at": 1031,
+   "netFail": [
+    "gibs.earthdata.nasa.gov HTTP 404"
+   ],
+   "errors": []
+  },
+  {
+   "scene": "layer lightning",
+   "at": 1063,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer ptype",
+   "at": 1095,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer snow",
+   "at": 1136,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer wind",
+   "at": 1181,
+   "netFail": [
+    "gibs.earthdata.nasa.gov FAILED Origin https://trippuden.github.io is not allowed by Access-Control-Allow-Origin. Status code: 404"
+   ],
+   "errors": [
+    "PAGEERROR @layer wind: /gibs.earthdata.nasa.gov/colormaps/v1.3/GHRSST_L4_MUR25_Sea_Ice_Concentration.xml due to access control checks. ",
+    "PAGEERROR @layer wind: /gibs.earthdata.nasa.gov/colormaps/v1.3/MODIS_Terra_NDSI_Snow_Cover.xml due to access control checks. "
+   ]
+  },
+  {
+   "scene": "layer temp",
+   "at": 1220,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer currents",
+   "at": 1258,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer waves",
+   "at": 1296,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer storms",
+   "at": 1334,
+   "netFail": [
+    "www.gdacs.org FAILED Cross-origin redirection to https://www.gdacs.org/gdacsapi/api/events/geteventlist/MAP?eventtype=TC&TSPD_101_R0=085c21151fab20008d9ec85e4efbb4adc01f9a810b49800d59769135436a613f3996fd02184a907008154a8c4f144800932803f8147daf98c1746b9c79da0557092002ad868a6c05c5c5eed05375d78e795afb90286978f95ed7215b73ae365b961d6bdb7e797cadc639065a19398296086777501a008cfb denied by Cross-Origin Resource Sharing policy: Origin https://trippuden.github.io is not allowed by Access-Control-Allow-Origin. Status code: 307"
+   ],
+   "errors": [
+    "PAGEERROR @layer storms: /www.gdacs.org/gdacsapi/api/events/geteventlist/MAP?eventtype=TC due to access control checks. "
+   ]
+  },
+  {
+   "scene": "layer warnings",
+   "at": 1373,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer outlook",
+   "at": 1413,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer aircraft",
+   "at": 1451,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer routes",
+   "at": 1490,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer loiter",
+   "at": 1530,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer gaps",
+   "at": 1567,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer jamming",
+   "at": 1605,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer ships",
+   "at": 1644,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer navy",
+   "at": 1683,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer ocean",
+   "at": 1722,
+   "netFail": [
+    "relay.frelay.workers.dev HTTP 404",
+    "relay.frelay.workers.dev HTTP 503"
+   ],
+   "errors": []
+  },
+  {
+   "scene": "layer sats",
+   "at": 1765,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer space",
+   "at": 1801,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer ufo",
+   "at": 1840,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer outages",
+   "at": 1877,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer detect",
+   "at": 1912,
+   "netFail": [
+    "visualisations.aemo.com.au FAILED Origin https://trippuden.github.io is not allowed by Access-Control-Allow-Origin. Status code: 500"
+   ],
+   "errors": [
+    "PAGEERROR @layer detect: /visualisations.aemo.com.au/aemo/apps/api/report/ELEC_NEM_SUMMARY due to access control checks. "
+   ]
+  },
+  {
+   "scene": "layer radio",
+   "at": 1935,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer live",
+   "at": 1959,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer camnet",
+   "at": 1979,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer streetcams",
+   "at": 2015,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer camwatch",
+   "at": 2053,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer alpr",
+   "at": 2091,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer elections",
+   "at": 2130,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer advisories",
+   "at": 2168,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer community",
+   "at": 2207,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer look.war",
+   "at": 2231,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer look.storm",
+   "at": 2253,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer look.outage",
+   "at": 2277,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer look.rad",
+   "at": 2301,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer look.snow",
+   "at": 2323,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer look.ice",
+   "at": 2347,
+   "netFail": [
+    "gibs.earthdata.nasa.gov FAILED Origin https://trippuden.github.io is not allowed by Access-Control-Allow-Origin. Status code: 404"
+   ],
+   "errors": [
+    "PAGEERROR @layer look.ice: /gibs.earthdata.nasa.gov/colormaps/v1.3/MODIS_Terra_NDSI_Snow_Cover.xml due to access control checks. ",
+    "PAGEERROR @layer look.ice: /gibs.earthdata.nasa.gov/colormaps/v1.3/GHRSST_L4_MUR25_Sea_Ice_Concentration.xml due to access control checks. "
+   ]
+  },
+  {
+   "scene": "layer look.lights",
+   "at": 2371,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "layer look.real",
+   "at": 2406,
+   "netFail": [
+    "gibs.earthdata.nasa.gov HTTP 404"
+   ],
+   "errors": []
+  },
+  {
+   "scene": "data",
+   "at": 2419,
+   "netFail": [],
+   "errors": [],
+   "groups": 9
+  },
+  {
+   "scene": "data HOT SPOTS > (no sub-tabs)",
+   "at": 2424,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "data NOW > EVENTS",
+   "at": 2429,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "data NOW > ALL NEWS",
+   "at": 2432,
+   "netFail": [
+    "trippuden.github.io HTTP 404"
+   ],
+   "errors": []
+  },
+  {
+   "scene": "data NOW > THINKING",
+   "at": 2435,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "data NEXT > CALENDAR",
+   "at": 2440,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "data NEXT > FORECASTS",
+   "at": 2443,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "data NEXT > ELECTIONS",
+   "at": 2447,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "data EARTH > HAZARDS & WEATHER",
+   "at": 2453,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "data EARTH > POWER & GRID",
+   "at": 2457,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "data EARTH > OCEAN",
+   "at": 2459,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "data AIR > (no sub-tabs)",
+   "at": 2465,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "data SPACE > (no sub-tabs)",
+   "at": 2470,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "data INTEL > DETECTORS",
+   "at": 2476,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "data INTEL > UNREST & STRIKES",
+   "at": 2479,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "data INTEL > CRIME & DRUGS",
+   "at": 2482,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "data INTEL > BANKS",
+   "at": 2485,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "data INTEL > CYBER",
+   "at": 2488,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "data INTEL > SHIPS",
+   "at": 2492,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "data INTEL > OCEAN",
+   "at": 2495,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "data INTEL > FAKE CHECK",
+   "at": 2498,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "data INTEL > SIGNALS",
+   "at": 2502,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "data LIVE > CAMS & VIDEO",
+   "at": 2507,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "data LIVE > RADIO",
+   "at": 2511,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "data PEOPLE > COMMUNITY",
+   "at": 2516,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "data PEOPLE > GOVT PREP ADVICE",
+   "at": 2519,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "dossier",
+   "at": 2558,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "tile readiness",
+   "at": 2567,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "tile watch",
+   "at": 2580,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "search Kyiv",
+   "at": 2595,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "search ISS",
+   "at": 2610,
+   "netFail": [
+    "gibs.earthdata.nasa.gov HTTP 500"
+   ],
+   "errors": []
+  },
+  {
+   "scene": "search Starlink",
+   "at": 2625,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "search Tokyo",
+   "at": 2639,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "search earthquake",
+   "at": 2653,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "search Flock",
+   "at": 2668,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "search Gaza",
+   "at": 2681,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "search weather",
+   "at": 2696,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "search radio",
+   "at": 2710,
+   "netFail": [
+    "de1.api.radio-browser.info FAILED Origin https://trippuden.github.io is not allowed by Access-Control-Allow-Origin. Status code: 502",
+    "nl1.api.radio-browser.info FAILED Error resolving “nl1.api.radio-browser.info”: Name or service not known",
+    "at1.api.radio-browser.info FAILED Error resolving “at1.api.radio-browser.info”: Name or service not known",
+    "fi1.api.radio-browser.info FAILED Error resolving “fi1.api.radio-browser.info”: Name or service not known"
+   ],
+   "errors": [
+    "PAGEERROR @search radio: /de1.api.radio-browser.info/json/stations/search?tagList=news&hidebroken=true&order=clickcount&reverse=true&limit=400 due to access control checks. "
+   ]
+  },
+  {
+   "scene": "search Cleveland",
+   "at": 2724,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "tv",
+   "at": 2753,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "survival",
+   "at": 2762,
+   "netFail": [],
+   "errors": [
+    "WARNING @survival: Service Worker registration blocked by Playwright"
+   ]
+  },
+  {
+   "scene": "menu",
+   "at": 2765,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "watch mode",
+   "at": 2793,
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "scene": "closeup",
+   "at": 2819,
+   "netFail": [],
+   "errors": []
+  }
+ ],
+ "net": {
+  "trippuden.github.io": {
+   "n": 253,
+   "ok": 249,
+   "bad": 4,
+   "fail": 0,
+   "samples": [
+    "open | https://trippuden.github.io/atlas-notes/api/status | HTTP 404",
+    "group SEA | https://trippuden.github.io/atlas-notes/data/heat.json | HTTP 404",
+    "group LIVE | https://trippuden.github.io/atlas-notes/data/cams-windy.json | HTTP 404",
+    "data NOW > ALL NEWS | https://trippuden.github.io/atlas-notes/data/heat.json | HTTP 404"
+   ]
+  },
+  "api.open-meteo.com": {
+   "n": 12,
+   "ok": 12,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "services.swpc.noaa.gov": {
+   "n": 58,
+   "ok": 58,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "earthquake.usgs.gov": {
+   "n": 55,
+   "ok": 55,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "data.gdeltproject.org": {
+   "n": 49,
+   "ok": 49,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "api.weather.gov": {
+   "n": 57,
+   "ok": 57,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "service.iris.edu": {
+   "n": 5,
+   "ok": 5,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "api.bigdatacloud.net": {
+   "n": 11,
+   "ok": 11,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "gibs.earthdata.nasa.gov": {
+   "n": 557,
+   "ok": 535,
+   "bad": 16,
+   "fail": 6,
+   "samples": [
+    "open | https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/GHRSST_L4_MUR25_Sea_Ice_Concentration/default/2026-11-07/GoogleMapsCompatible_Level6/1/0/0.png | HTTP 404",
+    "open | https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/GHRSST_L4_MUR25_Sea_Ice_Concentration/default/2026-11-06/GoogleMapsCompatible_Level6/1/0/0.png | HTTP 404",
+    "open | https://gibs.earthdata.nasa.gov/colormaps/v1.3/MODIS_Terra_NDSI_Snow_Cover.xml | FAILED Origin https://trippuden.github.io is not allowed by Access-Control-Allow-Origin. Status code: 404",
+    "open | https://gibs.earthdata.nasa.gov/colormaps/v1.3/GHRSST_L4_MUR25_Sea_Ice_Concentration.xml | FAILED Origin https://trippuden.github.io is not allowed by Access-Control-Allow-Origin. Status code: 404",
+    "group EARTH | https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/GOES-West_ABI_Band13_Clean_Infrared/default/2026-11-07T03:50:00Z/GoogleMapsCompatible_Level6/0/0/0.png | HTTP 404",
+    "group EARTH | https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/Himawari_AHI_Band13_Clean_Infrared/default/2026-11-07T03:50:00Z/GoogleMapsCompatible_Level6/0/0/0.png | HTTP 404"
+   ]
+  },
+  "nowcoast.noaa.gov": {
+   "n": 30,
+   "ok": 30,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "service.earthscope.org": {
+   "n": 5,
+   "ok": 5,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "data.elexon.co.uk": {
+   "n": 13,
+   "ok": 13,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "api.ioda.inetintel.cc.gatech.edu": {
+   "n": 3,
+   "ok": 3,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "environment.data.gov.uk": {
+   "n": 2,
+   "ok": 2,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "relay.frelay.workers.dev": {
+   "n": 752,
+   "ok": 750,
+   "bad": 2,
+   "fail": 0,
+   "samples": [
+    "layer ocean | https://relay.frelay.workers.dev/api/v3/datasets/fa9a5800b0ee4855af8b2944ab1e07af_0/downloads/data?h=hub.arcgis.com&format=csv&spatialRefId=4326&where=1%3D1 | HTTP 404",
+    "layer ocean | https://relay.frelay.workers.dev/api/publications/broadcast-warn?h=msi.nga.mil&output=json&status=A | HTTP 503"
+   ]
+  },
+  "en.wikipedia.org": {
+   "n": 8,
+   "ok": 8,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "visualisations.aemo.com.au": {
+   "n": 2,
+   "ok": 0,
+   "bad": 0,
+   "fail": 2,
+   "samples": [
+    "open | https://visualisations.aemo.com.au/aemo/apps/api/report/ELEC_NEM_SUMMARY | FAILED Origin https://trippuden.github.io is not allowed by Access-Control-Allow-Origin. Status code: 500",
+    "layer detect | https://visualisations.aemo.com.au/aemo/apps/api/report/ELEC_NEM_SUMMARY | FAILED Origin https://trippuden.github.io is not allowed by Access-Control-Allow-Origin. Status code: 500"
+   ]
+  },
+  "eonet.gsfc.nasa.gov": {
+   "n": 4,
+   "ok": 4,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "?": {
+   "n": 64,
+   "ok": 64,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "server.arcgisonline.com": {
+   "n": 291,
+   "ok": 291,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "www.gdacs.org": {
+   "n": 3,
+   "ok": 0,
+   "bad": 0,
+   "fail": 3,
+   "samples": [
+    "group EARTH | https://www.gdacs.org/gdacsapi/api/events/geteventlist/MAP?eventtype=TC | FAILED Cross-origin redirection to https://www.gdacs.org/gdacsapi/api/events/geteventlist/MAP?eventtype=TC&TSPD_101_R0=085c21151fab200027d5b662e64a4e67808e810f0486af371f7427f8a155ce5c250ddc0e10231f9e0843f09d551448004aae5090bf9a2c74f2fefefefc9b748f423c1dc970c4fe741b5b92b0b652d2eef4b65f0171e9a6744d81dacea0e4bce7bb4b2e36ceefc1917b829156cb7d760a3997b08b1c02404c denied by Cross-Origin Resource Sharing policy: Origin https://trippuden.github.io is not allowed by Access-Control-Allow-Origin. Status code: 307",
+    "layer storms | https://www.gdacs.org/gdacsapi/api/events/geteventlist/MAP?eventtype=TC | FAILED Cross-origin redirection to https://www.gdacs.org/gdacsapi/api/events/geteventlist/MAP?eventtype=TC&TSPD_101_R0=085c21151fab20008d9ec85e4efbb4adc01f9a810b49800d59769135436a613f3996fd02184a907008154a8c4f144800932803f8147daf98c1746b9c79da0557092002ad868a6c05c5c5eed05375d78e795afb90286978f95ed7215b73ae365b961d6bdb7e797cadc639065a19398296086777501a008cfb denied by Cross-Origin Resource Sharing policy: Origin https://trippuden.github.io is not allowed by Access-Control-Allow-Origin. Status code: 307",
+    "data NEXT > ELECTIONS | https://www.gdacs.org/gdacsapi/api/events/geteventlist/MAP?eventtype=TC | FAILED Cross-origin redirection to https://www.gdacs.org/gdacsapi/api/events/geteventlist/MAP?eventtype=TC&TSPD_101_R0=085c21151fab20006bdb87da271614a484dc485f4e7162c1405e0979a6561df0e8c918f63ab5c44f087dbb35c5144800d5a9ca8cfbf9b4acfcbafcbeaeddf644c5348b63c1a5fce17e1caa6b13ccc3e8a1a3610c7a2c3de8ec90a30ae2824324e664022579017a3c22aa53ebebe1d8c99b8c8a6e2db66e30 denied by Cross-Origin Resource Sharing policy: Origin https://trippuden.github.io is not allowed by Access-Control-Allow-Origin. Status code: 307"
+   ]
+  },
+  "api.rainviewer.com": {
+   "n": 3,
+   "ok": 3,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "view.eumetsat.int": {
+   "n": 44,
+   "ok": 44,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "tilecache.rainviewer.com": {
+   "n": 152,
+   "ok": 152,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "odre.opendatasoft.com": {
+   "n": 2,
+   "ok": 2,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "meri.digitraffic.fi": {
+   "n": 5,
+   "ok": 5,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "www.eia.gov": {
+   "n": 2,
+   "ok": 2,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "www.imis.bfs.de": {
+   "n": 2,
+   "ok": 2,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "data.sensor.community": {
+   "n": 2,
+   "ok": 2,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "tiles.openfreemap.org": {
+   "n": 2,
+   "ok": 2,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "api.fdic.gov": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "raw.githubusercontent.com": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "www.cyber.gc.ca": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "opengeo.ncep.noaa.gov": {
+   "n": 7,
+   "ok": 7,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "www.spc.noaa.gov": {
+   "n": 2,
+   "ok": 2,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "services9.arcgis.com": {
+   "n": 2,
+   "ok": 2,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "epic.gsfc.nasa.gov": {
+   "n": 2,
+   "ok": 2,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "cdn.star.nesdis.noaa.gov": {
+   "n": 4,
+   "ok": 4,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "data.cdc.gov": {
+   "n": 9,
+   "ok": 9,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "services3.arcgis.com": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "services2.arcgis.com": {
+   "n": 2,
+   "ok": 2,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "services.arcgis.com": {
+   "n": 3,
+   "ok": 3,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "maps2.dcgis.dc.gov": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "gismaps.fayettevillenc.gov": {
+   "n": 3,
+   "ok": 3,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "data.sf.gov": {
+   "n": 2,
+   "ok": 2,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "gis.charlottenc.gov": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "data.cityofchicago.org": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "s3.amazonaws.com": {
+   "n": 254,
+   "ok": 254,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "thespacedevs-prod.nyc3.digitaloceanspaces.com": {
+   "n": 4,
+   "ok": 4,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "commons.wikimedia.org": {
+   "n": 2,
+   "ok": 2,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "thumb.wikimedia.org": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "iptv-org.github.io": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  },
+  "de1.api.radio-browser.info": {
+   "n": 1,
+   "ok": 0,
+   "bad": 0,
+   "fail": 1,
+   "samples": [
+    "search radio | https://de1.api.radio-browser.info/json/stations/search?tagList=news&hidebroken=true&order=clickcount&reverse=true&limit=400 | FAILED Origin https://trippuden.github.io is not allowed by Access-Control-Allow-Origin. Status code: 502"
+   ]
+  },
+  "nl1.api.radio-browser.info": {
+   "n": 1,
+   "ok": 0,
+   "bad": 0,
+   "fail": 1,
+   "samples": [
+    "search radio | https://nl1.api.radio-browser.info/json/stations/search?tagList=news&hidebroken=true&order=clickcount&reverse=true&limit=400 | FAILED Error resolving “nl1.api.radio-browser.info”: Name or service not known"
+   ]
+  },
+  "at1.api.radio-browser.info": {
+   "n": 1,
+   "ok": 0,
+   "bad": 0,
+   "fail": 1,
+   "samples": [
+    "search radio | https://at1.api.radio-browser.info/json/stations/search?tagList=news&hidebroken=true&order=clickcount&reverse=true&limit=400 | FAILED Error resolving “at1.api.radio-browser.info”: Name or service not known"
+   ]
+  },
+  "fi1.api.radio-browser.info": {
+   "n": 1,
+   "ok": 0,
+   "bad": 0,
+   "fail": 1,
+   "samples": [
+    "search radio | https://fi1.api.radio-browser.info/json/stations/search?tagList=news&hidebroken=true&order=clickcount&reverse=true&limit=400 | FAILED Error resolving “fi1.api.radio-browser.info”: Name or service not known"
+   ]
+  },
+  "de2.api.radio-browser.info": {
+   "n": 1,
+   "ok": 1,
+   "bad": 0,
+   "fail": 0,
+   "samples": []
+  }
+ },
+ "errors": [
+  "WARNING @open: Service Worker registration blocked by Playwright",
+  "PAGEERROR @open: /gibs.earthdata.nasa.gov/colormaps/v1.3/MODIS_Terra_NDSI_Snow_Cover.xml due to access control checks. ",
+  "PAGEERROR @open: /gibs.earthdata.nasa.gov/colormaps/v1.3/GHRSST_L4_MUR25_Sea_Ice_Concentration.xml due to access control checks. ",
+  "PAGEERROR @open: /visualisations.aemo.com.au/aemo/apps/api/report/ELEC_NEM_SUMMARY due to access control checks. ",
+  "PAGEERROR @group EARTH: /www.gdacs.org/gdacsapi/api/events/geteventlist/MAP?eventtype=TC due to access control checks. ",
+  "PAGEERROR @layer wind: /gibs.earthdata.nasa.gov/colormaps/v1.3/GHRSST_L4_MUR25_Sea_Ice_Concentration.xml due to access control checks. ",
+  "PAGEERROR @layer wind: /gibs.earthdata.nasa.gov/colormaps/v1.3/MODIS_Terra_NDSI_Snow_Cover.xml due to access control checks. ",
+  "PAGEERROR @layer storms: /www.gdacs.org/gdacsapi/api/events/geteventlist/MAP?eventtype=TC due to access control checks. ",
+  "PAGEERROR @layer detect: /visualisations.aemo.com.au/aemo/apps/api/report/ELEC_NEM_SUMMARY due to access control checks. ",
+  "PAGEERROR @layer look.ice: /gibs.earthdata.nasa.gov/colormaps/v1.3/MODIS_Terra_NDSI_Snow_Cover.xml due to access control checks. ",
+  "PAGEERROR @layer look.ice: /gibs.earthdata.nasa.gov/colormaps/v1.3/GHRSST_L4_MUR25_Sea_Ice_Concentration.xml due to access control checks. ",
+  "PAGEERROR @data NEXT > ELECTIONS: /www.gdacs.org/gdacsapi/api/events/geteventlist/MAP?eventtype=TC due to access control checks. ",
+  "PAGEERROR @search radio: /de1.api.radio-browser.info/json/stations/search?tagList=news&hidebroken=true&order=clickcount&reverse=true&limit=400 due to access control checks. ",
+  "WARNING @survival: Service Worker registration blocked by Playwright"
+ ],
+ "layers": [
+  {
+   "k": "regions",
+   "label": "Country levels",
+   "sect": "01 THREATS & CONFLICT 0 of 8 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "40 now · conflict list, news, official levels · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 48,
+    "ent": 40,
+    "ds": 48,
+    "prim": 0
+   },
+   "card": null,
+   "shot": "03-layer-regions.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "events",
+   "label": "News events",
+   "sect": "01 THREATS & CONFLICT 0 of 8 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "68 now · news wires and official feeds · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 158,
+    "ent": 29,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": null,
+   "shot": "03-layer-events.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "strikes",
+   "label": "Strike reports",
+   "sect": "01 THREATS & CONFLICT 0 of 8 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "0 now · GDELT · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": null,
+   "shot": "03-layer-strikes.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "unrest",
+   "label": "Unrest map",
+   "sect": "01 THREATS & CONFLICT 0 of 8 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "731 now · GDELT · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 1815,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 1
+   },
+   "card": null,
+   "shot": "03-layer-unrest.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "alerts",
+   "label": "Correlation alerts",
+   "sect": "01 THREATS & CONFLICT 0 of 8 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "0 now · cross-checks of the feeds · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": null,
+   "shot": "03-layer-alerts.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "crime",
+   "label": "Crime & drugs",
+   "sect": "01 THREATS & CONFLICT 0 of 8 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "city open data · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 2
+   },
+   "card": null,
+   "shot": "03-layer-crime.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "banks",
+   "label": "Banks & payments",
+   "sect": "01 THREATS & CONFLICT 0 of 8 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "STALE 10 H · every tab",
+   "drawn": {
+    "bb": 12,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 2
+   },
+   "card": null,
+   "shot": "03-layer-banks.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "cyber",
+   "label": "Cyberattacks",
+   "sect": "01 THREATS & CONFLICT 0 of 8 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "STALE 10 H · every tab",
+   "drawn": {
+    "bb": 8,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 1
+   },
+   "card": null,
+   "shot": "03-layer-cyber.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "hazards",
+   "label": "Hazards",
+   "sect": "02 EARTH & WEATHER 0 of 18 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "39 now · USGS / GDACS / NASA EONET / NWS · LIVE · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 39,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": null,
+   "shot": "03-layer-hazards.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "weather",
+   "label": "City weather",
+   "sect": "02 EARTH & WEATHER 0 of 18 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "45 now · Open-Meteo · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 45,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": null,
+   "shot": "03-layer-weather.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "orbitfaint",
+   "label": "Satellites & debris (faint)",
+   "sect": "02 EARTH & WEATHER 0 of 18 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "32,811 now · CelesTrak · every tab",
+   "drawn": {
+    "bb": 12,
+    "pt": 32799,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 2
+   },
+   "card": null,
+   "shot": "03-layer-orbitfaint.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "aurora",
+   "label": "Northern & southern lights",
+   "sect": "02 EARTH & WEATHER 0 of 18 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "NOAA SWPC · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 11,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 2,
+    "ds": 0,
+    "prim": 8
+   },
+   "card": null,
+   "shot": "03-layer-aurora.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "fires",
+   "label": "Satellite heat spots",
+   "sect": "02 EARTH & WEATHER 0 of 18 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "waiting for data · NASA FIRMS",
+   "drawn": {
+    "bb": 0,
+    "pt": 92137,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 1
+   },
+   "card": "Fire / heat spot\nlast seen 1d ago · VIIRS NOAA-20\n1.3 MW\nTAP FOR DETAILS",
+   "shot": "03-layer-fires.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "power",
+   "label": "Power plants",
+   "sect": "02 EARTH & WEATHER 0 of 18 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "WRI power plant database · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": null,
+   "shot": "03-layer-power.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "radar",
+   "label": "Rain radar",
+   "sect": "02 EARTH & WEATHER 0 of 18 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "RainViewer / NOAA MRMS · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": "59°\nAl Jawf, KF, LY\nmiddle of the map · clear · feels 55°\nPAST 2 H\nNEXT 6 H\nNEXT 5 DAYS\n❚❚\n02:52:51Z UTC\n87 min before the newest\nRADAR\n2h\nRADAR\nlight\nheavy · hail\nNOW",
+   "shot": "03-layer-radar.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "clouds",
+   "label": "Clouds (live)",
+   "sect": "02 EARTH & WEATHER 0 of 18 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "GOES, Himawari, Meteosat · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": "59°\nAl Jawf, KF, LY\nmiddle of the map · clear · feels 55°\nPAST 2 H\nNEXT 6 H\nNEXT 5 DAYS\n❚❚\n03:44:42Z UTC\n38 min before the newest\nCLOUDS\n58m\nNOW",
+   "shot": "03-layer-clouds.jpg",
+   "netFail": [
+    "gibs.earthdata.nasa.gov HTTP 404"
+   ],
+   "errors": []
+  },
+  {
+   "k": "lightning",
+   "label": "Lightning",
+   "sect": "02 EARTH & WEATHER 0 of 18 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "NOAA nowCOAST / EUMETSAT · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": "59°\nAl Jawf, KF, LY\nmiddle of the map · clear · feels 55°\nPAST 2 H\nNEXT 6 H\nNEXT 5 DAYS\n❚❚\n04:08:55Z UTC\n6 min before the newest\nLIGHTNING\n28m\nLIGHTNING\nfew\nmany strikes / 15 min\nNOW",
+   "shot": "03-layer-lightning.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "ptype",
+   "label": "Rain, snow or hail (US)",
+   "sect": "02 EARTH & WEATHER 0 of 18 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "NOAA MRMS · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": "59°\nAl Jawf, KF, LY\nmiddle of the map · clear · feels 55°\nPAST 2 H\nNEXT 6 H\nNEXT 5 DAYS\n❚❚\n03:10:17Z UTC\n76 min before the newest\nRAIN OR SNOW (US)\n83m\nrain\ncool rain\nshowers, storms\nhail\nsnow\ntropical rain\nNOW",
+   "shot": "03-layer-ptype.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "snow",
+   "label": "Snow & ice on the ground",
+   "sect": "02 EARTH & WEATHER 0 of 18 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "NOAA snow & ice charts · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": "59°\nAl Jawf, KF, LY\nmiddle of the map · clear · feels 55°\nPAST 2 H\nNEXT 6 H\nNEXT 5 DAYS\n❚❚\n04:30Z UTC\nnow · NOAA model for this hour · NEXT 6 H / 5 DAYS play the forecast\nSNOW\nGFS\nSNOW\n1 in\n20 in deep\nNOW",
+   "shot": "03-layer-snow.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "wind",
+   "label": "Wind",
+   "sect": "02 EARTH & WEATHER 0 of 18 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "NOAA GFS · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": "Buoy 42060\nCaribbean Valley - 63 NM WSW of Montserrat · photo · NOAA buoy cameras (NDBC)\nTAP FOR DETAILS",
+   "shot": "03-layer-wind.jpg",
+   "netFail": [
+    "gibs.earthdata.nasa.gov FAILED Origin https://trippuden.github.io is not allowed by Access-Control-Allow-Origin. Status code: 404"
+   ],
+   "errors": [
+    "PAGEERROR @layer wind: /gibs.earthdata.nasa.gov/colormaps/v1.3/GHRSST_L4_MUR25_Sea_Ice_Concentration.xml due to access control checks. ",
+    "PAGEERROR @layer wind: /gibs.earthdata.nasa.gov/colormaps/v1.3/MODIS_Terra_NDSI_Snow_Cover.xml due to access control checks. "
+   ]
+  },
+  {
+   "k": "temp",
+   "label": "Temperature",
+   "sect": "02 EARTH & WEATHER 0 of 18 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "Open-Meteo / NOAA GFS · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 2,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 2
+   },
+   "card": null,
+   "shot": "03-layer-temp.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "currents",
+   "label": "Ocean currents",
+   "sect": "02 EARTH & WEATHER 0 of 18 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "Open-Meteo Marine · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": "Buoy 42060\nCaribbean Valley - 63 NM WSW of Montserrat · photo · NOAA buoy cameras (NDBC)\nTAP FOR DETAILS",
+   "shot": "03-layer-currents.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "waves",
+   "label": "Waves",
+   "sect": "02 EARTH & WEATHER 0 of 18 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "NOAA GFS-Wave · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 1
+   },
+   "card": null,
+   "shot": "03-layer-waves.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "storms",
+   "label": "Hurricanes & typhoons",
+   "sect": "02 EARTH & WEATHER 0 of 18 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "GDACS · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": "Buoy 42060\nCaribbean Valley - 63 NM WSW of Montserrat · photo · NOAA buoy cameras (NDBC)\nTAP FOR DETAILS",
+   "shot": "03-layer-storms.jpg",
+   "netFail": [
+    "www.gdacs.org FAILED Cross-origin redirection to https://www.gdacs.org/gdacsapi/api/events/geteventlist/MAP?eventtype=TC&TSPD_101_R0=085c21151fab20008d9ec85e4efbb4adc01f9a810b49800d59769135436a613f3996fd02184a907008154a8c4f144800932803f8147daf98c1746b9c79da0557092002ad868a6c05c5c5eed05375d78e795afb90286978f95ed7215b73ae365b961d6bdb7e797cadc639065a19398296086777501a008cfb denied by Cross-Origin Resource Sharing policy: Origin https://trippuden.github.io is not allowed by Access-Control-Allow-Origin. Status code: 307"
+   ],
+   "errors": [
+    "PAGEERROR @layer storms: /www.gdacs.org/gdacsapi/api/events/geteventlist/MAP?eventtype=TC due to access control checks. "
+   ]
+  },
+  {
+   "k": "warnings",
+   "label": "NWS warnings (US)",
+   "sect": "02 EARTH & WEATHER 0 of 18 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "NWS · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 2,
+    "prim": 0
+   },
+   "card": "Buoy 42060\nCaribbean Valley - 63 NM WSW of Montserrat · photo · NOAA buoy cameras (NDBC)\nTAP FOR DETAILS",
+   "shot": "03-layer-warnings.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "outlook",
+   "label": "SPC storm outlook (US)",
+   "sect": "02 EARTH & WEATHER 0 of 18 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "NOAA SPC · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 14,
+    "prim": 3
+   },
+   "card": "Buoy 42060\nCaribbean Valley - 63 NM WSW of Montserrat · photo · NOAA buoy cameras (NDBC)\nTAP FOR DETAILS",
+   "shot": "03-layer-outlook.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "aircraft",
+   "label": "Aircraft",
+   "sect": "03 AIR & SEA 0 of 8 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "262 now · ADS-B exchanges · LIVE · every tab",
+   "drawn": {
+    "bb": 12,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": null,
+   "shot": "03-layer-aircraft.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "routes",
+   "label": "Busiest air routes",
+   "sect": "03 AIR & SEA 0 of 8 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "250 now · ADS-B, last 24 h · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 162,
+    "ds": 0,
+    "prim": 80
+   },
+   "card": "Busiest route, last 24 h: CPT–JNB\n87\nFLIGHTS SEEN IN 24 H\nTAP FOR DETAILS",
+   "shot": "03-layer-routes.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "loiter",
+   "label": "Loitering aircraft",
+   "sect": "03 AIR & SEA 0 of 8 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "150 now · ADS-B, last 24 h · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 150,
+    "ent": 300,
+    "ds": 0,
+    "prim": 2
+   },
+   "card": null,
+   "shot": "03-layer-loiter.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "gaps",
+   "label": "Blind spots (no receivers)",
+   "sect": "03 AIR & SEA 0 of 8 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "130 now · ADS-B receiver coverage · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 128,
+    "ent": 1,
+    "ds": 128,
+    "prim": 0
+   },
+   "card": null,
+   "shot": "03-layer-gaps.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "jamming",
+   "label": "GPS jamming",
+   "sect": "03 AIR & SEA 0 of 8 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "34 now · GPSJam (ADS-B) · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 43,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": null,
+   "shot": "03-layer-jamming.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "ships",
+   "label": "Ships",
+   "sect": "03 AIR & SEA 0 of 8 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "309 now · AIS (Nordic, public) · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 845,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 1
+   },
+   "card": null,
+   "shot": "03-layer-ships.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "navy",
+   "label": "Warships (open reports)",
+   "sect": "03 AIR & SEA 0 of 8 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "USNI fleet tracker, navy news, Taiwan MND · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 27,
+    "ent": 43,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": null,
+   "shot": "03-layer-navy.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "ocean",
+   "label": "Ocean: buoys, warnings, chokepoints",
+   "sect": "03 AIR & SEA 0 of 8 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "NOAA buoys, IOC sea level, NGA warnings, IMF PortWatch · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 2817,
+    "pt": 0,
+    "lb": 0,
+    "pl": 1951,
+    "ent": 0,
+    "ds": 0,
+    "prim": 7
+   },
+   "card": null,
+   "shot": "03-layer-ocean.jpg",
+   "netFail": [
+    "relay.frelay.workers.dev HTTP 404",
+    "relay.frelay.workers.dev HTTP 503"
+   ],
+   "errors": []
+  },
+  {
+   "k": "sats",
+   "label": "Satellites",
+   "sect": "04 SPACE 0 of 3 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "32,811 now · CelesTrak · every tab",
+   "drawn": {
+    "bb": 12,
+    "pt": 32799,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 2
+   },
+   "card": null,
+   "shot": "03-layer-sats.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "space",
+   "label": "Launches & fireballs",
+   "sect": "04 SPACE 0 of 3 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "65 now · Launch Library / NASA JPL · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 50,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": null,
+   "shot": "03-layer-space.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "ufo",
+   "label": "UFO sightings (history)",
+   "sect": "04 SPACE 0 of 3 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "waiting for data · NUFORC reports · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 15215,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 1
+   },
+   "card": null,
+   "shot": "03-layer-ufo.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "outages",
+   "label": "Internet outages",
+   "sect": "05 CAMERAS & SIGNALS 3 of 7 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "7 now · IODA · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 7,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": null,
+   "shot": "03-layer-outages.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "detect",
+   "label": "Live detectors",
+   "sect": "05 CAMERAS & SIGNALS 3 of 7 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "2 OF 3 SOURCES ANSWERING · 635 now · live sensors (USGS, BfS, IODA, NOAA...) · every tab",
+   "drawn": {
+    "bb": 13,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 1
+   },
+   "card": null,
+   "shot": "03-layer-detect.jpg",
+   "netFail": [
+    "visualisations.aemo.com.au FAILED Origin https://trippuden.github.io is not allowed by Access-Control-Allow-Origin. Status code: 500"
+   ],
+   "errors": [
+    "PAGEERROR @layer detect: /visualisations.aemo.com.au/aemo/apps/api/report/ELEC_NEM_SUMMARY due to access control checks. "
+   ]
+  },
+  {
+   "k": "radio",
+   "label": "Radio",
+   "sect": "05 CAMERAS & SIGNALS 3 of 7 on",
+   "wasOn": true,
+   "nowOn": "true",
+   "meta": "KiwiSDR / SatNOGS",
+   "drawn": {
+    "bb": -1993,
+    "pt": -4038,
+    "lb": 0,
+    "pl": -700,
+    "ent": 0,
+    "ds": 0,
+    "prim": -4
+   },
+   "card": null,
+   "shot": "03-layer-radio.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "live",
+   "label": "Live cams & video",
+   "sect": "05 CAMERAS & SIGNALS 3 of 7 on",
+   "wasOn": true,
+   "nowOn": "true",
+   "meta": "183 now · public webcams and streams · STALE 10 H",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": -13,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": null,
+   "shot": "03-layer-live.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "camnet",
+   "label": "Public cameras worldwide",
+   "sect": "05 CAMERAS & SIGNALS 3 of 7 on",
+   "wasOn": true,
+   "nowOn": "true",
+   "meta": "82 OF 84 SOURCES ANSWERING · 68,498 now · official public camera networks · STALE 10 H",
+   "drawn": {
+    "bb": -68508,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 170,
+    "ds": 0,
+    "prim": -1
+   },
+   "card": null,
+   "shot": "03-layer-camnet.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "streetcams",
+   "label": "Street cameras",
+   "sect": "05 CAMERAS & SIGNALS 3 of 7 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "close-up street cameras when you zoom in to a city",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": null,
+   "shot": "03-layer-streetcams.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "camwatch",
+   "label": "Camera auto-watch",
+   "sect": "05 CAMERAS & SIGNALS 3 of 7 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "flags cameras that go dark, freeze, flash or show smoke",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": null,
+   "shot": "03-layer-camwatch.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "alpr",
+   "label": "Plate-reader cameras",
+   "sect": "06 PEOPLE & PLACES 0 of 4 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "150k now · DeFlock / OpenStreetMap · 21 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 825,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 1
+   },
+   "card": null,
+   "shot": "03-layer-alpr.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "elections",
+   "label": "Elections",
+   "sect": "06 PEOPLE & PLACES 0 of 4 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "14 now · Wikipedia election lists · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 19,
+    "ent": 14,
+    "ds": 9,
+    "prim": 0
+   },
+   "card": null,
+   "shot": "03-layer-elections.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "advisories",
+   "label": "Govt prep advice",
+   "sect": "06 PEOPLE & PLACES 0 of 4 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "8 now · government prep pages · STALE 10 H · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 51,
+    "ent": 8,
+    "ds": 18,
+    "prim": 0
+   },
+   "card": null,
+   "shot": "03-layer-advisories.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "community",
+   "label": "Community posts",
+   "sect": "06 PEOPLE & PLACES 0 of 4 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "0 now · posts from people here · every tab",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": null,
+   "shot": "03-layer-community.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "look.war",
+   "label": "Active conflict zones",
+   "sect": "07 LOOK 7 of 8 on",
+   "wasOn": true,
+   "nowOn": "true",
+   "meta": "off",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": null,
+   "shot": "03-layer-look-war.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "look.storm",
+   "label": "Storm shading",
+   "sect": "07 LOOK 7 of 8 on",
+   "wasOn": true,
+   "nowOn": "true",
+   "meta": "off",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": null,
+   "shot": "03-layer-look-storm.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "look.outage",
+   "label": "Outage darkness at night",
+   "sect": "07 LOOK 7 of 8 on",
+   "wasOn": true,
+   "nowOn": "true",
+   "meta": "off",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": null,
+   "shot": "03-layer-look-outage.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "look.rad",
+   "label": "Radiation rings",
+   "sect": "07 LOOK 7 of 8 on",
+   "wasOn": true,
+   "nowOn": "true",
+   "meta": "off",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": null,
+   "shot": "03-layer-look-rad.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "look.snow",
+   "label": "Snow cover",
+   "sect": "07 LOOK 7 of 8 on",
+   "wasOn": true,
+   "nowOn": "true",
+   "meta": "off",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": null,
+   "shot": "03-layer-look-snow.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "look.ice",
+   "label": "Sea ice",
+   "sect": "07 LOOK 7 of 8 on",
+   "wasOn": true,
+   "nowOn": "true",
+   "meta": "off",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": null,
+   "shot": "03-layer-look-ice.jpg",
+   "netFail": [
+    "gibs.earthdata.nasa.gov FAILED Origin https://trippuden.github.io is not allowed by Access-Control-Allow-Origin. Status code: 404"
+   ],
+   "errors": [
+    "PAGEERROR @layer look.ice: /gibs.earthdata.nasa.gov/colormaps/v1.3/MODIS_Terra_NDSI_Snow_Cover.xml due to access control checks. "
+   ]
+  },
+  {
+   "k": "look.lights",
+   "label": "City lights at night",
+   "sect": "07 LOOK 7 of 8 on",
+   "wasOn": true,
+   "nowOn": "true",
+   "meta": "off",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": null,
+   "shot": "03-layer-look-lights.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "k": "look.real",
+   "label": "Last night's real lights",
+   "sect": "07 LOOK 7 of 8 on",
+   "wasOn": false,
+   "nowOn": "false",
+   "meta": "checking the newest satellite day…",
+   "drawn": {
+    "bb": 0,
+    "pt": 0,
+    "lb": 0,
+    "pl": 0,
+    "ent": 0,
+    "ds": 0,
+    "prim": 0
+   },
+   "card": null,
+   "shot": "03-layer-look-real.jpg",
+   "netFail": [
+    "gibs.earthdata.nasa.gov HTTP 404"
+   ],
+   "errors": []
+  }
+ ],
+ "cards": [
+  {
+   "from": "group ZONES",
+   "id": "[\"sky\",\"name\",\"mag\"]",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-zones-card-0.jpg"
+  },
+  {
+   "from": "group ZONES",
+   "id": "[\"sky\",\"name\",\"mag\"]",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-zones-card-1.jpg"
+  },
+  {
+   "from": "group ZONES",
+   "id": "Algorab",
+   "panel": "gx-name sticky",
+   "text": "News event: UK found to be ‘dangerously’ reliant on China for critical minerals needed for defence a\nTAP FOR DETAILS",
+   "shot": "02-group-zones-card-2.jpg"
+  },
+  {
+   "from": "group ZONES",
+   "id": "e3d78687-52ea-4698-8491-b24699ec6616",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-zones-card-3.jpg"
+  },
+  {
+   "from": "group EVENTS",
+   "id": "[\"sky\",\"name\",\"mag\"]",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-events-card-0.jpg"
+  },
+  {
+   "from": "group EVENTS",
+   "id": "[\"sky\",\"name\",\"mag\"]",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-events-card-1.jpg"
+  },
+  {
+   "from": "group EVENTS",
+   "id": "Algorab",
+   "panel": "gx-name sticky",
+   "text": "News event: UK found to be ‘dangerously’ reliant on China for critical minerals needed for defence a\nTAP FOR DETAILS",
+   "shot": "02-group-events-card-2.jpg"
+  },
+  {
+   "from": "group EVENTS",
+   "id": "d386567c-0e00-4c8c-9925-43daea1257da",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-events-card-3.jpg"
+  },
+  {
+   "from": "group EARTH",
+   "id": "d14846b0-6fca-4a4d-878c-a41d604a42bf",
+   "panel": "wxBar",
+   "text": "59°\nAl Jawf, KF, LY\nmiddle of the map · clear · feels 55°\nPAST 2 H\nNEXT 6 H\nNEXT 5 DAYS\n❚❚\n02:32:51Z UTC\n97 min before the newest\nCLOUDS\nRADAR\n2h\nSTORMS !\nNWS WARNINGS !\nRADAR\nlight\nheavy · hail\nNOW",
+   "shot": "02-group-earth-card-0.jpg"
+  },
+  {
+   "from": "group EARTH",
+   "id": "d68f218a-09c0-4648-9cf7-87a0e1c7a873",
+   "panel": "wxBar",
+   "text": "59°\nAl Jawf, KF, LY\nmiddle of the map · clear · feels 55°\nPAST 2 H\nNEXT 6 H\nNEXT 5 DAYS\n❚❚\n02:58:34Z UTC\n71 min before the newest\nCLOUDS\nRADAR\n83m\nSTORMS !\nNWS WARNINGS !\nRADAR\nlight\nheavy · hail\nNOW",
+   "shot": "02-group-earth-card-1.jpg"
+  },
+  {
+   "from": "group EARTH",
+   "id": "Gienah",
+   "panel": "wxBar",
+   "text": "59°\nAl Jawf, KF, LY\nmiddle of the map · clear · feels 55°\nPAST 2 H\nNEXT 6 H\nNEXT 5 DAYS\n❚❚\n03:21:25Z UTC\n49 min before the newest\nCLOUDS\nRADAR\n63m\nSTORMS !\nNWS WARNINGS !\nRADAR\nlight\nheavy · hail\nNOW",
+   "shot": "02-group-earth-card-2.jpg"
+  },
+  {
+   "from": "group SEA",
+   "id": "[\"sky\",\"name\",\"mag\"]",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-sea-card-0.jpg"
+  },
+  {
+   "from": "group SEA",
+   "id": "[\"det\"]",
+   "panel": "gx-name sticky",
+   "text": "New heat cluster\nnone in the 24 h before · 14h 15m ago\n184 MW\nFROM 5 SPOTS\nTAP FOR DETAILS",
+   "shot": "02-group-sea-card-1.jpg"
+  },
+  {
+   "from": "group SEA",
+   "id": "8e91ffab-cc89-45f8-9d9b-9fb6d782ace8",
+   "panel": "gx-name sticky",
+   "text": "7 GPS jamming areas here\nworst 60% of aircraft affected · tap to zoom in\nTAP FOR DETAILS",
+   "shot": "02-group-sea-card-2.jpg"
+  },
+  {
+   "from": "group SEA",
+   "id": "e31ad468-71ba-454b-927a-2c24d544c4b1",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-sea-card-3.jpg"
+  },
+  {
+   "from": "group AIR",
+   "id": "[\"sky\",\"name\",\"mag\"]",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-air-card-0.jpg"
+  },
+  {
+   "from": "group AIR",
+   "id": "[\"sky\",\"name\",\"mag\"]",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-air-card-1.jpg"
+  },
+  {
+   "from": "group AIR",
+   "id": "2117d1e0-7ecd-4716-81da-4aab2520894a",
+   "panel": "gx-name sticky",
+   "text": "7 GPS jamming areas here\nworst 60% of aircraft affected · tap to zoom in\nTAP FOR DETAILS",
+   "shot": "02-group-air-card-2.jpg"
+  },
+  {
+   "from": "group AIR",
+   "id": "7c5db1d7-870d-4045-a4a8-89d4b3f8f722",
+   "panel": "gx-name sticky",
+   "text": "Busiest route, last 24 h: BOM–BLR\n57\nFLIGHTS SEEN IN 24 H\nTAP FOR DETAILS",
+   "shot": "02-group-air-card-3.jpg"
+  },
+  {
+   "from": "group SPACE",
+   "id": "[\"sky\",\"name\",\"mag\"]",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-space-card-0.jpg"
+  },
+  {
+   "from": "group SPACE",
+   "id": "[\"sky\",\"name\",\"mag\"]",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-space-card-1.jpg"
+  },
+  {
+   "from": "group SPACE",
+   "id": "[\"sat\"]",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-space-card-2.jpg"
+  },
+  {
+   "from": "group SPACE",
+   "id": "[\"sat\"]",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-space-card-3.jpg"
+  },
+  {
+   "from": "group NEXT",
+   "id": "[\"sky\",\"name\",\"mag\"]",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-next-card-0.jpg"
+  },
+  {
+   "from": "group NEXT",
+   "id": "50d4e60d-b9bb-4e00-bb5c-f615250f563c",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-next-card-1.jpg"
+  },
+  {
+   "from": "group NEXT",
+   "id": "Algorab",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-next-card-2.jpg"
+  },
+  {
+   "from": "group NEXT",
+   "id": "[\"sky\",\"k\"]",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-next-card-3.jpg"
+  },
+  {
+   "from": "group LIVE",
+   "id": "[\"sky\",\"name\",\"mag\"]",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-live-card-0.jpg"
+  },
+  {
+   "from": "group LIVE",
+   "id": "[\"sky\",\"name\",\"mag\"]",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-live-card-1.jpg"
+  },
+  {
+   "from": "group LIVE",
+   "id": "Algorab",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-live-card-2.jpg"
+  },
+  {
+   "from": "group LIVE",
+   "id": "Mercury",
+   "panel": null,
+   "text": "(nothing opened)",
+   "shot": "02-group-live-card-3.jpg"
+  },
+  {
+   "from": "layer fires",
+   "id": "[\"sky\",\"name\",\"mag\"]",
+   "panel": "gx-name sticky",
+   "text": "Fire / heat spot\nlast seen 1d ago · VIIRS NOAA-20\n1.3 MW\nTAP FOR DETAILS",
+   "shot": "03-layer-fires-card.jpg"
+  },
+  {
+   "from": "layer radar",
+   "id": "[\"radio\"]",
+   "panel": "wxBar",
+   "text": "59°\nAl Jawf, KF, LY\nmiddle of the map · clear · feels 55°\nPAST 2 H\nNEXT 6 H\nNEXT 5 DAYS\n❚❚\n02:52:51Z UTC\n87 min before the newest\nRADAR\n2h\nRADAR\nlight\nheavy · hail\nNOW",
+   "shot": "03-layer-radar-card.jpg"
+  },
+  {
+   "from": "layer clouds",
+   "id": "[\"sky\",\"name\",\"mag\"]",
+   "panel": "wxBar",
+   "text": "59°\nAl Jawf, KF, LY\nmiddle of the map · clear · feels 55°\nPAST 2 H\nNEXT 6 H\nNEXT 5 DAYS\n❚❚\n03:44:42Z UTC\n38 min before the newest\nCLOUDS\n58m\nNOW",
+   "shot": "03-layer-clouds-card.jpg"
+  },
+  {
+   "from": "layer lightning",
+   "id": "[\"radio\"]",
+   "panel": "wxBar",
+   "text": "59°\nAl Jawf, KF, LY\nmiddle of the map · clear · feels 55°\nPAST 2 H\nNEXT 6 H\nNEXT 5 DAYS\n❚❚\n04:08:55Z UTC\n6 min before the newest\nLIGHTNING\n28m\nLIGHTNING\nfew\nmany strikes / 15 min\nNOW",
+   "shot": "03-layer-lightning-card.jpg"
+  },
+  {
+   "from": "layer ptype",
+   "id": "[\"radio\"]",
+   "panel": "wxBar",
+   "text": "59°\nAl Jawf, KF, LY\nmiddle of the map · clear · feels 55°\nPAST 2 H\nNEXT 6 H\nNEXT 5 DAYS\n❚❚\n03:10:17Z UTC\n76 min before the newest\nRAIN OR SNOW (US)\n83m\nrain\ncool rain\nshowers, storms\nhail\nsnow\ntropical rain\nNOW",
+   "shot": "03-layer-ptype-card.jpg"
+  },
+  {
+   "from": "layer snow",
+   "id": "Gienah",
+   "panel": "wxBar",
+   "text": "59°\nAl Jawf, KF, LY\nmiddle of the map · clear · feels 55°\nPAST 2 H\nNEXT 6 H\nNEXT 5 DAYS\n❚❚\n04:30Z UTC\nnow · NOAA model for this hour · NEXT 6 H / 5 DAYS play the forecast\nSNOW\nGFS\nSNOW\n1 in\n20 in deep\nNOW",
+   "shot": "03-layer-snow-card.jpg"
+  },
+  {
+   "from": "layer wind",
+   "id": "[\"radio\"]",
+   "panel": "gx-name sticky",
+   "text": "Buoy 42060\nCaribbean Valley - 63 NM WSW of Montserrat · photo · NOAA buoy cameras (NDBC)\nTAP FOR DETAILS",
+   "shot": "03-layer-wind-card.jpg"
+  },
+  {
+   "from": "layer currents",
+   "id": "[\"radio\"]",
+   "panel": "gx-name sticky",
+   "text": "Buoy 42060\nCaribbean Valley - 63 NM WSW of Montserrat · photo · NOAA buoy cameras (NDBC)\nTAP FOR DETAILS",
+   "shot": "03-layer-currents-card.jpg"
+  },
+  {
+   "from": "layer storms",
+   "id": "[\"radio\"]",
+   "panel": "gx-name sticky",
+   "text": "Buoy 42060\nCaribbean Valley - 63 NM WSW of Montserrat · photo · NOAA buoy cameras (NDBC)\nTAP FOR DETAILS",
+   "shot": "03-layer-storms-card.jpg"
+  },
+  {
+   "from": "layer warnings",
+   "id": "[\"radio\"]",
+   "panel": "gx-name sticky",
+   "text": "Buoy 42060\nCaribbean Valley - 63 NM WSW of Montserrat · photo · NOAA buoy cameras (NDBC)\nTAP FOR DETAILS",
+   "shot": "03-layer-warnings-card.jpg"
+  },
+  {
+   "from": "layer outlook",
+   "id": "[\"radio\"]",
+   "panel": "gx-name sticky",
+   "text": "Buoy 42060\nCaribbean Valley - 63 NM WSW of Montserrat · photo · NOAA buoy cameras (NDBC)\nTAP FOR DETAILS",
+   "shot": "03-layer-outlook-card.jpg"
+  },
+  {
+   "from": "layer routes",
+   "id": "[\"sky\",\"name\",\"mag\"]",
+   "panel": "gx-name sticky",
+   "text": "Busiest route, last 24 h: CPT–JNB\n87\nFLIGHTS SEEN IN 24 H\nTAP FOR DETAILS",
+   "shot": "03-layer-routes-card.jpg"
+  },
+  {
+   "from": "tile readiness",
+   "panel": "detail",
+   "text": "US MILITARY READINESS · ESTIMATE\nDEFCON 3\nROUND HOUSE\nUS forces in the 2026 Iran war (US naval blockade of Iran).\nNo change on record · updated 10h ago\nThe real DEFCON is classified and never published. This is an estimate from the public reporting listed below, not an official number.\nWHY\nUS forces are taking part in the 2026 Iran war: US naval blockade of Iran (since 2026). 1d ago\nON THE MAP\n8 US warships placed in the area by the open fleet trackers: USS George Washington (Aircraft carrier, Arabian Sea, reported 25d ago source); USS Boxer (Amphibious assault ship, Arabian Sea, reported 25d ago source); USS George H. W. Bush (Aircraft carrier, Arabian Sea, reported 25d ago source); USS Shoup (Guided-missile destroyer, Arabian Sea, reported 25d ago source) and 4 more.\nNo report in the last 14 days names the blockade itself; it comes from the open list of ongoing wars.\nSHOW ON MAP ›\nUS forces are taking part in the Colombian conflict, Ecuadorian drug war and 1 more: Operation Southern Spear. [1][2] 1d ago\nIsrael is fighting a major war (Arab-Israeli / Iran-Israel proxy wars: 11,875 killed so far in 2026, 28,111 in 2025). [1][3][4] 1d ago\nON THE MAP\n9 US warships placed in the area by the open fleet trackers: USS George Washington (Aircraft carrier, Arabian Sea, reported 25d ago source); USS Boxer (Amphibious assault ship, Arabian Sea, reported 25d ago source); USS George H. W. Bush (Aircraft carrier, Arabian Sea, reported 25d ago source); USS Shoup (Guided-missile destroyer, Arabian Sea, reported 25d ago source) and 5 more.\nSHOW ON MAP ›\n2 reports of US strikes or US forces attacked in the last 30 days, latest: \"US strikes Iran’s Qeshm Island as Vance voices optimism about a deal\". [5][6] 4d ago\nON THE MAP\n8 US warships placed in the area by the open fleet trackers: USS George Washington (Aircraft carrier, Arabian Sea, reported 25d ago source); USS Boxer (Amphibious assault ship, Arabian Sea, reported 25d ago source); USS George H. W. Bush (Aircraft carrier, Arabian Sea, reported 25d ago source); USS Shoup (Guided-missile destroyer, Arabian Sea, reported 25d ago source) and 4 more.\nSHOW ON MAP ›\nBY REGION · US COMMANDS · ESTIMATE\n2\nCENTCOM\nMiddle East\nUS FORCES ENGAGED\nUS forces in the 2026 Iran war (US naval blockade of Iran).\n1 At war: Yemen\n2 Severe: Iran, Afghanistan, Israel, Pakistan\n3 High: Lebanon\nWhy\n2\nEUCOM\nEurope\nUS FORCES ENGAGED\nReports of US forces in combat (Iran, Iceland).\n1 At war: Ukraine\n2 Severe: Russia\n3 High: Belarus\nWhy\n3\nINDOPACOM\nAsia-Pacific\nMajor war: Myanmar civil war.\n2 Severe: Myanmar, India\n3 High: North Korea\nWhy\n3\nAFRICOM\nAfrica\nMajor wars: Sudanese civil wars, Congolese conflicts and 2 more.\n2 Severe: Sudan, DR Congo, Somalia, Mali, Central African Republic, Nigeria\nWhy\n3\nNORTHCOM\nNorth America\nMajor war: Mexican drug war.\n3 High: Mexico\nWhy\n2\nSOUTHCOM\nLatin America\nUS FORCES ENGAGED\nUS forces in the Colombian conflict (Operation Southern Spear).\n2 Severe: Haiti\n3 High: Colombia, Venezuela, Honduras, Guatemala, Ecuador\nWhy\nNUCLEAR RISK · ESTIMATE\n4\nGUARDED\nNuclear-armed states in major wars: Israel, Russia, United States.\nIsrael is fighting a major war (Arab-Israeli / Iran-Israel proxy wars). [1][3][4] 1d ago\nRussia is fighting a major war (Russo-Ukrainian war). [1][11][23] 1d ago\nUS forces are taking part in the 2026 Iran war. 1d ago\nSeparate 1-5 scale: 5 low, 4 guarded, 3 elevated, 2 high, 1 severe.\nCHANGES\nNo change recorded yet.\nWHAT THE LEVELS MEAN\n5\nFADE OUT\nPeacetime normal. No war involving US fo",
+   "shot": "05-tile-readiness.jpg"
+  },
+  {
+   "from": "tile watch",
+   "panel": "dos open",
+   "text": "WATCHING\nW. PACIFIC\nUNRATED · 2 REPORTS\nLAST NEWS 11H · TAP FOR MORE\n‹\n›",
+   "shot": "05-tile-watch.jpg"
+  }
+ ],
+ "data": [
+  {
+   "group": "HOT SPOTS",
+   "tab": "(no sub-tabs)",
+   "items": 0,
+   "text": "(empty)",
+   "shot": "04-data-hot-spots-no-sub-tabs.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "group": "NOW",
+   "tab": "EVENTS",
+   "items": 68,
+   "text": "Tropical cyclone THIRTYONE-26 · green alert · 2,127 people in Category 1+ winds\nOFFICIAL · GDACS\n11h ago · today · disaster\nUS city votes to divest from Israel\nSINGLE SOURCE\n WEAK OUTLET RECORD\n11h ago · today · conflict · Iceland, Israel, United States\nBomb threats against European flights ‘likely a coordinated campaign of disruption’, Ireland says – as it happened\n2 SOURCES\n12h ago · today · conflict · Bulgaria, Cyprus, Czechia\nWhat we know about Europe's latest wave of bomb threats targeting flights — and now newsrooms\nSINGLE SOURCE\n WEAK OUTLET RECORD\n12h ago · today · conflict\nPressure mounts on US Defence chief Hegseth after Republican election rout\nSINGLE SOURCE\n WEAK OUTLET RECORD\n12h ago · today · conflict · Iran, United States\n'Chaos within aviation industry' as European air traffic hit by bomb threats\n CONFIRMED · 5 SOURCES\n12h ago · today · conflict · Bulgaria, Ireland\nTech giants lose $1 trillion in one day after Democrats victory in midterms\n CONFIRMED · 3 SOURCES\n13h ago · today · economic · United States\nMillions fleeing Sudan’s war risk losing shelter as funds run low, UN warns\nSINGLE SOURCE\n WEAK OUTLET RECORD\n13h ago · today · conflict · Sudan\nTurkey to push for 'electrification' drive at COP31 as climate threats mount\nSINGLE SOURCE\n WEAK OUTLET RECORD\n13h ago · today · conflict · Türkiye\nTesla to wind down Cybertruck production as Elon Musk focuses on robotics and AI\n2 SOURCES\n13h ago · today · cyber · United States\nTwo dead after bus crashes in France, officials say\n2 SOURCES\n HEADLINE ≠ ARTICLE\n13h ago · today · conflict · France, French Southern and Antarctic Lands\nKenyan doomsday sect leader jailed for 200 years for murder of 190 children\n CONFIRMED · 6 SOURCES\n14h ago · today · conflict · Kenya\nPope Leo embarks on Latin America trip with a first stop in Uruguay\n CONFIRMED · 3 SOURCES\n14h ago · today · political · Argentina, Peru, Uruguay\nCalifornia governor to grant clemency to all 548 death row inmates in state\n CONFIRMED · 3 SOURCES\n14h ago · today · conflict · United States\nProtests and reforms: France's rising debt costs threaten stability\nSINGLE SOURCE\n WEAK OUTLET RECORD\n14h ago · today · civil-unrest · France\nCzech arms makers set sights on space defense in bid to sustain Ukraine-driven arms boom\nSINGLE SOURCE\n WEAK OUTLET RECORD\n15h ago · today · conflict · Czechia, Ukraine\nEx-lawmaker gets 12.5 years in Macao's first national security case\n CONFIRMED · 4 SOURCES\n15h ago · today · civil-unrest · Macau, China, Hong Kong\nWhat",
+   "shot": "04-data-now-events.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "group": "NOW",
+   "tab": "ALL NEWS",
+   "items": 146,
+   "text": "145 stories from 10 outlets, last 72h. Same story from several outlets is merged.\nRussell Brand barrister reports himself to watchdog over confrontation with journalist\nSINGLE SOURCE\n WEAK OUTLET RECORD\n11h ago · today · political\nPrince, the pope, and autumn 2026: purple is hot this season\nSINGLE SOURCE\n WEAK OUTLET RECORD\n11h ago · today · political\nValencia vs Real Madrid: La Liga – preview, team news, predictions\nSINGLE SOURCE\n WEAK OUTLET RECORD\n11h ago · today · political · Spain\nUS midterm elections 2026 live: Democrat inches ahead in Mississippi Senate count; another Trump loyalist resigns from justice department\nSINGLE SOURCE\n HEADLINE ≠ ARTICLE +1\n11h ago · today · political · United States\nHow Paraguay’s Ueno collapse is only its latest banking crisis\nSINGLE SOURCE\n HEADLINE ≠ ARTICLE +1\n11h ago · today · political · Chile, Paraguay\nThomas Markle, Meghan’s father, arrested in Florida on charges related to child sexual abuse material\n2 SOURCES\n11h ago · today · political · United States\nTrump will be blocked from putting ‘rightwinger’ on supreme court, Schumer says\nSINGLE SOURCE\n WEAK OUTLET RECORD\n11h ago · today · political · United States\nUS city votes to divest from Israel\nSINGLE SOURCE\n WEAK OUTLET RECORD\n11h ago · today · conflict · Iceland, Israel, United States\nNigerian court rules opposition candidate cannot stand in elections\nSINGLE SOURCE\n WEAK OUTLET RECORD\n11h ago · today · political · Nigeria\nUS midterms mark 'the beginning of the end' for Trump, John Bolton says\nSINGLE SOURCE\n WEAK OUTLET RECORD\n11h ago · today · political · United States\nBomb threats against European flights ‘likely a coordinated campaign of disruption’, Ireland says – as it happened\n2 SOURCES\n12h ago · today · conflict · Bulgaria, Cyprus, Czechia\nWhat we know about Europe's latest wave of bomb threats targeting flights — and now newsrooms\nSINGLE SOURCE\n WEAK OUTLET RECORD\n12h ago · today · conflict\nIN PHOTOS | Peru unveils giant statue of Pope Leo ahead of his Latin America visit\nSINGLE SOURCE\n WEAK OUTLET RECORD\n12h ago · today · political · Argentina, Peru, Uruguay\nAI stocks climb after trillions wiped from market values\nSINGLE SOURCE\n HEADLINE ≠ ARTICLE +1\n12h ago · today · economic\nUS prosecutor who led Trump-backed election probe exits Justice Department\nSINGLE SOURCE\n HEADLINE ≠ ARTICLE +1\n12h ago · today · political · United States\nParaguay resumes Pena impeachment proceedings as financial crisis deepens\nSINGLE SOURCE\n HEADLINE ≠ ARTICLE +1\n12h ago · today",
+   "shot": "04-data-now-all-news.jpg",
+   "netFail": [
+    "trippuden.github.io HTTP 404"
+   ],
+   "errors": []
+  },
+  {
+   "group": "NOW",
+   "tab": "THINKING",
+   "items": 7,
+   "text": "WHAT THE TERMINAL IS THINKING\nthought 10h ago · 14 new items fired 11 of 712 neurons\nNOTICED Assault in Egypt: 1 new in this run, normally almost never. Chance of that on a normal day: about 1 in 74.\nAssault / abduction: Alexandria, Al Iskandariyah, Egypt\n10h ago · 2 reports · source\nLINKED Assault in Israel and armed clashes in Israel keep coming together: 10 times, 2.3× more than chance.\nAssault / abduction: Gaza, Israel (general), Israel\n10h ago · 3 reports · source\nArmed clash: Gaza, Israel (general), Israel\n10h ago · 5 reports · source\nLOOKS LIKE The last 24 h look most like 2026-11-04 (34% alike: assault in Greece, severe weather warnings in United States). The day after, armed clashes in United States and conflict reports in Austria rose.\nNo pattern is strong enough to expect anything yet: it only says what chance can't explain, and it gets sharper every day it learns.\nEVERYTHING IT EXPECTS, LINKS IT HAS LEARNED, HOW IT WORKS",
+   "shot": "04-data-now-thinking.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "group": "NEXT",
+   "tab": "CALENDAR",
+   "items": 128,
+   "text": "FRI NOV 06 2026\nCeres-2 | Unknown Payload (Galactic Energy)\nOFFICIAL\nlaunch\nAsteroid (2026 VN1) passes at 1.56 lunar distances\nOFFICIAL\nasteroid\nGeomagnetic storm G1 forecast\nOFFICIAL\nspace weather\nSAT NOV 07 2026\nNew Zealand: Parliament\nOFFICIAL\nelection\nTropical cyclone MURASU-26 · red alert · 1.5 million people in Category 1+ winds · still active in 3 days\nFORECAST\nforecast\nUkraine stays at level 2 or worse through 2026-11-07\nFORECAST\nforecast\nRussia stays at level 2 or worse through 2026-11-07\nFORECAST\nforecast\nIran stays at level 2 or worse through 2026-11-07\nFORECAST\nforecast\nNorth Korea stays at level 2 or worse through 2026-11-07\nFORECAST\nforecast\nYemen stays at level 3 or worse through 2026-11-07\nFORECAST\nforecast\nSudan stays at level 3 or worse through 2026-11-07\nFORECAST\nforecast\nBelarus stays at level 3 or worse through 2026-11-07\nFORECAST\nforecast\nIndia stays at level 3 or worse through 2026-11-07\nFORECAST\nforecast\nHaiti stays at level 3 or worse through 2026-11-07\nFORECAST\nforecast\nSyria stays at level 3 or worse through 2026-11-07\nFORECAST\nforecast\nLebanon stays at level 3 or worse through 2026-11-07\nFORECAST\nforecast\nIraq stays at level 3 or worse through 2026-11-07\nFORECAST\nforecast\nLibya stays at level 3 or worse through 2026-11-07\nFORECAST\nforecast\nSomalia stays at level 3 or worse through 2026-11-07\nFORECAST\nforecast\nAfghanistan stays at level 3 or worse through 2026-11-07\nFORECAST\nforecast\nIsrael stays at level 3 or worse through 2026-11-07\nFORECAST\nforecast\nUkraine stays at level 1 or worse through 2026-11-07\nFORECAST\nforecast\nEthiopia stays at level 3 or worse through 2026-11-07\nFORECAST\nforecast\nEthiopia stays at level 2 or worse through 2026-11-07\nFORECAST\nforecast\nEthiopia escalates to level 1 by 2026-11-07\nFORECAST\nforecast\nUkraine calms to level 3 by 2026-11-07\nFORECAST\nforecast\nEthiopia calms to level 4 by 2026-11-07\nFORECAST\nforecast\nIsrael calms to level 5 by 2026-11-07\nFORECAST\nforecast\nIsrael escalates to level 2 by 2026-11-07\nFORECAST\nforecast\nRussia stays at level 3 or worse through 2026-11-07\nFORECAST\nforecast\nRussia calms to level 4 by 2026-11-07\nFORECAST\nforecast\nIran stays at level 3 or worse through 2026-11-07\nFORECAST\nforecast\nIran calms to level 4 by 2026-11-07\nFORECAST\nforecast\nRussia escalates to level 1 by 2026-11-07\nFORECAST\nforecast\nSomalia stays at level 2 or worse through 2026-11-07\nFORECAST\nforecast\nSomalia escalates to level 1 by 2026-11-07\nFORECAST\nforecast\nSouth Sudan stays at level 2 or worse through 20",
+   "shot": "04-data-next-calendar.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "group": "NEXT",
+   "tab": "FORECASTS",
+   "items": 43,
+   "text": "Tropical cyclone MURASU-26 · red alert · 1.5 million people in Category 1+ winds · still active in 3 days\nFORECAST\ndue 2026-11-07 · 58% likely\nUkraine stays at level 2 or worse through 2026-11-07\nFORECAST\ndue 2026-11-07 · 70% likely\nRussia stays at level 2 or worse through 2026-11-07\nFORECAST\ndue 2026-11-07 · 70% likely\nIran stays at level 2 or worse through 2026-11-07\nFORECAST\ndue 2026-11-07 · 70% likely\nNorth Korea stays at level 2 or worse through 2026-11-07\nFORECAST\ndue 2026-11-07 · 70% likely\nYemen stays at level 3 or worse through 2026-11-07\nFORECAST\ndue 2026-11-07 · 70% likely\nSudan stays at level 3 or worse through 2026-11-07\nFORECAST\ndue 2026-11-07 · 70% likely\nBelarus stays at level 3 or worse through 2026-11-07\nFORECAST\ndue 2026-11-07 · 70% likely\nIndia stays at level 3 or worse through 2026-11-07\nFORECAST\ndue 2026-11-07 · 70% likely\nHaiti stays at level 3 or worse through 2026-11-07\nFORECAST\ndue 2026-11-07 · 70% likely\nSyria stays at level 3 or worse through 2026-11-07\nFORECAST\ndue 2026-11-07 · 70% likely\nLebanon stays at level 3 or worse through 2026-11-07\nFORECAST\ndue 2026-11-07 · 70% likely\nIraq stays at level 3 or worse through 2026-11-07\nFORECAST\ndue 2026-11-07 · 70% likely\nLibya stays at level 3 or worse through 2026-11-07\nFORECAST\ndue 2026-11-07 · 70% likely\nSomalia stays at level 3 or worse through 2026-11-07\nFORECAST\ndue 2026-11-07 · 70% likely\nAfghanistan stays at level 3 or worse through 2026-11-07\nFORECAST\ndue 2026-11-07 · 70% likely\nIsrael stays at level 3 or worse through 2026-11-07\nFORECAST\ndue 2026-11-07 · 70% likely\nUkraine stays at level 1 or worse through 2026-11-07\nFORECAST\ndue 2026-11-07 · 70% likely\nEthiopia stays at level 3 or worse through 2026-11-07\nFORECAST\ndue 2026-11-07 · 70% likely\nEthiopia stays at level 2 or worse through 2026-11-07\nFORECAST\ndue 2026-11-07 · 70% likely\nEthiopia escalates to level 1 by 2026-11-07\nFORECAST\ndue 2026-11-07 · 30% likely\nUkraine calms to level 3 by 2026-11-07\nFORECAST\ndue 2026-11-07 · 30% likely\nEthiopia calms to level 4 by 2026-11-07\nFORECAST\ndue 2026-11-07 · 30% likely\nIsrael calms to level 5 by 2026-11-07\nFORECAST\ndue 2026-11-07 · 30% likely\nIsrael escalates to level 2 by 2026-11-07\nFORECAST\ndue 2026-11-07 · 30% likely\nRussia stays at level 3 or worse through 2026-11-07\nFORECAST\ndue 2026-11-07 · 70% likely\nRussia calms to level 4 by 2026-11-07\nFORECAST\ndue 2026-11-07 · 30% likely\nIran stays at level 3 or worse through 2026-11-07\nFORECAST\ndue 2026-11-07 · 70% likely\nIran calms to leve",
+   "shot": "04-data-next-forecasts.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "group": "NEXT",
+   "tab": "ELECTIONS",
+   "items": 14,
+   "text": "New Zealand: Parliament\nNationwide · Nov 7 · in 7h\nCape Verde: President\nNationwide · Nov 15 · in 8d\nSpain: Senate and Congress of Deputies\nNationwide · Nov 29 · in 22d\nSwitzerland: Referendums\nNationwide · Nov 29 · in 22d\nGambia: President\nNationwide · Dec 5 · in 28d\nNorthern Cyprus: Assembly of the Republic\nNationwide · Dec 6 · in 29d\nFiji: Constitutional referendum\nNationwide · Dec 9 · in 32d\nTransnistria: President\nNationwide · Dec 13 · in 36d\nSouth Sudan: President, Assembly and Council of States\nNationwide · Dec 22 · in 45d\nSerbia: President\nNationwide · Dec 26 · in 49d\nNigeria: President, Senate and House of Representatives\nNationwide · Jan 16 · in 70d\nKyrgyzstan: President\nNationwide · Jan 27 · in 81d\nEl Salvador: President and Legislative Assembly\nNationwide · Feb 28 · in 113d\nMicronesia: Parliament\nNationwide · Mar 2 · in 115d",
+   "shot": "04-data-next-elections.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "group": "EARTH",
+   "tab": "HAZARDS & WEATHER",
+   "items": 89,
+   "text": "TSUNAMI (1)\nTsunami information: 75 miles SW of Eureka, California\nOFFICIAL · NOAA Tsunami\nInformation · yesterday 00:01\nDISASTER ALERTS (3)\nTropical cyclone THIRTYONE-26 · green alert · 2,127 people in Category 1+ winds\nOFFICIAL · GDACS\nTropical cyclone · Green · 11h ago · today\nTropical cyclone MURASU-26 · red alert · 1.5 million people in Category 1+ winds\nOFFICIAL · GDACS\nTropical cyclone · Red · 3 days old\nTropical cyclone IN-FA-26 · green alert · no one in Category 1+ winds\nOFFICIAL · GDACS\nTropical cyclone · Green · yesterday 03:06\nEARTHQUAKES M5.5+ (15)\nM 4.8 - 36 km WNW of Poso, Indonesia\nOFFICIAL · USGS\n10h ago · today\nM 4.5 - 101 km SSE of Palekastro, Greece\nOFFICIAL · USGS\n13h ago · today\nM 6.1 - 144 km SE of Hasaki, Japan\nOFFICIAL · USGS\n18h ago · today\nM 4.5 - 87 km N of Isangel, Vanuatu\nOFFICIAL · USGS\n21h ago · today\nM 4.9 - 41 km SW of Balangonan, Philippines\nOFFICIAL · USGS\n22h ago · today\nM 4.7 - 139 km SSE of False Pass, Alaska\nOFFICIAL · USGS\nyesterday 21:35\nM 4.6 - 147 km SSE of False Pass, Alaska\nOFFICIAL · USGS\nyesterday 18:04\nM 6.1 - Fiji region\nOFFICIAL · USGS\nyesterday 12:21\nM 5.1 - 19 km NNW of Masumbwe, Tanzania\nOFFICIAL · USGS\nyesterday 04:22\nM 5.0 - 111 km W of Petrolia, CA\nOFFICIAL · USGS\n2 days old\nM 4.9 - 9 km N of Delta, B.C., MX\nOFFICIAL · USGS\n3 days old · OLD\nM 5.4 - 24 km NNW of Rioblanco, Colombia\nOFFICIAL · USGS\n4 days old · OLD\nM 6.0 - 165 km NW of Port-Olry, Vanuatu\nOFFICIAL · USGS\n6 days old · OLD\nM 5.4 - 203 km NW of Port-Olry, Vanuatu\nOFFICIAL · USGS\n6 days old · OLD\nM 6.0 - 58 km SSE of Shima, Japan\nOFFICIAL · USGS\n6 days old · OLD\nNATURAL EVENTS (NASA) (3)\nWildfire Wild River, Coos, New Hampshire\nOFFICIAL · NASA EONET\n· 5 days old · OLD\nTropical Cyclone Murasu\nOFFICIAL · NASA EONET\n· 4 days old · OLD\nSuper Typhoon In-fa\nOFFICIAL · NASA EONET\n· yesterday 01:00\nUS SEVERE WEATHER (16)\nFlood Warning: Maricopa, AZ\nOFFICIAL · NWS\nSevere · ● 29m ago\nFlood Warning: Maricopa, AZ\nOFFICIAL · NWS\nSevere · ● 33m ago\nFlood Warning: Maricopa, AZ\nOFFICIAL · NWS\nSevere · ● 49m ago\nFlood Warning: Keokuk, IA\nOFFICIAL · NWS\nSevere · ● 2h ago · today\nFlood Warning: Benton, IA\nOFFICIAL · NWS\nSevere · ● 2h ago · today\nFlood Warning: DeSoto, FL\nOFFICIAL · NWS\nSevere · 3h ago · today\nFlood Warning: Seminole, FL\nOFFICIAL · NWS\nSevere · 3h ago · today\nFlood Warning: Seminole, FL\nOFFICIAL · NWS\nSevere · 3h ago · today\nFlood Warning: Brevard, FL\nOFFICIAL · NWS\nSevere · 4h ago · today\nFlood Warning: Lake, FL\nOFFICIAL · NWS\nSevere · 4h ago",
+   "shot": "04-data-earth-hazards-weather.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "group": "EARTH",
+   "tab": "POWER & GRID",
+   "items": 29,
+   "text": "Every power plant of 20 MW and up (300 MW and up on phones), colored by fuel, sized by capacity. A colored ring means live status is published for it: green running, amber reduced, red offline. No ring = no free live data for that plant.\n4,364\nPLANTS MAPPED\n2\nGRID ALERTS\n16/95\nUS REACTORS OFF\nALERTS · LIVE GRID CHECKS\nDemand 75% below forecast · Arizona Public Service\nDELAYED\n52m ago · UNCONFIRMED · EIA Hourly Electric Grid Monitor (EIA-930)\nUnit cut back · Rocksavage · 398 MW out\nNEAR-LIVE\n16h ago · Elexon REMIT outage notice (published by the plant's operator)\nUS NUCLEAR REACTORS OFFLINE OR REDUCED (20)\nArkansas Nuclear 2\n0%\noffline since the 04 Nov 2026 report · NRC report of 06 Nov 2026\nComanche Peak 1\n0%\noffline since the 19 Oct 2026 report · NRC report of 06 Nov 2026\nCooper\n0%\noffline since the 02 Nov 2026 report · NRC report of 06 Nov 2026\nDiablo Canyon 1\n0%\noffline since the 11 Oct 2026 report · NRC report of 06 Nov 2026\nDresden 3\n0%\noffline since the 26 Oct 2026 report · NRC report of 06 Nov 2026\nFarley 2\n0%\noffline since the 19 Oct 2026 report · NRC report of 06 Nov 2026\nMillstone 3\n0%\noffline since the 12 Oct 2026 report · NRC report of 06 Nov 2026\nNorth Anna 2\n0%\noffline since the 06 Sep 2026 report · NRC report of 06 Nov 2026\nOconee 1\n0%\noffline since the 31 Oct 2026 report · NRC report of 06 Nov 2026\nPalisades\n0%\noffline since the 06 Nov 2025 report · NRC report of 06 Nov 2026\nPalo Verde 1\n0%\noffline since the 03 Oct 2026 report · NRC report of 06 Nov 2026\nPrairie Island 1\n0%\noffline since the 03 Oct 2026 report · NRC report of 06 Nov 2026\nRobinson 2\n0%\noffline since the 03 Oct 2026 report · NRC report of 06 Nov 2026\nSalem 1\n0%\noffline since the 04 Oct 2026 report · NRC report of 06 Nov 2026\nVogtle 2\n0%\noffline since the 03 Nov 2026 report · NRC report of 06 Nov 2026\nWaterford 3\n0%\noffline since the 17 Oct 2026 report · NRC report of 06 Nov 2026\nCallaway\n8%\nrunning below full power · was 15% the day before · NRC report of 06 Nov 2026\nPeach Bottom 2\n21%\nrunning below full power · was 5% the day before · NRC report of 06 Nov 2026\nPoint Beach 1\n24%\nrunning below full power · was 14% the day before · NRC report of 06 Nov 2026\nPoint Beach 2\n45%\nrunning below full power · NRC report of 06 Nov 2026\nFUELS\nNuclear\nCoal\nGas\nOil\nHydro\nWind\nSolar\nBiomass\nGeothermal\nWaste\nStorage\nCogeneration\nPetcoke\nWave and Tidal\nOther\nLive status needs operators to publish it openly. Checked here: every Great Britain power station unit that goes out unplanned (operator",
+   "shot": "04-data-earth-power-grid.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "group": "EARTH",
+   "tab": "OCEAN",
+   "items": 21,
+   "text": "INFO\nTSUNAMI · 72 H\n–\nCHOKEPOINT COUNTS NOT IN YET\n–\nWARNINGS TO SHIPS NOT IN YET\n–\nHIGHEST WAVES AT A BUOY NOW\n4/49\nARCTIC ICE RANK (1 = LEAST)\nBUOYS\nSHIP WARNINGS\nCHOKEPOINTS\nCABLES\nSEA LEVEL GAUGES\nICEBERGS\nSEA TEMP · 05 Nov 2026\nHEATWAVES · 05 Nov 2026\nSEA-FLOOR DEPTH\nTSUNAMI · US CENTRES, JAPAN, DART SEA-FLOOR BUOYS\nTsunami forecast (slight sea-level change, no damage expected) · M6.1 quake\nINFO\n2026-11-06 10:53:00 UTC · 17 h 59 min ago · Japan Meteorological Agency\nTsunami information: 75 miles SW of Eureka, California\nINFO\n2026-11-05 05:01:47 UTC · 1 d 23 h ago · NOAA tsunami centres\nCHOKEPOINTS · SHIPS A DAY VS SAME WEEK LAST YEAR\nReading ship counts from IMF PortWatch…\nWARNINGS TO SHIPS IN FORCE (0) · US NGA\nUS NGA did not answer the last collection (no answer yet). Its list shows here when it answers; the hourly run keeps asking.\nSEA STATE · 0 OF 854 STATIONS REPORTED IN 3 H\nSEA ICE · NSIDC DAILY EXTENT\nArctic · 8.31 M km²\n4th lowest of 49\n−1.70 M km² vs 1981-2010 average · on 2026-11-05 · record low for the day 7.86 (2016)\nAntarctic · 15.52 M km²\n3rd lowest of 49\n−1.56 M km² vs 1981-2010 average · on 2026-11-05 · record low for the day 15.37 (2023)\nIceberg D15A\n1,173 sq mi\n59 mi × 25 mi · seen 2026-11-06\nIceberg B22A\n474 sq mi\n33 mi × 29 mi · seen 2026-11-06\nIceberg A81\n472 sq mi\n32 mi × 29 mi · seen 2026-11-06\nIceberg C36\n327 sq mi\n26 mi × 18 mi · seen 2026-11-06\nUNDERSEA CABLES\n713 cables and 1928 landing stations on the map. Tap a cable for its owners, length and year; tap any spot at sea for what runs under it.\nSources: NOAA NDBC buoys (hourly, some every 10 min) · IOC Sea Level Monitoring Facility and NOAA CO-OPS gauges (read live when you open one) · NOAA PTWC/NTWC and JMA tsunami bulletins · US NGA navigational warnings · IMF PortWatch (ship transits, about a week behind) · NSIDC Sea Ice Index · US National Ice Center · TeleGeography cable map · NASA GIBS (JPL MUR sea temperature, newest day 2026-11-05) · GEBCO. Collected 10 h 21 min ago. Not answering on the last run: nga-navwarn, portwatch-chokepoints, portwatch-ports (last good copy kept).",
+   "shot": "04-data-earth-ocean.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "group": "AIR",
+   "tab": "(no sub-tabs)",
+   "items": 127,
+   "text": "12,373\nAIRCRAFT\n›\n397\nMILITARY\n›\n17\nSQUAWKS · 24H\n›\n150\nLOITERING\n›\n250\nROUTES\n›\n130\nBLIND SPOTS\n›\nLIVE 30 aircraft with a fix from the last minute (newest 0 s ago · adsb.lol). Live coverage: the 14 nearest circles (288 mi radius) around the middle of the screen, each refreshed every 5 s. 12,343 others are from the world snapshot taken 18:30Z (10h ago), drawn where they were heard and not moved forward; zoom or pan to them to go live.\nALL\nAIRLINES\nCARGO\nPRIVATE & BUSINESS\nMILITARY\nGOVERNMENT\nHELICOPTERS\nDRONES\nEMERGENCIES\nHOSTILE (US VIEW)\nSIDES\nUS AND ALLIES VIEW\nNO SIDES\nMILITARY IN THE AIR NOW · BY JOB (30)\nLive military aircraft with a public transponder, grouped by what their type is built for. Most military flights switch it off, so this is what can be heard, not everything flying. 367 more are only in the hourly world snapshot: pan or zoom to them to go live.\nALL 30\nREFUELLING TANKERS 3\nTRANSPORT AND VIP 17\nHELICOPTERS 6\nOTHER MILITARY 4\nOver watched areas now: Ukraine, Poland and Romania 4 · Korean Peninsula 1\n58-0128 K35R\nRefuelling tankers\nUnited States · 33,000 ft · over Ukraine, Poland and Romania · fix now\n59-1471 K35R\nRefuelling tankers\nUnited States · 32,950 ft · over Ukraine, Poland and Romania · fix now\n58-0061 K35R\nRefuelling tankers\nUnited States · 22,000 ft · fix now\nTEDDY37 C17\nTransport and VIP\nUnited States · 36,000 ft · fix now\nIFC1 A321\nTransport and VIP\nIndia · 33,000 ft · fix now\nTROJ22 C30J\nTransport and VIP\nAustralia · 30,000 ft · fix now\nASY829 C17\nTransport and VIP\nAustralia · 30,000 ft · fix now\nRCH5007 C30J\nTransport and VIP\nUnited States · 28,000 ft · fix now\nRANGR11 C30J\nTransport and VIP\nUnited States · 26,000 ft · fix now\nKJD201 C130\nTransport and VIP\nAlgeria · 24,150 ft · over Ukraine, Poland and Romania · fix now\n168075 C30J\nTransport and VIP\nUnited States · 19,950 ft · over Korean Peninsula · fix 1m ago\nRCH3285 C17\nTransport and VIP\nUnited States · 17,750 ft · fix now\nShow all 30\nEMERGENCY SQUAWKS · 7 DAYS (89)\nUAL2466 B39M\n7600 RADIO FAILURE\n10h ago · 11,800 ft · MCO→ORD\nVT581 BE20\n7700 GENERAL EMERGENCY\n11h ago · 23,000 ft\nSWA4845 B738\n7600 RADIO FAILURE\n12h ago · 37,000 ft\nSWA4432 B38M\n7600 RADIO FAILURE\n12h ago · 36,000 ft\nYEL22 DV20\n7500 HIJACK\n13h ago · 9,200 ft\nN987AB BE9L\n7600 RADIO FAILURE\n13h ago · 6,925 ft\nN47586 C152\n7600 RADIO FAILURE\n14h ago · 800 ft\nE47FA7 A320\n7700 GENERAL EMERGENCY\n15h ago · 3,100 ft\nGBODE P28A\n7600 RADIO FAILURE\n16h ago · 700 ft\nN947KC CH7A\n7700 GENERAL EMERGENCY\n16h ago · 5,075 ft\n",
+   "shot": "04-data-air-no-sub-tabs.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "group": "SPACE",
+   "tab": "(no sub-tabs)",
+   "items": 317,
+   "text": "SPOTLIGHT\nMY LOCATION\nEverything above one exact point right now: every satellite, the space stations, live aircraft, a sky dome and the passes coming up, plus a beam to any satellite. Right-click or long-press the globe to pick a point.\nNORTHERN & SOUTHERN LIGHTS NOW\nKp 2.3\nQUIET\n26%\nNORTH PEAK CHANCE\n22%\nSOUTH PEAK CHANCE\n52°N\n10%+ CHANCE OVERHEAD TO\n47°N\nLOW ON THE HORIZON TO (EST.)\n2.0 nT\nBZ NORTH: CALMER\n445 km/s\nSOLAR WIND\nNOAA OVATION nowcast for 05:06 UTC, made from solar wind measured at 04:08 UTC (44 min ago) · read live from NOAA · updates every 5 min. Green curtains: where it is likely overhead, at its real height; dashed line: our estimate of how far away it can be seen low on the horizon. It shows only where the sky is dark.\nKp forecast (NOAA, a forecast): 11-08 00h 4.0 · 11-08 03h 3.0 · 11-08 06h 3.0 · 11-08 09h 3.0 · 11-08 12h 3.3 · 11-08 15h 4.0 · 11-08 18h 4.7 G1 · 11-08 21h 5.0 G1 (UTC)\nALL-SKY CAMERAS (11)\nReal pictures from observatories and public cameras, refreshed every minute; each one's time is printed on the image. There are no free all-sky feeds in the southern hemisphere to add.\nKjell Henriksen Observatory\nSvalbard, Norway\nUNIS · 11% nearby now\nSkibotn all-sky camera\nTroms, Norway\nUiT The Arctic University of Norway · 11% nearby now\nKiruna all-sky camera\nKiruna, Sweden\nSwedish Institute of Space Physics (IRF) · 11% nearby now\nSodankylä all-sky camera\nLapland, Finland\nSodankylä Geophysical Observatory · 11% nearby now\nNordkapp sky camera\nFinnmark, Norway\nPanomax · 11% nearby now\nSetermoen sky camera (north-east)\nTroms, Norway\nyr.no (NRK / Norwegian Meteorological Institute) · 11% nearby now\nFMI Aurorasnow all-sky camera\nCentral Finland (about)\nFinnish Meteorological Institute · 8% nearby now\nFMI Aurorasnow camera\nKirkkonummi, Finland\nFinnish Meteorological Institute · 6% nearby now\nSyrjävaara Dark Sky Park camera\nKaavi, Finland\nSyrjävaara Dark Sky Park · 9% nearby now\nAuroraMAX\nYellowknife, Canada\nUniversity of Calgary / Canadian Space Agency · 24% nearby now\nIsle Royale north shore camera\nLake Superior, United States (about)\nUS National Park Service · 23% nearby now\nTHE SKY NOW\nSun B8.5\nQUIET\nX-ray output measured by NOAA GOES-18 at 04:48 UTC (4 min ago). Peak in the last 6 h: C5.9 at 00:53 UTC. The Sun's glow on the globe follows this live.\nSKY COMPASS\nstand at your spot and see the real sky: Polaris, planets, Moon, ISS, aurora\nSTAR LINES\noff: constellation figures and star names\nSOLAR SYSTEM · DEEP SPACE\nplanets, moons, space",
+   "shot": "04-data-space-no-sub-tabs.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "group": "INTEL",
+   "tab": "DETECTORS",
+   "items": 211,
+   "text": "Each detector watches a free public source directly from your device. LIVE = seconds, NEAR-LIVE = minutes, DELAYED = hourly or slower (the measurement time is always shown). Anything a machine flagged on its own says UNCONFIRMED.\nMORE\n650\nSIGNALS NOW\n84\nSTRONG\n12/13\nDETECTORS UP\nFRONTS · LAST 24 HOURS TO THE SECOND\nEach country the threat levels rate at war or severe. Lanes: air-raid alerts and all-clears, its own officials, the other side's officials, newsroom and machine-read news reports of strikes, and every detector signal inside its borders. Tap any mark. Claims are each side's words, not confirmed facts.\nMORE\n24 HOURS7 DAYS\nUKRAINE\nAT WAR\nLAST SIGNAL 13m 42s ago\n0\nALERTS POSTED, 24 H\n423\nOWN OFFICIALS\n23\nOTHER SIDE\n33\nNEWS REPORTS\n0\nSENSOR SIGNALS\nALERTS\n13\nOWN OFFICIALS\n423\nOTHER SIDE\n23\nNEWS\n33\nSENSORS\n0\nNOW−6 H−12 H−18 H−24 H\n04:38:49Z\nUkrainian Air Force: Attack drones · Sumy region\n04:36:55Z\nKyiv Regional Military Administration: Air-raid alert · Kyiv\n04:36:49Z\nKyiv Regional Military Administration: Air-raid alert · Kyiv\n04:36:07Z\nPoltava Regional Military Administration: Air-raid alert · Poltava region\n04:33:45Z\nPoltava Regional Military Administration: Air-raid alert · Poltava region\n04:33:41Z\nKyiv Regional Military Administration: Air-raid alert · Kyiv\nISRAEL\nAT WAR\nLAST SIGNAL 10h 22m ago\n0\nALERTS POSTED, 24 H\n0\nOWN OFFICIALS\n0\nOTHER SIDE\n8\nNEWS REPORTS\n0\nSENSOR SIGNALS\nALERTS\n0\nOWN OFFICIALS\n0\nOTHER SIDE\n0\nNEWS\n8\nSENSORS\n0\nNOW−6 H−12 H−18 H−24 H\n18:30:00Z\nArmed clash · Gaza, Israel (general), Israel · 5 sources (machine-read news)\n18:15:00Z\nArmed clash · Qalansuwa, HaMerkaz, Israel · 1 source (machine-read news)\n18:15:00Z\nShelling / artillery · Tel Aviv, Tel Aviv, Israel · 1 source (machine-read news)\n18:15:00Z\nArmed clash · Maghar, Ha?afon, Israel · 1 source (machine-read news)\n16:00:00Z\nKilling / mass violence · Kafr Qasim, HaMerkaz, Israel · 1 source (machine-read news)\n16:00:00Z\nArmed clash · Kafr Qasim, HaMerkaz, Israel · 1 source (machine-read news)\nYEMEN\nAT WAR\nLAST SIGNAL 10h 52m ago\n0\nALERTS POSTED, 24 H\n0\nOWN OFFICIALS\n0\nOTHER SIDE\n3\nNEWS REPORTS\n0\nSENSOR SIGNALS\nALERTS\n0\nOWN OFFICIALS\n0\nOTHER SIDE\n0\nNEWS\n3\nSENSORS\n0\nNOW−6 H−12 H−18 H−24 H\n18:00:00Z\nShelling / artillery · Lahj, La?ij, Yemen · 1 source (machine-read news)\n15:45:00Z\nAir or drone strike · Lahj, La?ij, Yemen · 2 sources (machine-read news)\n14:15:00Z\nAir or drone strike · Sanaa, Sana', Yemen · 1 source (machine-read news)\nPALESTINE\nAT WAR\nLAST SIGNAL 19h 29m ago\n0\nAL",
+   "shot": "04-data-intel-detectors.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "group": "INTEL",
+   "tab": "UNREST & STRIKES",
+   "items": 16,
+   "text": "8 of 8 types shown: Protest 279 · Riot 13 · Air or drone strike 56 · Shelling / artillery 42 · Bombing / explosion 5 · Armed clash 524 · Killing / mass violence 54 · Assault / abduction 599\nCHANGE IN FILTERS ›\n0\n1k\n2.1k\n10-31\n11-03\n11-06\nReports per day (UTC), machine-coded from world news by GDELT. A report is not a verified event. Map: dots = last 24 h, glow = last 7 days. Updated 10h ago.\nSTRIKE REPORTS · LAST 6 HOURS (0)\nNo strike reports with a second source in the last 6 hours.\nMOST REPORTS · LAST 7 DAYS\nUnited States\n3337\nIndia\n717\nIsrael\n452\nUnited Kingdom\n443\nNigeria\n232\nFrance\n208\nAustralia\n205\nRussia\n161\nCanada\n159\nGermany\n144\nPakistan\n135\nIran\n135",
+   "shot": "04-data-intel-unrest-strikes.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "group": "INTEL",
+   "tab": "CRIME & DRUGS",
+   "items": 43,
+   "text": "Police incidents published by cities as open data. Incidents only: no names, no mugshots, no addresses. A call is where police were sent; a report is a filed crime report, not a conviction. Bubbles count incidents in each patch, split by type; the glow on the ground is where reports concentrate, weighted by how serious they are; a ping means the last hour.\n24 H\n3 D\n7 D\n14 D\n Homicide 0\n Shooting / weapons 0\n Assault / robbery 0\n Drugs 0\n Burglary / theft / vehicle 0\n Other 0\nLAST HOUR · 0 INCIDENTS\nNothing in the last hour from the near-live feeds yet.\nSOURCES · 0/32 WORKING · 27 CITIES AND COUNTIES\nBoston, MA police reports\nDELAYED\nLOADING\nCharlotte, NC police reports\nDELAYED\nLOADING\nChicago crimes\nDELAYED\nLOADING\nCleveland, OH police reports\nDELAYED\nLOADING\nCleveland, OH police calls\nDELAYED\nLOADING\nColorado Springs, CO police reports\nDELAYED\nLOADING\nColumbus, OH police reports\nDELAYED\nLOADING\nDetroit, MI police reports\nDELAYED\nLOADING\nDouglas County, NE police reports\nDELAYED\nLOADING\nEverett, WA police calls\nDELAYED\nLOADING\nFayetteville, NC police reports\nDELAYED\nLOADING\nFayetteville, NC police reports\nDELAYED\nLOADING\nFayetteville, NC police reports\nDELAYED\nLOADING\nGainesville, FL police reports\nDELAYED\nLOADING\nHouston active 911 incidents (police, fire, EMS)\nNEAR-LIVE\nLOADING\nJohns Creek, GA police reports\nDELAYED\nLOADING\nKansas City, MO police reports\nDELAYED\nLOADING\nLas Vegas, NV police reports\nDELAYED\nLOADING\nLongmont, CO police reports\nDELAYED\nLOADING\nMesa, AZ police reports\nDELAYED\nLOADING\nMinneapolis, MN police reports\nDELAYED\nLOADING\nMontgomery County, MD police calls\nDELAYED\nLOADING\nMontgomery County, MD police reports\nDELAYED\nLOADING\nNashville, TN police reports\nDELAYED\nLOADING\nPrince William County, VA police reports\nDELAYED\nLOADING\nRaleigh, NC police reports\nDELAYED\nLOADING\nSF police calls for service\nNEAR-LIVE\nLOADING\nSF police incident reports\nDELAYED\nLOADING\nSarpy County, NE police reports\nDELAYED\nLOADING\nSkagit County, WA police reports\nDELAYED\nLOADING\nWashington, DC police reports\nDELAYED\nLOADING\nWichita, KS police reports\nDELAYED\nLOADING\nThese are all the US police feeds that are free and less than about a week old (checked against every police dataset on the Socrata and ArcGIS open-data catalogs). Not here because they publish too late or without locations: New York (quarterly), Los Angeles, Austin, Dallas, Cincinnati and Philadelphia (no usable locations or weeks behind), Houston reports (only live 911 calls are public), Atlanta, Bal",
+   "shot": "04-data-intel-crime-drugs.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "group": "INTEL",
+   "tab": "BANKS",
+   "items": 59,
+   "text": "Central banks (white), supervisors and the biggest banks (green) at their headquarters. A ring means something serious in the last 30 days: red failure, closure, licence revoked, rescue, bank run or withdrawal limits; amber regulator action, outage, cyber attack or emergency liquidity. No ring = nothing reported. Tap a marker for its name, tap again for the full card.\n33\nCLOSURES, RUNS, LIMITS · 30 D\n43\nSERIOUS ITEMS · 30 D\n6\nUS BANK FAILURES · 12 MO\n100\nFINANCIAL SYSTEM STRESS · ESTIMATE\nSEVERE\nofficial bank closures/runs/limits 3 × 12 + other finance firms closed 4 × 3 + reported runs/limits (2+ outlets) 12 × 8 + US failures 90 d 2 × 10 + regulator actions/outages 10 × 2 = 184 (capped at 100)\nA weighted count of real items in the last 30 days (failures 90), not a market price or a forecast.\nSERIOUS ITEMS · LAST 30 DAYS (43)\nDirections under Section 35A read with Section 56 of the Banking Regulation Act, 1949 – Sri Guru Raghavendra Sahakara Bank Niyamitha, Bengaluru - Extension of Period\nWITHDRAWAL LIMITS OFFICIAL RBI · 12h 32m ago · 2026-11-06 16:20:00 UTC\nNorway Oil Fund Reaches $224.5 Million Settlement With KPMG Over Silicon Valley Bank Collapse\nFAILURE / CLOSURE NEWS REPORT · 3 OUTLETS Financial News London · 14h 36m ago · 2026-11-06 14:16:00 UTC · Norway\nMajor Banking Disruption Hits Western Japan: 128 Banks Suspend Services\nOUTAGE NEWS REPORT · 1 OUTLET Outlook India · 16h 23m ago · 2026-11-06 12:28:45 UTC · Japan\nParaguay Bank Collapse Shows Why Bitcoin Was Created as USDT Hits Premium\nFAILURE / CLOSURE NEWS REPORT · 3 OUTLETS Cryptonews · 16h 52m ago · 2026-11-06 12:00:00 UTC · Paraguay\nNearly half the population lost savings in Paraguayan bank failure, Dan Held notes\nFAILURE / CLOSURE NEWS REPORT · 1 OUTLET Traders Union · 17h 10m ago · 2026-11-06 11:41:59 UTC · Paraguay\n15 most recent bank failures\nFAILURE / CLOSURE NEWS REPORT · 1 OUTLET American Banker · 17h 52m ago · 2026-11-06 11:00:29 UTC\nThe not-so-fine print: making consumer contracts fair\nENFORCEMENT ACTION OFFICIAL FCA · 18h 36m ago · 2026-11-06 10:16:22 UTC (first seen; the feed gives no date)\nJapan Bank Outage Hits 128 Shinkin Banks, Disrupting ATMs and Branch Transactions\nOUTAGE NEWS REPORT · 1 OUTLET cedarnews.net · 20h 01m ago · 2026-11-06 08:51:38 UTC · Japan\nJapan banking outage hits 128 credit unions: ATMs, deposits and transfers disrupted\nOUTAGE NEWS REPORT · 1 OUTLET News9live · 20h 35m ago · 2026-11-06 08:16:50 UTC · Japan\nParaguay’s President quits over bank collapse but Co",
+   "shot": "04-data-intel-banks.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "group": "INTEL",
+   "tab": "CYBER",
+   "items": 69,
+   "text": "Cyberattacks and hacks from public reporting, government cyber agencies (white markers) and internet outages. Red = hospitals, banks, power, water, transport, telecoms or government. Dashed = one outlet so far (unconfirmed). Tap a marker for its name, tap again for the full card.\n29/67\nATTACKS ON CRITICAL SECTORS · 4 D\n6\nGOVT ALERTS · 7 D\n3\nEXPLOITED FLAWS ADDED · 7 D\n5\nINTERNET OUTAGES NOW\n231\nRANSOMWARE CLAIMS · 7 D\n81\nCYBER THREAT · ESTIMATE\nHIGH\ncritical-sector attacks (2+ outlets) 15 × 3 + critical-sector attacks (1 outlet) 14 × 0.5 + government alerts 7 d 6 × 2 + other exploited flaws added 7 d 3 × 0.5 + internet outages now 5 × 3 = 81\nA weighted count of real public items (attacks 4 days, alerts 7 days), not a classified rating.\nATTACKS ON CRITICAL SECTORS · LAST 4 DAYS (29)\nBank Rakyat Under Suspected Cyberattack By Threat Actor \"Marlanwg\", Website Briefly Defaced\nBANKS & FINANCE Cyberattack · NEWS REPORT · 1 OUTLET · Pokde.Net · 13h 32m ago · 2026-11-06 15:20:35 UTC\nFrom fridge to bank account: Protect yourself against cyberattacks | Daily Sabah\nBANKS & FINANCE Cyberattack · NEWS REPORT · 1 OUTLET · Daily Sabah · 14h 37m ago · 2026-11-06 14:15:00 UTC\nHackers Divert €100m From French Bank , Customer Funds Safe\nBANKS & FINANCE Cyberattack · NEWS REPORT · 1 OUTLET · leadership.ng · 30h 52m ago · 2026-11-05 22:00:00 UTC · French Southern and Antarctic Lands\nMaia Sandu convenes the National Security Council, amid the intensification of cyber attacks\nGOVERNMENT Cyberattack · NEWS REPORT · 5 OUTLETS · cotidianul.md · 38h 23m ago · 2026-11-05 14:29:02 UTC\nCyberattack: French bank says online hacking stole around $100 million\nBANKS & FINANCE Cyberattack · NEWS REPORT · 2 OUTLETS · Modern Ghana · 38h 55m ago · 2026-11-05 13:57:36 UTC · French Southern and Antarctic Lands\nToo soon to know wider impact of Delhaize cyberattacks, government says\nGOVERNMENT Cyberattack · NEWS REPORT · 1 OUTLET · Luxembourg Times · 39h 52m ago · 2026-11-05 13:00:00 UTC\nCyberattack on blood bank freezers thwarted, follows supermarket fridge hacks\nHOSPITALS & HEALTH Cyberattack · NEWS REPORT · 5 OUTLETS · KNOE · 43h 53m ago · 2026-11-05 08:59:00 UTC\nLarge-scale Cyberattack on GMO Group: What's the Impact on the Bank? GMO Aozora Net Bank Responds\nBANKS & FINANCE Cyberattack · NEWS REPORT · 1 OUTLET · ASCII.jp · 2d 1h ago · 2026-11-05 03:15:00 UTC\nFrench government says cyberattacks have reached blood banks\nBANKS & FINANCE Cyberattack · NEWS REPORT · 1 OUTLET · Heraldo USA · 2d 12h a",
+   "shot": "04-data-intel-cyber.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "group": "INTEL",
+   "tab": "SHIPS",
+   "items": 136,
+   "text": "947\nSHIPS\n›\n360\nUNDER WAY\n›\n27\nMILITARY & LAW\n›\n100\nOVER 650 FT\n›\nLIVE 591 ships reporting now; the rest show their last report. Coverage: Baltic and Nordic waters only. Finland's open feed is the only free live ship feed that needs no sign-up, so other seas look empty here even though ships are there.\nPLA AROUND TAIWAN · DAILY\n3 aircraft · 9 navy ships · 8 other\nNov 6\n0 aircraft crossed the median line. Taiwan defense ministry, 24 h to 06:00 Taipei time.\nWATCH WATERS (9)\nBlockades, attacks and chokepoints: each opens what is known there now (strait traffic, warnings to ships, warships, live military aircraft, AIS heard).\nPersian Gulf & Strait of Hormuz\nno AIS heard\nGulf of Oman\nno AIS heard\nRed Sea & Bab el-Mandeb\nno AIS heard\nGulf of Aden\nno AIS heard\nEastern Mediterranean\nno AIS heard\nBlack Sea\nno AIS heard\nTaiwan Strait\nno AIS heard\nSouth China Sea\nno AIS heard\nBaltic Sea\nAIS 723\nWARSHIPS · OPEN REPORTS (51)\nWhere the weekly open fleet tracker and U.S. Navy port news last put each carrier, amphibious group and escort; newest tracker report as of Oct 13, 2026, newest Navy port story Oct 29, 2026. Places are regions, drawn as areas, never guessed points.\nPortsmouth Naval Shipyard, Maine\nOct 29, 2026\nUSS Columbia (SSN-771), USS Washington (SSN-787)\nNew York\nOct 28, 2026\nUSS San Antonio (LPD-17)\nHMAS Stirling, Western Australia\nOct 27, 2026\nUSS Colorado (SSN-788)\nColombo, Sri Lanka\nOct 27, 2026\nUSS Canberra (LCS-30)\nNorfolk, Va.\nOct 26, 2026\nUSS Nimitz (CVN-68), USS Dwight D. Eisenhower (CVN-69), USS Kearsarge (LHD-3), USS McFaul (DDG-74) +3\nYokosuka, Japan\nOct 26, 2026\nUSS Makin Island (LHD-8), USS Theodore Roosevelt (CVN-71), USS Chosin (CG-65), USS Decatur (DDG-73)\nEverett, Wash.\nOct 16, 2026\nUSS Benfold (DDG-65), USS Gridley (DDG-101)\nRota, Spain\nOct 14, 2026\nUSS John Basilone (DDG-122)\nLeft Moroccan coast\nOct 13, 2026\nUSS Stout (DDG-55)\nLeft Gdynia, Poland\nOct 13, 2026\nUSS Paul Ignatius (DDG-117)\nArabian Sea\nOct 13, 2026\nUSS George Washington (CVN-73), USS Boxer (LHD-4), USS George H. W. Bush (CVN-77), USS Shoup (DDG-86) +3\nSasebo, Japan\nOct 13, 2026\nUSS Tripoli (LHA-7)\nEastern Pacific\nOct 13, 2026\nUSS Ronald Reagan (CVN-76)\nPort Everglades, Fla.\nOct 13, 2026\nUSS St. Louis (LCS-19)\nMayport, Fla.\nOct 10, 2026\nUSS Billings (LCS-15), USS Minneapolis-Saint Paul (LCS-21)\nLeft Phuket, Thailand\nOct 9, 2026\nUSS Delbert D. Black (DDG-119)\nSan Diego\nOct 9, 2026\nUSS Abraham Lincoln (CVN-72), USS Carl Vinson (CVN-70), USS Essex (LHD-2), USS Robert Smalls (CG-62)\n",
+   "shot": "04-data-intel-ships.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "group": "INTEL",
+   "tab": "OCEAN",
+   "items": 21,
+   "text": "INFO\nTSUNAMI · 72 H\n–\nCHOKEPOINT COUNTS NOT IN YET\n–\nWARNINGS TO SHIPS NOT IN YET\n–\nHIGHEST WAVES AT A BUOY NOW\n4/49\nARCTIC ICE RANK (1 = LEAST)\nBUOYS\nSHIP WARNINGS\nCHOKEPOINTS\nCABLES\nSEA LEVEL GAUGES\nICEBERGS\nSEA TEMP · 05 Nov 2026\nHEATWAVES · 05 Nov 2026\nSEA-FLOOR DEPTH\nTSUNAMI · US CENTRES, JAPAN, DART SEA-FLOOR BUOYS\nTsunami forecast (slight sea-level change, no damage expected) · M6.1 quake\nINFO\n2026-11-06 10:53:00 UTC · 17 h 59 min ago · Japan Meteorological Agency\nTsunami information: 75 miles SW of Eureka, California\nINFO\n2026-11-05 05:01:47 UTC · 1 d 23 h ago · NOAA tsunami centres\nCHOKEPOINTS · SHIPS A DAY VS SAME WEEK LAST YEAR\nReading ship counts from IMF PortWatch…\nWARNINGS TO SHIPS IN FORCE (0) · US NGA\nUS NGA did not answer the last collection (no answer yet). Its list shows here when it answers; the hourly run keeps asking.\nSEA STATE · 0 OF 854 STATIONS REPORTED IN 3 H\nSEA ICE · NSIDC DAILY EXTENT\nArctic · 8.31 M km²\n4th lowest of 49\n−1.70 M km² vs 1981-2010 average · on 2026-11-05 · record low for the day 7.86 (2016)\nAntarctic · 15.52 M km²\n3rd lowest of 49\n−1.56 M km² vs 1981-2010 average · on 2026-11-05 · record low for the day 15.37 (2023)\nIceberg D15A\n1,173 sq mi\n59 mi × 25 mi · seen 2026-11-06\nIceberg B22A\n474 sq mi\n33 mi × 29 mi · seen 2026-11-06\nIceberg A81\n472 sq mi\n32 mi × 29 mi · seen 2026-11-06\nIceberg C36\n327 sq mi\n26 mi × 18 mi · seen 2026-11-06\nUNDERSEA CABLES\n713 cables and 1928 landing stations on the map. Tap a cable for its owners, length and year; tap any spot at sea for what runs under it.\nSources: NOAA NDBC buoys (hourly, some every 10 min) · IOC Sea Level Monitoring Facility and NOAA CO-OPS gauges (read live when you open one) · NOAA PTWC/NTWC and JMA tsunami bulletins · US NGA navigational warnings · IMF PortWatch (ship transits, about a week behind) · NSIDC Sea Ice Index · US National Ice Center · TeleGeography cable map · NASA GIBS (JPL MUR sea temperature, newest day 2026-11-05) · GEBCO. Collected 10 h 22 min ago. Not answering on the last run: nga-navwarn, portwatch-chokepoints, portwatch-ports (last good copy kept).",
+   "shot": "04-data-intel-ocean.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "group": "INTEL",
+   "tab": "FAKE CHECK",
+   "items": 44,
+   "text": "Check a picture or video from a war or political story. The file is read on this device only; nothing is uploaded. You get the reasons, not a verdict: AI detectors are often wrong, and fakes usually lose their marks when they are re-posted.\nCHOOSE PICTURE OR VIDEO\nCHECK\nYou can also paste a copied picture anywhere on this tab.\nALREADY DEBUNKED · FAKE OR AI PICTURES AND VIDEO\nCNN no ha informado sobre un “rescate milagroso” en Kiev: la imagen está generada con IA\nNewtral · 13h ago · war / politics\nNo, este vídeo de una mujer inmigrante y musulmana diciendo que si gana Vox las elecciones se vuelve a su país porque se acabarán \"las ayudas\" no es real: fue generado con IA\nMaldita · 15h ago · war / politics\nNo, el ministro israelí Amichai Chikli no \"reconoce\" en este vídeo que financian a Vox: no habla sobre financiación sino que defiende una \"cooperación estratégica\" con este partido\nMaldita · 17h ago · war / politics\nRussian foreign minister Sergey Lavrov dismissed India's diplomatic standing? No, viral video is a deepfake\nAlt News · 1d ago · AI-made, war / politics\nFake images of Donald Trump being carried after US midterm elections shared online\nFull Fact · 2d ago · AI-made, war / politics\nOld video from Congress protest falsely shared as visuals of November 1 INDIA bloc rally\nAlt News · 2d ago · old or out of context, war / politics\nThis viral video of Minister S Jaishankar allegedly recounting how a Russian minister mocked him over the India-China border dispute is a deepfake\nFactly · 2d ago · AI-made, war / politics\nFact Check: Tate McRae Did NOT Post 'Make America Great Again' Photo on U.S. Election Day\nLead Stories · 3d ago · AI-made, edited, war / politics\nVolpi y la democracia algorítmica: Trump es un personaje de transición, los cibermagnates libran una batalla por lo que venga después\nNewtral · 3d ago · war / politics\nThis video of Sergey Lavrov making derogatory remarks about India is digitally manipulated\nFactly · 3d ago · edited, war / politics\nFact Check: Old Video Does NOT Show Iranian Attack On U.S. Aircraft Carrier On Nov. 3, 2026 -- It's AI-Generated Clip\nLead Stories · 3d ago · AI-made, old or out of context, war / politics\nTrump no ha anunciado en Truth Social su victoria en las ‘midterms’ antes de las elecciones\nNewtral · 4d ago · war / politics\nThis viral video allegedly showing Punjab CM Bhagwant Mann in an intoxicated state is a deepfake\nFactly · 4d ago · AI-made, war / politics\nFact Check: FAKE Image Of 'Anna Blackwell' With Trump En",
+   "shot": "04-data-intel-fake-check.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "group": "INTEL",
+   "tab": "SIGNALS",
+   "items": 179,
+   "text": "262\nMIL AIRCRAFT\n›\n34\nJAMMING ZONES\n›\n7\nOUTAGES\n›\n0\nALERTS\n›\n● LIVE 12,382 aircraft, new fixes every 5 s, flown on smoothly in between. Zoom in anywhere to see all traffic there. · ships layer is off\nCORRELATION ALERTS (0)\nWhen several independent signals turn unusual in one country at the same time (compared with that country's own normal), it gets flagged here and its threat level goes up.\nNothing unusual lining up right now.\nMILITARY & GOVERNMENT AIRCRAFT (262)\nOnly aircraft broadcasting a public transponder signal. Many military flights don't.\nASY061 E737\nNOTABLE\nE-7 Wedgetail AEW · over water · 4775 ft\nae6a3e P8\nNOTABLE\nP-8 Poseidon maritime patrol · over water · 23075 ft\nae4ec7 P8\nNOTABLE\nP-8 Poseidon maritime patrol · United States · 31000 ft\nSCORE76 P8\nNOTABLE\nP-8 Poseidon maritime patrol · over water · 28000 ft\nae5c5f P8\nNOTABLE\nP-8 Poseidon maritime patrol · over water · 29000 ft\nae5f41 P8\nNOTABLE\nP-8 Poseidon maritime patrol · over water · 30000 ft\n@@@@@@@@ P8\nNOTABLE\nP-8 Poseidon maritime patrol · Bulgaria · 10500 ft\nC6070\nover water · 2975 ft\nae1459 C17\nC-17 airlifter · over water · 32525 ft\nC2714 C27J\nover water · 4250 ft\nae1177 C17\nC-17 airlifter · over water · 5125 ft\nC6597 AS65\nover water · -200 ft\nC6556 AS65\nover water · -200 ft\nCFC3120 CL60\nover water · 30000 ft\nae6828\nover water · 18000 ft\nOCEAN11 C30J\nover water · 8325 ft\nLOST11 C560\nover water · 35850 ft\nPAT566 BE20\nover water · 24975 ft\nC6055 H60\nBlack Hawk · over water · 175 ft\nGHOST52 GLF4\nover water · 40000 ft\nWAYLN53 BE20\nover water · 6750 ft\nae0692 K35R\nKC-135 tanker · over water · 21700 ft\nae07aa K35R\nKC-135 tanker · over water · 14675 ft\nCOBRA27 BE20\nover water · 11525 ft\nLSXX H60\nBlack Hawk · over water · -75 ft\n00000000 V22\nover water · 11200 ft\nLSXX H60\nBlack Hawk · over water · ground ft\nLSXX H60\nBlack Hawk · over water · ground ft\nLS14 H60\nBlack Hawk · over water · 625 ft\nC6065 H60\nBlack Hawk · over water · 125 ft\nSHWK770 H60\nBlack Hawk · over water · 275 ft\nLS23 H60\nBlack Hawk · over water · -50 ft\nCOBRA53 BE20\nover water · 15775 ft\nG72232 EC45\nover water · 7275 ft\nSCRCH50 V22\nover water · 8900 ft\nCD11 HAWK\nover water · 2875 ft\nPAT470 BE20\nover water · 16600 ft\nSPAR789 LJ35\nover water · 34975 ft\nCNV4016 B737\nover water · 39000 ft\nFAM3611 C130\nover water · 20000 ft\nWATTS18 EC45\nover water · 2300 ft\nR20301 H60\nBlack Hawk · over water · 5900 ft\nWATTS67 EC45\nover water · 2425 ft\nSTGRY47 BE20\nover water · 28000 ft\nLOST77 BE20\nover water · 21000 ft\nWAKE25 B212\nover water · 680",
+   "shot": "04-data-intel-signals.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "group": "LIVE",
+   "tab": "CAMS & VIDEO",
+   "items": 312,
+   "text": "EARTH FROM SPACE, RIGHT NOW\nWhole Earth from 1.5 million km (DSCOVR EPIC)\nGOES East: the Americas\nGOES West: Pacific\nTHE SUN & SPACE WEATHER\nThe Sun right now (extreme UV)\nSolar flares (171 Å)\nSunspots\nSolar storms leaving the Sun (LASCO C2)\nSolar storms, wide view (LASCO C3)\nAurora forecast: north\nAurora forecast: south\nLIVE VIDEO (13)\nON AIR means the channel's own live broadcast was running at the last check (shown on each). Off-air channels never play a substitute video.\nStarbase launch pad cam\nOFF AIR\nspace · checked 10h ago\nSpaceX launches\nOFF AIR\nspace · checked 10h ago\nNASA live\nOFF AIR\nspace · checked 10h ago\nAl Jazeera English\nOFF AIR\nworld news · checked 10h ago\nDW News\nOFF AIR\nworld news · checked 10h ago\nFrance 24 English\nOFF AIR\nworld news · checked 10h ago\nSky News\nOFF AIR\nworld news · checked 10h ago\nEuronews\nOFF AIR\nworld news · checked 10h ago\nTRT World\nOFF AIR\nworld news · checked 10h ago\nWION (India)\nOFF AIR\nworld news · checked 10h ago\nCNA (Singapore)\nOFF AIR\nworld news · checked 10h ago\nABC News (US)\nOFF AIR\nworld news · checked 10h ago\nBloomberg TV\nOFF AIR\nworld news · checked 10h ago\nPUBLIC CAMERAS WORLDWIDE (68498)\n68,498 official public cameras in 17 countries, 12,191 with live video. List rebuilt 10h ago; every network's pictures are tested each time.\nHourly check 10h ago: 2,311 of 2,364 sampled cameras answered; 372 known not answering.\nDARK CLUSTER · 3 cams · Iowa DOT · since 23h ago\nDARK CLUSTER · 4 cams · Oregon DOT (TripCheck) · since 12h ago\nDARK CLUSTER · 15 cams · Delaware DOT, Maryland SHA (CHART) · since 12h ago\nDARK CLUSTER · 13 cams · Maryland SHA (CHART) · since 12h ago\nDARK CLUSTER · 5 cams · DGT Spain (national road cameras) · since 2d ago\nDARK CLUSTER · 3 cams · ALERTCalifornia wildfire cameras (UC San Diego) · since 21h ago\nNetwork outage · 52 cams · Missouri DOT (Traveler, Gateway Guide, KC Scout) · since 2d ago\nNetwork outage · 34 cams · Missouri DOT (Traveler, Gateway Guide, KC Scout) · since 2d ago\nNetwork outage · 3 cams · Missouri DOT (Traveler, Gateway Guide, KC Scout) · since 2d ago\nNetwork outage · 6 cams · Missouri DOT (Traveler, Gateway Guide, KC Scout) · since 2d ago\nNetwork outage · 6 cams · Missouri DOT (Traveler, Gateway Guide, KC Scout) · since 2d ago\nNetwork outage · 3 cams · Missouri DOT (Traveler, Gateway Guide, KC Scout) · since 2d ago\nNetwork outage · 3 cams · Missouri DOT (Traveler, Gateway Guide, KC Scout) · since 1d ago\nDARK CLUSTER · 7 cams · Seattle DOT traffic cameras · since 13h ago\nDA",
+   "shot": "04-data-live-cams-video.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "group": "LIVE",
+   "tab": "RADIO",
+   "items": 71,
+   "text": "828\nRECEIVERS\n0\nSAT PASSES NOW\n145\nSIGNALS / MIN\nOFFICIAL, STATE AND MILITARY BROADCASTERS · LIVE\nWho runs each one is shown. Military and state stations broadcast their side's message: listen to them as claims.\nGalei Tzahal\nOPEN ↗\nMILITARY · IL · Israel Defense Forces radio · opens on its own site (no secure stream)\nRadio Zvezda\nPLAY\nMILITARY · RU · Russian defence ministry radio\nArmy FM\nPLAY\nMILITARY · UA · Ukraine's defence ministry radio\nCGTN / China Radio International\nPLAY\nSTATE-RUN · CN · Chinese state broadcaster\nDW\nPLAY\nSTATE-RUN · DE · Germany's international broadcaster\nRFI\nPLAY\nSTATE-RUN · FR · France's international broadcaster\nAll India Radio News\nPLAY\nSTATE-RUN · IN · India's public broadcaster, news\nRadio Farda\nNO STREAM\nSTATE-RUN · IR · RFE/RL Persian service (US-funded) · no public stream found in the station directory\nAl Jazeera\nPLAY\nSTATE-RUN · QA · Qatar-funded broadcaster (audio of the news channel)\nRadio Sputnik\nPLAY\nSTATE-RUN · RU · Russian state international radio\nTRT Radyo Haber\nPLAY\nSTATE-RUN · TR · Turkey's state broadcaster, news\nRadio Taiwan International\nPLAY\nSTATE-RUN · TW · Taiwan's international broadcaster\nRadio Svoboda\nPLAY\nSTATE-RUN · UA · RFE/RL Ukrainian and Russian service (US-funded)\nVoice of America\nPLAY\nSTATE-RUN · US · US government international broadcaster\nRadio Free Asia\nNO STREAM\nSTATE-RUN · US · US-funded broadcaster for Asia · no public stream found in the station directory\nABC News Radio\nPLAY\nPUBLIC SERVICE · AU · Australia's public broadcaster, news\nCBC Radio One\nPLAY\nPUBLIC SERVICE · CA · Canada's public broadcaster\nDeutschlandfunk\nPLAY\nPUBLIC SERVICE · DE · Germany's public news radio\nERR Vikerraadio\nPLAY\nPUBLIC SERVICE · EE · Estonia's public broadcaster\nYle Radio Suomi\nPLAY\nPUBLIC SERVICE · FI · Finland's public broadcaster\nFrance Info\nPLAY\nPUBLIC SERVICE · FR · France's public news radio\nBBC World Service\nPLAY\nPUBLIC SERVICE · GB · UK public international broadcaster\nBBC Radio 4\nOPEN ↗\nPUBLIC SERVICE · GB · UK public broadcaster · opens on its own site (no secure stream)\nKan Reshet Bet\nPLAY\nPUBLIC SERVICE · IL · Israel's public broadcaster, news network\nNHK World Radio Japan\nPLAY\nPUBLIC SERVICE · JP · Japan's public international broadcaster\nKBS World Radio\nNO STREAM\nPUBLIC SERVICE · KR · South Korea's international broadcaster · no public stream found in the station directory\nLRT Radijas\nPLAY\nPUBLIC SERVICE · LT · Lithuania's public broadcaster\nPolskie Radio 24\nPLAY\nPUBLIC SERVICE · PL · Poland's p",
+   "shot": "04-data-live-radio.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "group": "PEOPLE",
+   "tab": "COMMUNITY",
+   "items": 1,
+   "text": " Use my location\n Pick on globe\nNo location set. Only an approximate area is shared, never your exact spot.\nPOST\nNo community posts yet.",
+   "shot": "04-data-people-community.jpg",
+   "netFail": [],
+   "errors": []
+  },
+  {
+   "group": "PEOPLE",
+   "tab": "GOVT PREP ADVICE",
+   "items": 9,
+   "text": "8 governments advising households to keep emergency supplies.\nGermany\nOFFICIAL\n10-day supply · long-standing · power outages, extreme weather, civil defence\nSweden\nOFFICIAL\n7-day supply · long-standing (updated 2024) · war, cyber attacks, disasters\nNorway\nOFFICIAL\n7-day supply · long-standing (updated 2024) · extreme weather, outages, war\nUnited Kingdom\nSINGLE SOURCE\n3-day supply · 2026-10-22 · storms, power and cyber outages, infrastructure failure\nJapan\nSINGLE SOURCE\n3-day supply · 2026-11-02 (planned) · earthquakes, tsunami, typhoons\nUnited States\nOFFICIAL\n3-day supply · long-standing · natural disasters, power outages, emergencies\nFinland\nOFFICIAL\n3-day supply · long-standing · storms, outages, disruptions\nFrance\nSINGLE SOURCE\n3-day supply · long-standing · disasters, health crises, security threats",
+   "shot": "04-data-people-govt-prep-advice.jpg",
+   "netFail": [],
+   "errors": []
+  }
+ ],
+ "dossier": [
+  {
+   "tab": "sitrep",
+   "text": "SITREP\nLEVEL\nTIMELINE\nASSETS\nSOURCES\nOUTLOOK\nOPEN SOURCE\nPUBLIC FEEDS ONLY · EVERY LINE CITED\nCOUNTRY\nISRAEL\n LEVEL 1 · AT WAR · FALLING\nLAST NEWS 11H\n‹\n›\n×\nSITUATION\nFACTS\nBLUFUS city votes to divest from Israel\nHOW THIS LEVEL IS SET: By CONFLICT, the worst of the five fronts: 138 killed in 30 days (Gaza 133 to 2026-11-05; the West Bank 5 to 2026-10-26), about 32 killed a week, state against state; escalation risk HIGH raised it one step. · BRIEF 18:30Z\nCONF\n1\nCRIME\n5\nHLTH\n-\nDISAS\n-\nPOL\n4\nGOVTS3 of 7 governments: avoid non-essential travel; 1: increased caution; 2: no advice against travel; 1: rated by area only. 6 of 7 governments advise against travel to parts; 6 of 7: avoid all travel there\n7 GOVERNMENTS · OPEN LEVEL TAB FOR EACH, WITH TIMES\nNOT YET VERIFIED\nUNVERIFIED\n17:40Z\n1 SOURCEUS city votes to divest from Israel\nAL JAZEERA · 11H · OUTLET\n11:43Z\n1 SOURCEIsrael's Eisenkot claims 'progress' in coalition talks as opposition eases on ultra-Orthodox draft\nFRANCE 24 · 17H · HEDGED CLAIM / OUTLET\nLAST 24H\n2 EVENTS\n17:40 · 1 SRC11:43 · 1 SRC04:5310:5316:5322:53\nOUTLOOK · ANALYSIS, NOT FACT\n7 DAYS\nSyria stays at level 3 or worse through 2026-11-07\n70%\nThreat levels tend to stick for a week. Learned from 0 graded outcomes (7 hits / 3 misses incl. starting prior).\nWATCH: Multi-outlet stories naming this country · US State Dept advisory changes · GDACS / USGS alerts\nDUE 2026-11-07 · ENGINE FORECAST, GRADED WHEN DUE\nASSETS NEAR AO\n12 WITHIN 1500 KM\nRRR6130\nC-17 airlifter · 31.5N 032.8E\nADS-B · 18:30Z · 10H · 221 KM\nFL370\n444KT\nGPS JAMMING\nLebanon · 22 cells · 2026-11-05\nGPSJAM · 2026-11-05 · 317 KM\n37%\n164 AC\nM4.5 EARTHQUAKE\nM 4.5 - 101 km SSE of Palekastro, Greece\nUSGS · 15:26Z · 13H · 865 KM\nGPS JAMMING\nTürkiye · 12 cells · 2026-11-05\nGPSJAM · 2026-11-05 · 956 KM\n33%\n500 AC\nTRK5\nGA5C · 40.6N 029.3E\nADS-B · 18:30Z · 10H · 1144 KM\nFL106\n300KT\nGPS JAMMING\nKuwait · 3 cells · 2026-11-05\nGPSJAM · 2026-11-05 · 1161 KM\n26%\n136 AC\n+6 MORE IN ASSETS\nPIN TO MY FEED\nFLY TO\nFULL DETAIL",
+   "shot": "05-dossier-sitrep.jpg"
+  },
+  {
+   "tab": "level",
+   "text": "SITREP\nLEVEL\nTIMELINE\nASSETS\nSOURCES\nOUTLOOK\nOPEN SOURCE\nPUBLIC FEEDS ONLY · EVERY LINE CITED\nCOUNTRY\nISRAEL\n LEVEL 1 · AT WAR · FALLING\nLAST NEWS 11H\n‹\n›\n×\nLEVEL 1\nAT WAR\nESCALATION RISK HIGH\nINTENSITY: LOW\nHOW THIS LEVEL IS SET: By CONFLICT, the worst of the five fronts: 138 killed in 30 days (Gaza 133 to 2026-11-05; the West Bank 5 to 2026-10-26), about 32 killed a week, state against state; escalation risk HIGH raised it one step.\nCONF\n1\nCRIME\n5\nHLTH\n-\nDISAS\n-\nPOL\n4\nCONFLICT\n1\n138 killed in 30 days (Gaza 133 to 2026-11-05; the West Bank 5 to 2026-10-26), about 32 killed a week, state against state. Escalation risk HIGH (E1, E2, E3, E5): raised from 2 to 1.\n10h ago\n133 killed in Gaza, 30 days ·Gaza Ministry of Health daily report (via Tech For Palestine) · 2d ago\n5 killed in the West Bank, 30 days ·West Bank daily casualties, UN OCHA / Ministry of Health (via Tech For Palestine) · 12d ago\n2 strike reports, 7 days (2+ sources or satellite heat) ·GDELT event data · 11h ago\n190 strike, shelling, bombing or clash reports, 2 days ·GDELT event data · 10h ago\nCRIME\n5\n1.6 homicides per 100,000 people in 2022 (UNODC).\nUNODC 2022 · latest annual\nHEALTH\nno data\nNo outbreak reported by WHO in 90 days.\nDISASTER\nno data\nNo red, orange or M6+ alert in 7 days.\nPOLITICAL\n4\n133 protest and riot reports in 2 days (5 days of our own record, too few to compare); unrest named in 1 government's advice.\n10h ago\nGOVERNMENTS · 7 READ\n3 of 7 governments: avoid non-essential travel; 1: increased caution; 2: no advice against travel; 1: rated by area only\n6 of 7 governments advise against travel to parts; 6 of 7: avoid all travel there\nAustralia\nReconsider your need to travel · parts: avoid all travel\nopen\nupdated 2026-10-15 · read 10h ago\nCanada\nAvoid non-essential travel · parts: avoid all travel\nopen\nupdated 2026-09-24 · read 10h ago\nUS\nReconsider Travel · parts: avoid all travel\nopen\nupdated 2026-10-23 · read 10h ago\nNetherlands\nkleurcode geel · parts: avoid all travel\nopen\nupdated 2026-09-24 · read 10h ago\nUK\nFCDO advises against all travel to parts of the country · parts: avoid all travel\nopen\nupdated 2026-10-27 · read 13h ago\nGermany\nReise- und Sicherheitshinweise (keine Reisewarnung)\nopen\nupdated 2026-10-29 · read 10h ago\nJapan\nby area only, worst: avoid all travel\nopen\nupdated 2026-11-06 · read 11h ago\nTheir own 1-4 scale (four cells): 1 normal precautions, 2 caution, 3 avoid non-essential travel, 4 avoid all travel.\nSTATES / AREAS · 2 NAMED\nGaza Strip\nnot rated · 129 killed 2026-09 (UCDP)\nWest Bank\nnot rated · 2 killed 2026-09 (UCDP)\n26 other areas in one government's own words\nListed, not drawn: the map has no province outlines yet.\nSOURCES\nDFAT Smartraveller: Reconsider your need to travel 23d ago\nState Department: Reconsider Travel 15d ago\nMinisterie van Buitenlandse Zaken: kleurcode geel 44d ago\nForeign, Commonwealth & Development Office: FCDO advises against all travel to parts of the country 11d ago\nGlobal Affairs Canada: Avoid non-essential travel 44d ago\nAuswärtiges Amt: Reise- und Sicherheitshinweise (keine Reisewarnung) 9d ago\nMinistry of Foreign Affairs: レベル4：退避してください。渡航は止めてください（退避勧告）（一部地域） 12h ago\nGaza Ministry of Health daily report (via Tech For Palestine) 2d ago\nWest Bank daily casualties, UN OCHA / Ministry of Health (via Tech For Palestine) 12d ago\nGDELT event data 11h ago\nGDELT event data 10h ago\nUNODC intentional homicide rate (World Bank WDI VC.IHR.PSRC.P5) 2022 · latest annual\nThe rule\nPIN TO MY FEED\nFLY TO\nFULL DETAIL",
+   "shot": "05-dossier-level.jpg"
+  },
+  {
+   "tab": "timeline",
+   "text": "SITREP\nLEVEL\nTIMELINE\nASSETS\nSOURCES\nOUTLOOK\nOPEN SOURCE\nPUBLIC FEEDS ONLY · EVERY LINE CITED\nCOUNTRY\nISRAEL\n LEVEL 1 · AT WAR · FALLING\nLAST NEWS 11H\n‹\n›\n×\nTIMELINE · LAST 24H · NEWEST ON TOP\n2 EVENTS IN 72H\n17:40 US CITY VOTES TO DIVEST FROM · 1 SRC11:43 ISRAEL'S EISENKOT CLAIMS 'PROGRESS' IN COALITION · 1 SRC04:5310:5316:5322:53\n17:40Z\n1 SOURCEUS city votes to divest from Israel\nAL JAZEERA · 11H · OUTLET · CONFLICT\n11:43Z\n1 SOURCEIsrael's Eisenkot claims 'progress' in coalition talks as opposition eases on ultra-Orthodox draft\nFRANCE 24 · 17H · HEDGED CLAIM / OUTLET · CONFLICT\nPIN TO MY FEED\nFLY TO\nFULL DETAIL",
+   "shot": "05-dossier-timeline.jpg"
+  },
+  {
+   "tab": "assets",
+   "text": "SITREP\nLEVEL\nTIMELINE\nASSETS\nSOURCES\nOUTLOOK\nOPEN SOURCE\nPUBLIC FEEDS ONLY · EVERY LINE CITED\nCOUNTRY\nISRAEL\n LEVEL 1 · AT WAR · FALLING\nLAST NEWS 11H\n‹\n›\n×\nASSETS · AIRCRAFT · JAMMING · OUTAGES · HAZARDS WITHIN 1500 KM OF 31.5N 035.1E\n12 ITEMS\nRRR6130\nC-17 airlifter · 31.5N 032.8E\nADS-B · 18:30Z · 10H · 221 KM\nFL370\n444KT\nGPS JAMMING\nLebanon · 22 cells · 2026-11-05\nGPSJAM · 2026-11-05 · 317 KM\n37%\n164 AC\nM4.5 EARTHQUAKE\nM 4.5 - 101 km SSE of Palekastro, Greece\nUSGS · 15:26Z · 13H · 865 KM\nGPS JAMMING\nTürkiye · 12 cells · 2026-11-05\nGPSJAM · 2026-11-05 · 956 KM\n33%\n500 AC\nTRK5\nGA5C · 40.6N 029.3E\nADS-B · 18:30Z · 10H · 1144 KM\nFL106\n300KT\nGPS JAMMING\nKuwait · 3 cells · 2026-11-05\nGPSJAM · 2026-11-05 · 1161 KM\n26%\n136 AC\nEM408\nB429 · 41.0N 028.8E\nADS-B · 18:30Z · 10H · 1202 KM\nFL8\n63KT\nGPS JAMMING\nArmenia · 1 cells · 2026-11-05\nGPSJAM · 2026-11-05 · 1217 KM\n24%\n21 AC\nGPS JAMMING\nIraq · 1 cells · 2026-11-05\nGPSJAM · 2026-11-05 · 1239 KM\n34%\n44 AC\nGPS JAMMING\nMoldova · 58 cells · 2026-11-05\nGPSJAM · 2026-11-05 · 1323 KM\n50%\n6 AC\nGPS JAMMING\nGeorgia · 19 cells · 2026-11-05\nGPSJAM · 2026-11-05 · 1403 KM\n56%\n9 AC\n@@@@@@@@\nP-8 Poseidon maritime patrol · 43.3N 029.1E\nADS-B · 18:30Z · 10H · 1417 KM\nFL105\n283KT\nPIN TO MY FEED\nFLY TO\nFULL DETAIL",
+   "shot": "05-dossier-assets.jpg"
+  },
+  {
+   "tab": "sources",
+   "text": "SITREP\nLEVEL\nTIMELINE\nASSETS\nSOURCES\nOUTLOOK\nOPEN SOURCE\nPUBLIC FEEDS ONLY · EVERY LINE CITED\nCOUNTRY\nISRAEL\n LEVEL 1 · AT WAR · FALLING\nLAST NEWS 11H\n‹\n›\n×\nSOURCES · DE-DUPLICATED · OPEN IN A NEW TAB\n27 LINKS\n01\nDFAT Smartraveller: Reconsider your need to travel\nWWW.SMARTRAVELLER.GOV.AU · LEVEL · 05:51Z\n↗\n02\nState Department: Reconsider Travel\nTRAVEL.STATE.GOV · LEVEL · 00:00Z\n↗\n03\nMinisterie van Buitenlandse Zaken: kleurcode geel\nWWW.NEDERLANDWERELDWIJD.NL · LEVEL · 13:48Z\n↗\n04\nForeign, Commonwealth & Development Office: FCDO advises against all travel to parts of the country\nWWW.GOV.UK · LEVEL · 16:05Z\n↗\n05\nGlobal Affairs Canada: Avoid non-essential travel\nTRAVEL.GC.CA · LEVEL · 12:53Z\n↗\n06\nAuswärtiges Amt: Reise- und Sicherheitshinweise (keine Reisewarnung)\nWWW.AUSWAERTIGES-AMT.DE · LEVEL · 14:15Z\n↗\n07\nMinistry of Foreign Affairs: レベル4：退避してください。渡航は止めてください（退避勧告）（一部地域）\nWWW.ANZEN.MOFA.GO.JP · LEVEL · 17:13Z\n↗\n08\nGaza Ministry of Health daily report (via Tech For Palestine)\nDATA.TECHFORPALESTINE.ORG · LEVEL · 00:00Z\n↗\n09\nWest Bank daily casualties, UN OCHA / Ministry of Health (via Tech For Palestine)\nDATA.TECHFORPALESTINE.ORG · LEVEL · 00:00Z\n↗\n10\nGDELT event data\nWWW.IBTIMES.COM · LEVEL · 17:45Z\n↗\n11\nGDELT event data\nWWW.GDELTPROJECT.ORG · LEVEL · 18:30Z\n↗\n12\nUNODC intentional homicide rate (World Bank WDI VC.IHR.PSRC.P5)\nDATAUNODC.UN.ORG · LEVEL · 00:00Z\n↗\n13\nAl Jazeera: US city votes to divest from Israel\nWWW.ALJAZEERA.COM · RATING BASIS · 18:30Z\n↗\n14\nFrance 24: Israel's Eisenkot claims 'progress' in coalition talks as opposition eases on ultra-Orthodox draft\nWWW.FRANCE24.COM · RATING BASIS · 18:30Z\n↗\n15\nFrance 24: Is Israel opposition figure Gadi Eisenkot going to replace Benjamin Netanyahu?\nWWW.FRANCE24.COM · RATING BASIS · 18:30Z\n↗\n16\nADS-B: RRR6130\nADSB.LOL · ASSET · 18:30Z\n↗\n17\nGPSJAM: GPS JAMMING\nGPSJAM.ORG · ASSET · 00:00Z\n↗\n18\nUSGS: M4.5 EARTHQUAKE\nEARTHQUAKE.USGS.GOV · ASSET · 15:26Z\n↗\n19\nGPSJAM: GPS JAMMING\nGPSJAM.ORG · ASSET · 00:00Z\n↗\n20\nADS-B: TRK5\nADSB.LOL · ASSET · 18:30Z\n↗\n21\nGPSJAM: GPS JAMMING\nGPSJAM.ORG · ASSET · 00:00Z\n↗\n22\nADS-B: EM408\nADSB.LOL · ASSET · 18:30Z\n↗\n23\nGPSJAM: GPS JAMMING\nGPSJAM.ORG · ASSET · 00:00Z\n↗\n24\nGPSJAM: GPS JAMMING\nGPSJAM.ORG · ASSET · 00:00Z\n↗\n25\nGPSJAM: GPS JAMMING\nGPSJAM.ORG · ASSET · 00:00Z\n↗\n26\nGPSJAM: GPS JAMMING\nGPSJAM.ORG · ASSET · 00:00Z\n↗\n27\nADS-B: @@@@@@@@\nADSB.LOL · ASSET · 18:30Z\n↗\nPIN TO MY FEED\nFLY TO\nFULL DETAIL",
+   "shot": "05-dossier-sources.jpg"
+  },
+  {
+   "tab": "outlook",
+   "text": "SITREP\nLEVEL\nTIMELINE\nASSETS\nSOURCES\nOUTLOOK\nOPEN SOURCE\nPUBLIC FEEDS ONLY · EVERY LINE CITED\nCOUNTRY\nISRAEL\n LEVEL 1 · AT WAR · FALLING\nLAST NEWS 11H\n‹\n›\n×\nOUTLOOK · ANALYSIS, NOT FACT · ENGINE FORECASTS FROM PAST BASE RATES\n6 FORECASTS\nOUTLOOK · ANALYSIS, NOT FACT\n7 DAYS\nSyria stays at level 3 or worse through 2026-11-07\n70%\nThreat levels tend to stick for a week. Learned from 0 graded outcomes (7 hits / 3 misses incl. starting prior).\nWATCH: Multi-outlet stories naming this country · US State Dept advisory changes · GDACS / USGS alerts\nDUE 2026-11-07 · ENGINE FORECAST, GRADED WHEN DUE\nOUTLOOK · ANALYSIS, NOT FACT\n7 DAYS\nLebanon stays at level 3 or worse through 2026-11-07\n70%\nThreat levels tend to stick for a week. Learned from 0 graded outcomes (7 hits / 3 misses incl. starting prior).\nWATCH: Multi-outlet stories naming this country · US State Dept advisory changes · GDACS / USGS alerts\nDUE 2026-11-07 · ENGINE FORECAST, GRADED WHEN DUE\nOUTLOOK · ANALYSIS, NOT FACT\n7 DAYS\nIraq stays at level 3 or worse through 2026-11-07\n70%\nThreat levels tend to stick for a week. Learned from 0 graded outcomes (7 hits / 3 misses incl. starting prior).\nWATCH: Multi-outlet stories naming this country · US State Dept advisory changes · GDACS / USGS alerts\nDUE 2026-11-07 · ENGINE FORECAST, GRADED WHEN DUE\nOUTLOOK · ANALYSIS, NOT FACT\n7 DAYS\nIsrael stays at level 3 or worse through 2026-11-07\n70%\nThreat levels tend to stick for a week. Learned from 0 graded outcomes (7 hits / 3 misses incl. starting prior).\nWATCH: Multi-outlet stories naming this country · US State Dept advisory changes · GDACS / USGS alerts\nDUE 2026-11-07 · ENGINE FORECAST, GRADED WHEN DUE\nOUTLOOK · ANALYSIS, NOT FACT\n7 DAYS\nIsrael calms to level 5 by 2026-11-07\n30%\nLevel fell this run; checking whether calm holds. Learned from 0 graded outcomes (3 hits / 7 misses incl. starting prior).\nWATCH: Multi-outlet stories naming this country · US State Dept advisory changes · GDACS / USGS alerts\nDUE 2026-11-07 · ENGINE FORECAST, GRADED WHEN DUE\nOUTLOOK · ANALYSIS, NOT FACT\n7 DAYS\nIsrael escalates to level 2 by 2026-11-07\n30%\nLevel rose this run; most rises do not continue. Learned from 0 graded outcomes (3 hits / 7 misses incl. starting prior).\nWATCH: Multi-outlet stories naming this country · US State Dept advisory changes · GDACS / USGS alerts\nDUE 2026-11-07 · ENGINE FORECAST, GRADED WHEN DUE\nPIN TO MY FEED\nFLY TO\nFULL DETAIL",
+   "shot": "05-dossier-outlook.jpg"
+  },
+  {
+   "tab": "level",
+   "text": "SITREP\nLEVEL\nTIMELINE\nASSETS\nSOURCES\nOUTLOOK\nOPEN SOURCE\nPUBLIC FEEDS ONLY · EVERY LINE CITED\nCOUNTRY\nISRAEL\n LEVEL 1 · AT WAR · FALLING\nLAST NEWS 11H\n‹\n›\n×\nLEVEL 1\nAT WAR\nESCALATION RISK HIGH\nINTENSITY: LOW\nHOW THIS LEVEL IS SET: By CONFLICT, the worst of the five fronts: 138 killed in 30 days (Gaza 133 to 2026-11-05; the West Bank 5 to 2026-10-26), about 32 killed a week, state against state; escalation risk HIGH raised it one step.\nCONF\n1\nCRIME\n5\nHLTH\n-\nDISAS\n-\nPOL\n4\nCONFLICT\n1\n138 killed in 30 days (Gaza 133 to 2026-11-05; the West Bank 5 to 2026-10-26), about 32 killed a week, state against state. Escalation risk HIGH (E1, E2, E3, E5): raised from 2 to 1.\n10h ago\n133 killed in Gaza, 30 days ·Gaza Ministry of Health daily report (via Tech For Palestine) · 2d ago\n5 killed in the West Bank, 30 days ·West Bank daily casualties, UN OCHA / Ministry of Health (via Tech For Palestine) · 12d ago\n2 strike reports, 7 days (2+ sources or satellite heat) ·GDELT event data · 11h ago\n190 strike, shelling, bombing or clash reports, 2 days ·GDELT event data · 10h ago\nCRIME\n5\n1.6 homicides per 100,000 people in 2022 (UNODC).\nUNODC 2022 · latest annual\nHEALTH\nno data\nNo outbreak reported by WHO in 90 days.\nDISASTER\nno data\nNo red, orange or M6+ alert in 7 days.\nPOLITICAL\n4\n133 protest and riot reports in 2 days (5 days of our own record, too few to compare); unrest named in 1 government's advice.\n10h ago\nGOVERNMENTS · 7 READ\n3 of 7 governments: avoid non-essential travel; 1: increased caution; 2: no advice against travel; 1: rated by area only\n6 of 7 governments advise against travel to parts; 6 of 7: avoid all travel there\nAustralia\nReconsider your need to travel · parts: avoid all travel\nopen\nupdated 2026-10-15 · read 10h ago\nCanada\nAvoid non-essential travel · parts: avoid all travel\nopen\nupdated 2026-09-24 · read 10h ago\nUS\nReconsider Travel · parts: avoid all travel\nopen\nupdated 2026-10-23 · read 10h ago\nNetherlands\nkleurcode geel · parts: avoid all travel\nopen\nupdated 2026-09-24 · read 10h ago\nUK\nFCDO advises against all travel to parts of the country · parts: avoid all travel\nopen\nupdated 2026-10-27 · read 13h ago\nGermany\nReise- und Sicherheitshinweise (keine Reisewarnung)\nopen\nupdated 2026-10-29 · read 10h ago\nJapan\nby area only, worst: avoid all travel\nopen\nupdated 2026-11-06 · read 11h ago\nTheir own 1-4 scale (four cells): 1 normal precautions, 2 caution, 3 avoid non-essential travel, 4 avoid all travel.\nSTATES / AREAS · 2 NAMED\nGaza Strip\nnot rated · 129 killed 2026-09 (UCDP)\nWest Bank\nnot rated · 2 killed 2026-09 (UCDP)\n26 other areas in one government's own words\nListed, not drawn: the map has no province outlines yet.\nSOURCES\nDFAT Smartraveller: Reconsider your need to travel 23d ago\nState Department: Reconsider Travel 15d ago\nMinisterie van Buitenlandse Zaken: kleurcode geel 44d ago\nForeign, Commonwealth & Development Office: FCDO advises against all travel to parts of the country 11d ago\nGlobal Affairs Canada: Avoid non-essential travel 44d ago\nAuswärtiges Amt: Reise- und Sicherheitshinweise (keine Reisewarnung) 9d ago\nMinistry of Foreign Affairs: レベル4：退避してください。渡航は止めてください（退避勧告）（一部地域） 12h ago\nGaza Ministry of Health daily report (via Tech For Palestine) 2d ago\nWest Bank daily casualties, UN OCHA / Ministry of Health (via Tech For Palestine) 12d ago\nGDELT event data 11h ago\nGDELT event data 10h ago\nUNODC intentional homicide rate (World Bank WDI VC.IHR.PSRC.P5) 2022 · latest annual\nThe rule\nPIN TO MY FEED\nFLY TO\nFULL DETAIL",
+   "shot": "05-dossier-level.jpg"
+  },
+  {
+   "tab": "assets",
+   "text": "SITREP\nLEVEL\nTIMELINE\nASSETS\nSOURCES\nOUTLOOK\nOPEN SOURCE\nPUBLIC FEEDS ONLY · EVERY LINE CITED\nCOUNTRY\nISRAEL\n LEVEL 1 · AT WAR · FALLING\nLAST NEWS 11H\n‹\n›\n×\nASSETS · AIRCRAFT · JAMMING · OUTAGES · HAZARDS WITHIN 1500 KM OF 31.5N 035.1E\n12 ITEMS\nRRR6130\nC-17 airlifter · 31.5N 032.8E\nADS-B · 18:30Z · 10H · 221 KM\nFL370\n444KT\nGPS JAMMING\nLebanon · 22 cells · 2026-11-05\nGPSJAM · 2026-11-05 · 317 KM\n37%\n164 AC\nM4.5 EARTHQUAKE\nM 4.5 - 101 km SSE of Palekastro, Greece\nUSGS · 15:26Z · 13H · 865 KM\nGPS JAMMING\nTürkiye · 12 cells · 2026-11-05\nGPSJAM · 2026-11-05 · 956 KM\n33%\n500 AC\nTRK5\nGA5C · 40.6N 029.3E\nADS-B · 18:30Z · 10H · 1144 KM\nFL106\n300KT\nGPS JAMMING\nKuwait · 3 cells · 2026-11-05\nGPSJAM · 2026-11-05 · 1161 KM\n26%\n136 AC\nEM408\nB429 · 41.0N 028.8E\nADS-B · 18:30Z · 10H · 1202 KM\nFL8\n63KT\nGPS JAMMING\nArmenia · 1 cells · 2026-11-05\nGPSJAM · 2026-11-05 · 1217 KM\n24%\n21 AC\nGPS JAMMING\nIraq · 1 cells · 2026-11-05\nGPSJAM · 2026-11-05 · 1239 KM\n34%\n44 AC\nGPS JAMMING\nMoldova · 58 cells · 2026-11-05\nGPSJAM · 2026-11-05 · 1323 KM\n50%\n6 AC\nGPS JAMMING\nGeorgia · 19 cells · 2026-11-05\nGPSJAM · 2026-11-05 · 1403 KM\n56%\n9 AC\n@@@@@@@@\nP-8 Poseidon maritime patrol · 43.3N 029.1E\nADS-B · 18:30Z · 10H · 1417 KM\nFL105\n283KT\nPIN TO MY FEED\nFLY TO\nFULL DETAIL",
+   "shot": "05-dossier-assets.jpg"
+  }
+ ],
+ "search": [
+  {
+   "q": "Kyiv",
+   "results": "PLACE Kyiv capital · fly there\nEVENT Turkey to push for 'electrification' drive at COP31 as climate threats mount 13h ago · france24",
+   "opened": "(nothing opened)",
+   "shot": "06-search-kyiv.jpg",
+   "shot2": "06-search-kyiv-open.jpg"
+  },
+  {
+   "q": "ISS",
+   "results": "SAT ISS (ZARYA) Stations · ISS partners · #25544\nSAT ISS (UNITY) Stations · ISS partners · #25575\nSAT ISS (ZVEZDA) Stations · ISS partners · #26400\nSAT ISS (DESTINY) Stations · ISS partners · #26700\nSAT ISS (NAUKA) Stations · Russia · #49044\nSAT ISS OBJECT YM Stations · Unknown owner · #69796\nSAT ISS OBJECT YN Stations · Unknown owner · #69797\nSAT ISS OBJECT YP Stations · Unknown owner · #69798\nSAT ISS OBJECT YQ Stations · Unknown owner · #69799\nSAT UME (ISS) Inactive payloads · Japan · #8709\nSAT UME-2 (ISS-B) Inactive payloads · Japan · #10674\nCOUNTRY Guinea-Bissau fly there\nDO Guinea-Bissau: offline country file emergency numbers, radio bands, hazards · works offline\nEVENT Major construction ongoing near Iran missile bases, satellite images suggest 21h ago · bbc\nNEXT Falcon 9 Block 5 | Globalstar 2-R Mission 2 (x 9) (SpaceX) 2026-12-31\nPLACE Bissau capital · fly there\nSAT SWISSCUBE Other · SWTZ · #35932\nSAT OUTPOST MISSION 2 United States · United States · #58334\nSAT AISSAT 4 Other · NOR · #68454\nSAT DB GME UT (DB-GLOBE MISSION EARTH-UT) United States · United States · #68459\nSAT AISSAT 1 Inactive payloads · NOR · #36797\nSAT AISSAT 2 Inactive payloads · NOR · #40075\nZONE Afghanistan: LEVEL 2 · SEVERE country level · steady\nZONE Pakistan: LEVEL 2 · SEVERE country level · steady\nCOUNTRY United States of America fly there\nDO Where to live · cost of living, rent, home prices, cost to move\nDO Levels: US readiness (DEFCON estimate) and country levels what each level means, with s",
+   "opened": "Photo: Wikimedia Commons\nInternational Space Station ISS (ZARYA)\nOFFICIAL · CELESTRAK Stations SPACE STATION CIVIL GOVERNMENT OPERATING\nCrewed laboratory. Astronauts photograph Earth through its windows, and outside instruments measure the planet.\nFLY TO + FOLLOW\nBEAM FROM ME\nORBITAL CAMERA\nRIDE ALONG\nRIGHT NOW · 04:54:44Z, LIVE\n260 mi\nALTITUDE\n17,143 mph · 4.76 mi/s\nSPEED\n13.80°S 178.88°W\nOVER\nsunlit\nLIGHT\nUSE MY LOCATION to see where to look for it.\nLIVE FROM THE STATION · NASA'S OFFICIAL STREAM\n PLAY LIVE VIDEO\nNASA live. When the station is out of contact with the ground or in Earth's shadow the picture goes blue or black; that is normal. The video loads only when you press play.\nON BOARD NOW (7) · LAUNCH LIBRARY\nPyotr Dubrov\nRFSA · Russia · Commander\nup since 2026-07-14 (4 months) · 469 days in space over ? flights · spacewalks 1 days\nAnil Menon\nNASA · United States of America · Flight Engineer\nup since 2026-07-14 (4 months) · 114 days in space over ? flights · spacewalks 1 days\nJoshua Kutryk\nCSA · Canada · Flight Engineer\nup since 2026-10-01 (37 days) · 35 days in space over ? flights · spacewalks 14 h 10 min\nLuke Delaney\nNASA · United States of America · Flight Engineer\nup since 2026-10-01 (37 days) · 35 days in space over ? flights\nSergey Teteryatnikov\nRFSA · Russia · Flight Engineer\nup since 2026-10-01 (37 days) · 35 days in space over ? flights\nAnna Kikina\nRFSA · Russia · Flight Engineer\nup since 2026-07-14 (4 months) · 271 days in space over ? flights\nJessica Watki",
+   "shot": "06-search-iss.jpg",
+   "shot2": "06-search-iss-open.jpg"
+  },
+  {
+   "q": "Starlink",
+   "results": "LAYER Satellites · Space FILTERS\nSAT STARLINK-1008 Starlink · United States · #44714\nSAT STARLINK-1012 Starlink · United States · #44718\nSAT STARLINK-1017 Starlink · United States · #44723\nSAT STARLINK-1020 Starlink · United States · #44725\nSAT STARLINK-1039 Starlink · United States · #44744\nSAT STARLINK-1042 Starlink · United States · #44747\nSAT STARLINK-1043 Starlink · United States · #44748\nSAT STARLINK-1046 Starlink · United States · #44751\nSAT STARLINK-1047 Starlink · United States · #44752\nSAT STARLINK-1048 Starlink · United States · #44753\nSAT STARLINK-1063 Starlink · United States · #44768\nSAT STARLINK-1114 Starlink · United States · #44927\nSAT STARLINK-1123 Starlink · United States · #44930\nSAT STARLINK-1094 Starlink · United States · #44941\nSAT STARLINK-1122 Starlink · United States · #44949\nSAT STARLINK-1080 Starlink · United States · #44961\nSAT STARLINK-1090 Starlink · United States · #44968\nSAT STARLINK-1132 Starlink · United States · #45044\nSAT STARLINK-1131 Starlink · United States · #45047\nSAT STARLINK-1134 Starlink · United States · #45048\nSAT STARLINK-1156 Starlink · United States · #45054\nSAT STARLINK-1166 Starlink · United States · #45060\nSAT STARLINK-1169 Starlink · United States · #45061\nSAT STARLINK-1133 Starlink · United States · #45064\nSAT STARLINK-1167 Starlink · United States · #45071\nSAT STARLINK-1168 Starlink · United States · #45072\nSAT STARLINK-1172 Starlink · United States · #45074\nSAT STARLINK-1153 Starlink · United States · #45080\nSAT STARLIN",
+   "opened": "FILTERS\nRESET TO NORMAL\nCLOSE\nUNITS\nMILES\nKILOMETERS\nON NOW 3 on the map · 7 look · 0 feed rules · map follows SPACE\n01\nTHREATS & CONFLICT\n0 of 8 on\n02\nEARTH & WEATHER\n1 of 18 on\n03\nAIR & SEA\n0 of 8 on\n04\nSPACE\n2 of 3 on\nSatellites\n32,811 now · CelesTrak\nLESS\nON\nSHOWS\nEVERY TAB\nWITH SPACE\nNOWHERE\nStarlink\n11,206\nOneWeb\n651\nKuiper\n391\nChinese megaconstellations\n259\nUnited States\n1,061\nChina\n1,314\nRussia\n375\nEurope\n442\nJapan\n134\nIndia\n77\nStations\n12\nUnknown owner\n128\nOther\n823\nInactive payloads\n2,787\nRocket bodies\n2,209\nDebris\n10,362\nUnidentified objects\n580\n17 of 17 groups shown. Satellites draw in 3D view only. Star and constellation lines are on the space tab.\nOPEN SPACE ›\nLaunches & fireballs\n65 now · Launch Library / NASA JPL · STALE 10 H\nMORE\nON\nUFO sightings (history)\n80,331 now · NUFORC reports · 7 D\nMORE\nOFF\n05\nCAMERAS & SIGNALS\n0 of 7 on\n06\nPEOPLE & PLACES\n0 of 4 on\n07\nLOOK\n7 of 8 on\n08\nFEED RULES\nnone\n09\nSCREEN\nRESET TO NORMAL\nBack to how the app starts: map layers, look effects and feed rules. Keeps units, presets, the watchlist, the saved brief and your camera wall.",
+   "shot": "06-search-starlink.jpg",
+   "shot2": "06-search-starlink-open.jpg"
+  },
+  {
+   "q": "Tokyo",
+   "results": "PLACE Tokyo capital · fly there\nEVENT Bomb threats against European flights ‘likely a coordinated campaign of disruption’, Ireland says – as it happened 12h ago · guardian, france24\nLAYER Satellites & debris (faint) · Earth & weather FILTERS",
+   "opened": "(nothing opened)",
+   "shot": "06-search-tokyo.jpg",
+   "shot2": "06-search-tokyo-open.jpg"
+  },
+  {
+   "q": "earthquake",
+   "results": "LAYER Hazards · Earth & weather FILTERS\nHAZARD M 4.8 - 36 km WNW of Poso, Indonesia 10h ago · USGS\nHAZARD M 4.5 - 101 km SSE of Palekastro, Greece 13h ago · USGS\nHAZARD M 6.1 - 144 km SE of Hasaki, Japan 18h ago · USGS\nHAZARD M 4.5 - 87 km N of Isangel, Vanuatu 21h ago · USGS\nHAZARD M 4.9 - 41 km SW of Balangonan, Philippines 22h ago · USGS\nHAZARD M 4.7 - 139 km SSE of False Pass, Alaska 1d ago · USGS\nHAZARD M 4.6 - 147 km SSE of False Pass, Alaska 1d ago · USGS\nHAZARD M 6.1 - Fiji region 1d ago · USGS\nHAZARD M 5.1 - 19 km NNW of Masumbwe, Tanzania 2d ago · USGS\nHAZARD M 5.0 - 111 km W of Petrolia, CA 2d ago · USGS\nHAZARD M 4.9 - 9 km N of Delta, B.C., MX 3d ago · USGS\nHAZARD M 5.4 - 24 km NNW of Rioblanco, Colombia 4d ago · USGS\nHAZARD M 6.0 - 165 km NW of Port-Olry, Vanuatu 6d ago · USGS\nHAZARD M 5.4 - 203 km NW of Port-Olry, Vanuatu 6d ago · USGS\nHAZARD M 6.0 - 58 km SSE of Shima, Japan 6d ago · USGS",
+   "opened": "FILTERS\nRESET TO NORMAL\nCLOSE\nUNITS\nMILES\nKILOMETERS\nON NOW 3 on the map · 7 look · 0 feed rules · map follows SPACE\n01\nTHREATS & CONFLICT\n0 of 8 on\n02\nEARTH & WEATHER\n1 of 18 on\nHazards\n38 now · USGS / GDACS / NASA EONET / NWS · STALE 10 H · shows with NOW / EARTH\nLESS\nOFF\nSHOWS\nEVERY TAB\nWITH NOW / EARTH\nNOWHERE\nEarthquakes, disaster alerts, NASA natural events, tropical storms, tsunamis and US severe weather. Storm shading on the planet itself is a look effect.\nSTORM SHADING ›\nCity weather\n45 now · Open-Meteo · STALE 10 H · shows with EARTH\nMORE\nOFF\nOB\nSatellites & debris (faint)\n32,811 now · CelesTrak\nMORE\nOFF\nNorthern & southern lights\nNOAA SWPC · STALE 10 H\nMORE\nON\nSatellite heat spots\n114k now · NASA FIRMS · STALE 10 H\nOFF\nPower plants\nWRI power plant database · STALE 10 H · shows with EARTH\nMORE\nOFF\nRD\nRain radar\nRainViewer / NOAA MRMS · STALE 10 H · shows with EARTH\nMORE\nOFF\nClouds (live)\nGOES, Himawari, Meteosat · STALE 10 H · shows with EARTH\nMORE\nOFF\nLightning\nNOAA nowCOAST / EUMETSAT · STALE 10 H\nMORE\nOFF\nPT\nRain, snow or hail (US)\nNOAA MRMS · STALE 10 H\nMORE\nOFF\nSnow & ice on the ground\nNOAA snow & ice charts · STALE 10 H\nMORE\nOFF\nWD\nWind\nNOAA GFS · STALE 10 H\nMORE\nOFF\nTP\nTemperature\nOpen-Meteo / NOAA GFS · STALE 10 H\nMORE\nOFF\nCU\nOcean currents\nOpen-Meteo Marine · STALE 10 H\nMORE\nOFF\nWaves\nNOAA GFS-Wave · STALE 10 H\nMORE\nOFF\nHurricanes & typhoons\nGDACS · STALE 10 H · shows with EARTH\nMORE\nOFF\nNWS warnings (US)\nNWS · STALE 10 H · shows with EARTH\nMORE\nOFF\nOL\nSPC ",
+   "shot": "06-search-earthquake.jpg",
+   "shot2": "06-search-earthquake-open.jpg"
+  },
+  {
+   "q": "Flock",
+   "results": "LAYER Plate-reader cameras · People & places FILTERS\nSAT FLOCK 4Q-16 United States · United States · #58271\nSAT FLOCK 4Q-2 United States · United States · #58320\nSAT FLOCK 4Q-9 United States · United States · #58322\nSAT FLOCK 4Q-4 United States · United States · #58327\nSAT FLOCK 4Q-13 United States · United States · #58328\nSAT FLOCK 4BE-18 United States · United States · #60480\nSAT FLOCK 4BE-7 United States · United States · #60481\nSAT FLOCK 4BE-36 United States · United States · #60486\nSAT FLOCK 4BE-25 United States · United States · #60487\nSAT FLOCK 4BE-31 United States · United States · #60488\nSAT FLOCK 4BE-20 United States · United States · #60489\nSAT FLOCK 4BE-23 United States · United States · #60490\nSAT FLOCK 4BE-17 United States · United States · #60492\nSAT FLOCK 4BE-22 United States · United States · #60494\nSAT FLOCK 4BE-34 United States · United States · #60495\nSAT FLOCK 4BE-32 United States · United States · #60497\nSAT FLOCK 4BE-11 United States · United States · #60501\nSAT FLOCK 4BE-24 United States · United States · #60505\nSAT FLOCK 4BE-29 United States · United States · #60509\nSAT FLOCK 4BE-13 United States · United States · #60512\nSAT FLOCK 4BE-27 United States · United States · #60513\nSAT FLOCK 4BE-9 United States · United States · #60514\nSAT FLOCK 4BE-6 United States · United States · #60516\nSAT FLOCK 4BE-14 United States · United States · #60517\nSAT FLOCK 4BE-1 United States · United States · #60518\nSAT FLOCK 4BE-28 United States · United States · #60519\nSAT",
+   "opened": "FILTERS\nRESET TO NORMAL\nCLOSE\nUNITS\nMILES\nKILOMETERS\nON NOW 3 on the map · 7 look · 0 feed rules · map follows SPACE\n01\nTHREATS & CONFLICT\n0 of 8 on\n02\nEARTH & WEATHER\n1 of 18 on\n03\nAIR & SEA\n0 of 8 on\n04\nSPACE\n2 of 3 on\n05\nCAMERAS & SIGNALS\n0 of 7 on\n06\nPEOPLE & PLACES\n0 of 4 on\nPlate-reader cameras\n150k now · DeFlock / OpenStreetMap · 21 H · shows with INTEL\nLESS\nOFF\nSHOWS\nEVERY TAB\nWITH INTEL\nNOWHERE\nElections\n14 now · Wikipedia election lists · STALE 10 H · shows with NEXT\nMORE\nOFF\nGovt prep advice\n8 now · government prep pages · STALE 10 H · shows with PEOPLE\nMORE\nOFF\nCommunity posts\n0 now · posts from people here · shows with PEOPLE\nMORE\nOFF\nWatchlist places & words\nempty · places and words you never want to miss\nOPEN\nWhere to live\nrent, home prices, cost of living, safety, cost to move\nOPEN\nField kit\nsurvival guide and offline library · works with no internet\nOPEN\n07\nLOOK\n7 of 8 on\n08\nFEED RULES\nnone\n09\nSCREEN\nRESET TO NORMAL\nBack to how the app starts: map layers, look effects and feed rules. Keeps units, presets, the watchlist, the saved brief and your camera wall.",
+   "shot": "06-search-flock.jpg",
+   "shot2": "06-search-flock-open.jpg"
+  },
+  {
+   "q": "Gaza",
+   "results": "LOOK Map imagery: Dataviz dark (MapTiler · OSM data) FILTERS\nNEXT Long March 2F/G | Shenzhou 24 (China Aerospace Science and Technology Corporation) 2026-11-25\nNEXT LVM-3 | Gaganyaan-1 (Indian Space Research Organization) 2026-11-30\nNEXT PSLV-XL | TDS-01 (Indian Space Research Organization) 2026-11-30\nPLACE Ghaziabad city · fly there",
+   "opened": "FILTERS\nRESET TO NORMAL\nCLOSE\nUNITS\nMILES\nKILOMETERS\nON NOW 3 on the map · 7 look · 0 feed rules · map follows SPACE\n01\nTHREATS & CONFLICT\n0 of 8 on\n02\nEARTH & WEATHER\n1 of 18 on\n03\nAIR & SEA\n0 of 8 on\n04\nSPACE\n2 of 3 on\n05\nCAMERAS & SIGNALS\n0 of 7 on\n06\nPEOPLE & PLACES\n0 of 4 on\n07\nLOOK\n7 of 8 on\nThe planet itself shows real snow, sea ice, storms, active conflict zones, outages and raised radiation, from the sources named on each line. Nothing is drawn without data.\nActive conflict zones\nSTALE 10 H\nON\nSS\nStorm shading\nSTALE 10 H\nON\nOutage darkness at night\non · nothing qualifies · 7 internet alerts, none nationwide · IODA via brief · 10 h\nON\nRadiation rings\nnot checked here · live detectors are off\nON\nSN\nSnow cover\non · satellite day 7 Nov (unprocessed palette)\nON\nIC\nSea ice\non · satellite day 5 Nov (unprocessed palette)\nON\nCL\nCity lights at night\non · drawn by the weather layers\nON\nVN\nLast night's real lights\noff\nOFF\nALL LIVING EFFECTS OFF\nMAP STYLE\nthe ground under everything · place names, roads, 3D terrain, 3D buildings\nPlace names\nEsri labels\nRoads\nEsri transportation\nHillshade\nEsri relief shading\n3D terrain\nreal mountains, true scale · AWS open data\nTaller relief\nmountains drawn ×1.6 (not true scale)\n3D buildings\nOpenStreetMap heights · close up\nFlat map\n2D instead of the globe\nSATELLITE\nSatellite\nEsri World Imagery · Maxar, Airbus\nToday from space\nNASA VIIRS · today's passes · 250 m\nSentinel-2\nEOX cloud-free 2024 · 10 m\nBlue Marble\nNASA · cloud-free relief\nEarth at ni",
+   "shot": "06-search-gaza.jpg",
+   "shot2": "06-search-gaza-open.jpg"
+  },
+  {
+   "q": "weather",
+   "results": "LAYER City weather · Earth & weather FILTERS\nLAYER Rain radar · Earth & weather FILTERS\nLAYER Clouds (live) · Earth & weather FILTERS\nLAYER Lightning · Earth & weather FILTERS\nLAYER Rain, snow or hail (US) · Earth & weather FILTERS\nLAYER Snow & ice on the ground · Earth & weather FILTERS\nLAYER Wind · Earth & weather FILTERS\nLAYER Temperature · Earth & weather FILTERS\nLAYER Ocean currents · Earth & weather FILTERS\nLAYER Waves · Earth & weather FILTERS\nLAYER Hurricanes & typhoons · Earth & weather FILTERS\nLAYER NWS warnings (US) · Earth & weather FILTERS\nLAYER SPC storm outlook (US) · Earth & weather FILTERS\nHAZARD Flood Warning: Maricopa, AZ 33m ago · NWS\nHAZARD Flood Warning: Maricopa, AZ 37m ago · NWS\nHAZARD Flood Warning: Maricopa, AZ 53m ago · NWS\nHAZARD Flood Warning: Keokuk, IA 2h ago · NWS\nHAZARD Flood Warning: Benton, IA 2h ago · NWS\nHAZARD Flood Warning: DeSoto, FL 3h ago · NWS\nHAZARD Flood Warning: Seminole, FL 4h ago · NWS\nHAZARD Flood Warning: Seminole, FL 4h ago · NWS\nHAZARD Flood Warning: Brevard, FL 4h ago · NWS\nHAZARD Flood Warning: Lake, FL 4h ago · NWS\nHAZARD Flood Warning: Lake, FL 4h ago · NWS\nHAZARD Flash Flood Warning: Coconino, AZ 5h ago · NWS\nHAZARD Flood Warning: Maricopa, AZ 5h ago · NWS\nHAZARD Flood Warning: Platte, MO 13h ago · NWS\nHAZARD Flood Warning: Platte, MO 13h ago · NWS\nHAZARD Flood Warning: Carroll, MO 14h ago · NWS\nLAYER Hazards · Earth & weather FILTERS\nLAYER Satellites & debris (faint) · Earth & weather FILTERS\nLAYER Northern & southern ",
+   "opened": "FILTERS\nRESET TO NORMAL\nCLOSE\nUNITS\nMILES\nKILOMETERS\nON NOW 3 on the map · 7 look · 0 feed rules · map follows SPACE\n01\nTHREATS & CONFLICT\n0 of 8 on\n02\nEARTH & WEATHER\n1 of 18 on\nHazards\n38 now · USGS / GDACS / NASA EONET / NWS · STALE 10 H · shows with NOW / EARTH\nLESS\nOFF\nSHOWS\nEVERY TAB\nWITH NOW / EARTH\nNOWHERE\nEarthquakes, disaster alerts, NASA natural events, tropical storms, tsunamis and US severe weather. Storm shading on the planet itself is a look effect.\nSTORM SHADING ›\nCity weather\n45 now · Open-Meteo · STALE 10 H · shows with EARTH\nLESS\nOFF\nSHOWS\nEVERY TAB\nWITH EARTH\nNOWHERE\nOB\nSatellites & debris (faint)\n32,811 now · CelesTrak\nMORE\nOFF\nNorthern & southern lights\nNOAA SWPC · STALE 10 H\nMORE\nON\nSatellite heat spots\n114k now · NASA FIRMS · STALE 10 H\nOFF\nPower plants\nWRI power plant database · STALE 10 H · shows with EARTH\nMORE\nOFF\nRD\nRain radar\nRainViewer / NOAA MRMS · STALE 10 H · shows with EARTH\nMORE\nOFF\nClouds (live)\nGOES, Himawari, Meteosat · STALE 10 H · shows with EARTH\nMORE\nOFF\nLightning\nNOAA nowCOAST / EUMETSAT · STALE 10 H\nMORE\nOFF\nPT\nRain, snow or hail (US)\nNOAA MRMS · STALE 10 H\nMORE\nOFF\nSnow & ice on the ground\nNOAA snow & ice charts · STALE 10 H\nMORE\nOFF\nWD\nWind\nNOAA GFS · STALE 10 H\nMORE\nOFF\nTP\nTemperature\nOpen-Meteo / NOAA GFS · STALE 10 H\nMORE\nOFF\nCU\nOcean currents\nOpen-Meteo Marine · STALE 10 H\nMORE\nOFF\nWaves\nNOAA GFS-Wave · STALE 10 H\nMORE\nOFF\nHurricanes & typhoons\nGDACS · STALE 10 H · shows with EARTH\nMORE\nOFF\nNWS warnings (US)\nNWS · STALE 10 H ",
+   "shot": "06-search-weather.jpg",
+   "shot2": "06-search-weather-open.jpg"
+  },
+  {
+   "q": "radio",
+   "results": "DO News radio Radio Browser directory\nDO Tanzania: offline country file emergency numbers, radio bands, hazards · works offline\nDO W. Sahara: offline country file emergency numbers, radio bands, hazards · works offline\nDO Canada: offline country file emergency numbers, radio bands, hazards · works offline\nDO United States of America: offline country file emergency numbers, radio bands, hazards · works offline\nDO Kazakhstan: offline country file emergency numbers, radio bands, hazards · works offline\nDO Uzbekistan: offline country file emergency numbers, radio bands, hazards · works offline\nDO Papua New Guinea: offline country file emergency numbers, radio bands, hazards · works offline\nDO Indonesia: offline country file emergency numbers, radio bands, hazards · works offline\nDO Argentina: offline country file emergency numbers, radio bands, hazards · works offline\nDO Chile: offline country file emergency numbers, radio bands, hazards · works offline\nDO Dem. Rep. Congo: offline country file emergency numbers, radio bands, hazards · works offline\nDO Somalia: offline country file emergency numbers, radio bands, hazards · works offline\nDO Kenya: offline country file emergency numbers, radio bands, hazards · works offline\nDO Sudan: offline country file emergency numbers, radio bands, hazards · works offline\nDO Chad: offline country file emergency numbers, radio bands, hazards · works offline\nDO Haiti: offline country file emergency numbers, radio bands, hazards · works offline\nDO ",
+   "opened": "(nothing opened)",
+   "shot": "06-search-radio.jpg",
+   "shot2": "06-search-radio-open.jpg"
+  },
+  {
+   "q": "Cleveland",
+   "results": "PLACE Cleveland city · fly there\nRADIO #CLUB CHARTS -> TOP 100 || IMMER AKTUELL || DJ CHARTS || HOUSE, EDM, DEEP HOUSE - TECH HOUSE - TECHNO - MELODIC TECHNO - EDM - ELECTRONIC DANCE MUSIC - CLUB - DJ - DJ MIX - REMIX - FESTIVAL - FESTIVAL RADIO - IBIZA - IBIZA HOUSE - SUMMER HOUSE - BEACH CLUB - CHILLOUT - LOUNGE - RAVE - PARTY MUSIC - NIGHTLIFE - URBAN - HIP HOP - RNB - AFRO HOUSE - LATIN HOUSE - TRANCE - HARDSTYLE - HARDCORE DE · american english,deutsch fränkisch,engilsh,english,german",
+   "opened": "(nothing opened)",
+   "shot": "06-search-cleveland.jpg",
+   "shot2": "06-search-cleveland-open.jpg"
+  }
+ ],
+ "misc": {
+  "bootSeconds": 17,
+  "home": {
+   "title": "Terminal",
+   "status": "US READINESS EST. DEFCON 3 04:11:51Z",
+   "tiles": [
+    "DEFCON · EST 10H 3 DEFCON · EST ROUND HOUSE",
+    "LAST 11H ISRAEL1 AT WAR FALLING OPEN",
+    "LAST 14H UKRAINE1 AT WAR STEADY",
+    "LAST 2D YEMEN1 AT WAR STEADY",
+    "NO EVENTS 72H PALESTINE1 AT WAR FALLING",
+    "LAST 11H IRAN2 SEVERE STEADY",
+    "LAST 14H RUSSIA2 SEVERE STEADY",
+    "LAST 3D INDIA2 SEVERE STEADY",
+    "LAST 12H SUDAN2 SEVERE STEADY",
+    "LAST 2D DR CONGO2 SEVERE STEADY",
+    "NO EVENTS 72H NIGERIA2 SEVERE STEADY",
+    "NO EVENTS 72H SOMALIA2 SEVERE STEADY",
+    "NO EVENTS 72H AFGHANISTAN2 SEVERE STEADY",
+    "NO EVENTS 72H ETHIOPIA2 SEVERE STEADY"
+   ],
+   "so": "SWIPE FOR MORE1 AT WAR · 5 LOW",
+   "ticker": "",
+   "flash": "",
+   "tags": [],
+   "memory": null
+  },
+  "homeCounts": {
+   "bb": 213,
+   "pt": 15598,
+   "lb": 21,
+   "pl": 206,
+   "ent": 108,
+   "prim": 16,
+   "ds": 48
+  },
+  "homePanels": [
+   "dos open: COUNTRY\nISRAEL\n LEVEL 1 · AT WAR · FALLING\nLAST NEWS 11H · TAP FOR MORE\n‹\n›"
+  ],
+  "groups": [
+   {
+    "i": 0,
+    "v": "now",
+    "t": "ZONES",
+    "on": true
+   },
+   {
+    "i": 1,
+    "v": "now",
+    "t": "EVENTS",
+    "on": true
+   },
+   {
+    "i": 2,
+    "v": "earth",
+    "t": "EARTH",
+    "on": false
+   },
+   {
+    "i": 3,
+    "v": "intel",
+    "t": "SEA",
+    "on": false
+   },
+   {
+    "i": 4,
+    "v": "air",
+    "t": "AIR",
+    "on": false
+   },
+   {
+    "i": 5,
+    "v": "space",
+    "t": "SPACE",
+    "on": false
+   },
+   {
+    "i": 6,
+    "v": "next",
+    "t": "NEXT",
+    "on": false
+   },
+   {
+    "i": 7,
+    "v": "live",
+    "t": "LIVE",
+    "on": false
+   }
+  ],
+  "filterRows": [
+   "01 THREATS & CONFLICT 0 of 8 on | regions | Country levels | 40 now · conflict list, news, official levels · STALE 10 H · shows with NOW / NEXT / EARTH | off",
+   "01 THREATS & CONFLICT 0 of 8 on | events | News events | 68 now · news wires and official feeds · STALE 10 H · shows with NOW | off",
+   "01 THREATS & CONFLICT 0 of 8 on | strikes | Strike reports | 0 now · GDELT · STALE 10 H · shows with NOW / INTEL | off",
+   "01 THREATS & CONFLICT 0 of 8 on | unrest | Unrest map | 731 now · GDELT · STALE 10 H · shows with INTEL | off",
+   "01 THREATS & CONFLICT 0 of 8 on | alerts | Correlation alerts | 0 now · cross-checks of the feeds · STALE 10 H · shows with NOW / INTEL | off",
+   "01 THREATS & CONFLICT 0 of 8 on | crime | Crime & drugs | city open data · shows with INTEL | off",
+   "01 THREATS & CONFLICT 0 of 8 on | banks | Banks & payments | STALE 10 H · shows with INTEL | off",
+   "01 THREATS & CONFLICT 0 of 8 on | cyber | Cyberattacks | STALE 10 H · shows with INTEL | off",
+   "02 EARTH & WEATHER 0 of 18 on | hazards | Hazards | 39 now · USGS / GDACS / NASA EONET / NWS · STALE 10 H · shows with NOW / EARTH | off",
+   "02 EARTH & WEATHER 0 of 18 on | weather | City weather | 45 now · Open-Meteo · STALE 10 H · shows with EARTH | off",
+   "02 EARTH & WEATHER 0 of 18 on | orbitfaint | Satellites & debris (faint) | 32,811 now · CelesTrak | off",
+   "02 EARTH & WEATHER 0 of 18 on | aurora | Northern & southern lights | NOAA SWPC · STALE 10 H · shows with EARTH / SPACE | off",
+   "02 EARTH & WEATHER 0 of 18 on | fires | Satellite heat spots | NASA FIRMS | off",
+   "02 EARTH & WEATHER 0 of 18 on | power | Power plants | WRI power plant database · STALE 10 H · shows with EARTH | off",
+   "02 EARTH & WEATHER 0 of 18 on | radar | Rain radar | RainViewer / NOAA MRMS · STALE 10 H · shows with EARTH | off",
+   "02 EARTH & WEATHER 0 of 18 on | clouds | Clouds (live) | GOES, Himawari, Meteosat · STALE 10 H · shows with EARTH | off",
+   "02 EARTH & WEATHER 0 of 18 on | lightning | Lightning | NOAA nowCOAST / EUMETSAT · STALE 10 H | off",
+   "02 EARTH & WEATHER 0 of 18 on | ptype | Rain, snow or hail (US) | NOAA MRMS · STALE 10 H | off",
+   "02 EARTH & WEATHER 0 of 18 on | snow | Snow & ice on the ground | NOAA snow & ice charts · STALE 10 H | off",
+   "02 EARTH & WEATHER 0 of 18 on | wind | Wind | NOAA GFS · STALE 10 H | off",
+   "02 EARTH & WEATHER 0 of 18 on | temp | Temperature | Open-Meteo / NOAA GFS · STALE 10 H | off",
+   "02 EARTH & WEATHER 0 of 18 on | currents | Ocean currents | Open-Meteo Marine · STALE 10 H | off",
+   "02 EARTH & WEATHER 0 of 18 on | waves | Waves | NOAA GFS-Wave · STALE 10 H | off",
+   "02 EARTH & WEATHER 0 of 18 on | storms | Hurricanes & typhoons | GDACS · STALE 10 H · shows with EARTH | off",
+   "02 EARTH & WEATHER 0 of 18 on | warnings | NWS warnings (US) | NWS · STALE 10 H · shows with EARTH | off",
+   "02 EARTH & WEATHER 0 of 18 on | outlook | SPC storm outlook (US) | NOAA SPC · STALE 10 H | off",
+   "03 AIR & SEA 0 of 8 on | aircraft | Aircraft | 262 now · ADS-B exchanges · STALE 10 H · shows with AIR / INTEL | off",
+   "03 AIR & SEA 0 of 8 on | routes | Busiest air routes | 250 now · ADS-B, last 24 h · STALE 10 H · shows with AIR | off",
+   "03 AIR & SEA 0 of 8 on | loiter | Loitering aircraft | 150 now · ADS-B, last 24 h · STALE 10 H · shows with AIR | off",
+   "03 AIR & SEA 0 of 8 on | gaps | Blind spots (no receivers) | 130 now · ADS-B receiver coverage · STALE 10 H | off",
+   "03 AIR & SEA 0 of 8 on | jamming | GPS jamming | 34 now · GPSJam (ADS-B) · STALE 10 H · shows with AIR / INTEL | off",
+   "03 AIR & SEA 0 of 8 on | ships | Ships | 309 now · AIS (Nordic, public) · STALE 10 H | off",
+   "03 AIR & SEA 0 of 8 on | navy | Warships (open reports) | USNI fleet tracker, navy news, Taiwan MND · STALE 10 H · shows with AIR / INTEL | off",
+   "03 AIR & SEA 0 of 8 on | ocean | Ocean: buoys, warnings, chokepoints | NOAA buoys, IOC sea level, NGA warnings, IMF PortWatch · STALE 10 H · shows with EARTH / INTEL | off",
+   "04 SPACE 0 of 3 on | sats | Satellites | 32,811 now · CelesTrak · shows with SPACE | off",
+   "04 SPACE 0 of 3 on | space | Launches & fireballs | 65 now · Launch Library / NASA JPL · STALE 10 H · shows with NEXT / SPACE | off",
+   "04 SPACE 0 of 3 on | ufo | UFO sightings (history) | NUFORC reports | off",
+   "05 CAMERAS & SIGNALS 3 of 7 on | outages | Internet outages | 7 now · IODA · STALE 10 H · shows with INTEL | off",
+   "05 CAMERAS & SIGNALS 3 of 7 on | detect | Live detectors | 2 OF 3 SOURCES ANSWERING · 635 now · live sensors (USGS, BfS, IODA, NOAA...) · shows with NOW / INTEL | off",
+   "05 CAMERAS & SIGNALS 3 of 7 on | radio | Radio | KiwiSDR / SatNOGS | ON",
+   "05 CAMERAS & SIGNALS 3 of 7 on | live | Live cams & video | 183 now · public webcams and streams · STALE 10 H | ON",
+   "05 CAMERAS & SIGNALS 3 of 7 on | camnet | Public cameras worldwide | 82 OF 84 SOURCES ANSWERING · 68,498 now · official public camera networks · STALE 10 H | ON",
+   "05 CAMERAS & SIGNALS 3 of 7 on | streetcams | Street cameras | close-up street cameras when you zoom in to a city | off",
+   "05 CAMERAS & SIGNALS 3 of 7 on | camwatch | Camera auto-watch | flags cameras that go dark, freeze, flash or show smoke | off",
+   "05 CAMERAS & SIGNALS 3 of 7 on | camwall | Monitoring wall | your camera grid, saved on this device | no switch",
+   "06 PEOPLE & PLACES 0 of 4 on | alpr | Plate-reader cameras | 150k now · DeFlock / OpenStreetMap · 21 H · shows with INTEL | off",
+   "06 PEOPLE & PLACES 0 of 4 on | elections | Elections | 14 now · Wikipedia election lists · STALE 10 H · shows with NEXT | off",
+   "06 PEOPLE & PLACES 0 of 4 on | advisories | Govt prep advice | 8 now · government prep pages · STALE 10 H · shows with PEOPLE | off",
+   "06 PEOPLE & PLACES 0 of 4 on | community | Community posts | 0 now · posts from people here · shows with PEOPLE | off",
+   "06 PEOPLE & PLACES 0 of 4 on | watchlist | Watchlist places & words | empty · places and words you never want to miss | no switch",
+   "06 PEOPLE & PLACES 0 of 4 on | relocate | Where to live | rent, home prices, cost of living, safety, cost to move | no switch",
+   "06 PEOPLE & PLACES 0 of 4 on | fieldkit | Field kit | survival guide and offline library · works with no internet | no switch",
+   "07 LOOK 7 of 8 on | look.war | Active conflict zones | STALE 10 H | ON",
+   "07 LOOK 7 of 8 on | look.storm | Storm shading | STALE 10 H | ON",
+   "07 LOOK 7 of 8 on | look.outage | Outage darkness at night | on · nothing qualifies · 7 internet alerts, none nationwide · IODA via brief · 10 h | ON",
+   "07 LOOK 7 of 8 on | look.rad | Radiation rings | not checked here · live detectors are off | ON",
+   "07 LOOK 7 of 8 on | look.snow | Snow cover | on · satellite day 7 Nov (unprocessed palette) | ON",
+   "07 LOOK 7 of 8 on | look.ice | Sea ice | on · satellite day 5 Nov (unprocessed palette) | ON",
+   "07 LOOK 7 of 8 on | look.lights | City lights at night | on · drawn by the weather layers | ON",
+   "07 LOOK 7 of 8 on | look.real | Last night's real lights | off | off",
+   "07 LOOK 7 of 8 on | x.mapstyle | Place names |  | no switch",
+   "07 LOOK 7 of 8 on | skin | PLANET STYLE effects draw under every style Natural OTHER STYLES › 6 more |  | no switch",
+   "09 SCREEN | layout | LAYOUT Ops Table theater board Scope reticle lock-on Wire time ruler Classic: fl |  | no switch",
+   "09 SCREEN | theme | THEME Slate Classic terminal Amber Paper light |  | no switch",
+   "09 SCREEN | textSize | TEXT SIZE Normal Large Larger |  | no switch",
+   "09 SCREEN | density | SPACING Comfortable Compact |  | no switch",
+   "09 SCREEN | font | TYPEFACE Sans Mono |  | no switch"
+  ],
+  "tv": "WATCHING\nW. PACIFIC\nUNRATED · 2 REPORTS\nLAST NEWS 11H · TAP FOR MORE\n‹\n›",
+  "tvMedia": {
+   "video": [],
+   "iframes": []
+  },
+  "survival": "(nothing)",
+  "menu": [],
+  "watch": [],
+  "closeupCounts": {
+   "noViewer": true
+  },
+  "endMemory": null
+ },
+ "finished": "2026-11-07T04:58:15.729Z"
+}
