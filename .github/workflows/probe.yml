@@ -1,0 +1,33 @@
+name: probe
+# Fetches each URL once from a GitHub runner (real network) and prints the HTTP status, the CORS and cache headers, the
+# size, the time taken and the start of the body. For checking a live feed that the build sandboxes cannot reach.
+on:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: "URLs to fetch, separated by spaces or new lines"
+        required: true
+      origin:
+        description: "Origin header sent with each request"
+        required: false
+        default: "https://trippuden.github.io"
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: fetch
+        env:
+          URLS: ${{ inputs.urls }}
+          ORIGIN: ${{ inputs.origin }}
+          UA: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
+        run: |
+          set -f
+          for u in $URLS; do
+            echo "== $u"
+            curl -sS -o body.bin -D head.txt -m 30 -A "$UA" -H "Origin: $ORIGIN" -w 'status %{http_code}, %{size_download} bytes, %{time_total} s\n' "$u" || echo "curl failed with code $?"
+            grep -i -E '^(access-control-allow-origin|access-control-allow-headers|content-type|content-length|cache-control|retry-after|server|location):' head.txt || true
+            echo "body starts:"; head -c 300 body.bin | tr -d '\r' | head -5; echo
+          done
