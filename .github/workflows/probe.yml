@@ -11,6 +11,10 @@ on:
         description: "Origin header sent with each request"
         required: false
         default: "https://trippuden.github.io"
+      header:
+        description: "One extra request header, for example Accept: application/json (empty for none)"
+        required: false
+        default: ""
 permissions:
   contents: read
 jobs:
@@ -22,12 +26,14 @@ jobs:
         env:
           URLS: ${{ inputs.urls }}
           ORIGIN: ${{ inputs.origin }}
+          HDR: ${{ inputs.header }}
           UA: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
         run: |
           set -f
           for u in $URLS; do
             echo "== $u"
-            curl -sS -o body.bin -D head.txt -m 30 -A "$UA" -H "Origin: $ORIGIN" -w 'status %{http_code}, %{size_download} bytes, %{time_total} s\n' "$u" || echo "curl failed with code $?"
+            curl -sS -o body.bin -D head.txt -m 30 -A "$UA" -H "Origin: $ORIGIN" ${HDR:+-H "$HDR"} -w 'status %{http_code}, %{size_download} bytes, %{time_total} s\n' "$u" || echo "curl failed with code $?"
             grep -i -E '^(access-control-allow-origin|access-control-allow-headers|content-type|content-length|cache-control|retry-after|server|location):' head.txt || true
-            echo "body starts:"; head -c 300 body.bin | tr -d '\r' | head -5; echo
+            if grep -qi '<html' body.bin; then echo "html page, title: $(grep -o -i '<title>[^<]*' body.bin | head -1 | cut -c8-)"; echo "text: $(sed -e 's/<[^>]*>/ /g' body.bin | tr -s ' \r\n\t' ' ' | cut -c1-600)"
+            else echo "body starts:"; head -c 300 body.bin | tr -d '\r' | head -5 || true; echo; fi
           done
