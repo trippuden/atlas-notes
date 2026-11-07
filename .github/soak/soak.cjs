@@ -129,7 +129,7 @@ setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 12) * 60e3)
     await ev(() => { document.querySelector('[data-group="earth"]')?.click(); }); await p.waitForTimeout(1500);
     const arc = []; const t0a = new Map();
     const heap = () => ev(() => performance.memory ? Math.round(performance.memory.usedJSHeapSize / 1048576) : null).catch(() => null);
-    p.on("request", (q) => { if (/arcgis\.com|arcgis|hub\.|amazonaws|blob\.core/.test(q.url()) || (q.redirectedFrom() && t0a.has(q.redirectedFrom()))) t0a.set(q, Date.now()); });
+    p.on("request", (q) => { if (/arcgis\.com|amazonaws\.com|blob\.core\.windows/.test(q.url()) || (q.redirectedFrom() && t0a.has(q.redirectedFrom()))) t0a.set(q, Date.now()); });
     p.on("requestfailed", (q) => { if (t0a.has(q)) arc.push(`${q.method()} ${new URL(q.url()).pathname} FAILED ${q.failure()?.errorText} ${Date.now() - t0a.get(q)} ms`); });
     p.on("response", async (r) => { const q = r.request(); if (!t0a.has(q)) return; let b = "", n = "?"; try { const buf = await r.body(); n = buf.length; b = buf.slice(0, 200).toString(); } catch (e) { b = "(body not readable: " + e.message.slice(0, 60) + ")"; } const u = new URL(q.url()); arc.push(`${q.method()} ${u.host}${u.pathname.slice(0, 120)}${u.search.slice(0, 120)} ${r.status()} ${n} bytes ${Date.now() - t0a.get(q)} ms acao=${r.headers()["access-control-allow-origin"] || "none"} ${b}`); });
     log("ocean heap before MB:", await heap());
