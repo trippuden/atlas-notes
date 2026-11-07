@@ -13,6 +13,198 @@ const rss = () => { try { const pat = ENGINE === "webkit" ? /WebKit|MiniBrowser|
 const procs = () => { try { return execSync("ps -eo rss=,comm=", { encoding: "utf8" }).split("\n").filter((l) => /WebKit|chrom/i.test(l)).map((l) => l.trim()).sort((a, b) => parseInt(b, 10) - parseInt(a, 10)).slice(0, 4).join(" | "); } catch { return ""; } };
 const finish = () => { log(fails.length ? `SOAK FAILED (${fails.length})` : "SOAK PASSED"); process.exit(fails.length ? 1 : 0); };
 setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 24) * 60e3);
+// The live files through a local address: the app hands its globe to test scripts only on localhost. Every byte of the
+// site still comes from the live address; the browser fetches every other host (maps, feeds) itself.
+async function passThrough() {
+  const http = require("http"), https = require("https"), base = new URL(URL0);
+  const srv = http.createServer((q, r) => {
+    const get = (u, n) => (u.protocol === "https:" ? https : http).get(u, (res) => {
+      if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location && n < 3) { res.resume(); return get(new URL(res.headers.location, u), n + 1); }
+      r.writeHead(res.statusCode, { "content-type": res.headers["content-type"] || "application/octet-stream" }); res.pipe(r);
+    }).on("error", () => { r.writeHead(502); r.end(); });
+    get(new URL("." + q.url, base), 0);
+  });
+  await new Promise((ok) => srv.listen(0, "127.0.0.1", ok));
+  return { url: `http://localhost:${srv.address().port}/`, close: () => srv.close() };
+}
+
+// The tap check (tap-check.cjs: map taps and the Sea key, desktop and phone) on the live files.
+async function liveTapCheck() {
+  const { execFile } = require("child_process"), pt = await passThrough();
+  const out = await new Promise((ok) => execFile("node", ["tap-check.cjs"], { env: { ...process.env, URL: pt.url, CHROME: pw.chromium.executablePath() }, timeout: 360000, maxBuffer: 1 << 20 },
+    (e, so, se) => ok({ code: e ? e.code ?? 1 : 0, text: `${so || ""}${se || ""}` })));
+  pt.close();
+  for (const l of out.text.split("\n").filter((l) => /^(ok|FAIL)|TAP CHECK/.test(l))) log("tap:", l);
+  if (out.code !== 0) fail(`tap check on the live files failed (exit ${out.code})`);
+}
+
+// The poles on the live files: the caps past 80 degrees, the sea ice and the Antarctic stations come from NASA GIBS and the
+// COMNAP ArcGIS service, which only a runner on the open internet reaches. Ocean tab on, each pole from 3,000 and 600 km:
+// GIBS tiles per layer (answers, highest level, size), the COMNAP answer (status, CORS header, stations), stations drawn,
+// page errors, memory (north, south, north again) and on desktop a small picture of each pole ("PIC <name> <base64 jpeg>").
+// Then the Argo floats from Ifremer's ERDDAP: the list query (status, CORS header, rows, time) and one float's card with its
+// dive profile (a measurement: it fails nothing).
+async function polesCheck() {
+  let b = null, step = "start"; const pt = await passThrough(), phone = !DESK;
+  try {
+    b = await pw[ENGINE].launch(ENGINE === "chromium" ? { args: ["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"] } : {});
+    const c = await b.newContext({ ...(phone ? pw.devices["iPhone 14 Pro"] : { viewport: { width: 1466, height: 800 } }), serviceWorkers: "block" });
+    await c.addInitScript(() => { try { localStorage.setItem("t.seenIntro", "1"); localStorage.removeItem("t.ocean.comnap"); } catch { /* private mode */ } });
+    const w = await c.newPage(), errs = [], tiles = [], comnap = [], argo = [], sentAt = new Map();
+    const wev = (fn, arg) => Promise.race([w.evaluate(fn, arg), new Promise((_, j) => setTimeout(() => j(new Error("page did not answer in 45 s")), 45000))]);
+    w.on("pageerror", (e) => errs.push("page: " + e.message.slice(0, 160)));
+    w.on("console", (m) => { if (m.type() === "error") errs.push("console: " + m.text().slice(0, 160)); });
+    const argoKind = (u) => (/\?pres,temp,psal/.test(u) ? "profile" : "list");
+    w.on("request", (q) => { if (/erddap\.ifremer\.fr/.test(q.url())) sentAt.set(q, Date.now()); });
+    w.on("requestfinished", async (q) => { if (!sentAt.has(q)) return; const r = await q.response().catch(() => null); let rows = -1, n = -1; try { const buf = await r.body(); n = buf.length; rows = JSON.parse(buf.toString()).table?.rows?.length ?? -1; } catch { /* not json */ }
+      argo.push(`${argoKind(q.url())}: status ${r ? r.status() : "?"}, cors ${r?.headers()["access-control-allow-origin"] || "none"}, ${rows} rows, ${Math.round(n / 1024)} KB in ${Date.now() - sentAt.get(q)} ms`); });
+    w.on("requestfailed", (q) => { if (sentAt.has(q)) argo.push(`${argoKind(q.url())}: failed (${q.failure()?.errorText}) after ${Date.now() - sentAt.get(q)} ms`);
+      const u = q.url(); if (/gibs\.earthdata\.nasa\.gov/.test(u)) tiles.push({ layer: (u.match(/best\/([^/]+)\//) || [])[1] || "?", z: -1, st: q.failure()?.errorText || "failed", n: 0 }); else if (/COMNAP/i.test(u)) comnap.push({ st: q.failure()?.errorText || "failed", acao: "-", n: -1 }); });
+    w.on("response", async (r) => { const u = r.url();
+      if (/gibs\.earthdata\.nasa\.gov/.test(u)) { const m = u.match(/best\/([^/]+)\/default\/[^/]+\/[^/]+\/(\d+)\/\d+\/\d+\./); let n = 0; try { n = (await r.body()).length; } catch { /* gone */ } tiles.push({ layer: m?.[1] || "?", z: m ? +m[2] : -1, st: r.status(), n }); }
+      else if (/COMNAP/i.test(u)) { let n = -1; try { n = (JSON.parse((await r.body()).toString()).features || []).length; } catch { /* not json */ } comnap.push({ st: r.status(), acao: r.headers()["access-control-allow-origin"] || "none", n }); } });
+    step = "opening the site"; await w.goto(pt.url, { timeout: 90000 });
+    await w.waitForFunction(() => !document.getElementById("boot") && window.viewer && document.querySelector(".cesium-widget canvas"), null, { timeout: 180000 });
+    await w.waitForTimeout(6000);
+    // EARTH > Ocean, shown (on desktop the lists live in the Data drawer)
+    step = "opening EARTH > Ocean";
+    await wev(() => { document.querySelector('.hud-ops [data-act="data"]')?.click(); document.querySelector('[data-group="earth"]')?.click(); });
+    await w.waitForTimeout(600); await wev(() => document.querySelector('[data-sub="ocean"]')?.click()); await w.waitForTimeout(6000);
+    const mem = async () => phone ? `${Math.round(rss())} MB browser` : `${Math.round((await wev(() => performance.memory?.usedJSHeapSize || 0)) / 1048576)} MB heap`;
+    const look = (lat, h) => wev(([lat, h]) => { const C = window.Cesium, cam = window.viewer.camera; cam.cancelFlight?.(); cam.setView({ destination: C.Cartesian3.fromDegrees(0, lat, h), orientation: { heading: 0, pitch: -Math.PI / 2, roll: 0 } }); }, [lat, h]);
+    const settle = async () => { let k = 0; for (; k < 30; k++) { await w.waitForTimeout(1000); if (await wev(() => window.viewer.scene.globe.tilesLoaded).catch(() => false)) break; } await w.waitForTimeout(1500); return k; };
+    const sum = (from) => { const by = {}; for (const t of tiles.slice(from)) { const L = (by[t.layer] ||= { n: 0, ok: 0, z: -1, kb: 0, other: {} }); L.n++; if (t.st === 200) { L.ok++; L.z = Math.max(L.z, t.z); L.kb += t.n / 1024; } else L.other[t.st] = (L.other[t.st] || 0) + 1; }
+      return Object.entries(by).map(([k, L]) => `${k.replace(/_/g, " ").slice(0, 34)}: ${L.ok}/${L.n} ok, level ${L.z}, ${Math.round(L.kb)} KB${Object.keys(L.other).length ? " " + JSON.stringify(L.other) : ""}`).join("; ") || "no GIBS tiles"; };
+    // a browser screenshot at half size (made by the browser itself, no wait for fonts), then measured and shrunk in a blank
+    // page; a picture that can't be made is logged and the check goes on
+    const pic = async (name) => {
+      try {
+        const cdp = await c.newCDPSession(w), vp = w.viewportSize();
+        const shot = await Promise.race([cdp.send("Page.captureScreenshot", { format: "jpeg", quality: 70, clip: { x: 0, y: 0, width: vp.width, height: vp.height, scale: 0.5 } }), new Promise((_, j) => setTimeout(() => j(new Error("no picture in 40 s")), 40000))]);
+        await cdp.detach().catch(() => {}); fs.writeFileSync(`out/pole-${name}.jpg`, Buffer.from(shot.data, "base64"));
+        const q = await c.newPage();
+        const o = await q.evaluate(async (b64) => { const img = new Image(); img.src = "data:image/jpeg;base64," + b64; await img.decode(); const W = img.width, H = img.height;
+          const cw = Math.min(200, W), ch = Math.min(200, H), c2 = document.createElement("canvas"); c2.width = cw; c2.height = ch;
+          const g = c2.getContext("2d", { willReadFrequently: true }); g.drawImage(img, (W - cw) >> 1, (H - ch) >> 1, cw, ch, 0, 0, cw, ch); const d = g.getImageData(0, 0, cw, ch).data;
+          const L = (i) => 0.299 * d[i] + 0.587 * d[i + 1] + 0.114 * d[i + 2]; let s = 0, m = 0, n = 0;
+          for (let y = 1; y < ch - 1; y++) for (let x = 1; x < cw - 1; x++) { const i = (y * cw + x) * 4; s += Math.abs(4 * L(i) - L(i - 4) - L(i + 4) - L(i - cw * 4) - L(i + cw * 4)); m += L(i); n++; }
+          const c3 = document.createElement("canvas"); c3.width = 360; c3.height = Math.round((360 * H) / W); c3.getContext("2d").drawImage(img, 0, 0, c3.width, c3.height);
+          return { sharp: +(s / n).toFixed(2), bright: Math.round(m / n), small: c3.toDataURL("image/jpeg", 0.5).split(",")[1] }; }, shot.data);
+        await q.close();
+        log(`poles: ${name} picture: detail ${o.sharp} (mean edge strength in the middle of a half-size shot), brightness ${o.bright}`); log(`PIC ${name} ${o.small}`);
+      } catch (e) { log(`poles: no ${name} picture: ${e.message.slice(0, 120)}`); }
+    };
+    const heap = {};
+    for (const [name, lat, h] of [["north 3000 km", 89.5, 3e6], ["north 600 km", 89.5, 6e5], ["south 3000 km", -89.5, 3e6], ["south 600 km", -89.5, 6e5], ["north 600 km again", 89.5, 6e5]]) {
+      step = name; const from = tiles.length; await look(lat, h); const secs = await settle(); heap[name] = await mem();
+      log(`poles: ${name} (${secs < 30 ? `tiles in after ${secs} s` : "tiles still loading after 30 s"}): ${sum(from)}; ${heap[name]}`);
+      if (!phone && (name === "north 600 km" || name === "south 600 km")) await pic(name.split(" ")[0]);
+    }
+    // one Argo float's card: over the first float drawn, tapped where it shows
+    step = "opening an Argo float";
+    const fl = await wev(() => { const C = window.Cesium, v = window.viewer; let pos = null, n = 0; const walk = (col) => { for (let i = 0; i < col.length; i++) { const x = col.get(i);
+      if (x instanceof C.PrimitiveCollection) walk(x); else if (typeof x.get === "function" && typeof x.length === "number") for (let j = 0; j < x.length; j++) { const q = x.get(j); if (String(q?.id?.ocean || "").startsWith("argo:")) { n++; if (!pos && q.position) pos = q.position; } } } };
+      walk(v.scene.primitives); if (!pos) return { n }; const g = C.Cartographic.fromCartesian(pos); v.camera.setView({ destination: C.Cartesian3.fromRadians(g.longitude, g.latitude, 1.5e6) }); return { n, lon: C.Math.toDegrees(g.longitude), lat: C.Math.toDegrees(g.latitude) }; });
+    if (fl.lat == null) log(`argo: ${fl.n} floats drawn, none to open; requests: ${argo.join(" | ") || "no Argo request (this build has no Argo layer)"}`);
+    else {
+      await w.waitForTimeout(3000);
+      const xy = await wev(([lon, lat]) => { const C = window.Cesium, v = window.viewer, q = C.SceneTransforms.worldToWindowCoordinates(v.scene, C.Cartesian3.fromDegrees(lon, lat, 30)); return q ? [q.x, q.y] : null; }, [fl.lon, fl.lat]);
+      if (xy) { await w.mouse.click(xy[0], xy[1]); await w.waitForTimeout(12000); }
+      const card = await wev(() => { const d = document.getElementById("detail"), body = document.getElementById("detailBody"); return d && !d.classList.contains("hidden") ? { text: (body?.textContent || "").replace(/\s+/g, " ").trim().slice(0, 140), chart: !!body?.querySelector("svg.oc-prof") } : null; });
+      log(`argo: ${fl.n} floats drawn; tapped one at ${fl.lat.toFixed(2)}, ${fl.lon.toFixed(2)}: ${card ? `card "${card.text}"${card.chart ? ", dive chart drawn" : ", no dive chart"}` : "no card opened"}; requests: ${argo.join(" | ") || "none"}`);
+      await wev(() => document.getElementById("detailClose")?.click()).catch(() => {});
+    }
+    step = "counting stations"; const st = await wev(() => { const C = window.Cesium, v = window.viewer; let drawn = 0; const walk = (col) => { for (let i = 0; i < col.length; i++) { const x = col.get(i);
+      if (x instanceof C.PrimitiveCollection) walk(x); else if (typeof x.get === "function" && typeof x.length === "number") for (let j = 0; j < x.length; j++) { const q = x.get(j); if (String(q?.id?.ocean || "").startsWith("stn:") && q.show !== false) drawn++; } } };
+      walk(v.scene.primitives); let saved = 0; try { saved = JSON.parse(localStorage.getItem("t.ocean.comnap") || "null")?.v?.length || 0; } catch { /* none */ } return { drawn, saved }; });
+    log(`poles: COMNAP answers ${JSON.stringify(comnap)}; ${st.saved} stations kept, ${st.drawn} drawn`);
+    log(`poles: ${errs.length} page or console errors${errs.length ? ": " + [...new Set(errs)].slice(0, 6).join(" | ") : ""}`);
+    const capOk = tiles.some((t) => t.layer === "BlueMarble_NextGeneration" && t.st === 200);
+    if (!capOk) fail("poles: no Blue Marble cap tile came back from NASA GIBS");
+    if (!comnap.some((x) => x.st === 200 && x.n > 0) || !st.drawn) fail(`poles: Antarctic stations did not load or draw (${JSON.stringify(comnap)}, ${st.drawn} drawn)`);
+    if (errs.some((e) => e.startsWith("page:"))) fail("poles: the page threw errors");
+  } catch (e) { fail(`poles check could not run (at ${step}): ${e.message.slice(0, 160)}`); }
+  finally { await b?.close().catch(() => {}); pt.close(); }
+}
+
+// Live ships on the real site address (desktop), where the browser's own CORS rules apply: the Sea key, 70 s, then the
+// Ships list's first lines and every meri.digitraffic.fi request (status, CORS header, size, time or error), then one
+// fetch of the positions and one of the vessel list from the page itself with timings; then one fetch of OpenSky's whole-world aircraft list from the
+// page (does it answer a browser, and how fast). A measurement: it fails nothing.
+async function shipsCheck() {
+  let b = null;
+  try {
+    b = await pw.chromium.launch({ args: ["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"] });
+    const c = await b.newContext({ viewport: { width: 1466, height: 800 }, serviceWorkers: "block" });
+    await c.addInitScript(() => { try { localStorage.setItem("t.seenIntro", "1"); } catch { /* private mode */ } });
+    const w = await c.newPage(), net = [], msgs = [], sent = new Map();
+    const wev = (fn, arg) => Promise.race([w.evaluate(fn, arg), new Promise((_, j) => setTimeout(() => j(new Error("page did not answer")), 60000))]);
+    w.on("request", (q) => { if (/digitraffic\.fi/.test(q.url())) sent.set(q, Date.now()); });
+    w.on("requestfinished", async (q) => { if (!sent.has(q)) return; const r = await q.response().catch(() => null); let n = -1; try { n = (await r.body()).length; } catch { /* gone */ }
+      net.push(`${r ? r.status() : "?"} cors=${r?.headers()["access-control-allow-origin"] || "none"} ${n} bytes in ${Date.now() - sent.get(q)} ms ${new URL(q.url()).pathname}`); });
+    w.on("requestfailed", (q) => { if (sent.has(q)) net.push(`failed: ${q.failure()?.errorText} after ${Date.now() - sent.get(q)} ms ${new URL(q.url()).pathname}`); });
+    w.on("console", (m) => { if (/digitraffic|opensky|CORS|ships?\b/i.test(m.text())) msgs.push(`${m.type()}: ${m.text().slice(0, 200)}`); });
+    await w.goto(URL0, { timeout: 90000 });
+    await w.waitForFunction(() => !document.getElementById("boot") && document.querySelector(".cesium-widget canvas"), null, { timeout: 180000 }); await w.waitForTimeout(5000);
+    const how = await wev(() => { const k = document.querySelector('[data-act="group"][data-v="sea"]'); if (k) { k.click(); return "Sea key"; }
+      document.querySelector('.hud-ops [data-act="data"]')?.click(); document.querySelector('[data-group="intel"]')?.click(); setTimeout(() => document.querySelector('[data-sub="ships"]')?.click(), 500); return "INTEL > Ships (no Sea key on this build)"; });
+    await w.waitForTimeout(70000);
+    let lines = await wev(() => [...document.querySelectorAll("#ships > li")].slice(0, 3).map((li) => li.textContent.replace(/\s+/g, " ").trim().slice(0, 170)));
+    if (!lines.length) { await wev(() => document.querySelector('.hud-ops [data-act="data"]')?.click()); await w.waitForTimeout(2500); lines = await wev(() => [...document.querySelectorAll("#ships > li")].slice(0, 3).map((li) => li.textContent.replace(/\s+/g, " ").trim().slice(0, 170))); }
+    const direct = await wev(async () => { const t = performance.now(); try { const r = await fetch("https://meri.digitraffic.fi/api/ais/v1/locations", { cache: "no-store" }); const head = Math.round(performance.now() - t);
+      const n = (await r.arrayBuffer()).byteLength; return `status ${r.status}, content-length ${r.headers.get("content-length")}, cors ${r.headers.get("access-control-allow-origin")}, headers in ${head} ms, ${n} bytes in ${Math.round(performance.now() - t)} ms`; }
+      catch (e) { return `error after ${Math.round(performance.now() - t)} ms: ${e.message || e}`; } });
+    log(`ships: opened by ${how}; after 70 s the Ships list reads: ${lines.length ? lines.join(" | ") : "(empty)"}`);
+    log(`ships: ${net.length} digitraffic requests: ${net.slice(0, 8).join(" | ") || "none"}`);
+    if (msgs.length) log(`ships: console: ${[...new Set(msgs)].slice(0, 5).join(" | ")}`);
+    log(`ships: fetch from the page: ${direct}`);
+    const ves = await wev(async () => { const t = performance.now(); try { const r = await fetch("https://meri.digitraffic.fi/api/ais/v1/vessels", { cache: "no-store" }); const head = Math.round(performance.now() - t);
+      const n = (await r.arrayBuffer()).byteLength; return `status ${r.status}, cors ${r.headers.get("access-control-allow-origin")}, headers in ${head} ms, ${n} bytes in ${Math.round(performance.now() - t)} ms`; }
+      catch (e) { return `error after ${Math.round(performance.now() - t)} ms: ${e.message || e}`; } });
+    log(`ships: vessels list fetched from the page: ${ves}`);
+    const sky = await wev(async () => { const t = performance.now(); try { const r = await fetch("https://opensky-network.org/api/states/all", { cache: "no-store" }); const head = Math.round(performance.now() - t); const j = await r.json();
+      return `status ${r.status}, cors ${r.headers.get("access-control-allow-origin")}, ${j.states?.length ?? "no"} aircraft, feed time ${j.time ? new Date(j.time * 1000).toISOString().slice(11, 19) + "Z" : "none"}, headers in ${head} ms, all in ${Math.round(performance.now() - t)} ms`; }
+      catch (e) { return `error after ${Math.round(performance.now() - t)} ms: ${e.message || e}`; } });
+    log(`opensky: fetch from the page: ${sky}`);
+    const late = [...new Set(msgs)].filter((m) => /opensky/i.test(m)); if (late.length) log(`opensky: console: ${late.slice(0, 3).join(" | ")}`);
+  } catch (e) { log("ships check could not run: " + e.message.slice(0, 160)); }
+  finally { await b?.close().catch(() => {}); }
+}
+
+// Watch mode on the live site (desktop): an aircraft alert only for the emergency squawks, and once a tap on the alert's
+// tag brings the camera close, the tag keeps with the dragged globe (it used to slide away about twice as fast). Two
+// aircraft come from a stand-in feed: one squawking 7700, one squawking 1000 (Europe's normal code) with an "unlawful" status.
+async function watchCheck() {
+  let b = null;
+  try {
+    b = await pw.chromium.launch({ args: ["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"] });
+    const c = await b.newContext({ viewport: { width: 1466, height: 800 }, serviceWorkers: "block" }), host = new URL(URL0).host;
+    await c.addInitScript(() => { try { localStorage.setItem("t.seenIntro", "1"); } catch { /* private mode */ } });
+    const ac = (hex, flight, squawk, emergency, lat, lon) => ({ hex, flight, lat, lon, alt_baro: 36000, gs: 450, track: 80, squawk, emergency, t: "A320", seen_pos: 0.5 });
+    await c.route((u) => u.host !== host && /\/v2\//.test(u.pathname), (r) => r.fulfill({ status: 200, contentType: "application/json", headers: { "access-control-allow-origin": "*" },
+      body: JSON.stringify({ now: Date.now() / 1000, ac: [ac("4d22a1", "EJU58FD ", "1000", "unlawful", 50.2, 9.6), ac("4d22a2", "TST7700 ", "7700", "general", 47.5, 2.5)] }) }));
+    const w = await c.newPage(), wev = (fn, arg) => Promise.race([w.evaluate(fn, arg), new Promise((_, j) => setTimeout(() => j(new Error("page did not answer")), 15000))]);
+    await w.goto(URL0 + "?watch", { timeout: 90000 });
+    await w.waitForFunction(() => !document.getElementById("boot") && document.querySelector(".cesium-widget canvas") && document.querySelector(".wt-tags"), null, { timeout: 180000 });
+    const tagAt = () => wev(() => { const t = [...document.querySelectorAll(".wt-tag")].find((e) => /TST7700/.test(e.textContent) && getComputedStyle(e).opacity !== "0"); if (!t) return null; const r = t.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; });
+    let at = null; for (let k = 0; k < 60 && !at; k++) { await w.waitForTimeout(2000); at = await tagAt().catch(() => null); }
+    const f1000 = await wev(() => [...document.querySelectorAll("[data-k], .wt-tag")].filter((e) => /4d22a1/.test(e.dataset.k || "") || /EJU58FD/.test(e.textContent)).map((e) => e.textContent.replace(/\s+/g, " ").slice(0, 80)));
+    if (!at) { fail("watch: no alert tag for the 7700 aircraft after 120 s"); return; }
+    f1000.length ? fail(`watch: squawk 1000 with an "unlawful" status raised an alert: ${f1000.join(" | ")}`) : log("watch: squawk 1000 with an \"unlawful\" status raised no alert; squawk 7700 did");
+    // the alert's row in the watch panel opens the plane's card and brings the camera down to 1,200 km over it, where a stick
+    // that leans toward the lens shows most (a tap on the tag itself stops near 5,700 km, where the lean is too small to see)
+    await w.click('[data-k*="4d22a2"]', { force: true, timeout: 8000 }); await w.waitForTimeout(8000);
+    const a0 = await tagAt(); if (!a0) { fail("watch: the 7700 alert's tag is gone after the tap"); return; }
+    const x0 = Math.max(120, a0[0] - 320), y0 = Math.min(760, a0[1] + 160), dx = 140;
+    await w.mouse.move(x0, y0); await w.mouse.down(); for (let k = 1; k <= 14; k++) { await w.mouse.move(x0 + (dx * k) / 14, y0); await w.waitForTimeout(60); }
+    await w.waitForTimeout(1500); const a1 = await tagAt(); await w.mouse.up(); // measured while the button is still down: no coasting
+    const ratio = a1 ? +(Math.hypot(a1[0] - a0[0], a1[1] - a0[1]) / dx).toFixed(2) : null;
+    log("watch: tag at", JSON.stringify(a0), "then", JSON.stringify(a1), "after a", dx, "px drag:", ratio, "times the pointer's move");
+    ratio != null && ratio <= 1.4 ? log("watch: the alert's tag keeps with the dragged globe") : fail(`watch: the alert's tag ${ratio == null ? "left the screen" : `moved ${ratio} times as far as the pointer`} during a ${dx} px drag (at most 1.4)`);
+  } catch (e) { fail("watch check could not run: " + e.message.slice(0, 160)); }
+  finally { await b?.close().catch(() => {}); }
+}
+
 (async () => {
   const dev = DESK ? { viewport: { width: 1466, height: 800 } } : pw.devices["iPhone 14 Pro"];
   const ctx = await pw[ENGINE].launchPersistentContext("prof", { ...dev, ...(ENGINE === "chromium" ? { args: ["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"] } : {}) });
@@ -220,5 +412,7 @@ setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 24) * 60e3)
   if (!up2) fail("reopened in the same profile: globe not up"); else log("reopened in the same profile: up");
   await shot("out/reopen.png");
   await ctx.close().catch(() => {});
+  if (DESK) { await watchCheck(); await liveTapCheck(); await polesCheck(); await shipsCheck(); }
+  else if (ENGINE === "webkit") await polesCheck(); // the phone's memory with the polar layers drawing
   log(fails.length ? `SOAK FAILED (${fails.length})` : "SOAK PASSED"); process.exit(fails.length ? 1 : 0);
 })().catch((e) => { log("FAIL crashed:", e.message); process.exit(1); });
