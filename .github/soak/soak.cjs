@@ -93,8 +93,12 @@ setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 24) * 60e3)
     return { top: Math.round(s.scrollTop), height: s.scrollHeight, items: h.querySelectorAll("*").length }; }, undefined, 30000);
   log("scrolled", JSON.stringify(await scrollDown().catch((e) => ({ err: e.message })))); await answers("after scroll");
   const end = Date.now() + MIN * 60e3; let minute = 0;
+  // each 10 s window is profiled; the profile is printed only when that window had a long task over 700 ms
+  let seenBig = 0; const bigCount = () => ev(() => (__m.long || []).filter((x) => x[1] > 700).length).catch(() => 0);
+  const winStart = async () => { if (cdp) await cdp.send("Profiler.start").catch(() => {}); };
+  const winEnd = async (label) => { if (!cdp) return; const n = await bigCount(); if (n > seenBig) { seenBig = n; await profTop(label); } else await cdp.send("Profiler.stop").catch(() => {}); };
   while (Date.now() < end) {
-    await p.waitForTimeout(10000);
+    await winStart(); await p.waitForTimeout(10000); await winEnd(`hold window at ${Math.round((Date.now() - t0) / 1000)} s (long task over 700 ms)`);
     const a = await answers("holding at the bottom");
     const m = await ev(() => ({ wf: Math.round(__m.worstFrame), wt: Math.round(__m.worstTimer), nf: __m.frames.length, nt: __m.timers.length, heap: performance.memory ? Math.round(performance.memory.usedJSHeapSize / 1048576) : null, live: window.TERMINAL_CONFIG && document.querySelector("#liveStatus, .live-status")?.textContent?.slice(0, 60) })).catch(() => null);
     log(`answer ${a} ms`, "worst frame", m?.wf, "worst timer", m?.wt, "stalls", m?.nf, m?.nt, "heap MB", m?.heap, "rss MB", rss().toFixed(0), "|", procs());
@@ -110,11 +114,12 @@ setTimeout(() => { fail("soak ran out of time"); finish(); }, (MIN + 24) * 60e3)
     const tour = [];
     for (const [g, subs] of Object.entries(TABS)) for (const sub of subs) {
       const before = errs.length; await ev(() => { __m.worstFrame = 0; __m.worstTimer = 0; __m.tlong = (__m.long || []).length; }).catch(() => {});
-      const t = Date.now();
+      const t = Date.now(); seenBig = await bigCount(); await winStart();
       await ev(([g, sub]) => { document.querySelector(`[data-group="${g}"]`)?.click(); setTimeout(() => document.querySelector(`[data-sub="${sub}"]`)?.click(), 400); }, [g, sub]).catch(() => {});
       let worstAns = 0; for (let k = 0; k < 5; k++) { await p.waitForTimeout(3000); const a = await answers(`tour ${g}/${sub}`, 8000); if (a < 0) { worstAns = -1; break; } worstAns = Math.max(worstAns, a); }
       const m = await ev(() => ({ wf: Math.round(__m.worstFrame), wt: Math.round(__m.worstTimer), long: (__m.long || []).slice(__m.tlong).map((x) => x[1]), heap: performance.memory ? Math.round(performance.memory.usedJSHeapSize / 1048576) : null,
         shown: (document.querySelector(".sheet .tab.on, #subtabs .on, [data-sub].on")?.textContent || "").trim().slice(0, 30), empty: !document.querySelector(".sheet-body li, .sheet li, .panel li") })).catch(() => null);
+      await winEnd(`tour ${g}/${sub} (long task over 700 ms)`);
       const row = { tab: `${g}/${sub}`, ms: Date.now() - t, worstAnswer: worstAns, worstTimer: m?.wt, longest: m ? Math.max(0, ...m.long) : null, longCount: m?.long.length, heap: m?.heap, rss: Math.round(rss()), errors: errs.slice(before).map((e) => e.slice(0, 120)) };
       tour.push(row); log("TOUR", JSON.stringify(row));
       if (row.worstAnswer < 0) fail(`tour ${g}/${sub}: page stopped answering`);
