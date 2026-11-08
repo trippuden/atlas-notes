@@ -299,11 +299,13 @@ async function watchCheck() {
 (async () => {
   // the extra checks first, each in its own browser, so a stuck soak can never skip them
   const ONLY = (process.env.ONLY || "").split(",").map((x) => x.trim()).filter((x) => x && !x.startsWith("block="));
-  if (ONLY.length) { const C = { watch: watchCheck, tap: liveTapCheck, poles: polesCheck, ships: shipsCheck, news: newsCheck, weather: weatherCheck };
+  const HZ = ONLY.includes("hazards"); // only=hazards: the boot and the EARTH > Hazards hold, then stop
+  if (ONLY.length && !HZ) { const C = { watch: watchCheck, tap: liveTapCheck, poles: polesCheck, ships: shipsCheck, news: newsCheck, weather: weatherCheck };
     if (DESK) for (const k of ONLY) C[k] ? await C[k]() : fail(`no check named ${k}`);
     else if (ONLY.includes("poles")) await polesCheck(); // a phone engine (the iPhone engine, or chromium as an iPhone) with the polar layers
     finish(); return; }
-  if (DESK) { await watchCheck(); await liveTapCheck(); await polesCheck(); await shipsCheck(); await newsCheck(); await weatherCheck(); }
+  if (HZ) log("only the boot and the EARTH > Hazards hold, with graphics call timings for slow frames");
+  else if (DESK) { await watchCheck(); await liveTapCheck(); await polesCheck(); await shipsCheck(); await newsCheck(); await weatherCheck(); }
   else if (ENGINE === "webkit") await polesCheck(); // the phone's memory with the polar layers drawing
   const dev = DESK ? { viewport: { width: 1466, height: 800 } } : pw.devices["iPhone 14 Pro"];
   const ctx = await pw[ENGINE].launchPersistentContext("prof", { ...dev, ...(ENGINE === "chromium" ? { args: ["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"] } : {}) });
@@ -339,6 +341,21 @@ async function watchCheck() {
     m.loaf = []; try { new PerformanceObserver((l) => { for (const e of l.getEntries()) if (e.duration > 700) m.loaf.push({ at: Math.round(e.startTime / 1000), ms: Math.round(e.duration), block: Math.round(e.blockingDuration || 0),
       styleLayout: Math.round(e.styleAndLayoutStart ? e.startTime + e.duration - e.styleAndLayoutStart : 0), render: Math.round(e.renderStart ? e.startTime + e.duration - e.renderStart : 0),
       scripts: (e.scripts || []).filter((x) => x.duration > 30).sort((a, b) => b.duration - a.duration).slice(0, 6).map((x) => ({ ms: Math.round(x.duration), forcedLayout: Math.round(x.forcedStyleAndLayoutDuration || 0), fn: x.sourceFunctionName || "", src: `${(x.sourceURL || "").split("/").pop()}:${x.sourceCharPosition ?? ""}`, by: (x.invoker || "").slice(0, 60), type: x.invokerType })) }); }).observe({ type: "long-animation-frame", buffered: true }); } catch {}
+    // graphics calls counted and timed (shader builds, texture uploads, draws), so a slow frame says where its time went
+    m.gl = {}; m.glSeen = {}; for (const G of [window.WebGL2RenderingContext, window.WebGLRenderingContext]) { if (!G) continue; const P = G.prototype;
+      for (const k of ["linkProgram", "getProgramParameter", "compileShader", "getShaderParameter", "texImage2D", "texSubImage2D", "generateMipmap", "bufferData", "readPixels", "getError", "drawElements", "drawArrays"]) {
+        const o = P[k]; if (typeof o !== "function" || o.__soak) continue;
+        const w = function () { const t = performance.now(); try { return o.apply(this, arguments); } finally { const c = (m.gl[k] ||= [0, 0]); c[0]++; c[1] += performance.now() - t; } };
+        w.__soak = 1; P[k] = w; }
+      if (!P.createShader.__soak) { const kindOf = new WeakMap(), tagOf = new WeakMap(), progTag = (m.progTag ||= new WeakMap()); m.prog ||= {};
+        const tagFrom = (src) => { const tu = /#define TEXTURE_UNITS (\d+)/.exec(src), d = (src.match(/#define [A-Z][A-Z0-9_]+/g) || []).map((x) => x.slice(8)).filter((x) => !/^(OES_|GL_|EXT_|WEBGL_|TEXTURE_UNITS$|LOG_DEPTH|OUTPUT_DECLARATION|USE_)/.test(x)).slice(0, 5);
+          return `${/u_dayTextures/.test(src) ? `globe ${tu ? tu[1] : "?"} layers` : /u_atlas/.test(src) ? "billboards" : /v_sphericalExtents/.test(src) ? "ground" : /u_cubeMap/.test(src) ? "sky" : "other"}${d.length ? " " + d.join(" ") : ""}`; };
+        const cs = P.createShader, ss = P.shaderSource, at = P.attachShader, gp = P.getProgramParameter;
+        P.createShader = function (type) { const sh = cs.apply(this, arguments); if (sh) kindOf.set(sh, type === this.FRAGMENT_SHADER); return sh; }; P.createShader.__soak = 1;
+        P.shaderSource = function (sh, src) { if (kindOf.get(sh)) tagOf.set(sh, tagFrom(String(src))); return ss.apply(this, arguments); };
+        P.attachShader = function (pr, sh) { const t = tagOf.get(sh); if (t) progTag.set(pr, t); return at.apply(this, arguments); };
+        P.getProgramParameter = function (pr, pn) { const t = performance.now(); try { return gp.apply(this, arguments); } finally { if (pn === this.LINK_STATUS) { const k = progTag.get(pr) || "untagged", c = (m.prog[k] ||= [0, 0]); c[0]++; c[1] += performance.now() - t; } } }; }
+    }
     m.inp = []; const raw = "onpointerrawupdate" in window; m.inpKind = raw ? "pointerrawupdate" : "pointermove"; addEventListener(m.inpKind, (ev) => { if (ev.buttons) m.inp.push(Math.round(performance.now() - ev.timeStamp)); }, { capture: true, passive: true });
     let e = performance.now() + 100; setInterval(() => { const n = performance.now(), late = n - e; e = n + 100; if (late > m.worstTimer) m.worstTimer = late; if (late > 250) m.timers.push([Math.round(n / 1000), Math.round(late)]); }, 100); });
   const profTop = async (label) => { if (!cdp) return; const { profile } = await Promise.race([cdp.send("Profiler.stop"), new Promise((r) => setTimeout(() => r({ profile: null }), 15000))]); if (!profile) return;
@@ -352,6 +369,19 @@ async function watchCheck() {
   log(up ? "globe up" : "FAIL globe not up in 120 s"); if (!up) fail("globe not up");
   log("build", await ev(() => window.TERMINAL_CONFIG?.build).catch(() => "?"), "rss MB", rss().toFixed(0));
   await instrument().catch(() => {});
+  // the graphics calls (count and time per call type, 20 ms and over) since the last reading
+  const glSince = () => ev(() => { const seen = (__m.glSeen ||= {}), gl = []; for (const [k, c] of Object.entries(__m.gl || {})) { const q = seen[k] || [0, 0]; gl.push([k, c[0] - q[0], c[1] - q[1]]); seen[k] = [c[0], c[1]]; }
+    return gl.filter((x) => x[2] >= 20).sort((x, y) => y[2] - x[2]).map(([k, n, ms]) => `${k} ${n} calls ${Math.round(ms)} ms`).join("; ") || "no graphics call type over 20 ms in all"; }).catch((e) => `no reading: ${e.message.slice(0, 80)}`);
+  // what a slow frame was doing (Chromium's long-animation-frame entries): scripts with their file:line and forced
+  // layout, plus style/layout/paint time, printed for every frame over 700 ms since the last call
+  const progSince = () => ev(() => { const seen = (__m.progSeen ||= {}), out = []; let n = 0, ms = 0; for (const [k, c] of Object.entries(__m.prog || {})) { const q = seen[k] || [0, 0], dn = c[0] - q[0], dm = c[1] - q[1]; seen[k] = [c[0], c[1]]; if (dn) { n += dn; ms += dm; out.push([k, dn, dm]); } }
+    return { n, ms: Math.round(ms), top: out.sort((a, b) => b[2] - a[2]).slice(0, 6).map(([k, dn, dm]) => `${k}: ${dn} built, ${Math.round(dm)} ms`).join("; ") }; }).catch(() => ({ n: 0, ms: 0, top: "" }));
+  const winStart = async () => {};
+  const winEnd = async (label) => { const L = await ev(() => { const a = (__m.loaf || []).slice(__m.loafSeen || 0); __m.loafSeen = (__m.loaf || []).length; return a; }).catch(() => []);
+    for (const f of L) log("SLOW FRAME", label, JSON.stringify(f));
+    const gl = await glSince(), pg = await progSince(); if (L.length) { log("GL during", label + ":", gl); if (pg.n) log("GL programs built during", label + ":", pg.top); }
+    const w = L.sort((a, b) => b.ms - a.ms)[0], sc = w?.scripts?.[0];
+    return { ms: w ? w.ms : 0, why: w ? ` (slowest frame ${w.ms} ms: ${sc ? `${sc.ms} ms in ${sc.fn || "anonymous"} ${sc.src} from ${sc.type || "?"} ${sc.by || ""}`.trim() : "no script over 30 ms"}, render ${w.render} ms, style and layout ${w.styleLayout} ms; ${pg.n} shader programs built, ${pg.ms} ms waited; graphics calls: ${gl})` : "" }; };
   for (let i = 0; i < 10; i++) { await p.waitForTimeout(2000); const a = await answers("first 20 s"); log(`first 20 s: answer ${a} ms, rss MB`, rss().toFixed(0)); if (a < 0) break; }
   await profTop("startup (first 20 s)");
   // spin the globe to the far side and back with drags, while it is still loading: every drag must be answered quickly
@@ -363,11 +393,13 @@ async function watchCheck() {
       const a = await answers(`after drag ${i + 1}`, 5000); worst = Math.max(worst, Date.now() - t); if (a < 0) break; }
     log("spun the globe 8 drags, slowest drag + answer", worst, "ms");
     const sp = await ev((t) => { const i = (__m.inp || []).slice().sort((a, b) => a - b); return { kind: __m.inpKind, n: i.length, p50: i[i.length >> 1], p90: i[Math.floor(i.length * 0.9)], max: i[i.length - 1], long: (__m.long || []).filter((x) => x[0] >= t) }; }, Math.floor(spinAt / 1000)).catch(() => null);
-    log("spin: drag input delay ms", JSON.stringify(sp));
+    log("spin: drag input delay ms", JSON.stringify(sp)); const spinWhy = (await winEnd("since the globe came up, spin included (long task over 700 ms)")).why;
     if (sp) { if (!(sp.p90 <= 100)) fail(`drag input answered in ${sp.p90} ms (90th percentile), budget 100 ms`);
-      const big = sp.long.filter((x) => x[1] > 200); if (big.length) fail(`${big.length} long tasks over 200 ms while spinning: ${JSON.stringify(big.slice(0, 8))}`); } }
+      const big = sp.long.filter((x) => x[1] > 200); if (big.length) fail(`${big.length} long tasks over 200 ms while spinning: ${JSON.stringify(big.slice(0, 8))}${spinWhy}`); } }
   if (cdp) { await cdp.send("Profiler.enable"); await cdp.send("Profiler.setSamplingInterval", { interval: 1000 }); await cdp.send("Profiler.start"); }
   const shot = async (f) => { try { await p.screenshot({ path: f, timeout: 8000 }); return true; } catch { log("no frame for a screenshot in 8 s:", f); return false; } };
+  // the Hazards stall below counts from here: the worst so far (boot and spin) is logged, then cleared
+  log("worst stall before EARTH > Hazards (since the globe came up, spin included):", await ev(() => { const w = [Math.round(__m.worstTimer), Math.round(__m.worstFrame)]; __m.worstTimer = 0; __m.worstFrame = 0; return `timer ${w[0]} ms, frame ${w[1]} ms`; }).catch((e) => e.message.slice(0, 80)));
   await ev(() => { document.querySelector('.hud-ops [data-act="data"]')?.click(); }).catch((e) => log(e.message)); await p.waitForTimeout(1500);
   await ev(() => { document.querySelector('[data-group="earth"]')?.click(); }).catch((e) => log(e.message)); await p.waitForTimeout(2500);
   await ev(() => { document.querySelector('[data-sub="hazards"]')?.click(); }).catch((e) => log(e.message)); await p.waitForTimeout(2500);
@@ -389,13 +421,9 @@ async function watchCheck() {
   const end = Date.now() + MIN * 60e3; let minute = 0;
   // each 10 s window is profiled; the profile is printed only when that window had a long task over 700 ms
   let seenBig = 0; const bigCount = () => ev(() => (__m.long || []).filter((x) => x[1] > 700).length).catch(() => 0);
-  // what a slow frame was doing (Chromium's long-animation-frame entries): scripts with their file:line and forced
-  // layout, plus style/layout/paint time, printed for every frame over 700 ms since the last call
-  const winStart = async () => {};
-  const winEnd = async (label) => { const L = await ev(() => { const a = (__m.loaf || []).slice(__m.loafSeen || 0); __m.loafSeen = (__m.loaf || []).length; return a; }).catch(() => []);
-    for (const f of L) log("SLOW FRAME", label, JSON.stringify(f)); };
+  let holdMs = 0, holdWhy = "";
   while (Date.now() < end) {
-    await winStart(); await p.waitForTimeout(10000); await winEnd(`hold window at ${Math.round((Date.now() - t0) / 1000)} s (long task over 700 ms)`);
+    await winStart(); await p.waitForTimeout(10000); const hw = await winEnd(`hold window at ${Math.round((Date.now() - t0) / 1000)} s (long task over 700 ms)`); if (hw.ms > holdMs) { holdMs = hw.ms; holdWhy = hw.why; }
     const a = await answers("holding at the bottom");
     const m = await ev(() => ({ wf: Math.round(__m.worstFrame), wt: Math.round(__m.worstTimer), nf: __m.frames.length, nt: __m.timers.length, heap: performance.memory ? Math.round(performance.memory.usedJSHeapSize / 1048576) : null, live: window.TERMINAL_CONFIG && document.querySelector("#liveStatus, .live-status")?.textContent?.slice(0, 60) })).catch(() => null);
     log(`answer ${a} ms`, "worst frame", m?.wf, "worst timer", m?.wt, "stalls", m?.nf, m?.nt, "heap MB", m?.heap, "rss MB", rss().toFixed(0), "|", procs());
@@ -403,7 +431,8 @@ async function watchCheck() {
   }
   const m = await ev(() => __m).catch(() => null);
   if (m) { fs.writeFileSync("out/stalls.json", JSON.stringify(m)); log("stalls over 250 ms: frames", JSON.stringify(m.frames.slice(-30)), "timers", JSON.stringify(m.timers.slice(-30)), "long tasks over 200 ms", JSON.stringify((m.long || []).slice(-30)));
-    if (m.worstTimer > 2000) fail(`a ${Math.round(m.worstTimer)} ms stall on EARTH > Hazards`); }
+    if (m.worstTimer > 2000) fail(`a ${Math.round(m.worstTimer)} ms stall on EARTH > Hazards${holdWhy}`); }
+  if (HZ) finish();
   // Scroll check, every tour tab: the tab's biggest list (sheet at FULL on a phone) is swiped like a finger (chromium
   // phone: real touch events) or turned with the mouse wheel resting on it (desktop, webkit). Each touch's wait is how
   // long the page held it before the browser could move the list (a touch listener that may cancel makes every swipe
@@ -442,15 +471,15 @@ async function watchCheck() {
       let worstAns = 0; for (let k = 0; k < 5; k++) { await p.waitForTimeout(3000); const a = await answers(`tour ${g}/${sub}`, 8000); if (a < 0) { worstAns = -1; break; } worstAns = Math.max(worstAns, a); }
       const m = await ev(() => ({ wf: Math.round(__m.worstFrame), wt: Math.round(__m.worstTimer), long: (__m.long || []).slice(__m.tlong).map((x) => x[1]), heap: performance.memory ? Math.round(performance.memory.usedJSHeapSize / 1048576) : null,
         shown: (document.querySelector(".sheet .tab.on, #subtabs .on, [data-sub].on")?.textContent || "").trim().slice(0, 30), empty: !document.querySelector(".sheet-body li, .sheet li, .panel li") })).catch(() => null);
-      await winEnd(`tour ${g}/${sub} (long task over 700 ms)`);
+      const tw = await winEnd(`tour ${g}/${sub} (long task over 700 ms)`);
       const sc = await scrollCheck().catch(() => null);
       if (sc) { log("SCROLL", `${g}/${sub}`, JSON.stringify(sc));
         if (sc.by === "finger" && sc.held95 > 100) fail(`tour ${g}/${sub}: touches held ${sc.held95} ms by the page while scrolling (95th percentile)`);
         if (sc.rebuilt > 0) fail(`tour ${g}/${sub}: list rebuilt ${sc.rebuilt} time(s) while it was being scrolled`); }
       const row = { tab: `${g}/${sub}`, ms: Date.now() - t, worstAnswer: worstAns, worstTimer: m?.wt, longest: m ? Math.max(0, ...m.long) : null, longCount: m?.long.length, heap: m?.heap, rss: Math.round(rss()), errors: errs.slice(before).map((e) => e.slice(0, 120)), scroll: sc };
       tour.push(row); log("TOUR", JSON.stringify(row));
-      if (row.worstAnswer < 0) fail(`tour ${g}/${sub}: page stopped answering`);
-      else if (row.worstTimer > 2000) fail(`tour ${g}/${sub}: ${row.worstTimer} ms stall`);
+      if (row.worstAnswer < 0) fail(`tour ${g}/${sub}: page stopped answering${tw.why}`);
+      else if (row.worstTimer > 2000) fail(`tour ${g}/${sub}: ${row.worstTimer} ms stall${tw.why}`);
       await shot(`out/tour-${g}-${sub}.png`);
     }
     log("TOUR SUMMARY worst stall per tab:", tour.map((r) => `${r.tab}=${r.worstTimer}`).join(" "));
