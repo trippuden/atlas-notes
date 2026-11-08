@@ -36,10 +36,10 @@ jobs:
         run: |
           mkdir -p out
           xvfb-run -a node soak.cjs ${{ matrix.engine }} "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/" 5 > out/log.txt 2>&1 || true
-          grep -v '^\[pid=' out/log.txt | tail -n 400
-          echo "== live checks"; grep -E '^ *[0-9.]+s (FAIL )?(watch|tap|poles|argo|ships|opensky|news|weather)' out/log.txt | cut -c1-900 || true
-          echo "== slow frames and crashes"; grep -E 'SLOW FRAME|stalls over 250 ms|PAGE CRASHED|poles: watch|poles summary|GL during|worst stall before' out/log.txt | cut -c1-600 | head -40 || true
-          echo "== fails"; grep -E '^ *[0-9.]+s FAIL' out/log.txt | cut -c1-700 || true; grep -E 'SOAK (PASSED|FAILED)' out/log.txt || true
+          grep -av '^\[pid=' out/log.txt | tail -n 400
+          echo "== live checks"; grep -aE '^ *[0-9.]+s (FAIL )?(watch|tap|poles|argo|ships|opensky|news|weather)' out/log.txt | cut -c1-900 || true
+          echo "== slow frames and crashes"; grep -aE 'SLOW FRAME|stalls over 250 ms|PAGE CRASHED|poles: watch|poles summary|GL during|worst stall before' out/log.txt | cut -c1-600 | head -40 || true
+          echo "== fails"; grep -aE '^ *[0-9.]+s FAIL' out/log.txt | cut -c1-700 || true; grep -aE 'SOAK (PASSED|FAILED)' out/log.txt || true
       - uses: actions/upload-artifact@v4
         if: always()
         with:
