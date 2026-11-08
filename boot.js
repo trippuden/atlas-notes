@@ -24,6 +24,48 @@
     try { sessionStorage.setItem("t.reset", "1"); } catch (e) {}
     resetApp(function () { location.reload(); });
   }
+  // Start-up check. app.js says when it has run (__appRan), when it is waiting on the network (__bootWait, around every
+  // wait before the first screen) and when the first screen is drawn (__started). Run, not waiting and not drawn means
+  // its code stopped on an error, most often over something saved on this device: a setting it can no longer read, or a
+  // saved copy of the app that no longer matches. Leaving such a page is not a failed visit to the guard above (a quick
+  // exit is normal), so it would stop the same way on every visit. It is healed here, once per tab: every t.* setting is
+  // put aside (t.safe.*, "Restore my layers" brings them back), the saved brief is dropped (it loads again), the saved
+  // copy of the app is thrown away, and the page reloads into the plain view with a note. If it stops again after that,
+  // a message with the error and a reset button is shown instead, so it never reloads in a loop.
+  var err = "";
+  var note = function (e) { if (window.__started || err) return; try { var x = e.reason !== undefined ? e.reason : e.error || e.message; err = String((x && x.message) || x || "").slice(0, 200); } catch (z) {} };
+  addEventListener("error", note); addEventListener("unhandledrejection", note);
+  function heal() {
+    window.__healing = true; // app.js then leaves the state below as it is when the page goes
+    try {
+      var ks = []; for (var i = 0; i < localStorage.length; i++) ks.push(localStorage.key(i));
+      ks.forEach(function (k) {
+        if (!k || k.indexOf("t.") !== 0 || k.indexOf("t.safe.") === 0 || k === "t.boot" || k === "t.healed") return;
+        try { var v = localStorage.getItem(k); localStorage.removeItem(k); if (v != null && k !== "t.brief" && k !== "t.brief.sig") localStorage.setItem("t.safe." + k.slice(2), v); } catch (e) {}
+      });
+      localStorage.setItem("t.boot", JSON.stringify({ state: "starting", at: Date.now(), fails: 0, where: "start-up" }));
+    } catch (e) {}
+    resetApp(function () { location.reload(); });
+  }
+  function stuck() {
+    if (document.querySelector(".boot-fail")) return;
+    var n = document.createElement("div"); n.className = "safe-note boot-fail"; n.setAttribute("role", "alert"); n.style.zIndex = "9999"; // above the loading screen
+    n.appendChild(document.createTextNode("The terminal couldn't finish starting on this device, even with your settings put aside. Resetting clears the saved copy of the app and loads it again. Your saved maps and data are kept. "));
+    var rb2 = document.createElement("button"); rb2.type = "button"; rb2.textContent = "Reset the app on this device";
+    rb2.onclick = function () { rb2.disabled = true; resetApp(function () { location.reload(); }); };
+    n.appendChild(rb2);
+    if (err) { var d = document.createElement("div"); d.className = "dim"; d.textContent = "What stopped it: " + err; n.appendChild(d); }
+    document.body.appendChild(n);
+  }
+  var dead = 0, poll = setInterval(function () {
+    if (window.__started) { clearInterval(poll); return; }
+    if (!window.__appRan || window.__bootWait) { dead = 0; return; }
+    if (++dead < 2) return; // seen twice, 1.5 s apart
+    clearInterval(poll);
+    var once = false; try { once = sessionStorage.getItem("t.startHeal") === "1"; } catch (e) {}
+    if (!once) { try { sessionStorage.setItem("t.startHeal", "1"); once = sessionStorage.getItem("t.startHeal") !== "1"; } catch (e) { once = true; } } // no tab memory: never reload
+    if (once) stuck(); else heal();
+  }, 1500);
   var b = document.getElementById("boot"), t = document.getElementById("bootTxt");
   if (!b) return;
   setTimeout(function () { if (!b.isConnected) return; b.className = "slow"; t.textContent = "Still loading. The connection or this device is slow right now."; }, 15000);
