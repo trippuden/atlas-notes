@@ -443,7 +443,10 @@ async function watchCheck() {
     await p.waitForTimeout(900);
     const b = await ev(() => { const c = [...document.querySelectorAll("*")].filter((e) => e.scrollHeight > e.clientHeight + 40 && /auto|scroll/.test(getComputedStyle(e).overflowY) && e.getClientRects().length && e.clientHeight > 120);
       c.sort((x, y) => y.clientHeight * y.clientWidth - x.clientHeight * x.clientWidth); const e = c[0]; if (!e) return null; window.__sw?.mo.disconnect();
-      const sw = window.__sw = { rb: 0, mo: new MutationObserver((ms) => { let rm = 0; for (const m of ms) rm += m.removedNodes.length; if (rm >= Math.max(3, e.children.length * 0.5)) sw.rb++; }) }; sw.mo.observe(e, { childList: true });
+      // the count starts once the page has been handed the scroll's first wheel step or finger move: a rebuild drawn in a
+      // frame that began before any of that input reached the page is one no page can hold back (counted apart, not failed)
+      const sw = window.__sw = { rb: 0, early: 0, seen: 0, mo: new MutationObserver((ms) => { let rm = 0; for (const m of ms) rm += m.removedNodes.length; if (rm >= Math.max(3, e.children.length * 0.5)) { if (sw.seen) sw.rb++; else sw.early++; } }) }; sw.mo.observe(e, { childList: true });
+      const seen = () => { sw.seen = 1; }; for (const t of ["wheel", "touchmove"]) addEventListener(t, seen, { capture: true, passive: true, once: true });
       const r = e.getBoundingClientRect(); return { x: Math.round(r.left + r.width / 2), y: Math.round(Math.min(r.bottom - 40, r.top + r.height * 0.75)), top: Math.round(r.top), list: e.id || String(e.className).slice(0, 24) }; }).catch(() => null);
     if (!b) return null;
     const waits = [], dl = Date.now() + (cdp && !DESK ? 15000 : 8000); // time-boxed: software graphics on the runners can make each wheel step take seconds
@@ -454,9 +457,9 @@ async function watchCheck() {
       else { await p.mouse.move(b.x, b.y); for (let i = 0; i < 10 && Date.now() < dl; i++) { const a = Date.now(); await p.mouse.wheel(0, k % 2 ? -160 : 240); waits.push(Date.now() - a); await p.waitForTimeout(40); } }
       await p.waitForTimeout(400);
     }
-    const rebuilt = await ev(() => window.__sw?.rb ?? 0).catch(() => -1);
+    const { rebuilt, early } = await ev(() => ({ rebuilt: window.__sw?.rb ?? 0, early: window.__sw?.early ?? 0 })).catch(() => ({ rebuilt: -1, early: -1 }));
     waits.sort((x, y) => y - x);
-    return { list: b.list, by: cdp && !DESK ? "finger" : "wheel", held95: waits[Math.floor(waits.length * 0.05)], heldMax: waits[0], rebuilt };
+    return { list: b.list, by: cdp && !DESK ? "finger" : "wheel", held95: waits[Math.floor(waits.length * 0.05)], heldMax: waits[0], rebuilt, early };
   };
   // full tour: every tab and sub-tab, ~15 s each; per tab: page answer, worst stall, long tasks, heap, errors, scroll
   // check, screenshot
