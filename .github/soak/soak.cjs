@@ -376,11 +376,7 @@ async function watchCheck() {
   // layout, plus style/layout/paint time, printed for every frame over 700 ms since the last call
   const progSince = () => ev(() => { const seen = (__m.progSeen ||= {}), out = []; let n = 0, ms = 0; for (const [k, c] of Object.entries(__m.prog || {})) { const q = seen[k] || [0, 0], dn = c[0] - q[0], dm = c[1] - q[1]; seen[k] = [c[0], c[1]]; if (dn) { n += dn; ms += dm; out.push([k, dn, dm]); } }
     return { n, ms: Math.round(ms), top: out.sort((a, b) => b[2] - a[2]).slice(0, 6).map(([k, dn, dm]) => `${k}: ${dn} built, ${Math.round(dm)} ms`).join("; ") }; }).catch(() => ({ n: 0, ms: 0, top: "" }));
-  const winStart = async () => { if (cdp) await cdp.send("Profiler.start").catch(() => {}); };
-  const winProf = async (label, slow) => { if (!cdp) return; const r = await Promise.race([cdp.send("Profiler.stop"), new Promise((res) => setTimeout(() => res(null), 15000))]).catch(() => null), pr = r?.profile; if (!pr || !slow) return;
-    const byId = new Map(pr.nodes.map((n) => [n.id, n])), cnt = new Map(), self = new Map(); pr.samples.forEach((id, i) => cnt.set(id, (cnt.get(id) || 0) + (pr.timeDeltas[i] || 0)));
-    for (const [id, us] of cnt) { const cf = byId.get(id).callFrame; if (/^\((idle|program|garbage collector)\)$/.test(cf.functionName)) continue; const k = `${cf.functionName || "(anon)"} ${cf.url.split("/").pop()}:${cf.lineNumber + 1}:${cf.columnNumber + 1}`; self.set(k, (self.get(k) || 0) + us); }
-    log("PROFILE", label + ":", [...self].sort((a, b) => b[1] - a[1]).slice(0, 10).map(([k, us]) => `${Math.round(us / 1000)} ms ${k}`).join("; ")); };
+  const winStart = async () => {};
   const winEnd = async (label) => { const L = await ev(() => { const a = (__m.loaf || []).slice(__m.loafSeen || 0); __m.loafSeen = (__m.loaf || []).length; return a; }).catch(() => []);
     for (const f of L) log("SLOW FRAME", label, JSON.stringify(f));
     const gl = await glSince(), pg = await progSince(); if (L.length) { log("GL during", label + ":", gl); if (pg.n) log("GL programs built during", label + ":", pg.top); }
@@ -427,7 +423,7 @@ async function watchCheck() {
   let seenBig = 0; const bigCount = () => ev(() => (__m.long || []).filter((x) => x[1] > 700).length).catch(() => 0);
   let holdMs = 0, holdWhy = "";
   while (Date.now() < end) {
-    await winStart(); await p.waitForTimeout(10000); const hl = `hold window at ${Math.round((Date.now() - t0) / 1000)} s`, hw = await winEnd(`${hl} (long task over 700 ms)`); await winProf(hl, hw.ms > 2000); if (hw.ms > holdMs) { holdMs = hw.ms; holdWhy = hw.why; }
+    await winStart(); await p.waitForTimeout(10000); const hl = `hold window at ${Math.round((Date.now() - t0) / 1000)} s`, hw = await winEnd(`${hl} (long task over 700 ms)`); if (hw.ms > holdMs) { holdMs = hw.ms; holdWhy = hw.why; }
     const a = await answers("holding at the bottom");
     const m = await ev(() => ({ wf: Math.round(__m.worstFrame), wt: Math.round(__m.worstTimer), nf: __m.frames.length, nt: __m.timers.length, heap: performance.memory ? Math.round(performance.memory.usedJSHeapSize / 1048576) : null, live: window.TERMINAL_CONFIG && document.querySelector("#liveStatus, .live-status")?.textContent?.slice(0, 60) })).catch(() => null);
     log(`answer ${a} ms`, "worst frame", m?.wf, "worst timer", m?.wt, "stalls", m?.nf, m?.nt, "heap MB", m?.heap, "rss MB", rss().toFixed(0), "|", procs());
@@ -475,7 +471,7 @@ async function watchCheck() {
       let worstAns = 0; for (let k = 0; k < 5; k++) { await p.waitForTimeout(3000); const a = await answers(`tour ${g}/${sub}`, 8000); if (a < 0) { worstAns = -1; break; } worstAns = Math.max(worstAns, a); }
       const m = await ev(() => ({ wf: Math.round(__m.worstFrame), wt: Math.round(__m.worstTimer), long: (__m.long || []).slice(__m.tlong).map((x) => x[1]), heap: performance.memory ? Math.round(performance.memory.usedJSHeapSize / 1048576) : null,
         shown: (document.querySelector(".sheet .tab.on, #subtabs .on, [data-sub].on")?.textContent || "").trim().slice(0, 30), empty: !document.querySelector(".sheet-body li, .sheet li, .panel li") })).catch(() => null);
-      const tw = await winEnd(`tour ${g}/${sub} (long task over 700 ms)`); await winProf(`tour ${g}/${sub}`, tw.ms > 2000);
+      const tw = await winEnd(`tour ${g}/${sub} (long task over 700 ms)`);
       const sc = await scrollCheck().catch(() => null);
       if (sc) { log("SCROLL", `${g}/${sub}`, JSON.stringify(sc));
         if (sc.by === "finger" && sc.held95 > 100) fail(`tour ${g}/${sub}: touches held ${sc.held95} ms by the page while scrolling (95th percentile)`);
