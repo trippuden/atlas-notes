@@ -33,7 +33,8 @@ jobs:
           for u in $URLS; do
             echo "== $u"
             curl -sS -o body.bin -D head.txt -m 30 -A "$UA" -H "Origin: $ORIGIN" ${HDR:+-H "$HDR"} -w 'status %{http_code}, %{size_download} bytes, %{time_total} s\n' "$u" || echo "curl failed with code $?"
-            grep -i -E '^(access-control-allow-origin|access-control-allow-headers|content-type|content-length|cache-control|retry-after|server|location):' head.txt || true
+            grep -i -E '^(access-control-allow-origin|access-control-allow-headers|content-type|content-length|cache-control|retry-after|server|location|x-rate-limit-remaining):' head.txt || true
+            jq -r '"items: " + ([(.ac // .aircraft // .states // .features // [])] | .[0] | length | tostring)' body.bin 2>/dev/null || true
             if grep -qi '<html' body.bin; then echo "html page, title: $(grep -o -i '<title>[^<]*' body.bin | head -1 | cut -c8-)"; echo "text: $(sed -e 's/<[^>]*>/ /g' body.bin | tr -s ' \r\n\t' ' ' | cut -c1-600)"
             else echo "body starts:"; head -c 300 body.bin | tr -d '\r' | head -5 || true; echo; fi
           done
