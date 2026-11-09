@@ -54,6 +54,7 @@
     var rb2 = document.createElement("button"); rb2.type = "button"; rb2.textContent = "Reset the app on this device";
     rb2.onclick = function () { rb2.disabled = true; resetApp(function () { location.reload(); }); };
     n.appendChild(rb2);
+    var hl = document.createElement("a"); hl.href = "help.html"; hl.textContent = "Help"; hl.style.marginLeft = "12px"; n.appendChild(hl);
     if (err) { var d = document.createElement("div"); d.className = "dim"; d.textContent = "What stopped it: " + err; n.appendChild(d); }
     document.body.appendChild(n);
   }

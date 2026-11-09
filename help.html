@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Help</title>
+<meta name="robots" content="noindex, nofollow, noarchive" />
+<meta name="theme-color" content="#000000" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'" />
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" href="icon.svg" />
+<link rel="stylesheet" href="help/help.css" />
+</head>
+<body data-dev="ios">
+<nav class="hp-top">
+<a href="./">Globe</a>
+<a href="survival.html">Field Kit</a>
+</nav>
+<main class="hp">
+<h1>Help</h1>
+<p class="lead">How to put the terminal on your phone, use it with no signal, see how much space it takes, and fix it when it won't open.</p>
+<div class="seg" role="radiogroup" aria-label="Show the steps for">
+<button type="button" role="radio" data-pick="ios">iPhone</button>
+<button type="button" role="radio" data-pick="android">Android</button>
+<button type="button" role="radio" data-pick="desktop">Computer</button>
+</div>
+<ol class="toc">
+<li><a href="#stuck">It won't open, or it's stuck loading</a></li>
+<li><a href="#home">Put it on your Home Screen</a></li>
+<li><a href="#offline">Using it with no signal</a></li>
+<li><a href="#kept">When a phone deletes the saved copy</a></li>
+<li><a href="#space">How much space it uses</a></li>
+<li><a href="#clear">Free up space or remove it completely</a></li>
+<li><a href="#heal">When it fixes itself on start</a></li>
+</ol>
+<section id="stuck">
+<h2>It won't open, or it's stuck loading</h2>
+<p>Try these in order. Stop as soon as it opens.</p>
+<ol class="steps">
+<li>Wait 15 seconds. If it is still loading, a button appears: <b>Start in the plain view</b>. Tap it. The globe opens with fewer layers, which is lighter for a slow phone or a weak signal.</li>
+<li>Still stuck after 30 seconds? Tap <b>Reset the app on this device</b>. This throws away the saved copy of the app and loads it fresh. Your saved maps, news, books and plan stay.</li>
+<li><span data-only="ios">Close it fully. Swipe up from the bottom edge and hold until your open apps appear, then push the terminal (or Safari) up and off the screen. Open it again.</span><span data-only="android">Close it fully. Tap the square button at the bottom, or swipe up from the bottom and hold, then swipe the terminal (or Chrome) away. Open it again.</span><span data-only="desktop">Close the tab or the window, then open the terminal again.</span></li>
+<li>Open this page on its own and tap the button below. It does the same as step 2, from here, even when the globe can't start. The address of this page is <b class="addr"></b>.</li>
+<li>If none of that works, remove the site's data with the steps in <a href="#clear">Free up space or remove it completely</a>, then open the terminal again with signal.</li>
+</ol>
+<p class="act"><button type="button" class="btn" id="resetApp">Reset the app on this device</button> <span class="note" id="resetNote">Keeps your maps, news, books and plan.</span></p>
+</section>
+<section id="home">
+<h2>Put it on your Home Screen</h2>
+<p>It then opens full screen from its own icon, like any other app, and your phone keeps its saved copy longer.</p>
+<p class="done" id="isHome" hidden>You are using the Home Screen copy right now. Nothing to do here.</p>
+<div data-only="ios">
+<ol class="steps">
+<li>Open the terminal in Safari.</li>
+<li>Tap the Share button: a square with an arrow pointing up. On newer iPhones, tap the three dots at the bottom right first, then Share.</li>
+<li>Scroll down the list and tap <b>Add to Home Screen</b>.</li>
+<li>If you see <b>Open as Web App</b>, leave it switched on. Tap <b>Add</b>.</li>
+<li>From now on, open it from the new icon on your Home Screen.</li>
+</ol>
+<p class="aside">In Chrome on iPhone it works the same way: tap the Share button at the top right of the address bar, then Add to Home Screen.</p>
+<p class="aside">Good to know: the Home Screen copy keeps its own saved data, apart from Safari. Maps and books you saved in Safari are not in it, so save them again from the Home Screen copy.</p>
+</div>
+<div data-only="android">
+<ol class="steps">
+<li>Open the terminal in Chrome.</li>
+<li>Tap the three dots at the top right.</li>
+<li>Tap <b>Add to Home screen</b>. On some phones it is called <b>Install app</b>.</li>
+<li>Tap <b>Install</b> (or <b>Add</b>), and if asked, tap <b>Add</b> once more to place the icon.</li>
+<li>From now on, open it from the new icon.</li>
+</ol>
+</div>
+<div data-only="desktop">
+<ol class="steps">
+<li>Open the terminal in Chrome or Edge.</li>
+<li>Look at the right end of the address bar for a small screen with a down arrow, and click it. If it isn't there, open the browser menu (three dots) and choose <b>Install</b>, or in Edge <b>Apps</b> then <b>Install this site as an app</b>.</li>
+<li>Click <b>Install</b>. It opens in its own window and gets an icon like other programs.</li>
+</ol>
+<p class="aside">Safari on a Mac: choose <b>File</b>, then <b>Add to Dock</b>. Firefox can't install sites, but everything else on this page still works in it.</p>
+</div>
+</section>
+<section id="offline">
+<h2>Using it with no signal</h2>
+<p>The terminal saves itself and the latest news on your device while you have signal. With no signal it opens from that saved copy and shows how old everything is.</p>
+<ol class="steps">
+<li>With signal, open the terminal and wait until the globe and the news have loaded. That saves the app and today's picture.</li>
+<li>Open the <a href="survival.html">Field Kit</a> once. At the top, <b>Ready for no signal</b> lists what is still missing on this device.</li>
+<li>In the Field Kit, open <b>Here</b> and save the street maps of your area. Get any encyclopedias you want in <b>Library</b>.</li>
+<li>Open it about once a week with signal. Each visit saves the newest news over the old.</li>
+</ol>
+<div class="two">
+<div>
+<h3>Works with no signal</h3>
+<ul class="yes">
+<li>The globe, with the whole Earth and the places you already looked at</li>
+<li>The last saved news, levels and layers, each with its time</li>
+<li>Street maps of areas you saved</li>
+<li>The Field Kit: survival guide, tools, country files, your plan and go-bag</li>
+<li>Encyclopedias you downloaded</li>
+<li>Passing the news to another phone: screen to camera, same Wi-Fi, a file, or a long-range radio</li>
+</ul>
+</div>
+<div>
+<h3>Needs signal</h3>
+<ul class="no">
+<li>Anything new: news, levels, alerts</li>
+<li>Live planes, ships, cameras, TV and radio</li>
+<li>Weather radar and new forecasts</li>
+<li>Close-up 3D cities and street view</li>
+<li>Maps of places you didn't save</li>
+<li>Downloading books and maps</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="kept">
+<h2>When a phone deletes the saved copy</h2>
+<div data-only="ios">
+<p>An iPhone can delete what a website saved in two cases:</p>
+<ul class="plain">
+<li>You use Safari for about a week without opening the terminal. The copy on your Home Screen doesn't count this way, which is one more reason to add it there.</li>
+<li>The iPhone runs very low on storage and frees space on its own.</li>
+</ul>
+</div>
+<div data-only="android">
+<p>Android phones keep it unless the phone runs very low on storage, or you clear Chrome's data. Then the phone may free space by deleting what websites saved.</p>
+</div>
+<div data-only="desktop">
+<p>Computers keep it unless the disk is nearly full, or you clear the browser's history with "cookies and site data" ticked.</p>
+</div>
+<ol class="steps">
+<li>Ask the device to keep it: tap <b>Keep it on this device</b> below. Not every phone says yes; it is more likely once it is on your Home Screen and you use it often.</li>
+<li>If it was deleted anyway, open the terminal once with signal. It saves itself and the news again on its own. Saved street maps and encyclopedias need saving again.</li>
+</ol>
+<p class="act"><button type="button" class="btn" id="persist">Keep it on this device</button> <span class="note" id="persistNote"></span></p>
+</section>
+<section id="space">
+<h2>How much space it uses</h2>
+<p>These numbers are measured on this device, right now.</p>
+<div class="store" id="store" aria-live="polite">
+<p class="total" id="total">Measuring</p>
+<ul class="rows" id="rows"></ul>
+</div>
+<p class="aside">Rough sizes before you download: one area of street maps is usually 5 to 30 MB. Encyclopedias go from about 5 MB (the 100 most read Wikipedia articles) to about 800 MB for WikiMed, the medical encyclopedia, and about 1 GB for Simple English Wikipedia. Each one shows its size in Library before you get it. The offline assistant on a USB stick uses no phone storage at all; it needs about 3.5 GB on the stick.</p>
+</section>
+<section id="clear">
+<h2>Free up space or remove it completely</h2>
+<p>The quickest way is the <b>Clear</b> buttons above: each one removes only that part. To remove everything the terminal saved on this device:</p>
+<p class="act"><button type="button" class="btn red" id="wipe">Remove everything on this device</button></p>
+<p class="note" id="wipeNote">This also removes your plan, contacts, go-bag list, saved news history and settings. It can't be undone.</p>
+<p>You can also do it from the device's own settings. That works even when the terminal won't open.</p>
+<div data-only="ios">
+<h3>In Safari</h3>
+<ol class="steps">
+<li>Open the <b>Settings</b> app.</li>
+<li>Tap <b>Apps</b>, then <b>Safari</b>. On iOS 17 or older there is no Apps step: scroll down and tap <b>Safari</b>.</li>
+<li>Scroll to the bottom and tap <b>Advanced</b>, then <b>Website Data</b>.</li>
+<li>Wait for the list to load, then type <b class="host"></b> in the search box at the top.</li>
+<li>Swipe left on it and tap <b>Delete</b>.</li>
+</ol>
+<h3>The Home Screen copy</h3>
+<ol class="steps">
+<li>Touch and hold the terminal's icon on your Home Screen.</li>
+<li>Tap <b>Remove App</b> (or <b>Delete Bookmark</b>), then <b>Delete</b>.</li>
+<li>That removes the icon and everything the Home Screen copy saved. Safari's copy is separate; remove it with the steps above.</li>
+</ol>
+<p class="aside">To see how much space each website takes first: Settings, then General, then iPhone Storage, then Safari, then Website Data.</p>
+</div>
+<div data-only="android">
+<h3>In Chrome</h3>
+<ol class="steps">
+<li>Open Chrome and tap the three dots at the top right.</li>
+<li>Tap <b>Settings</b>, then <b>Site settings</b>.</li>
+<li>Tap <b>All sites</b> (on some phones it is called <b>Data stored</b>).</li>
+<li>Find <b class="host"></b> in the list and tap it.</li>
+<li>Tap <b>Delete data</b> (on older Chrome: <b>Clear &amp; reset</b>), then confirm.</li>
+</ol>
+<p class="aside">If you put it on your Home Screen, touch and hold its icon and choose <b>Uninstall</b> or <b>Remove</b>. The saved data lives in Chrome, so also do the steps above. In other browsers, look in their settings for <b>Site settings</b> or <b>Website data</b>.</p>
+</div>
+<div data-only="desktop">
+<h3>Chrome or Edge</h3>
+<ol class="steps">
+<li>Open the terminal.</li>
+<li>Click the small icon at the left end of the address bar, then <b>Site settings</b>.</li>
+<li>Click <b>Delete data</b> and confirm.</li>
+</ol>
+<p class="aside">In Edge the menu item is called <b>Permissions for this site</b>, and the button is <b>Clear data</b>.</p>
+<h3>Firefox</h3>
+<ol class="steps">
+<li>Open the terminal and click the padlock at the left end of the address bar.</li>
+<li>Click <b>Clear cookies and site data</b>, then <b>Remove</b>.</li>
+</ol>
+<h3>Safari on a Mac</h3>
+<ol class="steps">
+<li>Choose <b>Safari</b>, then <b>Settings</b>, then <b>Privacy</b>.</li>
+<li>Click <b>Manage Website Data</b> and search for <b class="host"></b>.</li>
+<li>Select it and click <b>Remove</b>.</li>
+</ol>
+</div>
+</section>
+<section id="heal">
+<h2>When it fixes itself on start</h2>
+<p>The terminal watches its own start. If it can't finish, it fixes itself instead of leaving you on a loading screen.</p>
+<ul class="plain">
+<li>If the last visit froze or the phone closed it, the next one opens in the <b>plain view</b>: the globe with fewer layers on. A note at the top says so.</li>
+<li>If it stops on start because of something saved on this device, it puts your layer settings aside, loads a fresh copy of itself and opens the plain view. Your maps, news and plan are not touched.</li>
+<li>If that fails too, it shows what went wrong and a <b>Reset the app on this device</b> button. It never reloads over and over.</li>
+</ul>
+<ol class="steps">
+<li>When you see the note, tap <b>Restore my layers</b> to get your layers and settings back.</li>
+<li>If it freezes again with your layers on, leave them off and turn on only the ones you need from <b>Filters</b>.</li>
+</ol>
+<p class="act"><button type="button" class="btn" id="restore" hidden>Restore my layers</button> <span class="note" id="restoreNote"></span></p>
+</section>
+</main>
+<script src="library/store.js"></script>
+<script src="help/help.js"></script>
+</body>
+</html>
