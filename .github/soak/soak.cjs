@@ -248,7 +248,7 @@ async function boardCheck() {
     for (let k = 1; k <= 8; k++) {
       await w.waitForTimeout(30000);
       s = await Promise.race([w.evaluate(() => {
-        const tiles = [...document.querySelectorAll(".hud-ops .board .tile")].slice(0, 4).map((t) => `${(t.querySelector(".t-name")?.textContent || "").trim()}: ${(t.querySelector(".o-age")?.textContent || "").trim()}`);
+        const tiles = [...document.querySelectorAll(".hud-ops .board .tile")].filter((t) => t.querySelector(".t-name")).slice(0, 4).map((t) => `${(t.querySelector(".t-name")?.textContent || "").trim()}: ${(t.querySelector(".o-age")?.textContent || "").trim()}`);
         const n = window.__news, all = n?.news() || [], now = Date.now();
         const newest = (c) => { const m = all.filter((x) => (x.countries || []).includes(c)).reduce((a, x) => Math.max(a, Date.parse(x.time) || 0), 0); return m ? Math.round((now - m) / 6e4) + " min" : "none"; };
         const named = (c) => all.filter((x) => (x.live || x.wire) && new RegExp(c, "i").test(x.title || "")).slice(0, 2).map((x) => `${(x.title || "").slice(0, 60)} [${(x.countries || []).join("/")}] ${x.time}`);
@@ -256,9 +256,16 @@ async function boardCheck() {
       }), new Promise((_, j) => setTimeout(() => j(new Error("page did not answer")), 60000))]).catch((e) => ({ err: e.message }));
       log(`board ${eng} +${k * 30}s: ${JSON.stringify(s).slice(0, 900)} | gdelt ${gd.length}: ${gd.slice(-5).join(" ; ")}`);
     }
-    const old = (s?.tiles || []).filter((t) => /\d+d ago|No news/.test(t));
+    const old = (s?.tiles || []).filter((t) => /\d+d ago|No news|Checking|unreachable/.test(t));
     if (!s || s.err) fail(`board: could not read it (${JSON.stringify(s)})`);
     else if (old.length) fail(`board ${eng}: after 4 minutes ${old.length} top cards still read days old: ${old.join(", ")}`);
+    // opened again (iPhone Safari reloads this page whenever it is opened again): the board's very first drawing
+    await w.reload({ timeout: 90000 });
+    await w.waitForFunction(() => !document.getElementById("boot") && document.querySelector(".hud-ops .board .tile .t-name"), null, { timeout: 180000 });
+    const re = await w.evaluate(() => [...document.querySelectorAll(".hud-ops .board .tile")].filter((t) => t.querySelector(".t-name")).slice(0, 4).map((t) => `${(t.querySelector(".t-name")?.textContent || "").trim()}: ${(t.querySelector(".o-age")?.textContent || "").trim()}`)).catch((e) => [e.message]);
+    log(`board ${eng} opened again, first drawing: ${JSON.stringify(re)}`);
+    const reOld = re.filter((t) => /\d+d ago|No news|Checking|unreachable/.test(t));
+    if (reOld.length) fail(`board ${eng}: opened again, ${reOld.length} top cards first read: ${reOld.join(", ")}`);
   } catch (e) { fail(`board check: ${e.message.split("\n")[0]}`); }
   finally { await b?.close().catch(() => {}); pt.close(); }
 }
