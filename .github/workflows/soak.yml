@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       only:
-        description: "Only these live checks, on the desktop job (comma list: watch,tap,poles,ships,news,weather; poles also runs on both phone engines; hazards alone runs the boot and the EARTH > Hazards hold on every engine, with graphics call timings); empty runs the full soak"
+        description: "Only these live checks, on the desktop job (comma list: watch,tap,poles,ships,news,weather,board (board also runs on both phone engines); poles also runs on both phone engines; hazards alone runs the boot and the EARTH > Hazards hold on every engine, with graphics call timings); empty runs the full soak"
         required: false
         default: ""
 permissions:
@@ -24,11 +24,11 @@ jobs:
         with:
           node-version: 22
       - name: browser
-        if: inputs.only == '' || matrix.engine == 'desktop' || contains(inputs.only, 'poles') || contains(inputs.only, 'hazards')
+        if: inputs.only == '' || matrix.engine == 'desktop' || contains(inputs.only, 'poles') || contains(inputs.only, 'hazards') || contains(inputs.only, 'board')
         working-directory: .github/soak
         run: npm i --no-save --no-audit --no-fund playwright@1.63.0 && npx playwright install --with-deps ${{ matrix.engine == 'desktop' && 'chromium' || matrix.engine }}
       - name: soak
-        if: inputs.only == '' || matrix.engine == 'desktop' || contains(inputs.only, 'poles') || contains(inputs.only, 'hazards')
+        if: inputs.only == '' || matrix.engine == 'desktop' || contains(inputs.only, 'poles') || contains(inputs.only, 'hazards') || contains(inputs.only, 'board')
         working-directory: .github/soak
         env:
           ONLY: ${{ inputs.only }}
@@ -37,7 +37,7 @@ jobs:
           mkdir -p out
           xvfb-run -a node soak.cjs ${{ matrix.engine }} "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/" 5 > out/log.txt 2>&1 || true
           grep -av '^\[pid=' out/log.txt | tail -n 400
-          echo "== live checks"; grep -aE '^ *[0-9.]+s (FAIL )?(watch|tap|poles|argo|ships|opensky|news|weather|SCROLL)' out/log.txt | cut -c1-900 || true
+          echo "== live checks"; grep -aE '^ *[0-9.]+s (FAIL )?(watch|tap|poles|argo|ships|opensky|news|weather|board|SCROLL)' out/log.txt | cut -c1-900 || true
           echo "== slow frames and crashes"; grep -aE 'SLOW FRAME|stalls over 250 ms|PAGE CRASHED|poles: watch|poles summary|GL during|worst stall before' out/log.txt | cut -c1-600 | head -40 || true
           echo "== fails"; grep -aE '^ *[0-9.]+s FAIL' out/log.txt | cut -c1-700 || true; grep -aE 'SOAK (PASSED|FAILED)' out/log.txt || true
       - uses: actions/upload-artifact@v4

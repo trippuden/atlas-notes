@@ -227,6 +227,42 @@ async function newsCheck() {
   finally { await b?.close().catch(() => {}); pt.close(); }
 }
 
+// The country board on an iPhone (only=board: the desktop job as chromium, and each phone engine as itself), the live
+// files through the localhost pass-through with the real outlets and the real country desk: every 30 s for 4 minutes,
+// each top card's "Latest", the newest live story naming Israel and Ukraine, the outlets' state, and every GDELT answer.
+// Fails when a top card still reads days old after 4 minutes.
+async function boardCheck() {
+  let b = null; const pt = await passThrough(), eng = DESK ? "chromium" : ENGINE, gd = [];
+  try {
+    b = await pw[eng].launch(eng === "chromium" ? { args: ["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"] } : {});
+    const c = await b.newContext({ ...pw.devices["iPhone 14 Pro"], serviceWorkers: "block" });
+    await c.addInitScript(() => { try { localStorage.setItem("t.seenIntro", "1"); } catch { /* private mode */ } });
+    const w = await c.newPage();
+    const q = (u) => { try { return (new URL(u).searchParams.get("query") || "").slice(0, 36); } catch { return "?"; } };
+    w.on("requestfinished", async (r) => { if (/gdeltproject/.test(r.url())) { const a = await r.response().catch(() => null); gd.push(`${q(r.url())} ${a ? a.status() : "?"}`); } });
+    w.on("requestfailed", (r) => { if (/gdeltproject/.test(r.url())) gd.push(`${q(r.url())} FAILED ${r.failure()?.errorText || ""}`); });
+    w.on("console", (m) => { if (/gdelt|desk/i.test(m.text())) log(`board console: ${m.text().slice(0, 200)}`); });
+    await w.goto(pt.url, { timeout: 90000 });
+    await w.waitForFunction(() => !document.getElementById("boot") && document.querySelector(".hud-ops .board .tile"), null, { timeout: 180000 });
+    let s = null;
+    for (let k = 1; k <= 8; k++) {
+      await w.waitForTimeout(30000);
+      s = await Promise.race([w.evaluate(() => {
+        const tiles = [...document.querySelectorAll(".hud-ops .board .tile")].slice(0, 4).map((t) => `${(t.querySelector(".t-name")?.textContent || "").trim()}: ${(t.querySelector(".o-age")?.textContent || "").trim()}`);
+        const n = window.__news, all = n?.news() || [], now = Date.now();
+        const newest = (c) => { const m = all.filter((x) => (x.countries || []).includes(c)).reduce((a, x) => Math.max(a, Date.parse(x.time) || 0), 0); return m ? Math.round((now - m) / 6e4) + " min" : "none"; };
+        const named = (c) => all.filter((x) => (x.live || x.wire) && new RegExp(c, "i").test(x.title || "")).slice(0, 2).map((x) => `${(x.title || "").slice(0, 60)} [${(x.countries || []).join("/")}] ${x.time}`);
+        return { tiles, stories: all.length, live: all.filter((x) => x.live || x.wire).length, wireAt: n?.state?.at, ok: (n?.state?.ok || []).length, failed: n?.state?.failed, israel: newest("Israel"), ukraine: newest("Ukraine"), israelLive: named("Israel"), ukraineLive: named("Ukrain") };
+      }), new Promise((_, j) => setTimeout(() => j(new Error("page did not answer")), 60000))]).catch((e) => ({ err: e.message }));
+      log(`board ${eng} +${k * 30}s: ${JSON.stringify(s).slice(0, 900)} | gdelt ${gd.length}: ${gd.slice(-5).join(" ; ")}`);
+    }
+    const old = (s?.tiles || []).filter((t) => /\d+d ago|No news/.test(t));
+    if (!s || s.err) fail(`board: could not read it (${JSON.stringify(s)})`);
+    else if (old.length) fail(`board ${eng}: after 4 minutes ${old.length} top cards still read days old: ${old.join(", ")}`);
+  } catch (e) { fail(`board check: ${e.message.split("\n")[0]}`); }
+  finally { await b?.close().catch(() => {}); pt.close(); }
+}
+
 // Weather warnings on the live site (desktop), the way a person turns them on: Filters, then Hurricanes & typhoons and NWS
 // warnings, and the weather clock on Next 6 hours. The weather panel's Storms and NWS warnings rows must say how many are
 // active, never "Not answering" (until t-v156 the NWS loader threw on every load, and GDACS answers browsers with a bot check).
@@ -300,9 +336,9 @@ async function watchCheck() {
   // the extra checks first, each in its own browser, so a stuck soak can never skip them
   const ONLY = (process.env.ONLY || "").split(",").map((x) => x.trim()).filter((x) => x && !x.startsWith("block="));
   const HZ = ONLY.includes("hazards"); // only=hazards: the boot and the EARTH > Hazards hold, then stop
-  if (ONLY.length && !HZ) { const C = { watch: watchCheck, tap: liveTapCheck, poles: polesCheck, ships: shipsCheck, news: newsCheck, weather: weatherCheck };
+  if (ONLY.length && !HZ) { const C = { watch: watchCheck, tap: liveTapCheck, poles: polesCheck, ships: shipsCheck, news: newsCheck, weather: weatherCheck, board: boardCheck };
     if (DESK) for (const k of ONLY) C[k] ? await C[k]() : fail(`no check named ${k}`);
-    else if (ONLY.includes("poles")) await polesCheck(); // a phone engine (the iPhone engine, or chromium as an iPhone) with the polar layers
+    else { if (ONLY.includes("poles")) await polesCheck(); if (ONLY.includes("board")) await boardCheck(); } // a phone engine (the iPhone engine, or chromium as an iPhone) with the polar layers
     finish(); return; }
   if (HZ) log("only the boot and the EARTH > Hazards hold, with graphics call timings for slow frames");
   else if (DESK) { await watchCheck(); await liveTapCheck(); await polesCheck(); await shipsCheck(); await newsCheck(); await weatherCheck(); }
