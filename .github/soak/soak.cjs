@@ -273,6 +273,38 @@ async function boardCheck() {
 // Weather warnings on the live site (desktop), the way a person turns them on: Filters, then Hurricanes & typhoons and NWS
 // warnings, and the weather clock on Next 6 hours. The weather panel's Storms and NWS warnings rows must say how many are
 // active, never "Not answering" (until t-v156 the NWS loader threw on every load, and GDACS answers browsers with a bot check).
+// only=ages (desktop): every Filters row's age line on the live site after 3 minutes, plus the plane tracker's own state
+// (live circles, last answer per feed, a relay pause), so each layer's real freshness is read off the live site.
+async function agesCheck() {
+  let b = null; const pt = await passThrough();
+  try {
+    b = await pw.chromium.launch({ args: ["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"] });
+    const c = await b.newContext({ viewport: { width: 1466, height: 800 }, serviceWorkers: "block" });
+    await c.addInitScript(() => { try { localStorage.setItem("t.seenIntro", "1"); } catch {} });
+    const w = await c.newPage(), errs = [];
+    w.on("pageerror", (e) => errs.push(e.message.slice(0, 160)));
+    const wev = (fn, arg) => Promise.race([w.evaluate(fn, arg), new Promise((_, j) => setTimeout(() => j(new Error("page did not answer")), 60000))]);
+    await w.goto(pt.url, { timeout: 90000 });
+    await w.waitForFunction(() => !document.getElementById("boot") && window.__dbg, null, { timeout: 180000 });
+    await w.waitForTimeout(180000);
+    await wev(() => document.getElementById("filterBtn")?.click()); await w.waitForTimeout(1500);
+    const rows = new Map();
+    for (const sect of ["threats", "earth", "air", "space", "signals", "people", "other"]) {
+      await wev((s) => { const h = document.querySelector(`.fp-gh[data-sect="${s}"]`); if (h && h.getAttribute("aria-expanded") !== "true") h.click(); }, sect).catch(() => {}); await w.waitForTimeout(800);
+      for (const r of await wev(() => [...document.querySelectorAll(".fp-row[data-row]")].map((r) => ({ key: r.dataset.row, on: r.classList.contains("is-on"),
+        name: (r.querySelector(".fp-nm b")?.textContent || "").trim(), meta: (r.querySelector(".fp-meta")?.textContent || "").replace(/\s+/g, " ").trim() }))).catch(() => [])) rows.set(r.key, r);
+    }
+    for (const r of rows.values()) log(`ages ${r.key} ${r.on ? "on" : "off"} | ${r.name} | ${r.meta.slice(0, 220)}`);
+    const tr = await wev(() => { const t = window.__dbg.tracker(), now = Date.now(), h = {};
+      for (const [k, v] of Object.entries(t.health || {})) h[k] = `${v.ok ? "ok" : "FAILED " + (v.error || "")} ${Math.round((now - v.t) / 1000)} s ago`;
+      let ac = 0, live = 0; for (const o of t.objects.values()) if (o.kind !== "ship") { ac++; if (now - (o.t || 0) < 60e3) live++; }
+      return { aircraft: ac, liveMinute: live, tiles: (t.tiles || []).length, health: h, paused: t.paused || null, use: t.debug?.() }; }).catch((e) => ({ err: e.message }));
+    log(`ages tracker ${JSON.stringify(tr).slice(0, 900)}`);
+    if (errs.length) log(`ages page errors: ${errs.slice(0, 3).join(" / ")}`);
+    if (rows.size < 25) fail(`ages: only ${rows.size} Filters rows read`);
+  } catch (e) { fail(`ages check: ${e.message.split("\n")[0]}`); }
+  finally { await b?.close().catch(() => {}); pt.close(); }
+}
 async function weatherCheck() {
   let b = null;
   try {
@@ -343,7 +375,7 @@ async function watchCheck() {
   // the extra checks first, each in its own browser, so a stuck soak can never skip them
   const ONLY = (process.env.ONLY || "").split(",").map((x) => x.trim()).filter((x) => x && !x.startsWith("block="));
   const HZ = ONLY.includes("hazards"); // only=hazards: the boot and the EARTH > Hazards hold, then stop
-  if (ONLY.length && !HZ) { const C = { watch: watchCheck, tap: liveTapCheck, poles: polesCheck, ships: shipsCheck, news: newsCheck, weather: weatherCheck, board: boardCheck };
+  if (ONLY.length && !HZ) { const C = { watch: watchCheck, tap: liveTapCheck, poles: polesCheck, ships: shipsCheck, news: newsCheck, weather: weatherCheck, board: boardCheck, ages: agesCheck };
     if (DESK) for (const k of ONLY) C[k] ? await C[k]() : fail(`no check named ${k}`);
     else { if (ONLY.includes("poles")) await polesCheck(); if (ONLY.includes("board")) await boardCheck(); } // a phone engine (the iPhone engine, or chromium as an iPhone) with the polar layers
     finish(); return; }
