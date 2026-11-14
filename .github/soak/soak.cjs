@@ -283,6 +283,10 @@ async function agesCheck() {
     await c.addInitScript(() => { try { localStorage.setItem("t.seenIntro", "1"); } catch {} });
     const w = await c.newPage(), errs = [];
     w.on("pageerror", (e) => errs.push(e.message.slice(0, 160)));
+    // the sources the page reads itself: what each answered (status and size) or why the browser refused it
+    const net = [], watch = /gdeltproject|open-meteo|celestrak/;
+    w.on("requestfailed", (r) => { if (watch.test(r.url())) net.push(`${r.url().slice(0, 80)} refused: ${r.failure()?.errorText}`); });
+    w.on("response", (r) => { if (watch.test(r.url())) net.push(`${r.url().slice(0, 80)} ${r.status()}`); });
     const wev = (fn, arg) => Promise.race([w.evaluate(fn, arg), new Promise((_, j) => setTimeout(() => j(new Error("page did not answer")), 60000))]);
     await w.goto(pt.url, { timeout: 90000 });
     await w.waitForFunction(() => !document.getElementById("boot") && window.__dbg, null, { timeout: 180000 });
@@ -300,6 +304,11 @@ async function agesCheck() {
       let ac = 0, live = 0; for (const o of t.objects.values()) if (o.kind !== "ship") { ac++; if (now - (o.t || 0) < 60e3) live++; }
       return { aircraft: ac, liveMinute: live, tiles: (t.tiles || []).length, health: h, paused: t.paused || null, use: t.debug?.() }; }).catch((e) => ({ err: e.message }));
     log(`ages tracker ${JSON.stringify(tr).slice(0, 900)}`);
+    const fd = await wev(() => { const f = window.__feeds; if (!f) return { hook: "none" }; const now = Date.now(), a = {};
+      for (const [k, t] of Object.entries(f.answered() || {})) a[k] = `${Math.round((now - t) / 1000)} s ago`;
+      return { status: f.status(), answered: a }; }).catch((e) => ({ err: e.message }));
+    log(`ages feeds ${JSON.stringify(fd).slice(0, 3000)}`);
+    log(`ages net ${net.length ? net.slice(0, 30).join(" | ") : "none"}`);
     if (errs.length) log(`ages page errors: ${errs.slice(0, 3).join(" / ")}`);
     if (rows.size < 25) fail(`ages: only ${rows.size} Filters rows read`);
   } catch (e) { fail(`ages check: ${e.message.split("\n")[0]}`); }
