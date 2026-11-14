@@ -15,6 +15,10 @@ on:
         description: "One extra request header, for example Accept: application/json (empty for none)"
         required: false
         default: ""
+      grep:
+        description: "Optional extended regex: print up to 40 distinct matches found in each body (to find a page's API addresses)"
+        required: false
+        default: ""
 permissions:
   contents: read
 jobs:
@@ -27,6 +31,7 @@ jobs:
           URLS: ${{ inputs.urls }}
           ORIGIN: ${{ inputs.origin }}
           HDR: ${{ inputs.header }}
+          PAT: ${{ inputs.grep }}
           UA: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36"
         run: |
           set -f
@@ -37,4 +42,5 @@ jobs:
             jq -r '"items: " + ([(.ac // .aircraft // .states // .features // [])] | .[0] | length | tostring)' body.bin 2>/dev/null || true
             if grep -qi '<html' body.bin; then echo "html page, title: $(grep -o -i '<title>[^<]*' body.bin | head -1 | cut -c8-)"; echo "text: $(sed -e 's/<[^>]*>/ /g' body.bin | tr -s ' \r\n\t' ' ' | cut -c1-600)"
             else echo "body starts:"; head -c 300 body.bin | tr -d '\r' | head -5 || true; echo; fi
+            if [ -n "$PAT" ]; then echo "matches:"; grep -a -o -E "$PAT" body.bin | sort -u | head -40 || true; fi
           done
